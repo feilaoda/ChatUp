@@ -1,0 +1,81 @@
+{% extends "admin/movie/movie.html" %}
+
+
+{% block content %}
+<div class="screen movie">
+
+<ul class="list-content">
+{% for movie in movies %}
+<li class="list-item" style="height: 260px;">
+    <ul >
+        <li>
+        <a href="/admin/movie/{{movie.id}}"> 
+        <img class="movie-small-image" src="{{image_url(movie.image.small_image)}}" style="margin:0 0;" alt="{{movie.title}}" title="{{movie.title}}">
+        </a>
+        <a class="repin btn btn-small btn-repin" data-id="{{movie.id}}" data-image="{{image_url(movie.image.small_image)}}">{{_("repin it")}}</a>
+    
+
+        </li>
+        <li class="movie-item-title">
+            <a href="/admin/movie/{{movie.id}}" title="{{movie.title}} {{movie.extra_title or ''}}"> {{movie.title}}</a>
+
+        </li>
+        <li class="movie-rating">
+            <!-- <a href="{{url('movie:show-movie', id=movie.id)}}"> {{movie.rating}} </a> -->
+            {{movie.publish_time}}
+        </li>
+        <li>
+
+            <a href="/admin/movie/{{movie.id}}" target="_blank" rel="nofollow">View</a>
+
+
+   <!--  <a class="btn btn-small" href="/admin/movie/{{movie.id}}/publish?published=1" target="_blank">Publish</a>
+
+    <a class="btn btn-small" href="/admin/movie/{{movie.id}}/publish?published=0" target="_blank">Not publish</a> -->
+        </li>
+    </ul>
+</li>
+{% end %}
+</ul>
+
+
+<div class="pagination">
+    <ul>
+        {% for p in pagination.iter_pages() %}
+        <li {%if p==page_num%}class="active"{%end%}><a href="?p={{p}}">{{p}}</a></li>
+        {% end %}
+    </ul>
+</div>
+
+</div>
+{% end %}
+
+
+
+{%block admin_sidebar%}
+<div class="dragMarklet">
+<a href="javascript:function keepcdreadlistdotcom(){var d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location;try{if(!b)throw(0);d.title='(Saving...) '+d.title;z.setAttribute('src','http://test.keepcd.com/admin/movie/sync/douban?url='+encodeURIComponent(l.href)+'&t='+(new Date().getTime()));b.appendChild(z);}catch(e){alert('请等待页面加载完毕.');}}keepcdreadlistdotcom();void(0)"
+class="hotlight" onclick="return show_bookmarklet();"  title="留着，以后读">Sync To KeepCD</a>
+            
+<span>← <span>拖拽到浏览器标签拦上</span></span>                
+</div> 
+
+<div class="box">
+    <ul class="listable">
+    <li ><a class="btn btn-primary" href="/admin/movie/new" onclick="return  confirm('{{_('new movie?')}}');">New Movie</a>
+    </li>
+
+    <li ><a class="btn btn-primary" href="/admin/movie/clearcache" onclick="return  confirm('{{_('sure clear all movie search cache?')}}');">Clear Movie Cache</a>
+    </li>
+    <li><a class="btn btn-primary" href="/admin/movie/refresh_search_index" onclick="return  confirm('{{_('sure refresh all movie search index?')}}');">Refresh movie search index</a>
+    </li>
+
+    <li><a class="btn btn-primary" href="/admin/movie/refresh_btcly_count" onclick="return  confirm('{{_('sure refresh btcly.com resource count?')}}');">Refresh btcly.com resource count</a>
+    </li>
+</ul>
+</div>
+
+
+{%end%}
+
+

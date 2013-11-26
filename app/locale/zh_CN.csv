@@ -1,0 +1,315 @@
+# ========== template ===========
+"meimashuo","美妈说, 分享、发现我的美丽生活"
+# navigation
+"Latest","最近更新"
+"Popular","热门更新"
+"Following"," 已关注 "
+"Nodes","节点"
+"Create Topic","发表话题"
+"Setting","设置"
+"Signin","登录"
+"Signout","退出"
+"Notification","消息"
+"New Topic","创建话题"
+
+"Node","节点"
+"Member","会员"
+"Members","会员"
+"Topic","话题"
+"Reply","回复"
+
+# signup signin setting
+"Account","帐户"
+"Password","密码"
+"Signup","注册"
+"Free Signup","免费注册"
+"Don't have an account?","还没有帐户？"
+"Email","邮箱"
+"Confirm Password","确认密码"
+"Old Password","原密码"
+"New Password","新密码"
+"Username","用户名"
+"nickname","昵称"
+"Website","个人网站"
+"Douban Website","豆瓣个人主页"
+"Only English 3-20 chinese or english characters or digits are accepted.","只允许填写3-20位中英文字符和数字"
+"Only English 3-20 english characters or digits are accepted.","只允许填写3-20位英文字符和数字"
+"Save","保存"
+"Submit","提交"
+"Reback","返回"
+"Search","搜索"
+
+"Already have an account?","已经有帐号？"
+"Login with douban account","使用豆瓣帐号登录"
+"Login with weibo account","使用新浪微博帐号登录"
+"Signup successful","注册成功"
+# topic
+"Topics","话题"
+"Edit","编辑"
+"Move","移动"
+"Delete","删除"
+"Write","编写"
+"Preview","预览"
+"Upload","上传"
+"Upload Image","上传图片"
+"Post","发布"
+"Comment","评论"
+
+"Want to comment ?","想要评论？"
+"Edit Topic","编辑话题"
+"Title","标题"
+"Cancel","取消"
+"Create Topic","新建话题"
+"This topic is in","这个话题位于"
+"Created at","新建于"
+"Move Topic","移动话题"
+"Choose a node","选择一个节点"
+"Can't find a node?","找不到合适的节点？"
+"Have anything in trouble?"
+"Feedback","反馈"
+"Hits","点击"
+"Replies","回复"
+"Last reply at","最后回复于"
+"Reply at","回复于"
+# topic voting
+"Can't vote your own topic","不能对你自己的主题进行评分"
+"Cancel your vote first","请先取消原来的评分"
+"Anonymous","匿名"
+
+# node
+"View","查看"
+"Create","新建"
+"Follow","关注"
+"Unfollow","取消关注"
+"All Nodes","所有节点"
+"Following Nodes","关注节点"
+
+"Recent Nodes","最新节点"
+
+"community","社区"
+"english community","英语社区"
+"speak english","开口说英语"
+
+# account
+"You have %s chances to edit your username.","你有 %s 次机会修改用户名"
+"Join at","加入"
+"Send Message","发送私信"
+"View Profile","查看资料"
+"Edit Profile","编辑资料"
+"Edit Avatar","修改头像"
+"Current Avatar","当前头像"
+"Reputation","积分"
+"Important","重要"
+"Delete all","全部清除"
+"City","城市"
+"Description","自我介绍"
+"Change Password","修改密码"
+"Change Avatar","修改头像"
+
+#message
+"Unread notification","未读信息"
+
+#sidebar
+"Latest News","最新信息"
+
+# =========== python file ==========
+# timesince
+"%s minutes ago","%s分钟前"
+"%s hours ago","%s小时前"
+"%s days ago","%s天前"
+"%s months ago","%s个月前"
+"%s years ago","%s年前"
+"just now","刚刚"
+
+# topic/handlers.py
+"reply not found","回复不存在"
+"topic not found","话题不存在"
+"permission denied","没有权限"
+
+# ======= flash message ==========
+"Save successful","保存成功"
+# topic
+"Please fill the required fields","请填写以下必填项"
+"You have no permission to create a topic in this node","你没有权限在这个节点里新建话题"
+"Password is required","需要填写密码"
+"Topic is deleted","话题已删除"
+#account
+"Don't be evil","别闹了，没用的"
+"This link is expired","这个链接已经失效了"
+"Invalid account or password","帐户或密码错误"
+"Google signin failed","Google 帐户登录失败"
+"Your account is activated","你的帐户已经激活"
+"Password doesn't match","密码不匹配"
+"Not a valid email address","邮箱格式不正确"
+"This email is already registered","该邮箱已注册"
+"The username is already registered","该用户名已注册"
+"Captcha not valid","验证码不正确"
+"Invalid password","密码不正确"
+"Invalid old password","原密码不正确"
+"Username is invalid","用户名不正确"
+"Username is not allowed","用户名不符合规定"
+"Website is invalid","个人网站格式不正确"
+"Username has been taken","用户名已被注册"
+"You can't edit username","你不能编辑用户名了"
+"User does not exists","用户不存在"
+"Please check your inbox","请查收邮件"
+"Password changed","密码已更改"
+
+
+#===== formencode =====
+"Missing value","不能为空,写点什么吧"
+"Please enter a value","不能为空,写点什么吧"
+
+#===== Common =====
+"new","新建"
+"edit","编辑"
+"move","移动"
+"delete","删除"
+"more","更多"
+"all","全部"
+"year","年份"
+"time","时间"
+"about","关于"
+"reset edit","重填"
+
+"mine","主页"
+"my keepcd","我的主页"
+"my links","我的链接"
+"video","视频"
+"music","音乐"
+#===== Group =====
+"group","小组"
+
+#===== Plan =====
+"plan","计划"
+
+#===== Photo =====
+"photo","相册"
+"all groups","所有小组"
+
+#===== Readlist =====
+"readlist","阅读列表"
+
+"size","大小"
+"title","标题"
+"tag","标签"
+"content","内容"
+"description","描述"
+"language","语言"
+"directors","导演"
+"actors","主演"
+"writers","编剧"
+"category","类型"
+"country","地区"
+
+
+#===== Note =====
+"note","日记"
+"new note","写日记"
+"note permission","设置可见"
+"note not allow reply","权限设置"
+"all peoples can view","所有人可见"
+"all friends can view","仅朋友可见"
+"only me can view","仅自己可见"
+"don't allow reply","不允许回复"
+
+
+"yyets","人人影视"
+"oabt","oaBT"
+"btcly","BTCLy"
+#===== movie =====
+"douban","豆瓣"
+"movie","电影"
+"movie definition","清晰度"
+"movie link","地址"
+"movie description","内容介绍"
+"movie year","发行时间"
+"alias title","别名"
+"movie company","发行公司"
+"imdb","IMDb"
+"duration","时长"
+"publish time","上映时间"
+
+"douban link","豆瓣链接"
+"imdb link","IMDb链接"
+"wish watch","想看"
+"watched","看过"
+"movie units","部"
+
+"i want to watch this movie","我<b>想看</b><i class='icon-time'></i>这部电影"
+"i have watched this movie","我<b>看过</b><i class='icon-ok'></i>这部电影"
+"me","我"
+"wish watch movies","想看的电影"
+"watched movies","看过的电影"
+
+"modify to","修改成"
+"unknow movie","未知电影"
+#===== board =====
+"board","画板"
+"new board","创建画板"
+"all boards","所有画板"
+"edit board","编辑画板"
+
+
+
+#======
+"view online","在线观看"
+"cloud play","迅雷云点播"
+"more link...","更多"
+"download","下载"
+#====== pin =====
+"repin","转采"
+"repin it","转采"
+"pins","采集"
+
+#====== new link =====
+"link","链接"
+"new link","添加链接"
+"view external links","查看高清链接"
+"new my link","添加我的链接"
+"new link urls","添加下载地址"
+"new link files","添加BT种子"
+"download multilinks with enter, max 100 links","多个url请回车换行，最多支持100条地址"
+"delete quickly","快速删除"
+"sure delete this link?","确认要删除该链接吗？"
+"unknown file format","未知的文件格式，请上传正确的文件"
+"delete link successful %s/%s","删除成功<br/> <a href='%s'>%s</a>"
+"will view links after login","登录后可以查看资源"
+
+#===== english ====
+"english channel","英语频道"
+"english","英语"
+"Normal Speed","在线听力"
+"Slow Speed","慢速听力"
+"subscribed","已订阅"
+"subscribe it","订阅"
+
+
+#===== food =====
+"foodeat","饮食"
+"health food note","健康饮食日记"
+"new food note","添加饮食记录"
+"nutrient analyse","营养分析"
+"food date","饮食日期"
+"food recipe","一日饮食"
+"normal eat","可以吃"
+"less eat","不宜多吃"
+"avoid eat","不能吃"
+"pregnancy food permission","孕妇饮食禁忌"
+"all foods","所有食物"
+"normal eat foods","可以吃的食物"
+"less eat foods","不宜多吃的食物"
+"avoid eat foods","不可以吃的食物"
+"preparing pregnancy","备孕中"
+"duration of pregnancy","怀孕中"
+"already have a baby","已经有宝贝了"
+"other","其他"
+"current status","当前状态"
+"can pregnancy eat food %s?","孕妇可以吃%s吗?"
+
+#====== 怀孕 =====
+"expected date of childbirth","预产期"
+"twins baby","双胞胎"
+
+
+

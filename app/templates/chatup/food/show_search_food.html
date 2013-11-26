@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("food") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+
+    <div class="box-container">
+        <div class="box">
+        <form class="" action="/food/search">
+            <input type="text" class="input-xlarge" class="search-query span3" placeholder="{{_('Search')}}" name="q" style="margin-bottom:0">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Search") }}</button>
+        </form>
+        </div>
+
+        <div class="box">
+        {%if pagination%}
+            <ul>
+            {%for food in pagination.items%}
+
+            <li ><a href="/food/{{food.id}}">{{food.name}} ({{food.title}})</a>
+            </li>
+                    
+            {%end%}
+            </ul>    
+        {%end%}
+        </div>
+    </div>
+
+    {%if pagination%}
+    <div class="pagination">
+        <ul>
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?q={{q}}&p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+    
+</div>
+{% end %}
+
+
+{%block sidebar %}
+
+{% module FoodPregnancySidebar() %}
+
+
+{% end %}
+
+

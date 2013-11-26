@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block subtitle%}{{node.title}}{% end %}
+
+
+
+{% block content %}
+<div class="screen">
+    
+
+    <div class="topic-header">
+        <a href="/node/{{node.name}}" class="highlight" >{{node.title}}</a>
+        <span class="pull-right">
+            <a class="btn btn-primary btn-small" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
+        </span>
+    </div>
+
+
+
+    {% module ShowTopicList(topics=pagination.items) %}
+
+
+    {%if pagination%}
+    <div class="pagination">
+        <ul>
+            {%if pagination.pages> 5%}
+            <li class=""><a href="?"><span>|&lt;</span></a></li>
+            {%end%}
+            {%if pagination.pages> 1%}
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+            {% end %}
+            {%if pagination.pages> 5%}
+            <li class=""><a href="?p={{pagination.pages}}"><span>&gt;|</span></a></li>
+            {%end%}
+        </ul>
+    </div>
+    {%end%}
+
+
+</div>
+{% end %}
+
+{% block sidebar %}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+{% module RecentNodes()%}
+ 
+{% end %}

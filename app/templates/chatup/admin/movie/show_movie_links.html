@@ -1,0 +1,54 @@
+{% extends "admin/movie/movie.html" %}
+
+{% block subtitle %}{{ _("movie") }}{% end %}
+
+
+
+{% block content %}
+<div class="movie">
+
+    <h1><a href="/admin/movie/{{movie.id}}">{{movie.title}}</a></h1>
+
+    <h3><a href="/movie/{{movie.id}}">{{movie.title}}</a></h3>
+
+<div class="movie-link">
+        
+        <table class="table table-hover"> 
+            <thead>
+                <tr >
+                  <th class="definition">{{_('movie definition')}}</th>
+                  <th class="size">{{_('size')}}</th>
+                  <th class="url">{{_('movie link')}}</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+
+              {%for link in media_links%}
+                <tr>
+                  <td>{{link.definition or ''}}</td>
+                  <td>{{link.size}}</td>
+                  <td class="url">
+                    <a href="{{link.link}}" target="_blank" title="{{link.link}}">{{link.title or link.link}}</a>
+                  </td>
+                  <td>{{link.featured}}</td>
+                  <td class="action">
+                    <a href="/admin/movie/{{movie.id}}/link/{{link.id}}/edit" target="_blank" title="{{link.link}}">Edit</a>
+                  </td>
+                  
+                </tr>
+              {%end%}
+          </tbody>
+        </table>
+        
+</div>
+
+</div>
+{% end %}
+
+
+
+
+

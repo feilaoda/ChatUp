@@ -1,0 +1,36 @@
+{% extends "food/base.html" %}
+
+{% block subtitle %}{{_("food")}}{% end %}
+{%block extra_title%} - {{food.name}}{%end%}
+
+
+{% block content %}
+
+<div class="screen clearfix">
+    <div class="box-container">
+        <div class="">
+        <h1>{{food.name}}</h1>
+        
+        <p>{%if food.description%} {{markup(food.description)}} {%end%}
+        </p>
+        </div>
+         
+    </div>
+
+    {% module FoodCommentList(food.id, page) %}
+
+
+    
+
+</div>
+{% end %}
+
+{%block sidebar %}
+
+{% module FoodPregnancySidebar() %}
+
+
+{% end %}
+
+
+

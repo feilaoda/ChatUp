@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("health note") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+
+    <div class="box-container">
+        <div class="box-content">
+        <h1>{{xmlday(note.food_time)}}</h1>
+        
+        <p>{%if note_content and note_content.food%} {{markup(note_content.food)}} {%end%}
+        </p>
+        </div>
+        <div class="food-meta">
+            <a href="/people/{{note.people_id}}"><b>{{note.people.username}}</b></a>
+            <time class="small">{{xmlday(note.created)}}</time>
+
+            
+            {%if current_user and current_user.id == note.people_id %}
+            <span class="pull-right"> <a href="/food/note/{{note.id}}/edit" class="gray small">{{_("edit")}}</a>  </span>
+
+            {%end%}
+            
+        </div>
+    </div>
+
+
+
+    <!-- <div class="box-container">
+    {%for ingredient in food_ingredients%}
+        {{ingredient[0]}}, {{ingredient[1]}},  {{ingredient[2]}}<br>
+    {%end%}
+    </div> -->
+
+    <div class="box-container">
+    {%for nutrient in food_nutrients%}
+        {{nutrient.name}}   {{nutrient.new_value}}{{nutrient.unit}}<br>
+    {%end%}
+    </div>
+
+</div>
+{% end %}
+
+
+{%block sidebar %}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+{% end %}
+
+

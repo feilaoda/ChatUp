@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ resource.title }}{% end %}
+
+
+{% block content %}
+
+<div class="screen clearfix">
+<h1>{{cloze.title}}</h1>
+
+
+<div class="learn-guide">
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+<p class="{{channel.name}}">
+{{br_escape(cloze_content)}}
+</p>
+
+<div class="form-actions">
+            <button type="submit" class="btn btn-small">{{ _("Submit") }}</button>
+            <a href="/english/resource/{{resource.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+         </form>
+</div>
+
+</div>
+
+
+{% end %}
+
+
+{%block sidebar%}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+{% module ChannelListSidebar() %}
+
+{% end %}
+
+
+

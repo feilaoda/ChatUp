@@ -1,0 +1,23 @@
+{% extends "admin/admin.html" %}
+
+{% block subtitle %}{{ _("channel") }}{% end %}
+
+{% block content %}
+
+<div class="screen">
+    <a href="/admin/channel/new" class="btn btn-primary">New Channel</a>
+    <ul class="listable">
+    {%for channel in channels%}
+        <li>
+            {{channel.id}}: <a href="/admin/channel/{{channel.id}}">{{channel.title}}</a>
+            <a href="/admin/channel/{{channel.id}}/edit" class="pull-right">{{_("edit")}}</a>
+        </li>
+    {%end%}
+    </ul>
+</div>
+{% end %}
+
+
+{%block admin_sidebar %}
+
+{% end %}

@@ -1,0 +1,44 @@
+{% extends "admin/channel/channel.html" %}
+
+{% block subtitle %}{{ _("topic") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/jquery.ui.min.js')}}"></script>
+{% end %}
+
+
+{% block content %}
+
+<div class="screen">
+    <div>
+    <a href="/admin/channel/{{channel.id}}">{{channel.id}}: {{channel.title}}</a>
+    <a class="btn btn-primary" href="/admin/channel/{{channel.id}}/new" >Add</a>
+    </div>
+
+    <ul id="sortable" class="listable">
+        {%set count=1%}
+        {%for entry in entries%}
+        <li data-id="{{entry.id}}">
+            <a href="/admin/channel/{{channel.id}}/{{entry.id}}/edit" >{{_("edit")}}</a>#{{count}}: <a href="{{entry.url}}">
+               {{entry.url}}
+            </a>
+            <a href="{{entry.url}}">
+               {{markup(entry.title)}}
+            </a>
+            <a href="/admin/channel/{{channel.id}}/{{entry.id}}/delete" onclick="return confirm('Sure delete it?');" class="pull-right">{{_("delete")}}</a>
+        </li>
+        {%set count+=1%}
+        {%end%}
+    </ul>
+
+ <div>
+    <a class="btn btn-primary" href="javascript:;" onclick="update()">Update</a>
+    </div>
+
+   
+</div>
+{% end %}
+
+
+
+

@@ -1,0 +1,27 @@
+{% extends "admin/admin.html" %}
+
+
+{% block content %}
+<div class="screen site">
+
+<ul class="list-content">
+{% for site in sites %}
+<li class="list-item" style="height: 50px;">
+    <ul >
+        <li >
+            <a href="/admin/crawl/site/{{site.id}}" > {{site.name}}</a>
+        </li>
+    </ul>
+</li>
+{% end %}
+</ul>
+
+</div>
+{% end %}
+
+
+{%block admin_sidebar%}
+
+{%end%}
+
+

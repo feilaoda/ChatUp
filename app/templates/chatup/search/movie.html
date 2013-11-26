@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<div class="screen">
+    {% module ShowMovieList(movies) %}
+</div>
+
+{% module ShowRepin(boards) %}
+
+{% end %}

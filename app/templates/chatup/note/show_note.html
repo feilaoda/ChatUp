@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("note") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <h1>{{simple_escape(note.title)}}</h1>
+    
+
+    <p>
+       {%if note_content and note_content.content%} {{markup(note_content.content)}} {%end%}
+    </p>
+    
+    <div>{{note.people.username}}
+    {%if current_user and current_user.id == note.people_id %}
+    <span class="pull-right"> <a href="/note/{{note.id}}/edit" class="gray small">{{_("edit")}}</a> </span>
+    {%end%}
+    </div>
+</div>
+{% end %}
+
+
+{%block sidebar %}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+<a href="/note/new" data-toggle="modal" class="">{{ _("new note") }}</a>
+{% end %}
+
+

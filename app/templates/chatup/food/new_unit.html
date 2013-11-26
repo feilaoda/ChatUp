@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Unit Item") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("Unit Item")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+<div class="control-group">
+    <label class="control-label" for="name">{{ _("Name") }}</label>
+    <div class="controls">
+    <input type="text" class="control-text input-xxxlarge" rows="5" name="name" value="{{unit.name or ''}}">
+    </div>
+</div>
+
+
+<div class="control-group">
+    <label class="control-label" for="unit">{{ _("Unit") }}</label>
+    <div class="controls">
+     <input type="text" class="control-text input-xxxlarge" rows="5" name="unit" value="{{unit.unit or ''}}">
+    </div>
+</div>
+
+
+       
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/food/unit" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+       
+        
+    </form>
+
+</div>
+{% end %}
+
+{%block sidebar %}
+<a href="/food/unit">Food Unit</a>
+{% end %}

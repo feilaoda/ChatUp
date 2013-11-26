@@ -1,0 +1,28 @@
+<li class="ui-cell article">
+    {% if not is_mobile %}
+        <a href="/people/{{topic.people_id}}" class="ui-small-avatar"><img src="{{topic.people.get_avatar(20)}}" width="20" height="20" /></a>
+    
+    {% else %}
+    <a href="/people/{{topic.people_id}}" class="ui-avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
+    
+    {% end %}
+    
+    
+    {% if topic.reply_count > 0 %}
+    <a href="{{topiclink(topic)}}" class="ui-cell-top-right" title="{{topic.reply_count}} {{_("Replies")}}">{{topic.reply_count}}</a>
+    {% end %}
+
+    <div class="article fn-wrap">
+        <h3><a href="{{topiclink(topic)}}">{{topic.title}}</a></h3>
+        <div class="article-meta">
+            <a href="/node/{{topic.node_id}}" class="node-cell">{{topic.node.title}}</a> •
+            <a href="/people/{{topic.people_id}}">{{topic.people.username}}</a> •
+            {% if topic.last_reply_time %}
+            <time datetime="{{xmldatetime(topic.last_reply_time)}}" title="replied">{{timesince(topic.last_reply_time, locale.code)}}</time>
+            {% else %}
+            <time datetime="{{xmldatetime(topic.created)}}" title="created">{{timesince(topic.created, locale.code)}}</time>
+            {% end %}
+           
+        </div>
+    </div>
+</li>

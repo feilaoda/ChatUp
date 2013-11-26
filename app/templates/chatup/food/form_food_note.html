@@ -1,0 +1,16 @@
+<div class="control-group">
+    <label class="control-label" for="food_time">{{ _("food date") }}</label>
+    <div class="controls">
+    <input type="text" class="control-text input-maxlarge" rows="5" name="food_time" value="{{food_time or ''}}">
+    </div>
+</div>
+
+
+
+<div class="control-group">
+    <label class="control-label" for="food">{{ _("food recipe") }}</label>
+    <div class="controls">
+    <textarea class="control-text input-maxlarge" rows="15" name="food" >{{note_content.food or ''}}</textarea>
+    </div>
+</div>
+

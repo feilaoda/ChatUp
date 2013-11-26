@@ -1,0 +1,26 @@
+{% extends "admin/topic/topic.html" %}
+
+
+{% block subtitle %} Show all topics{% end %}
+
+
+
+{% block content %}
+
+<div class="screen">
+
+</div>
+{% end %}
+
+
+{% block admin_sidebar %}
+
+{%if current_user and current_user.is_staff%}
+<div class="box-container">
+<a class="btn btn-primary btn-small" href="/admin/topic/new">{{_("Admin New Topic")}}</a>
+</div>
+{%end%}
+
+{% end %}
+
+

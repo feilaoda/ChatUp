@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("movie") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    {%if people.is_master%}
+    <h3>{{_("me")}}{{_("wish watch movies")}}</h3>
+    {%else%}
+    <h3>{{people.username}}{{_("wish watch movies")}}</h3>
+    {%end%}
+    
+    {%module ShowMovieList(movies)%}
+</div>
+
+{%if pagination%}
+<div class="pagination">
+    <ul>
+        {% for p in pagination.iter_pages() %}
+        <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+        {% end %}
+    </ul>
+</div>
+{%end%}
+
+
+{% module ShowRepin(boards) %}
+
+{% end %}
+
+
+
+{%block sidebar %}
+
+{% module ProfileSidebar(people) %}
+
+{% end %}
+

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("health food note") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <ul>
+        {% for note in notes %}
+        <li class="pinner-y">
+            <div class="box pinner-x pinner-y">
+            {{xmlday(note.food_time)}} <a href="/food/note/{{note.id}}">{{simple_escape(note.content.food)}}</a>
+            </div>
+        </li>
+        {% end %}
+    </ul>
+</div>
+{% end %}
+
+{%block sidebar %}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+<a href="/food/note/new" data-toggle="modal" class="btn btn-primary">{{ _("new food note") }}</a>
+
+{% end %}
+
+

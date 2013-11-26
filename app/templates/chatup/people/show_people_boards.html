@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("board") }}{% end %}
+
+{% block content %}
+
+<div class="screen">
+    
+
+    
+    <div class="board-list">
+
+            <ul  >
+            {%for board in boards %}
+                <li>
+                    <div class="box">
+                        {% module ShowBoard(board) %}   
+                    </div>
+                </li>
+            {%end%}
+            </ul>
+    </div>
+
+
+</div>
+
+{% end %}
+
+
+
+
+{%block sidebar %}
+
+{% module ProfileSidebar(people) %}
+
+{%if current_user%}
+<div>
+<a href="/board/new" rel="nofollow">{{_("new board")}}</a>
+{%if people.is_master%}
+<a href="/people/{{people.id}}/boards/edit" rel="nofollow">{{_("edit board")}}</a>
+{%end%}
+</div>
+
+{%end%}
+
+
+{% end %}
+
+

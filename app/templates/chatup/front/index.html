@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _("meimashuo") }}{% end %}
+
+{% block afterstyle %}
+<link rel="canonical" href="{{g.siteurl}}/account/signin" />
+{% end %}
+
+{% block content %}
+<div class="screen clearfix">
+    
+    {% module ShowFrontTopicChannels() %}
+    {% module ShowFrontFoodNotes() %}
+    {% module ShowFrontRecentTopics() %}
+
+</div>
+{% end %}
+
+{% block sidebar %}
+
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+{% module RecentNodes()%}
+
+{% module ShowFrontTopicsSidebar() %}
+
+{% end %}
