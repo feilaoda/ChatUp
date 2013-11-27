@@ -14,7 +14,6 @@ from app.account.decorators import require_user
 from app.channel.models import Channel, ChannelEntry
 from app.topic.models import Topic
 from app.topic.lib import get_full_topics
-from app.food.models import FoodNote
 
 class FrontHandler(UserHandler):
     def get(self):
@@ -43,17 +42,7 @@ class ShowFrontTopicChannelsModule(UIModule):
         topic_channels = Channel.query.filter_by(isa='topic').order_by('sorting').all()
         return self.render_string('front/front_topic_channels.html', topic_channels=topic_channels)
 
-class ShowFrontFoodNotesModule(UIModule):    
-    def render(self):
-        food_notes = FoodNote.query.filter_by().order_by('-id').limit(5).all()
-        return self.render_string('front/front_foodnote.html', food_notes=food_notes)
-
-class ShowFrontFoodPregnancyChannelModule(UIModule):    
-    def render(self):
-        food_channel = Channel.query.filter_by(isa='food_pregnancy').first()
-        return self.render_string('front/front_topic_channels.html', food_channel=food_channel)
-
-
+ 
 class ShowFrontTopicChannelModule(UIModule):    
     def render(self, channel):
         entries = channel.entries
@@ -73,7 +62,6 @@ class ShowFrontRecentTopicsModule(UIModule):
 
 app_modules = {
     'ShowFrontTopicChannels': ShowFrontTopicChannelsModule,
-    'ShowFrontFoodNotes': ShowFrontFoodNotesModule,
     'ShowFrontTopicChannel': ShowFrontTopicChannelModule,
     'ShowFrontTopicsSidebar': ShowFrontTopicsSidebarModule,
     'ShowFrontRecentTopics': ShowFrontRecentTopicsModule

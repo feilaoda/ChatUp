@@ -25,7 +25,8 @@ import urllib
 import hashlib
 from random import choice
 from datetime import datetime
-from sqlalchemy import Column
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text
 from tornado.options import options
 from dojang.database import db
@@ -52,7 +53,7 @@ class People(db.Model):
     follow_count = Column(Integer, default=0)
     followed_count = Column(Integer, default=0)
 
-    # setting = relationship("PeopleSetting", backref="people")
+    setting = relationship("PeopleSetting", backref="people")
     # duedate = Column(DateTime)
     created = Column(DateTime, default=datetime.utcnow)
 
@@ -137,13 +138,9 @@ class People(db.Model):
 class PeopleSetting(db.Model):
     __tablename__="people_setting"
     id = Column(Integer, primary_key=True)
-    people_id = Column(Integer, nullable=False, index=True)
-    #状态类型: 0:其他  1:备孕  2:怀孕中  3:宝贝已出生
-    stat_type = Column(Integer, default=0)
-    stat_date = Column(DateTime) #预产期或宝贝出生日期
-    pregnancy_babycount = Column(Integer, default=1)
-    pregnancy_week = Column(Integer, default=0)
-    pregnancy_day = Column(Integer, default=0)
+    people_id = Column(Integer, ForeignKey('people.id'), index=True)
+    github_name = Column(String(200))
+    
 
 
 

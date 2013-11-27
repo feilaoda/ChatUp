@@ -6,7 +6,7 @@
 CONFIG = settings.py
 PROJSERVER = iosplay.com:/home/feilaoda/www/static
 STATIC = ../../app/static
-
+HOME = ../../app
 
 # Development
 server:
@@ -71,16 +71,16 @@ static: css  static_image js
 
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
-	lessc --compress vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/vendor.min.css
-	lessc --compress static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
-	lessc --compress static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/vendor.min.css
+	lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
 	
-	lessc --compress static/stylesheets/mobile.less > $(STATIC)/assets/css/mobile.min.css
-	lessc --compress static/stylesheets/admin.less > $(STATIC)/assets/css/admin.min.css
+	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/css/mobile.min.css
+	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/css/admin.min.css
 	
 	
 static_image:
@@ -93,19 +93,19 @@ js: libjs
 
 libjs:
 	if [ ! -d $(STATIC)/assets/js ]; then mkdir -p $(STATIC)/assets/js; fi
-	uglifyjs -nc vendor/javascripts/jquery/jquery.ui.min.js > $(STATIC)/assets/js/jquery.ui.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.ui.min.js > $(STATIC)/assets/js/jquery.ui.min.js
 
-	uglifyjs -nc vendor/javascripts/jquery/jquery.min.js > $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc vendor/javascripts/bootstrap/bootstrap-dropdown.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc vendor/javascripts/bootstrap/bootstrap-modal.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc vendor/javascripts/bootstrap/bootstrap-tab.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc vendor/javascripts/bootstrap/bootstrap-datepicker.js >> $(STATIC)/assets/js/vendor.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.min.js > $(STATIC)/assets/js/vendor.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-dropdown.js >> $(STATIC)/assets/js/vendor.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-modal.js >> $(STATIC)/assets/js/vendor.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-tab.js >> $(STATIC)/assets/js/vendor.min.js
+	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-datepicker.js >> $(STATIC)/assets/js/vendor.min.js
 	
-	uglifyjs -nc static/javascripts/base.js > $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc static/javascripts/english.js >> $(STATIC)/assets/js/application.min.js
-	uglifyjs -nc static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/base.js > $(STATIC)/assets/js/application.min.js
+	# uglifyjs -nc $(HOME)/static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
+	# uglifyjs -nc $(HOME)/static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
+	# uglifyjs -nc $(HOME)/static/javascripts/english.js >> $(STATIC)/assets/js/application.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 
 
 
@@ -118,21 +118,21 @@ editorjs:
 
 topicjs:
 	if [ ! -d $(STATIC)/js ]; then mkdir -p $(STATIC)/js; fi
-	uglifyjs -nc assets/js/jquery.caret.js > $(STATIC)/js/topic.js
-	uglifyjs -nc assets/js/jquery.atwho.js >> $(STATIC)/js/topic.js
-	uglifyjs -nc assets/js/topic.js >> $(STATIC)/js/topic.js
-	uglifyjs -nc assets/js/post-editor.js >> $(STATIC)/js/topic.js
+	uglifyjs -nc $(STATIC)/assets/js/jquery.caret.js > $(STATIC)/js/topic.js
+	uglifyjs -nc $(STATIC)/assets/js/jquery.atwho.js >> $(STATIC)/js/topic.js
+	uglifyjs -nc $(STATIC)/assets/js/topic.js >> $(STATIC)/js/topic.js
+	uglifyjs -nc $(STATIC)/assets/js/post-editor.js >> $(STATIC)/js/topic.js
 
 sitejs:
 	if [ ! -d $(STATIC)/js ]; then mkdir -p $(STATIC)/js; fi
-	uglifyjs -nc assets/js/site.js > $(STATIC)/js/site.js
+	uglifyjs -nc $(STATIC)/assets/js/site.js > $(STATIC)/js/site.js
 
 
 adminjs:
 	if [ ! -d $(STATIC)/js ]; then mkdir -p $(STATIC)/js; fi
-	uglifyjs -nc assets/js/jquery.ui.core.js > $(STATIC)/js/admin.js
-	uglifyjs -nc assets/js/jquery.ui.widget.js >> $(STATIC)/js/admin.js
-	uglifyjs -nc assets/js/jquery.ui.mouse.js >> $(STATIC)/js/admin.js	
-	uglifyjs -nc assets/js/jquery.ui.sortable.js >> $(STATIC)/js/admin.js
+	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.core.js > $(STATIC)/js/admin.js
+	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.widget.js >> $(STATIC)/js/admin.js
+	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.mouse.js >> $(STATIC)/js/admin.js	
+	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.sortable.js >> $(STATIC)/js/admin.js
 
 	
