@@ -3,23 +3,27 @@
 import argparse
 import urllib2
 import json
-from dojang.util import parse_config_file, create_token
+
 from tornado.options import options 
 import os
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:
     import app
-    print('Start keepcd version: %s' % app.__version__)
+    print('Start Chatup version: %s' % app.__version__)
 except ImportError:
     import site
-    site.addsitedir(ROOTDIR)
-    print PROJDIR
-    print('Development of keepcd')
+    print ROOTDIR
+    site.addsitedir(ROOTDIR + "/../app")
+    
+    print('Development of Chatup')
+
+from dojang.util import parse_config_file, create_token
 
 def create_db():
     from dojang.database import db
-    # import account.models
+    import account.models
+    import channel.models
     # import note.models
     # import entity.models
     
@@ -29,32 +33,20 @@ def create_db():
     # import movie.models
     # import tag.models
     # import search.models
-    # import node.models
-    # import topic.models
+    import node.models
+    import topic.models
+    import group.models
     # import english.models
     # import sound.models
     # import blog.models
     # import food.models
-    import todo.models
+    # import todo.models
 
     # from account.models import Weibo
 
     print "create_db"
     db.Model.metadata.create_all(db.engine)
     return
-
-def reset_entity_salt():
-    from dojang.database import db
-    from app.entity.models import Entity
-    from app.account.models import People
-    from app.movie.models import Movie, PeopleAddedLink,MovieMediaLink, MediaLink,MediaLinkHash, MovieImage, MovieTag, MovieWatchList
-
-    entities  = Entity.query.filter_by().all()
-    print "entities ", len(entities)
-    for e in entities:
-        e.salt = create_token(32).upper()
-        db.session.add(e)
-        db.session.commit()
 
 
 def fetch_rss_app(url, refetch='false'):
@@ -128,31 +120,12 @@ def test_upload_weibo_pic():
     f.close() 
     print r
 
-config = '''debug = False
-master = "sqlite:////tmp/june.sqlite"
-memcache = "127.0.0.1:11211"
-cookie_secret = "cookiesecret"
-password_secret = "passwordsecret"
-
-sitename = "June"
-siteurl = "http://python-china.org"
-
-recaptcha_key = ''
-recaptcha_secret = ''
-'''
-
-
-def init_project():
-    f = open('settings.py', 'w')
-    f.write(config)
-    f.close()
-    return
 
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='june',
-        description='June: a forum',
+        prog='Chatup',
+        description='Chatup: a forum',
     )
     parser.add_argument('command', nargs="*")
     parser.add_argument('-f', '--settings', dest='config')
@@ -167,11 +140,7 @@ def main():
         if cmd == 'createdb':
             return create_db()
         if cmd == 'createuser':
-            return create_superuser()
-        if cmd == 'init':
-            return init_project()
-        if cmd == 'salt':
-            return reset_entity_salt()
+            return create_superuser()        
         if cmd == 'fetchapp':
             #top paid games app
             print 'fetchapp'

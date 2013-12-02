@@ -82,7 +82,7 @@
             {%end%}
         </div>
 
-        <div class="reply-content">
+        
             <div class="reply-meta">
                 {%if reply.hidden == "y"%}
                     <span class="small">{{_("Anonymous")}}</span>
@@ -98,6 +98,7 @@
                     </span>
                 {%end%}
             </div>
+        <div class="reply-content">
             <p>
                 {{markup(reply.content)}}
             </p>

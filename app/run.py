@@ -28,7 +28,7 @@ from tornado.escape import xhtml_escape
 # reset_option('debug', True, type=bool)
 # reset_option('autoescape', None)
 # reset_option('login_url', '/account/signin', type=str)
-reset_option('template_path', os.path.join(PROJDIR, "templates/beauty"))
+reset_option('template_path', os.path.join(PROJDIR, "templates/chatup"))
 reset_option('locale_path', os.path.join(PROJDIR, 'locale'))
 #reset_option('default_locale', 'zh-CN', type=str)
 # # # site config
@@ -88,13 +88,12 @@ def create_application():
 
 
     application.register_app('app.account.handlers.app')
-    application.register_app('app.note.handlers.app')
     
     application.register_app('app.people.handlers.app')
     application.register_app('app.node.handlers.app')
     application.register_app('app.topic.handlers.app')
+    application.register_app('app.group.handlers.app')
     
-    application.register_app('app.admin.crawl.handlers.app')
     application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
     application.register_app('app.admin.topic.handlers.app')
@@ -103,8 +102,6 @@ def create_application():
 
     application.register_app('app.about.handlers.app')
 
-    application.register_app('app.blog.handlers.app')
-    application.register_app('app.food.handlers.app')
     
     
 
@@ -112,15 +109,11 @@ def create_application():
     #http://www.xxx.com/api/v1/account/xxx
     application.register_api('app.account.api.app', options.api_domain)
 
-
-
     #http://api.xxx.com/v1/people/xxx
     application.register_api('app.people.api.app', options.api_domain)
 
-
     #http://api.xxx.com/v1/topic/xxx
     application.register_api('app.topic.api.app', options.api_domain)
-
 
     application.register_app('app.front.handlers.app')
 
@@ -135,7 +128,7 @@ def create_application():
 
 
     from app.lib.util import xmldatetime,xmlday, localtime, timesince, linkto
-    from app.lib.urls import topic_url, build_url, build_image_url, build_entity_url, movie_filter_url, build_external_link
+    from app.lib.urls import topic_url, build_url, build_image_url
     from app.lib.filters import markup
     from dojang.escape import simple_escape, html_escape, br_escape
     from urllib import urlencode
@@ -156,14 +149,12 @@ def create_application():
     
     application.register_filter('url_encode', urlencode)
     application.register_filter('url', build_url)
-    application.register_filter('entity_url', build_entity_url)
     application.register_filter('image_url', build_image_url)
     # application.register_filter('movie_filter_url', movie_filter_url)
     application.register_filter('linkto', linkto)
     application.register_filter('simple_escape', simple_escape)
     application.register_filter('br_escape', br_escape)
     application.register_filter('html_escape', html_escape)
-    application.register_filter('external_link', build_external_link)
     
     
 

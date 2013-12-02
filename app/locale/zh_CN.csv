@@ -1,6 +1,8 @@
 # ========== template ===========
-"meimashuo","美妈说, 分享、发现我的美丽生活"
+
 # navigation
+"Home","首页"
+
 "Latest","最近更新"
 "Popular","热门更新"
 "Following"," 已关注 "
@@ -29,7 +31,7 @@
 "Old Password","原密码"
 "New Password","新密码"
 "Username","用户名"
-"nickname","昵称"
+"Nickname","昵称"
 "Website","个人网站"
 "Douban Website","豆瓣个人主页"
 "Only English 3-20 chinese or english characters or digits are accepted.","只允许填写3-20位中英文字符和数字"
@@ -58,6 +60,7 @@
 "Want to comment ?","想要评论？"
 "Edit Topic","编辑话题"
 "Title","标题"
+"Content","内容"
 "Cancel","取消"
 "Create Topic","新建话题"
 "This topic is in","这个话题位于"
@@ -86,9 +89,8 @@
 
 "Recent Nodes","最新节点"
 
-"community","社区"
-"english community","英语社区"
-"speak english","开口说英语"
+"Community","社区"
+
 
 # account
 "You have %s chances to edit your username.","你有 %s 次机会修改用户名"
@@ -161,6 +163,7 @@
 "Please enter a value","不能为空,写点什么吧"
 
 #===== Common =====
+
 "new","新建"
 "edit","编辑"
 "move","移动"
@@ -173,34 +176,10 @@
 "reset edit","重填"
 
 "mine","主页"
-"my keepcd","我的主页"
-"my links","我的链接"
 "video","视频"
 "music","音乐"
 #===== Group =====
 "group","小组"
-
-#===== Plan =====
-"plan","计划"
-
-#===== Photo =====
-"photo","相册"
-"all groups","所有小组"
-
-#===== Readlist =====
-"readlist","阅读列表"
-
-"size","大小"
-"title","标题"
-"tag","标签"
-"content","内容"
-"description","描述"
-"language","语言"
-"directors","导演"
-"actors","主演"
-"writers","编剧"
-"category","类型"
-"country","地区"
 
 
 #===== Note =====
@@ -212,104 +191,6 @@
 "all friends can view","仅朋友可见"
 "only me can view","仅自己可见"
 "don't allow reply","不允许回复"
-
-
-"yyets","人人影视"
-"oabt","oaBT"
-"btcly","BTCLy"
-#===== movie =====
-"douban","豆瓣"
-"movie","电影"
-"movie definition","清晰度"
-"movie link","地址"
-"movie description","内容介绍"
-"movie year","发行时间"
-"alias title","别名"
-"movie company","发行公司"
-"imdb","IMDb"
-"duration","时长"
-"publish time","上映时间"
-
-"douban link","豆瓣链接"
-"imdb link","IMDb链接"
-"wish watch","想看"
-"watched","看过"
-"movie units","部"
-
-"i want to watch this movie","我<b>想看</b><i class='icon-time'></i>这部电影"
-"i have watched this movie","我<b>看过</b><i class='icon-ok'></i>这部电影"
-"me","我"
-"wish watch movies","想看的电影"
-"watched movies","看过的电影"
-
-"modify to","修改成"
-"unknow movie","未知电影"
-#===== board =====
-"board","画板"
-"new board","创建画板"
-"all boards","所有画板"
-"edit board","编辑画板"
-
-
-
-#======
-"view online","在线观看"
-"cloud play","迅雷云点播"
-"more link...","更多"
-"download","下载"
-#====== pin =====
-"repin","转采"
-"repin it","转采"
-"pins","采集"
-
-#====== new link =====
-"link","链接"
-"new link","添加链接"
-"view external links","查看高清链接"
-"new my link","添加我的链接"
-"new link urls","添加下载地址"
-"new link files","添加BT种子"
-"download multilinks with enter, max 100 links","多个url请回车换行，最多支持100条地址"
-"delete quickly","快速删除"
-"sure delete this link?","确认要删除该链接吗？"
-"unknown file format","未知的文件格式，请上传正确的文件"
-"delete link successful %s/%s","删除成功<br/> <a href='%s'>%s</a>"
-"will view links after login","登录后可以查看资源"
-
-#===== english ====
-"english channel","英语频道"
-"english","英语"
-"Normal Speed","在线听力"
-"Slow Speed","慢速听力"
-"subscribed","已订阅"
-"subscribe it","订阅"
-
-
-#===== food =====
-"foodeat","饮食"
-"health food note","健康饮食日记"
-"new food note","添加饮食记录"
-"nutrient analyse","营养分析"
-"food date","饮食日期"
-"food recipe","一日饮食"
-"normal eat","可以吃"
-"less eat","不宜多吃"
-"avoid eat","不能吃"
-"pregnancy food permission","孕妇饮食禁忌"
-"all foods","所有食物"
-"normal eat foods","可以吃的食物"
-"less eat foods","不宜多吃的食物"
-"avoid eat foods","不可以吃的食物"
-"preparing pregnancy","备孕中"
-"duration of pregnancy","怀孕中"
-"already have a baby","已经有宝贝了"
-"other","其他"
-"current status","当前状态"
-"can pregnancy eat food %s?","孕妇可以吃%s吗?"
-
-#====== 怀孕 =====
-"expected date of childbirth","预产期"
-"twins baby","双胞胎"
 
 
 

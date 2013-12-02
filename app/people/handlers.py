@@ -19,7 +19,6 @@ from app.account.decorators import require_user
 from app.account.models import People
 from app.group.models import Group
 
-from app.note.models import Note, PERMISSION_PUBLIC
 
 
 
@@ -53,21 +52,6 @@ class ShowPeopleHandler(PeopleHandler):
 
 
 
-class ShowPeopleNotesHandler(PeopleHandler):
-
-    def get(self, people_id):
-        people_id = int(people_id)
-        if self.current_user and self.current_user.id == people_id:
-            notes = Note.query.filter_by(people_id=people_id).all()
-            people=self.current_user
-        else:
-            notes = Note.query.filter_by(people_id=people_id, permission=PERMISSION_PUBLIC).all()
-            people = People.query.filter_by(id=people_id).first_or_404()
-
-        self.render('people/show_people_notes.html', people=people, notes=notes)
-
-
-
 
 class ShowPeopleUsernameHandler(PeopleHandler):
     def get(self, username):
@@ -76,7 +60,6 @@ class ShowPeopleUsernameHandler(PeopleHandler):
 
 
 app_handlers = [
-    url('/(\d+)/notes', ShowPeopleNotesHandler, name='show-people-notes'),
     url('/(\d+)', ShowPeopleHandler, name='show-people'),
     url('/u/(\w+)', ShowPeopleUsernameHandler, name='show-people-username'),    
 ]
