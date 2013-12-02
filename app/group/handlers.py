@@ -17,12 +17,15 @@ from app.account.lib import UserHandler
 from app.account.decorators import require_user
 from app.account.models import People
 
-from app.util import find_mention
+from app.lib.util import find_mention
 from .models import Group, GroupFollow
 
+PublicGroup=0
+InviteOnlyGroup=1
 
-PublicGroup = 0
-InvitedGroup = 1
+ForeverGroup = 0
+HourOneGroup = 1
+Hour24Group = 24
 
 class RecentGroupsHandler(UserHandler):
     
@@ -45,6 +48,7 @@ class NewGroupHandler(UserHandler):
         o.permission = self.get_argument('permission', None)
         # o.color = self.get_argument('color', None)
         o.tag = self.get_argument('tag', None)
+        o.timeup = self.get_argument('timeup', 0)
 
         if not (o.title and o.description):
             self.flash_message('Please fill the required field', 'error')

@@ -5,8 +5,8 @@
 # Variables for June
 CONFIG = settings.py
 PROJSERVER = iosplay.com:/home/feilaoda/www/static
-STATIC = ../../app/static
-HOME = ../../app
+STATIC = ../app/static
+HOME = ../app
 
 # Development
 server:

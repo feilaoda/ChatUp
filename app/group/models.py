@@ -22,7 +22,9 @@ class Group(db.Model):
     #0: any people can join
     #1: invited friends can join
     permission = Column(Integer, default=0, index=True)
-    #1:open  0:close
+    #0: forever  1:1hour  24:24hours
+    timeup = Column(Integer, default=0, index=True)
+    #1:open  0:frozen
     status = Column(Integer, default=1, index=True)
     avatar = Column(String(400), nullable=True)
     # color = Column(String(30))

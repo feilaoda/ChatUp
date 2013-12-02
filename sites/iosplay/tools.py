@@ -35,6 +35,7 @@ def create_db():
     # import search.models
     import node.models
     import topic.models
+    import group.models
     # import english.models
     # import sound.models
     # import blog.models

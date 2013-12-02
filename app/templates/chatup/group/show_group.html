@@ -3,13 +3,31 @@
 {% block subtitle %}{{ _("Group") }}{% end %}
 
 {% block content %}
-{% module GroupHeader(group) %}
- 
 
-<div class="box">
-    
+<div class="screen">
+    <div class="topic-header">
+        <a href="/group/{{group.id}}" class="node-cell">{{group.title}}</a>
+        <span class="pull-right">
+            <a class="btn btn-primary btn-small" href="/group/{{group.id}}/new">{{_("New Thread")}}</a>
+        </span>
+    </div>
+    <div class="box">
+        <div>
+            <textarea class="control-text input-maxlarge" rows="5" name="content"  required></textarea>
+        </div>
+    </div>
+    <div class="well">
+        <p>{{markup(group.description)}}</p>
+    </div>
+
+    <div class="box-container">
+        <p>{{markup(group.description)}}</p>
+    </div>
 </div>
 
 {% end %}
 
 
+{% block sidebar %}
+
+{% end %}

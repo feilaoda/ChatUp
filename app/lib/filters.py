@@ -204,7 +204,7 @@ def automention(text):
 def markup(text):
     if text is None:
         return ""
-    return render_bbcode(automention(sinaimg(simple_escape(text))))
+    return render_bbcode(automention(sinaimg((text))))
 
 
 

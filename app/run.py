@@ -92,6 +92,7 @@ def create_application():
     application.register_app('app.people.handlers.app')
     application.register_app('app.node.handlers.app')
     application.register_app('app.topic.handlers.app')
+    application.register_app('app.group.handlers.app')
     
     application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
