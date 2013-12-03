@@ -172,6 +172,9 @@ class EditTopicHandler(UserHandler):
             self.send_error(404)
             return
         self.check_permission(topic)
+        if topic.hidden == 'y':
+            return self.send_error(403)
+            
         self.render('topic/edit_topic.html', topic=topic)
 
     @require_user
