@@ -91,7 +91,7 @@
                         <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('{{_('Anonymous')}} #{{reply.order}}L ')">{{_("Reply")}}</a>
                     </span>
                 {%else%}
-                    <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b></a>
+                    <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a>  </span>
                     <span class="small pull-right">
                         <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}} 
                         <a class="hoverable" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('#{{reply.order}}L @{{reply.people.username}}')">{{_("Reply")}}</a>

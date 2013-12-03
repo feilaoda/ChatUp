@@ -487,8 +487,8 @@ class PasswordHandler(UserHandler, EmailMixin):
         password_md5 = to_md5(to_md5(password))
         if not user.check_password(password_md5):
             self.flash_message("Invalid old password", "error")
-            # self.render('account/password.html', token=None)
-            # return
+            self.render('account/password.html', token=None)
+            return
         password1 = self.get_argument('password1', None)
         password2 = self.get_argument('password2', None)
         self._change_password(user, password1, password2)
@@ -515,7 +515,7 @@ class PasswordHandler(UserHandler, EmailMixin):
         user.token = user.create_token(16)
         db.session.add(user)
         db.session.commit()
-        self.flash_message('Password changed', 'info')
+        self.flash_message('Password changed', 'success')
         self.set_secure_cookie('user', '%s/%s' % (user.id, user.token), domain=options.cookie_domain)
         self.redirect('/account/setting')
 
