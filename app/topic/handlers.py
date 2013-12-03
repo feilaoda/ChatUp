@@ -329,13 +329,13 @@ class CreateReplyHandler(UserHandler):
         index_num = complex_cache.incr(index_key,1)
         #: create reply
         reply = TopicReply(topic_id=id, people_id=user.id, content=content)
-        if hidden == 'on':
-            reply.hidden = 'y'
-        else:
-            reply.hidden = 'n'
+        # if hidden == 'on':
+        #     reply.hidden = 'y'
+        # else:
+        #     reply.hidden = 'n'
 
-        if topic.hidden == 'y' and topic.people_id == user.id:
-            reply.hidden = 'y'
+        # if topic.hidden == 'y' and topic.people_id == user.id:
+        #     reply.hidden = 'y'
             
         #: impact on topic
         topic.reply_count = index_num

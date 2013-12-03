@@ -10,7 +10,7 @@ import Image
 import logging
 import formencode
 from tornado.web import authenticated, asynchronous
-from tornado.web import UIModule
+from tornado.web import UIModule, HTTPError
 from tornado.auth import GoogleMixin
 from tornado.options import options
 from dojang.app import DojangApp
@@ -18,6 +18,7 @@ from dojang.database import db
 from dojang.auth.recaptcha import RecaptchaMixin
 from dojang.auth.douban import DoubanMixin
 from dojang.auth.weibo import WeiboMixin
+from dojang.auth.github import GithubMixin
 from dojang.util import to_md5
 from dojang.ext import webservice
 from dojang.cache import complex_cache
@@ -713,6 +714,135 @@ class WeiboAuthCallbackHandler(UserHandler, DoubanMixin):
         self.write("douban auth ok" + str(self.request.arguments))
 
 
+
+class GithubSignupHandler(UserHandler, GithubMixin):
+    @asynchronous
+    def get(self):
+        logging.info(self.request)
+        if self.get_argument("code", None):
+            self.get_authenticated_user(
+                client_id=options.github_key,
+                client_secret= options.github_secret,
+                redirect_uri= options.github_redirect_uri,
+                code=self.get_argument("code"),
+                callback=self.async_callback(self._on_auth)
+            )
+            return
+
+        if self.get_argument("error", None):
+            raise HTTPError(403, self.get_argument("error"))
+
+        self.authorize_redirect(
+            client_id = options.github_key,
+            client_secret = options.github_secret,
+            redirect_uri = options.github_redirect_uri,
+        )
+
+    def _on_auth(self, user):
+        logging.info(user)
+        if not user:
+            raise HTTPError(500, "GitHub auth failed")
+        uid = user.get('id')
+        login = user.get('login')
+        if uid:
+            github = GitHub.query.filter_by(uid=uid).first()
+            
+            if github:
+                people = People.query.filter_by(id=github.people_id).first()
+                if github.token != token:
+                    github.token = token
+                    github.profile_image = profile_image
+                    db.session.add(github)
+                    db.session.commit()
+            else:
+                github = GitHub()
+                github.uid = uid
+                github.name = user.get('login')
+                github.screen_name = user.get('name')
+                github.avatar_small = user.get('avatar_url')
+                github.avatar_large = user.get('avatar_url')
+                github.location = user.get('location')
+                github.token = user.get('access_token')
+                #github.session_expires = user.get('session_expires')
+                if people is None:
+                    oldpeple = People.query.filter_by(username=login).first()
+                    if oldpeple:
+                        #set new username
+                        self.set_secure_cookie('setting_user', '%s/%s' % (github.id, "github"), domain=options.cookie_domain)
+                        return self.render("account/setting_signup.html", social_id=github.id, username=github.name)
+
+
+
+        self.render("account/social_error.html")
+        #self.redirect("/signup/github")
+
+
+# class GithubSignupHandler(UserHandler):
+    
+#     def get(self):
+#         return self.render("account/signup_github.html")
+    
+
+
+
+class SettingRenameGithubHandler(UserHandler):
+    def post(self, id):
+        setting_user = self.get_secure_cookie("setting_user")
+        if not setting_user:
+            return self.render_error(403)
+        try:
+            account_id, token = setting_user.split('/')
+            account_id = int(account_id)
+        except:
+            self.clear_cookie("setting_user")
+            # return self.render("account/social_error.html")
+            return render_error(404)
+        id = int(id)
+        if account_id != id:
+            return self.render_error(403)
+
+
+        username = self.get_argument('username', None)
+        password1 = self.get_argument('password1', None)
+        password2 = self.get_argument('password2', None)
+        if not username:
+            self.flash_message('Please fill the required fields', 'error')
+            self.render("account/signup_github.html", social_id=id, username=username)
+            return
+      
+
+        if not validators.username(username):
+            self.flash_message('Username is invalid', 'error')
+            self.render("account/signup_github.html", social_id=id, username=username)
+            return
+
+        tmp_people = People.query.filter_by(username=username).first()
+        if tmp_people:
+            self.flash_message("The username is already registered", 'error')
+            self.render("account/signup_github.html", social_id=id, username=username)
+            return
+
+        github = GitHub.query.filter_by(id=id).first_or_404()
+        people = People(People.create_token(8))
+        people.username = username
+        people.nickname = username
+        people.password = None
+        people.token = People.create_token(8)
+        people.email = github.email
+        db.session.add(people)
+        db.session.commit()
+        
+        github.people_id = people.id
+        db.session.add(github)
+        db.session.commit()
+
+
+        self.flash_message("Setting account successful", 'success')
+        self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
+        self.clear_cookie("setting_user")
+        self.redirect('/')
+
+
 class SettingSignupHandler(UserHandler):
     
 
@@ -778,21 +908,26 @@ class SettingSignupHandler(UserHandler):
 
 app_handlers = [
     ('/signup', SignupHandler),
+    ('/signup/github', GithubSignupHandler),
+    ('/callback/github', GithubSignupHandler),
+    ('/rename/github/(\d+)', SettingRenameGithubHandler),
+
     ('/signin', SigninHandler),
     ('/signin/google', GoogleSigninHandler),
     ('/signout', SignoutHandler),
     ('/setting', SettingHandler),
     ('/setting/avatar', AvatarHandler),
     ('/setting/signup/(\d+)', SettingSignupHandler),
+
     ('/signout/everywhere', SignoutEverywhereHandler),
     ('/delete', DeleteAccountHandler),
     ('/notify', NotifyHandler),
     ('/password', PasswordHandler),
     ('/message', MessageHandler),
-    ('/douban/auth', DoubanAuthHandler),
-    ('/douban/callback', DoubanAuthCallbackHandler),
-    ('/weibo/auth', WeiboAuthHandler),
-    ('/weibo/callback', WeiboAuthCallbackHandler),
+    # ('/douban/auth', DoubanAuthHandler),
+    # ('/douban/callback', DoubanAuthCallbackHandler),
+    # ('/weibo/auth', WeiboAuthHandler),
+    # ('/weibo/callback', WeiboAuthCallbackHandler),
 
 ]
 
