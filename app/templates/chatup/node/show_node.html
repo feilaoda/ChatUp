@@ -46,6 +46,21 @@
 {%if current_user%}
 {% module ProfileSidebar(current_user) %}
 {%end%}
+
+<div class="box-container">
+    <div class="box-header">
+        <b><a href="/node/{{node.id}}">{{node.title}}</a></b>
+    </div>
+    
+    <div class="box-content">
+        <p>
+            {{markup(node.description)}}
+        </p>
+    </div>
+
+</div>
+
+
 {% module RecentNodes()%}
  
 {% end %}
