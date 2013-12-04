@@ -8,7 +8,7 @@ from tornado.escape import utf8
 from tornado.options import options
 import tornado
 from dojang.app import DojangApp
-from dojang.cache import complex_cache
+from dojang.cache import autocache_get, autocache_set, autocache_incr, autocache_hdel
 from dojang.database import db
 
 from app.account.lib import UserHandler
@@ -183,7 +183,7 @@ class CreateTopicHandler(UserHandler):
          
         digest = hashlib.md5(utf8(title)).hexdigest()
         key = "r:%d:%s" % (people.id, digest)
-        url = complex_cache.get(key)
+        url = autocache_get(key)
         if url:
             self.redirect(url)
             return
@@ -204,7 +204,7 @@ class CreateTopicHandler(UserHandler):
         db.session.commit()
 
         url = '/topic/%d' % topic.id
-        complex_cache.set(key, url, 100)
+        # autocache_set(key, url, 100)
         self.redirect(url)
 
         #: notification
@@ -360,7 +360,7 @@ class CreateReplyHandler(UserHandler):
     
         digest = hashlib.md5(utf8(content)).hexdigest()
         key = "reply:%d:%s" % (user.id, digest)
-        url = complex_cache.get(key)
+        url = autocache_get(key)
         # avoid double submit
         if url:
             self.redirect(url)
@@ -369,12 +369,12 @@ class CreateReplyHandler(UserHandler):
         
 
         index_key = 'topic:%d'%topic.id
-        index_num = complex_cache.get(index_key)
+        index_num = autocache_get(index_key)
         if index_num is None:
             index_num = topic.reply_count
-            complex_cache.set(index_key, index_num)
+            autocache_set(index_key, index_num)
 
-        index_num = complex_cache.incr(index_key,1)
+        index_num = autocache_incr(index_key,1)
         
 
         #: create reply
@@ -400,7 +400,7 @@ class CreateReplyHandler(UserHandler):
         url = '/admin/topic/%s' % str(id)
         if num > 1:
             url += '?p=%s' % num
-        complex_cache.set(key, url, 100)
+        autocache_set(key, url, 100)
         
 
         refer = '<a href="/topic/%d#reply-%d">%s</a>' % \

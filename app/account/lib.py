@@ -2,7 +2,7 @@ from tornado.web import HTTPError,RequestHandler
 from tornado.options import options
 from dojang.web import DojangHandler, OAuthRequestHandler
 from dojang.database import db
-from dojang.cache import get_cache_list, complex_cache
+from dojang.cache import get_cache_list, autocache_hdel
 from .models import People, Notify, Social
 import json
 
@@ -73,7 +73,7 @@ class UserHandler(DojangHandler, CheckMixin):
         return next_url or '/'
 
     def clear_people_cache(self,people_id):
-        complex_cache.hdel(options.site_cache_prefix+'h:people', people_id)
+        autocache_hdel('h:people', people_id)
 
 
     def create_notification(self, receiver, content, refer, **kwargs):

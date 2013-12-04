@@ -150,34 +150,12 @@ def main():
             return test_upload_weibo_pic()
 
         if cmd == 'test':
-            from dojang.cache import complex_cache, get_cache_list
+            from dojang.cache import get_cache_list
             from account.models import People
             import cPickle
             # ps = People.query.all()
             user_list = dict()
-            # for p in ps:
-            #    user_list[p.id] = cPickle.dumps(p)
-            # complex_cache.hmset('people', user_list)
-
-            # res = complex_cache.hmget('people', user_list.keys())
-            #id_list = user_list.keys()
-            # id_list = complex_cache.hkeys('people')
-            # data = complex_cache.hmget('people', id_list)
-            # user_list.clear()
-            # data_ids = []
-            # for d in data:
-            #     d = cPickle.loads(d)
-            #     user_list[p.id] = p
-            #     data_ids.append(str(p.id))
-            # missing = set(id_list) - set(data_ids)
-            # print "missing",set(id_list),set(data_ids), missing
-            # if missing:
-            #     print "set missing"
-            #     dct = {}
-            #     for item in People.query.filter_by(id__in=missing).all():
-            #         dct[item.id] = item
-            #     complex_cache.hmset('people', dct)
-            #     data.update(dct)
+            
 
             data = get_cache_list(People, [], 'people')
 

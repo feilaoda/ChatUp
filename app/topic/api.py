@@ -14,7 +14,6 @@ from dojang.util import ObjectDict, create_token
 from dojang.database import db
 from dojang.mixin import ModelMixin
 from dojang.web import ApiHandler
-from dojang.cache import cached, autocached, complex_cache, complex_cache_del
 
 from app.account.lib import SimpleApiHandler, CheckMixin
 from app.account.decorators import require_user, apiauth

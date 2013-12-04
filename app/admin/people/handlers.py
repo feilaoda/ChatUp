@@ -8,7 +8,7 @@ from tornado.escape import utf8
 from tornado.options import options
 import tornado
 from dojang.app import DojangApp
-from dojang.cache import complex_cache
+
 from dojang.database import db
 
 from app.account.lib import UserHandler
