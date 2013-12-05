@@ -329,7 +329,12 @@ class CreateReplyHandler(UserHandler):
             index_num = topic.reply_count
             autocache_set(index_key, index_num, 0)
 
+        print index_num
         index_num = autocache_incr(index_key,1)
+        print index_num
+        if index_num is None:
+            index_num = 1
+            autocache_set(index_key, index_num, 0)
         #: create reply
         reply = TopicReply(topic_id=id, people_id=user.id, content=content)
         # if hidden == 'on':
