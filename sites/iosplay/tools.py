@@ -22,8 +22,8 @@ from dojang.util import parse_config_file, create_token
 
 def create_db():
     from dojang.database import db
-    import account.models
-    import channel.models
+    # import account.models
+    # import channel.models
     # import note.models
     # import entity.models
     
@@ -34,8 +34,9 @@ def create_db():
     # import tag.models
     # import search.models
     import node.models
-    import topic.models
-    import group.models
+    # import topic.models
+    # import group.models
+    import shot.models
     # import english.models
     # import sound.models
     # import blog.models

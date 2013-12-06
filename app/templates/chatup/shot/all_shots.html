@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Shots") }}{% end %}
+
+{% block content %}
+<div class="screen">
+    <div class="box-header">
+        <h3>{{ _("All Shots")}}</h3>
+    </div>
+    {% for shot in shots %}
+    <div class="ui-cell">
+        <img class="shot" href="/shot/{{shot.id}}" src="{{shot.large_url}}"/>
+       
+    </div>
+    {% end %}
+</div>
+{% end %}
+
+{% block sidebar %}
+
+{% end %}
