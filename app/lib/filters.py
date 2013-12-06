@@ -191,7 +191,7 @@ def sinaimg(value):
 
 def make_mention(m):
     name = m.group(1)
-    return '[url=http://www.imeiban.com/people/u/%s]@[b]%s[/b][/url] '%(name, name)
+    return '[url=%s/people/u/%s]@[b]%s[/b][/url] '%(options.site_url, name, name)
     # return ' <b><a href="/people/u/%s" class="username">@%s</a></b> ' % (name, name)
 
 def automention(text):
