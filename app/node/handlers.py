@@ -154,7 +154,7 @@ class CreateNodeTopicHandler(UserHandler):
         #: avoid double submit
          
         digest = hashlib.md5(utf8(title)).hexdigest()
-        key = "r:%d:%s" % (self.current_user.id, digest)
+        key = "t:p%d:%s" % (self.current_user.id, digest)
         url = autocache_get(key)
 
         if url:

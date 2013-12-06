@@ -13,14 +13,14 @@ def get_user_id_list(topics):
         if t.last_reply_by:
             yield t.last_reply_by
 def get_full_topic(topic):
-    users = get_cache_list(People, get_user_id_list([topic]), 'h:people')
+    users = get_cache_list(People, get_user_id_list([topic]), 'hs:people')
     if topic.people_id in users.keys():
         topic.people = users[topic.people_id]
 
     return topic
 
 def get_full_topics(topics):
-    users = get_cache_list(People, get_user_id_list(topics), 'h:people')
+    users = get_cache_list(People, get_user_id_list(topics), 'hs:people')
     user_ids = users.keys()
     for topic in topics:
         if topic.people_id in user_ids:
@@ -32,8 +32,8 @@ def get_full_topics(topics):
             yield topic
 
 def get_all_topics(topics):
-    users = get_cache_list(People, get_user_id_list(topics), 'h:people')
-    nodes = get_cache_list(Node, (t.node_id for t in topics), 'h:node')
+    users = get_cache_list(People, get_user_id_list(topics), 'hs:people')
+    nodes = get_cache_list(Node, (t.node_id for t in topics), 'hs:node')
     user_ids = users.keys()
     node_ids = nodes.keys()
 
@@ -57,7 +57,7 @@ def get_replier_id_list(replies):
     return ids
 
 def get_full_replies(replies):
-    users = get_cache_list(People, get_replier_id_list(replies), 'h:people')
+    users = get_cache_list(People, get_replier_id_list(replies), 'hs:people')
     user_ids = users.keys()
     for reply in replies:
         if reply.people_id in user_ids:

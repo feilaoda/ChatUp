@@ -313,7 +313,7 @@ class CreateReplyHandler(UserHandler):
             return
     
         digest = hashlib.md5(utf8(content)).hexdigest()
-        key = "r:%d:%s" % (self.current_user.id, digest)
+        key = "rp:p%d:%s" % (self.current_user.id, digest)
         url = autocache_get(key)
         # avoid double submit
         if url:
@@ -323,15 +323,15 @@ class CreateReplyHandler(UserHandler):
 
         user = self.current_user
 
-        index_key = 'topic:%d'%topic.id
+        index_key = 'rp:c:t%d'%topic.id
         index_num = autocache_get(index_key)
         if index_num is None:
             index_num = topic.reply_count
             autocache_set(index_key, index_num, 0)
 
-        print index_num
+        # print index_num
         index_num = autocache_incr(index_key,1)
-        print index_num
+        # print index_num
         if index_num is None:
             index_num = 1
             autocache_set(index_key, index_num, 0)
