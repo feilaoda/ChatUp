@@ -40,7 +40,7 @@ def username(data, min=2, max=20):
     except TypeError:
         return False
     
-    m =  _chinese_character_re.match(data)
+    m =  _english_character_re.match(data)
     if m is None:
         return False
     return True
