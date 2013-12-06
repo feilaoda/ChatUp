@@ -586,7 +586,7 @@ class AvatarHandler(UserHandler):
                 large_avatar_url = options.static_avatar_url + '/' + large_thbname
                 people.avatar = avatar_url
                 #people.large_avatar = "/static/avatar/" + large_thbname
-                autocache_hdel('h:people', people.id)
+                autocache_hdel('hs:people', people.id)
                 db.session.add(people)
                 db.session.commit()
                 
