@@ -47,16 +47,20 @@ class CreateShotHandler(UserHandler):
                 
                 file_path = options.local_upload_path + '/shot/' + thbname
                 large_file_path = options.local_upload_path + '/shot/' + large_thbname
+                
                 img = Image.open(tf.name)
                 img.thumbnail((120,120),resample=1)
                 img.save(file_path)
+
+                tf.seek(0)
+                img = Image.open(tf.name)
+                img.save(large_file_path)
                 tf.close()
 
                 try:
                     os.remove(tf.name)
                 except Exception, e:
                     pass
-                
 
                 small_url = options.local_upload_url + '/shot/' + thbname
                 large_url = options.local_upload_url + '/shot/' + large_thbname

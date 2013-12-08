@@ -2,17 +2,41 @@
 
 {% block subtitle %}{{ _("Shots") }}{% end %}
 
-{% block content %}
-<div class="screen">
-    <div class="box-header">
-        <h3>{{ _("All Shots")}}</h3>
+{% block afterstyle %}
+<link rel="stylesheet" href="{{static_url('assets/css/waterfall.min.css')}}" />
+<script type="text/javascript" src="{{static_url('assets/js/waterfall.min.js')}}"></script>
+{% end %}
+
+{% block container %}
+<div class="container">
+    <div id="woo-holder">
+
+         <div class="woo-swb">
+            <div class="woo-pcont woo-masned my-pic" data-totalunits="440">
+                <div data-id="97219875" class="woo">
+                    <div class="j"><div class="mbpho" style="height:266px;"><a target="_blank" class="a" href="http://www.duitang.com/people/mblog/97219875/detail/"><img data-rootid="97219875" data-iid="7007475" srcd="http://cdn.duitang.com/uploads/item/201303/22/20130322143937_mdf5i.thumb.200_0.jpeg" height="266"/></a><div class="collbtn" data-favorite='{"id":97219875,"owner":1629580}'><a class="y" href="#">52</a><a class="z" href="#">0</a><a class="x" href="#">0</a></div></div><div class="d"><span class="d1">52</span><span class="d2">0</span><span class="d3">0</span></div><div class="g">古风</div>
+                                <ul><li class="f"><a target="_blank" href="http://www.duitang.com/people/1629580/"> <img width="24" height="24" srcd="http://cdn.duitang.com/uploads/people/201307/29/20130729212849_MiajP.thumb.24_24_c.jpeg" /> </a><p><a class="p" target="_blank" href="http://www.duitang.com/people/1629580/">香水座</a>&nbsp;收集到&nbsp;<a target="_blank" href="http://www.duitang.com/album/4319045/">手绘</a>&nbsp;专辑中</p></li></ul>
+                            </div>
+
+                </div>
+                               
+            </div>
+         </div>
+        <ul>
+        {% for shot in shots %}
+            <li class="shot-group">
+                <div class="shot-box">
+                <div class="shot">
+                    <div class="shot-img">
+                    <img href="/shot/{{shot.id}}" src="{{shot.large_url}}"/>
+
+                    </div>
+                </div>
+                </div>
+            </li>
+        {% end %}
+        </ul>
     </div>
-    {% for shot in shots %}
-    <div class="ui-cell">
-        <img class="shot" href="/shot/{{shot.id}}" src="{{shot.large_url}}"/>
-       
-    </div>
-    {% end %}
 </div>
 {% end %}
 
