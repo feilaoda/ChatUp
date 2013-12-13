@@ -76,9 +76,18 @@ css:
 	lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
 	lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
 	lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/css/application.min.css
 	lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
 	lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
 	
+	cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
+	cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
+	cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
+	cat $(HOME)/vendor/waterfall/css/gotop.css >> $(STATIC)/assets/css/waterfall.min.css
+	cat $(HOME)/vendor/waterfall/css/pagine.css >> $(STATIC)/assets/css/waterfall.min.css
+	cat $(HOME)/vendor/waterfall/css/resize.css >> $(STATIC)/assets/css/waterfall.min.css
+	
+
 	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/css/mobile.min.css
 	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/css/admin.min.css
 	
@@ -105,6 +114,14 @@ libjs:
 	# uglifyjs -nc $(HOME)/static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
 	# uglifyjs -nc $(HOME)/static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
 	# uglifyjs -nc $(HOME)/static/javascripts/english.js >> $(STATIC)/assets/js/application.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/browser.js > $(STATIC)/assets/js/waterfall.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/history.js >> $(STATIC)/assets/js/waterfall.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/template.min.js >> $(STATIC)/assets/js/waterfall.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/tabswitch.js >> $(STATIC)/assets/js/waterfall.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/woo.js >> $(STATIC)/assets/js/waterfall.min.js
+	uglifyjs -nc $(HOME)/vendor/waterfall/js/masnunit.js >> $(STATIC)/assets/js/waterfall.min.js
+
+
 	uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 
 

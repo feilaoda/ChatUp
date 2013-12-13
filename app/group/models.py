@@ -6,8 +6,9 @@
 import hashlib
 from random import choice
 from datetime import datetime
-from sqlalchemy import Column
-from sqlalchemy import Integer, String, DateTime, Text
+from sqlalchemy import Column, ForeignKey
+from sqlalchemy import Integer, String, DateTime, Text, Float
+from sqlalchemy.orm import relationship, backref
 from tornado.options import options
 from dojang.database import db
 
@@ -41,3 +42,37 @@ class GroupFollow(db.Model):
     people_id = Column(Integer, nullable=False, index=True)
     group_id = Column(Integer, nullable=False, index=True)
     created = Column(DateTime, default=datetime.utcnow)
+
+
+
+class Thread(db.Model):
+    id = Column(Integer, primary_key=True)
+    people_id =  Column(Integer, ForeignKey('people.id'), index=True)
+    group_id =  Column(Integer, ForeignKey('group.id'), index=True)
+    title = Column(String(500))
+    content = Column(Text)
+    format = Column(String(100), default='bbcode')
+    status = Column(String(50)) #open, blocked, close
+    hits = Column(Integer, default=1)
+    impact = Column(Float, default=0)
+    delete = Column(String(1))
+    up_count = Column(Integer, default=0)
+    ups = Column(Text)  # e.g.  1,2,3,4
+    down_count = Column(Integer, default=0)
+    downs = Column(Text)  # e.g.  1,2,3,4
+    reply_count = Column(Integer, default=0)
+    last_reply_by = Column(Integer)
+    last_reply_time = Column(DateTime, default=datetime.utcnow, index=True)
+    created = Column(DateTime, default=datetime.utcnow)
+    replies = relationship("ThreadReply", backref="thread")
+
+
+class ThreadReply(db.Model):
+    id = Column(Integer, primary_key=True)
+    thread_id =  Column(Integer, ForeignKey('thread.id'), index=True)
+    people_id =  Column(Integer, ForeignKey('people.id'), index=True)
+    content = Column(String(2000))
+    orders =  Column(Integer, default=1, index=True)
+    created = Column(DateTime, default=datetime.utcnow)
+
+

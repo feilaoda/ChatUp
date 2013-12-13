@@ -13,7 +13,7 @@ from dojang.util import ObjectDict
 from dojang.database import db
 from dojang.mixin import ModelMixin
 
-from app.account.lib import UserHandler
+from app.account.lib import UserHandler, SimpleApiHandler
 from app.account.decorators import require_user
 from app.account.models import People
 
@@ -138,13 +138,24 @@ class ShowGroupHandler(UserHandler):
             self.send_error(404)
             return
         self.render('group/show_group.html', group=group)
- 
+
+class NewGroupThreadHandler(SimpleApiHandler):
+    def post(self, group_id):
+        group = Group.query.filter_by(id=group_id).first_or_404()
+        if not group:
+            self.send_error(404)
+            return
+        content = self.get_argument('content')
+
+        return self.render_json(result="200")
+
 
 app_handlers = [
     url('', RecentGroupsHandler, name='group'),
     url('/new', NewGroupHandler, name='new-group'),
     url('/(\d+)/edit', EditGroupHandler, name='edit-group'),    
     url('/(\d+)/follow', FollowGroupHandler, name='follow-group'),
+    url('/(\d+)/new', NewGroupThreadHandler, name='new-group-thead'),
     url('/(\d+)', ShowGroupHandler, name='show-group'),
 ]
 

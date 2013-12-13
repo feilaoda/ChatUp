@@ -21,7 +21,7 @@ from dojang.auth.weibo import WeiboMixin
 from dojang.auth.github import GithubMixin
 from dojang.util import to_md5
 from dojang.ext import webservice
-from dojang.cache import complex_cache
+from dojang.cache import autocache_hdel
 from dojang.form import FormSchema
 
 from .lib import UserHandler, get_full_notifies
@@ -586,7 +586,7 @@ class AvatarHandler(UserHandler):
                 large_avatar_url = options.static_avatar_url + '/' + large_thbname
                 people.avatar = avatar_url
                 #people.large_avatar = "/static/avatar/" + large_thbname
-                complex_cache.hdel('h:people', people.id)
+                autocache_hdel('hs:people', people.id)
                 db.session.add(people)
                 db.session.commit()
                 

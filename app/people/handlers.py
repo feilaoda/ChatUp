@@ -12,7 +12,7 @@ from dojang.app import DojangApp
 from dojang.util import ObjectDict
 from dojang.database import db
 from dojang.mixin import ModelMixin
-from dojang.cache import autocached, complex_cache_del
+from dojang.cache import autocached
 
 from app.account.lib import UserHandler
 from app.account.decorators import require_user

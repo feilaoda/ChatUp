@@ -1,3 +1,6 @@
 [submodule "app/dojang"]
 	path = app/dojang
 	url = https://github.com/feilaoda/dojang.git
+[submodule "app/vendor/waterfall"]
+	path = app/vendor/waterfall
+	url = https://github.com/duitang/waterfall.git

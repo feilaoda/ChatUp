@@ -84,3 +84,5 @@ settings.py
 supervisord.conf
 easy_crawl
 
+upload
+avatar

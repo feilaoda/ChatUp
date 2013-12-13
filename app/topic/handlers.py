@@ -8,7 +8,7 @@ from tornado.escape import utf8
 from tornado.options import options
 import tornado
 from dojang.app import DojangApp
-from dojang.cache import complex_cache
+from dojang.cache import autocache_get, autocache_set, autocache_incr
 from dojang.database import db
 
 from app.account.lib import UserHandler
@@ -172,6 +172,9 @@ class EditTopicHandler(UserHandler):
             self.send_error(404)
             return
         self.check_permission(topic)
+        if topic.hidden == 'y':
+            return self.send_error(403)
+            
         self.render('topic/edit_topic.html', topic=topic)
 
     @require_user
@@ -310,8 +313,8 @@ class CreateReplyHandler(UserHandler):
             return
     
         digest = hashlib.md5(utf8(content)).hexdigest()
-        key = "r:%d:%s" % (self.current_user.id, digest)
-        url = complex_cache.get(key)
+        key = "rp:p%d:%s" % (self.current_user.id, digest)
+        url = autocache_get(key)
         # avoid double submit
         if url:
             self.redirect(url)
@@ -320,13 +323,18 @@ class CreateReplyHandler(UserHandler):
 
         user = self.current_user
 
-        index_key = 'topic:%d'%topic.id
-        index_num = complex_cache.get(index_key)
+        index_key = 'rp:c:t%d'%topic.id
+        index_num = autocache_get(index_key)
         if index_num is None:
             index_num = topic.reply_count
-            complex_cache.set(index_key, index_num)
+            autocache_set(index_key, index_num, 0)
 
-        index_num = complex_cache.incr(index_key,1)
+        # print index_num
+        index_num = autocache_incr(index_key,1)
+        # print index_num
+        if index_num is None:
+            index_num = 1
+            autocache_set(index_key, index_num, 0)
         #: create reply
         reply = TopicReply(topic_id=id, people_id=user.id, content=content)
         # if hidden == 'on':
@@ -348,11 +356,11 @@ class CreateReplyHandler(UserHandler):
         db.session.add(topic)
         db.session.commit()
 
-        num = (topic.reply_count - 1) / 30 + 1
+        num = (index_num - 1) / 30 + 1
         url = '/topic/%s' % str(id)
         if num > 1:
             url += '?p=%s' % num
-        complex_cache.set(key, url, 100)
+        autocache_set(key, url, 100)
         self.redirect("%s#reply%s" % (url, topic.reply_count))
 
         refer = '<a href="/topic/%s#reply-%s">%s</a>' % \
