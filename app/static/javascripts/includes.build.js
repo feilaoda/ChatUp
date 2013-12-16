@@ -30,5 +30,5 @@ yepnope([
   '/static/javascripts/bonzo/bonzo.min.js',
   '/static/javascripts/envision.min.js',
 */
-  { complete : example }
+  { complete : financechart }
 ]);
