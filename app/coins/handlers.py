@@ -68,7 +68,7 @@ from dojang.app import DojangApp
 
 class OkCoinLtcHandler(RequestHandler):
     def get(self):
-        self.render("coins/ajax_charts.html", title="coin charts")
+        self.render("coins/finance_charts.html", title="coin charts")
 
 tc = tornadoredis.Client()
 tc.connect()

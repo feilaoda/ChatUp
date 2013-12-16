@@ -11,7 +11,7 @@
                     document.body.appendChild(el);
                 }
                 
-                var ws = new WebSocket("ws://127.0.0.1:8888/ws/coins");
+                var ws = new WebSocket("ws://test.imeiban.com:9888/ws/coins");
                 ws.onopen = function() {
                     show_message('Connected.');
                 };
