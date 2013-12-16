@@ -94,11 +94,13 @@ def create_application():
     application.register_app('app.topic.handlers.app')
     application.register_app('app.shot.handlers.app')
     application.register_app('app.group.handlers.app')
+    application.register_app('app.coins.handlers.app')
     
     application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
     application.register_app('app.admin.topic.handlers.app')
     application.register_app('app.admin.handlers.app')
+
 
 
     application.register_app('app.about.handlers.app')

@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+        <title>{{ title }}</title>
+        <script>
+            function open_websocket(){
+                function show_message(message){
+                    var el = document.createElement('div');
+                    el.innerHTML = message;
+                    document.body.appendChild(el);
+                }
+                
+                var ws = new WebSocket("ws://127.0.0.1:8888/ws/coins");
+                ws.onopen = function() {
+                    show_message('Connected.');
+                };
+                ws.onmessage = function(event) {
+                    show_message(event.data);
+                };
+                ws.onclose = function() {
+                    show_message("Closed.");
+                };
+            }
+        </script>
+
+        <script src="/static/assets/js/d3.min.js"></script>
+
+<script type="text/javascript">
+JSONData = [
+  { "id": 3, "created_at": "Sun May 05 2013", "amount": 12000},
+  { "id": 1, "created_at": "Mon May 13 2013", "amount": 2000},
+  { "id": 2, "created_at": "Thu Jun 06 2013", "amount": 17000},
+  { "id": 4, "created_at": "Thu May 09 2013", "amount": 15000},
+  { "id": 5, "created_at": "Mon Jul 01 2013", "amount": 16000}
+];
+
+(function() {
+  var data = JSONData.slice();
+  var format = d3.time.format("%a %b %d %Y");
+  var amountFn = function(d) { return d.amount };
+  var dateFn = function(d) { return format.parse(d.created_at) };
+
+  var x = d3.time.scale()
+    .range([10, 280])
+    .domain(d3.extent(data, dateFn));
+
+  var y = d3.scale.linear()
+    .range([180, 10])
+    .domain(d3.extent(data, amountFn));
+  
+  var svg = d3.select("#charts").append("svg:svg")
+  .attr("width", 300)
+  .attr("height", 200);
+
+  svg.selectAll("circle").data(data).enter()
+   .append("svg:circle")
+   .attr("r", 4)
+   .attr("cx", function(d) { return x(dateFn(d)) })
+   .attr("cy", function(d) { return y(amountFn(d)) }) ;
+})();
+
+</script>
+
+<script>
+ 
+var n = 40,
+    random = d3.random.normal(0, .2),
+    data = d3.range(n).map(random);
+ 
+var margin = {top: 20, right: 20, bottom: 20, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+ 
+var x = d3.scale.linear()
+    .domain([0, n - 1])
+    .range([0, width]);
+ 
+var y = d3.scale.linear()
+    .domain([-1, 1])
+    .range([height, 0]);
+ 
+var line = d3.svg.line()
+    .x(function(d, i) { return x(i); })
+    .y(function(d, i) { return y(d); });
+ 
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+ 
+svg.append("defs").append("clipPath")
+    .attr("id", "clip")
+  .append("rect")
+    .attr("width", width)
+    .attr("height", height);
+ 
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + y(0) + ")")
+    .call(d3.svg.axis().scale(x).orient("bottom"));
+ 
+svg.append("g")
+    .attr("class", "y axis")
+    .call(d3.svg.axis().scale(y).orient("left"));
+ 
+var path = svg.append("g")
+    .attr("clip-path", "url(#clip)")
+  .append("path")
+    .datum(data)
+    .attr("class", "line")
+    .attr("d", line);
+ 
+
+ 
+function tick() {
+ 
+  // push a new data point onto the back
+  data.push(random());
+ 
+  // redraw the line, and slide it to the left
+  path
+      .attr("d", line)
+      .attr("transform", null)
+    .transition()
+      .duration(500)
+      .ease("linear")
+      .attr("transform", "translate(" + x(-1) + ",0)")
+      .each("end", tick);
+  // pop the old data point off the front
+  data.shift();
+}
+
+(function() {
+    tick();
+})();
+</script>
+    </head>
+    <body onload="open_websocket()">
+        <h1>{{ title }}</h1>
+        
+        <iframe id="_hidden" style="display:none"></iframe>
+        <h2>Messages</h2>
+        <hr/>
+        <div id="charts"></div>
+   
+
+    </body>
+</html>
