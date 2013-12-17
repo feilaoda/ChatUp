@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-    <title>Finance Demo</title>
+    <title id="title">300Coin</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width">
     
@@ -11,36 +11,66 @@
     <link rel="stylesheet" href="/static/stylesheets/timeseries.css" type="text/css" />
 
     <script type="text/javascript" src="/static/javascripts/yepnope.js"></script>
-    <script src="/static/javascripts/jquery/jquery-1.7.1.min.js"></script>
-    <script src="/static/javascripts/flotr2/flotr2.min.js"></script>
-    <script src="/static/javascripts/flotr2/js/plugins/handles.js"></script>
-    <script src="/static/javascripts/bonzo/bonzo.min.js"></script>
-    <script src="/static/javascripts/envision.min.js"></script>
-
+     <script src="/static/javascripts/jquery/jquery-1.7.1.min.js"></script>
+      <script src="/static/javascripts/flotr2/flotr2.min.js"></script>
+     <script src="/static/javascripts/flotr2/js/plugins/handles.js"></script>
+      <script src="/static/javascripts/bonzo/bonzo.min.js"></script>
+     <script src="/static/javascripts/envision.min.js"></script>
+  <script src="/static/javascripts/soundmanager2.min.js"></script>
 
 </head>
 
 <body>
   <div id="content">
-    <h3>Finance Demo:</h3>
-    <div id="charts"></div>
-    
+  
+
+
+    <h1 >Finance: <span id="coin_price"></span></h1>
+    <div id="charts" style="float: left"></div>
+    <div style="float: left; margin-left: 10px;">
+      <div id="status"></div>
+      
+      <div>
+        Min:
+        <input id="min_price" name="min_price" placeholder="min price">
+        Max:
+        <input id="max_price" name="max_price" placeholder="max price">
+        <br>
+        <button onclick="savealarm()">Save Alarm Level</button>
+        
+        <button onclick="clearalarm()">Clear Alarm Level</button>
+
+        <button onclick="stopalarm()">Stop Alarm</button>
+
+        <button onclick="hidechart()">Hide Chart</button>
+      </div>
+
+    </div>
+       <p><a href="/static/media/alarm.wav" class="sm2_button"></a></p>
+
+
   </div>
-  <script type="text/javascript" src="/static/javascripts/data.js"></script>
-
-    <script type="text/javascript" src="/static/javascripts/bitcoinfinance.js"></script>
-    <script type="text/javascript" src="/static/javascripts/timefinance.js"></script>
-      <script type="text/javascript" src="/static/javascripts/includes.build.js"></script> 
-
- 
-     <script type="text/javascript" src="/static/javascripts/includes.build.js"></script> 
-
-  <script type="text/javascript">
-  // (function(){
-  //   financechart();
-  // });
-
-  </script>
+  <script type="text/javascript" src="/static/javascripts/bitcoinfinance.js"></script>
+  <script type="text/javascript" src="/static/javascripts/financechart.js"></script>
+  <script type="text/javascript" src="/static/javascripts/includes.build.js"></script> 
+<script type="text/javascript">
+  var alarmSound;
+  var alarming = false;
+  soundManager.setup({
+    url: '/path/to/swf-files/',
+    preferFlash: false,
+    onready: function() {
+       alarmSound = soundManager.createSound({
+        id: 'aSound',
+        url: '/static/media/alarm.wav'
+      });
+      //mySound.play();
+    },
+    ontimeout: function() {
+      // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+    }
+  });
+</script>
 </body>
 </html>
 
