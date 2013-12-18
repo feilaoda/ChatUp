@@ -78,9 +78,11 @@ function checkalarm(){
 function hidechart(){
   if(coin__showchart){
     $("#charts").hide();
+    $("#show_chart").html("Show Chart");
     coin__showchart=false;
   }else{
     $("#charts").show();
+    $("#show_chart").html("Hide Chart");
     coin__showchart=true;
     financedraw();
   }
@@ -158,7 +160,7 @@ var popfirst = true;
     }
 
 
-  var ws = new WebSocket("ws://127.0.0.1:9888/ws/coins");
+  var ws = new WebSocket("ws://www.iosplay.com:8888/ws/coins");
   ws.onopen = function() {
       show_message('Connected.');
   };
