@@ -174,7 +174,7 @@ var popfirst = true;
         $("#status").html(message);
     }
 
-  var socket = io.connect('http://www.iosplay.com:9999/ws/coins');
+  var socket = io.connect('http://www.iosplay.com:8888/ws/coins');
   socket.on('notification', function (channel, data) {
       console.log(channel + "," + data);
       coin__lastprice = data;
