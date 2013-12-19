@@ -45,32 +45,47 @@ function clearalarm(){
 function initalarm(){
   alarming = false;
 }
-function playalarm(type){
+function playdownalarm(type){
+  stopalarm();
   console.log(type);
   alarmSound.play({
-  loops: 100
-});
+    loops: 100
+  });
   alarming = true;
 }
+function playupalarm(type){
+  stopalarm();
+  console.log(type);
+  upSound.play({
+    loops: 100
+  });
+  alarming = true;
+}
+
 function stopalarm(){
   alarming = false;
+  if(alarmSound){
   alarmSound.stop();
+  }
+  if(upSound){
+    upSound.stop();
+  }
 }
 function checkalarm(){
   if(coin__minprice != null && (coin__lastprice <= coin__minprice)){
         //play down alarm
         if(!alarming){
-          playalarm("lower");
+          playdownalarm("lower");
         }
         
     }else
     if(coin__maxprice != null && (coin__lastprice >= coin__maxprice)){
       //play up alarm
       if(!alarming){
-          playalarm("upper");
+          playupalarm("upper");
         }
     }else{
-      console.log("stop");
+      // console.log("stop");
       stopalarm();
     }
 }
@@ -90,12 +105,12 @@ function hidechart(){
 
 function financedraw(){
   finance.price.draw(null);
-      finance.summary.draw(null);
+  finance.summary.draw(null);
 }
 
 
 function financechart () {
-  var MaxPoints = 400;
+  var MaxPoints = points;
   var now = new Date().Format('yyyy-MM-dd hh:mm:ss');
   var financeData = {
   'summaryTicks': [
@@ -159,30 +174,15 @@ var popfirst = true;
         $("#status").html(message);
     }
 
-
-  var ws = new WebSocket("ws://www.iosplay.com:8888/ws/coins");
-  ws.onopen = function() {
-      show_message('Connected.');
-  };
-  ws.onmessage = function(event) {
-      coin__lastprice = parseFloat(event.data);
-      console.log([coin__minprice, coin__maxprice, coin__lastprice,coin__minprice != null, coin__lastprice > coin__minprice]);
+  var socket = io.connect('http://www.iosplay.com:9999/ws/coins');
+  socket.on('notification', function (channel, data) {
+      console.log(channel + "," + data);
+      coin__lastprice = data;
       checkalarm();
-      // if(coin__minprice != null && (coin__lastprice <= coin__minprice)){
-      //   //play down alarm
-      //   playalarm();
-      // }else
-      // if(coin__maxprice != null && (coin__lastprice >= coin__maxprice)){
-      //   //play up alarm
-      //   playalarm();
-      // }else{
-      //   if(alarming){
-      //     stopalarm();
-      //   }
-      // }
+      
       var len = financeData.price[0].length;
       var lastindex = financeData.price[0][len-1];
-      $("#title").html(coin__lastprice + "  |  300Coin");
+      $("#title").html(coin__lastprice + "  |  "+title);
       $("#coin_price").html(coin__lastprice);
       if(popfirst){
         financeData.summaryTicks.shift();
@@ -197,7 +197,6 @@ var popfirst = true;
         }
         else
         {
-          
           lastindex += 1;
           financeData.price[0].push(lastindex);
         }
@@ -206,7 +205,7 @@ var popfirst = true;
       financeData.summaryTicks.push(
         {"date":newnow,"open":coin__lastprice,"high":coin__lastprice,"low":coin__lastprice,"close":coin__lastprice,"volume":coin__lastprice}
       );
-      financeData.price[1].push(event.data);
+      financeData.price[1].push(coin__lastprice);
       financedraw();
 
       var offset = 0;
@@ -223,13 +222,83 @@ var popfirst = true;
           }
         });
       }
+  });
+
+  socket.on('connected', function () {
+    socket.emit('join', channel);
+    show_message('Connected.');
+  });
+
+
+  // var ws = new WebSocket("ws://127.0.0.1:8888/ws/coins");
+  // ws.onopen = function() {
+  //     show_message('Connected.');
+  // };
+  // ws.onmessage = function(event) {
+  //     coin__lastprice = parseFloat(event.data);
+  //     // console.log([coin__minprice, coin__maxprice, coin__lastprice,coin__minprice != null, coin__lastprice > coin__minprice]);
+  //     checkalarm();
+  //     // if(coin__minprice != null && (coin__lastprice <= coin__minprice)){
+  //     //   //play down alarm
+  //     //   playalarm();
+  //     // }else
+  //     // if(coin__maxprice != null && (coin__lastprice >= coin__maxprice)){
+  //     //   //play up alarm
+  //     //   playalarm();
+  //     // }else{
+  //     //   if(alarming){
+  //     //     stopalarm();
+  //     //   }
+  //     // }
+  //     var len = financeData.price[0].length;
+  //     var lastindex = financeData.price[0][len-1];
+  //     $("#title").html(coin__lastprice + "  |  "+title);
+  //     $("#coin_price").html(coin__lastprice);
+  //     if(popfirst){
+  //       financeData.summaryTicks.shift();
+  //       financeData.price[1].shift();
+  //       popfirst = false;
+  //     }
+  //     else
+  //     {
+  //       if(financeData.summaryTicks.length>=MaxPoints){
+  //         financeData.summaryTicks.shift();
+  //         financeData.price[1].shift();
+  //       }
+  //       else
+  //       {
+  //         lastindex += 1;
+  //         financeData.price[0].push(lastindex);
+  //       }
+  //     }
+  //     var newnow = new Date().Format('yyyy-MM-dd hh:mm:ss');
+  //     financeData.summaryTicks.push(
+  //       {"date":newnow,"open":coin__lastprice,"high":coin__lastprice,"low":coin__lastprice,"close":coin__lastprice,"volume":coin__lastprice}
+  //     );
+  //     financeData.price[1].push(event.data);
+  //     financedraw();
+
+  //     var offset = 0;
+  //     var min = 0;
+  //     // Trigger the select interaction.
+  //     // Update the select region and draw the detail graph.
+  //     if(lastindex >= MaxPoints){
+  //       finance.summary.trigger('select', {
+  //         data : {
+  //           x : {
+  //             min : MaxPoints/2 ,
+  //             max : MaxPoints 
+  //           }
+  //         }
+  //       });
+  //     }
 
      
       
-  };
-  ws.onclose = function() {
-      show_message("Closed.");
-  };
+  // };
+  // ws.onclose = function() {
+  //     show_message("Closed.");
+  // };
 
 
 }

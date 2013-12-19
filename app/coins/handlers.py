@@ -68,7 +68,9 @@ from dojang.app import DojangApp
 
 class OkCoinLtcHandler(RequestHandler):
     def get(self):
-        self.render("coins/finance_charts.html", title="coin charts")
+        points = self.get_argument('points', 400)
+        channel = 'ltc:okcoin';
+        self.render("coins/finance_charts.html", title="LTC/OkCoin", points=points, channel=channel)
 
 tc = tornadoredis.Client()
 tc.connect()
@@ -112,16 +114,16 @@ class NewMessageHandler(tornado.web.RequestHandler):
         self.write('sent: %s' % (message,))
 
 app_handlers = [
-    ('/okcoin/ltc', OkCoinLtcHandler),
-    ('/websocket', OkCoinLtcWebSocketHandler),
-    ('/msg', NewMessageHandler)
+    ('/ltc/okcoin', OkCoinLtcHandler),
+    ('/coin/websocket', OkCoinLtcWebSocketHandler),
+    ('/coin/msg', NewMessageHandler)
 ]
 
 app_modules = {
 }
 
 app = DojangApp(
-    'coins', __name__, handlers=app_handlers, ui_modules=app_modules,
+    '', __name__, handlers=app_handlers, ui_modules=app_modules,
 )
 
 
