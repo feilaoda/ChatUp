@@ -1,8 +1,10 @@
 # coding: utf-8
-import re
 import hashlib
-from formencode.validators import FancyValidator
+import re
+
 from formencode.api import *
+from formencode.validators import FancyValidator
+
 
 _ = lambda s: s
 
@@ -22,7 +24,7 @@ def url(data):
     pattern = (
         r'(?i)^((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}'
         r'/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+'
-        r'|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))$')
+        r'|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?????????????????]))$')
     return regex(pattern, data, re.IGNORECASE)
 
 

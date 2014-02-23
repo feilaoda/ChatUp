@@ -21,16 +21,17 @@ People:
             - n2 * log(user.reputation)
 
 """
-import urllib
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
-from sqlalchemy.orm import relationship
-from sqlalchemy import Column, ForeignKey
-from sqlalchemy import Integer, String, DateTime, Text
-from tornado.options import options
+import urllib
+
 from dojang.database import db
 from dojang.util import to_md5
+from sqlalchemy import Column, ForeignKey
+from sqlalchemy import Integer, String, DateTime, Text
+from sqlalchemy.orm import relationship
+from tornado.options import options
 
 
 class People(db.Model):
@@ -45,7 +46,7 @@ class People(db.Model):
     role = Column(Integer, default=2)
     # 0: registered,  1: username
     reputation = Column(Integer, default=100, index=True)
-    token = Column(String(16))
+    token = Column(String(32))
 
     city = Column(String(200))
     status = Column(Integer, default=0)
@@ -60,7 +61,7 @@ class People(db.Model):
     def __init__(self, username, **kwargs):
         #self.email = email.lower()
         self.username = username
-        self.token = self.create_token(16)
+        self.token = self.create_token(32)
         for k, v in kwargs.items():
             setattr(self, k, v)
 

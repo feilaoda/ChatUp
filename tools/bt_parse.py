@@ -1,10 +1,11 @@
 import sys
+import sys
+
 import libtorrent
+import libtorrent
+
 
 # get the input torrent file
-import sys
-import libtorrent
-
 # get the input torrent file
 if (len(sys.argv) > 1):
     torrent = sys.argv[1]

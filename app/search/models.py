@@ -1,11 +1,11 @@
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from tornado.options import options
-from dojang.database import db
-
 
 
 class Search(db.Model):

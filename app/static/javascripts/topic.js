@@ -19,6 +19,4 @@ $(function(){
       },function(){
        $(this).find("a.hoverable").hide();
     });
-
-    
 });

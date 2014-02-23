@@ -1,27 +1,23 @@
-import hashlib
 from datetime import datetime
+import hashlib
 
-from tornado.web import UIModule 
-from tornado.web import URLSpec as url
-from tornado import escape
-from tornado.options import options
-
+from app.account.decorators import require_user, apiauth
+from app.account.lib import SimpleApiHandler, CheckMixin
+from app.account.models import People
 from dojang.app import DojangApp
-from dojang.util import ObjectDict
 from dojang.database import db
 from dojang.mixin import ModelMixin
+from dojang.util import ObjectDict
 from dojang.web import ApiHandler
-
-
-from app.account.lib import SimpleApiHandler, CheckMixin
-from app.account.decorators import require_user, apiauth
-from app.account.models import People
-
-
-
 import errors
-from .models import People
+from tornado import escape
+from tornado.options import options
+from tornado.web import UIModule 
+from tornado.web import URLSpec as url
+
 from . import validators
+from .models import People
+
 
 class SigninHandler(SimpleApiHandler):
     def get(self):

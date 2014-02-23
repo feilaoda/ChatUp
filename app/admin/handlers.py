@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
 
-import hashlib
 from datetime import datetime
+import hashlib
 
-from tornado.web import UIModule, authenticated
-from tornado.web import URLSpec as url
-from tornado.escape import utf8
-from tornado.options import options
-
+from app.account.decorators import require_user, require_admin
+from app.account.lib import UserHandler
+from app.account.models import People
 from dojang.app import DojangApp
-from dojang.util import ObjectDict
 from dojang.cache import cached
 from dojang.database import db
 from dojang.mixin import ModelMixin
+from dojang.util import ObjectDict
+from tornado.escape import utf8
+from tornado.options import options
+from tornado.web import UIModule, authenticated
+from tornado.web import URLSpec as url
 
-from app.account.lib import UserHandler
-from app.account.decorators import require_user, require_admin
-from app.account.models import People
 
 class AdminHandler(UserHandler, ModelMixin):
     @require_admin

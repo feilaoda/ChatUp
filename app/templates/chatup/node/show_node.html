@@ -7,12 +7,12 @@
 {% block content %}
 <div class="screen">
     
-
+    <ol class="breadcrumb">
+      <li><a href="/topic">{{_("Community")}}</a>  </li>
+      <li><a href="/node/{{node.name}}">{{node.title}}</a></li>
+    </ol>
     <div class="topic-header">
-        <a href="/node/{{node.name}}" class="highlight" >{{node.title}}</a>
-        <span class="pull-right">
-            <a class="btn btn-primary btn-small" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
-        </span>
+            <a class="btn btn-primary btn-small pull-right" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
     </div>
 
 
@@ -46,6 +46,7 @@
 {%if current_user%}
 {% module ProfileSidebar(current_user) %}
 {%end%}
+<hr class="box-panner"></hr>
 
 <div class="box-container">
     <div class="box-header">

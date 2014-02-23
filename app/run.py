@@ -2,11 +2,17 @@
 #!/usr/bin/env python
 import os
 import sys
+
+from dojang.app import DojangApplication
+from dojang.util import reset_option
+from dojang.web import init_options, run_server
 import formencode
+from tornado.escape import xhtml_escape
+from tornado.options import options
+
+
 # import jieba
 # jieba.load_userdict("userdict.txt") 
-
-
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:
@@ -19,11 +25,6 @@ try:
 except ImportError:
     print('Development of chatup')
 
-from tornado.options import options
-from dojang.util import reset_option
-from dojang.app import DojangApplication
-from dojang.web import init_options, run_server
-from tornado.escape import xhtml_escape
 
 # reset_option('debug', True, type=bool)
 # reset_option('autoescape', None)
@@ -105,7 +106,8 @@ def create_application():
 
     application.register_app('app.about.handlers.app')
 
-    
+    application.register_app('app.wepusher.handlers.app')
+    application.register_api('app.wepusher.api.app', options.api_domain)
     
 
 
@@ -117,6 +119,8 @@ def create_application():
 
     #http://api.xxx.com/v1/topic/xxx
     application.register_api('app.topic.api.app', options.api_domain)
+
+
 
     application.register_app('app.front.handlers.app')
 

@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import jieba
 
+import jieba
 
 
 jieba.load_userdict("userdict.txt") 
 
-seg_list = jieba.cut("1碗米粉蒸肉")
+seg_list = jieba.cut("1???????????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("一个鸡蛋")
+seg_list = jieba.cut("????????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("一根玉米")
+seg_list = jieba.cut("????????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("半小碗饭")
+seg_list = jieba.cut("????????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("十颗开心果")
+seg_list = jieba.cut("???????????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("12个包子")
+seg_list = jieba.cut("12?????????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("100g包子")
+seg_list = jieba.cut("100g??????")
 print ", ".join(seg_list)
 
-seg_list = jieba.cut("100克包子")
+seg_list = jieba.cut("100?????????")
 print ", ".join(seg_list)

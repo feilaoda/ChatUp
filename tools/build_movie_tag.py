@@ -2,13 +2,15 @@
 #!/usr/bin/env python
 
 import argparse
+import json
 import os
+import re
 import sys
 import urllib2
-import re
-import json
 
+from dojang.util import parse_config_file
 from tornado.options import options
+
 
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
@@ -22,7 +24,6 @@ except ImportError:
     print PROJDIR
     print('Development of keepcd')
 
-from dojang.util import parse_config_file
 
 
 

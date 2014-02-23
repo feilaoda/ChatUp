@@ -2,21 +2,22 @@
 #!/usr/bin/env python
 
 import argparse
-import os
-import sys
-import urllib2
-import re
 import json
-
-from urlparse import urljoin
-import MySQLdb as mdb
-from time import sleep
-from scrapy.selector import HtmlXPathSelector, XmlXPathSelector
-import md5
 import logging
-import threading
+import md5
+import os
+import re
 import string
+import sys
+import threading
+from time import sleep
 import types
+import urllib2
+from urlparse import urljoin
+
+import MySQLdb as mdb
+from scrapy.selector import HtmlXPathSelector, XmlXPathSelector
+
 
 logger = logging.getLogger(__name__)
 

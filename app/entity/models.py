@@ -3,17 +3,18 @@ Entity
 
 """
 
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
+from dojang.util import create_token
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, DateTime, Text
 from sqlalchemy.orm import relationship, backref
-
 from tornado.options import options
-from dojang.database import db
-from dojang.util import create_token
- 
+
+
 class Entity(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String(200), nullable=False)

@@ -5,6 +5,12 @@
 
 {% block afterstyle %}
 <link rel="canonical" href="{{g.siteurl}}/account/signin" />
+<style type="text/css">
+td{border: 0;}
+.table>tbody>tr>td{
+    border: 0;
+}
+</style>
 {% end %}
 
 {% block content %}
@@ -15,8 +21,9 @@
     <div class="box-header">
         <h2>{{ _("Edit Avatar") }}</h2> 
     </div>
-                <table cellpadding="5" cellspacing="0" border="0">
-                    <tbody><tr style="border-top: 0;">
+                <table class="table" cellpadding="5" cellspacing="0" border="0">
+                    <tbody>
+                    <tr style="border-top: 1px solid #ddd;">
                         <td width="80" align="right">
                             {{_("Current Avatar")}}
                         </td>
@@ -27,7 +34,7 @@
                         <td >
                             <form enctype="multipart/form-data" action="/account/setting/avatar" method="post">
                             {{ xsrf_form_html() }}
-                            <table cellpadding="5" cellspacing="0" border="0" >
+                            <table class="table" cellpadding="5" cellspacing="0" border="0" >
                                 <tbody>
                                     <tr style="border:0;">
                                         <td >
@@ -40,24 +47,24 @@
                                     </td>
                                 </tr>
                                     
-                                <tr style="border:0;">
-                                    
-                                    <td width="200" align="left">
-                                        
-                                        <input type="submit" value="上传头像" class="ui-btn">
-                                    </td>
-                                </tr>
+                                
                                 </tbody>
                             </table>
                             </form>
                         </td>
                     </tr>
-                    
+                    <tr style="border-top: 1px solid #ddd;">
+                                    <td></td>
+                                     <td></td>
+                                    <td width="200" align="left">
+                                        <input type="submit" value="上传头像" class="btn btn-primary">
+                                    </td>
+                      </tr>
                 </tbody>
                 </table>
 
     <div>
-    <a href="/account/setting">{{_("Reback")}}</a>
+    <a href="/account/setting" class="btn btn-primary btn-sm">{{_("Reback")}}</a>
     </div>                
     </div>
 

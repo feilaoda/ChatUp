@@ -1,9 +1,9 @@
 from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, DateTime
 from sqlalchemy.orm import relationship, backref
-from dojang.database import db
-
 
 
 class Shot(db.Model):

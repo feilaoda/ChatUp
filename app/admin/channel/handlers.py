@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
 
-import hashlib
 from datetime import datetime
+import hashlib
 
-from tornado.web import UIModule, authenticated
-from tornado.web import URLSpec as url
-from tornado.escape import utf8
-from tornado.options import options
-
+from app.account.decorators import require_user, require_admin
+from app.account.lib import UserHandler, SimpleApiHandler
+from app.account.models import People
+from app.channel.models import Channel, ChannelEntry
+from app.group.models import Group
+from app.topic.models import Topic
 from dojang.app import DojangApp
-from dojang.util import ObjectDict
 from dojang.cache import cached
 from dojang.database import db
 from dojang.mixin import ModelMixin
+from dojang.util import ObjectDict
+from tornado.escape import utf8
+from tornado.options import options
+from tornado.web import UIModule, authenticated
+from tornado.web import URLSpec as url
 
-from app.account.lib import UserHandler, SimpleApiHandler
-from app.account.decorators import require_user, require_admin
-from app.account.models import People
-from app.group.models import Group
-from app.channel.models import Channel, ChannelEntry
-from app.topic.models import Topic
 
 class ShowRecentChannelsHandler(UserHandler):
     @require_admin

@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import hashlib
 from datetime import datetime
+import hashlib
+import threading
 
+from dojang.app import DojangApp
+import tornado
+from tornado.escape import utf8
+from tornado.options import options
 from tornado.web import UIModule, authenticated, RequestHandler
 from tornado.web import URLSpec as url
 from tornado.websocket import WebSocketHandler
-from tornado.escape import utf8
-from tornado.options import options
-import tornado
-import threading
 import tornadoredis
-from dojang.app import DojangApp
 
 
 # class OpenChannel(threading.Thread):
@@ -22,30 +22,23 @@ from dojang.app import DojangApp
 #         self.pubsub = self.redis.pubsub()
 #         self.pubsub.subscribe(channel)
 #         self.output = []
-
 #     # lets implement basic getter methods on self.output, so you can access it like a regular list
 #     def __getitem__(self, item):
 #         with self.lock:
 #             return self.output[item]
-
 #     def __getslice__(self, start, stop = None, step = None):
 #         with self.lock:
 #             return self.output[start:stop:step]
-
 #     def __str__(self):
 #         with self.lock:
 #             return self.output.__str__()
-
 #     # thread loop
 #     def run(self):
 #         for message in self.pubsub.listen():
 #             with self.lock:
 #                 self.output.append(message['data'])
-
 #     def stop(self):
 #         self._Thread__stop()
-
-
 # # add a method to the application that will return existing channels
 # # or create non-existing ones and then return them
 # class ChannelMixin(object):
@@ -54,8 +47,6 @@ from dojang.app import DojangApp
 #             self.application.channels[channel] = OpenChannel(channel, host, port)
 #             self.application.channels[channel].start()
 #         return self.application.channels[channel]
-
-
 # class ReadChannel(tornado.web.RequestHandler, ChannelMixin):
 #     @tornado.web.asynchronous
 #     def get(self, channel):
@@ -64,8 +55,6 @@ from dojang.app import DojangApp
 #         # write out its entire contents as a list
 #         self.write('{}'.format(channel[:]))
 #         self.finish() # not necessary?
-
-
 class OkCoinLtcHandler(RequestHandler):
     def get(self):
         self.render("coins/finance_charts.html", title="coin charts")

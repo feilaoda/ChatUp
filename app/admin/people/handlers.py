@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import hashlib
 from datetime import datetime
+import hashlib
 
-from tornado.web import UIModule, authenticated
+from app.account.decorators import require_staff, require_admin, require_user, apiauth
+from app.account.lib import UserHandler
+from app.account.models import People
+from dojang.app import DojangApp
+from dojang.database import db
+import tornado
 from tornado.escape import utf8
 from tornado.options import options
-import tornado
-from dojang.app import DojangApp
-
-from dojang.database import db
-
-from app.account.lib import UserHandler
-from app.account.decorators import require_staff, require_admin, require_user, apiauth
-from app.account.models import People
+from tornado.web import UIModule, authenticated
 
 
 VOTE_UP = 1

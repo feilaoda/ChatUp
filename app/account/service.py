@@ -1,9 +1,10 @@
-from tornado import escape
-from tornado.web import asynchronous
-from tornado.options import options
-from tornado.auth import TwitterMixin
-from dojang.database import db
 from dojang.app import JulyApp
+from dojang.database import db
+from tornado import escape
+from tornado.auth import TwitterMixin
+from tornado.options import options
+from tornado.web import asynchronous
+
 from .decorators import require_user, require_system
 from .lib import UserHandler, get_social_map
 from .models import Social

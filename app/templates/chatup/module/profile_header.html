@@ -1,9 +1,7 @@
 <div class="profile">
-    <div class="pinner">
-        <div class="pic">
-            <a href="/people/{{people.id}}">
+    <div class="media">
+        <a class="pull-left" href="/people/{{people.id}}" >
             <img width="48" height="48" src="/static/assets/images/profile.png"></a>
-        </div>
         {%if current_user is None or (people and people.id != current_user.id)%}
         {%set is_master = False%}
         {%else%}{%set is_master = True%}

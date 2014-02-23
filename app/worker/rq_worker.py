@@ -1,9 +1,10 @@
 
-from rq import Queue, Worker, Connection
-    # Tell rq what Redis connection to use
 import os
 
+from rq import Queue, Worker, Connection
 
+
+    # Tell rq what Redis connection to use
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:

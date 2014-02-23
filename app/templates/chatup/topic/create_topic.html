@@ -4,30 +4,29 @@
 
 {% block content %}
 
-<div class="screen clearfix">
-    <div class="box-container">
+    <div class="padding">
 
     <legend>{{_("New Topic")}} <span><a href="/node/{{node.name}}">{{node.title}}</a></span></legend> 
-    <form class="" action="" method="post">
+    <form role="form" action="" method="post">
         {{ xsrf_form_html() }}
 
         
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label" for="title">{{ _("Title") }}</label>
             <div class="controls">
-                <input type="text" class="control-text input-maxlarge" name="title" required value="{{topic.title or ''}}"/>
+                <input type="text" class="form-control control-text input-maxlarge" name="title" required value="{{topic.title or ''}}"/>
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label" for="content">{{ _("Content") }}</label>
             <div class="controls">
-                <textarea class="control-text input-maxlarge" rows="10" name="content">{{topic.content or ''}}</textarea>
+                <textarea class="form-control  control-text input-maxlarge" rows="10" name="content">{{topic.content or ''}}</textarea>
                 
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="form-group">
             <div class="controls">
                 <label class="checkbox">
                 <input type="checkbox" class="control-text input-maxlarge" name="hidden">
@@ -36,13 +35,12 @@
             </div>
         </div>
 
-        <div class="form-actions">
+        <div class="form-group">
             <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
             <a href="/node/{{node.name}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
         </div>
         
     </form>
-    </div>
     
 </div>
 {% end %}

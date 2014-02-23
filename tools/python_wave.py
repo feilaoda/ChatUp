@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 import sys
-# from pylab import *
+import wave
 import wave
 
+
+# from pylab import *
 def show_wave_n_spec(speech):
     spf = wave.open(speech,'r')
     sound_info = spf.readframes(-1)
@@ -24,7 +26,6 @@ def show_wave_n_spec(speech):
 # show_wave_n_spec(fil)
 
 
-import wave
 w = wave.open('test.wav', 'r')
 for i in range(w.getnframes()):
     frame = w.readframes(i)

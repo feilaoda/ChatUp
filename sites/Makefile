@@ -69,6 +69,21 @@ github:
 static: css  static_image js
 
 
+css2:
+	if [ ! -d $(STATIC)/assets/v2/css ]; then mkdir -p $(STATIC)/assets/v2/css; fi
+	#lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/v2/css/vendor.min.css
+	lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/v2/css/application.min.css
+
+	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/v2/css/mobile.min.css
+	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/v2/css/admin.min.css
+	
+
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
 	lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/vendor.min.css

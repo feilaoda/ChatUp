@@ -1,18 +1,18 @@
 
 
 {%if people%}
-<div class="box-container pinner-x pinner-y profile">
-    <div class="profile-header">
-        <div class="avatar">
-            <a href="/people/{{people.id}}">
-            <img width="48" height="48" src="{{people.get_avatar(48)}}"></a>
+<div >
+    <div class="media pinner-y">
+        <a class="pull-left" href="/people/{{people.id}}">
+            <img class="media-object" width="48" height="48" src="{{people.get_avatar(48)}}">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading"><a href="/people/{{people.id}}">{{people.username}}</a></h4>
+            <div class="username small">@{{people.username}}</div>
         </div>
-        <h3 id="name"><a href="/people/{{people.id}}">{{people.username}}</a></h3>
-        <div class="username small">@{{people.username}}</div>
-
     </div>
-    <div class="profile-menu">
-            <ul >
+    <div >
+            <ul class="list-style-inline  padding0">
                 <li><a href="/people/{{people.id}}">{{_("mine")}}</a></li>
                 
                 {%if people.is_master%}
@@ -24,7 +24,7 @@
                 {%end%}
                 
             </ul>
-        </div>
+    </div>
      
 </div>
 {%end%}

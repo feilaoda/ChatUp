@@ -3,15 +3,15 @@
 
 """
 
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from sqlalchemy.orm import relationship, backref
 from tornado.options import options
-from dojang.database import db
-
 
 
 class Group(db.Model):

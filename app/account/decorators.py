@@ -1,6 +1,8 @@
 import functools
 import urlparse
+
 from tornado.web import  HTTPError
+
 
 class require_role(object):
     def __init__(self, role):

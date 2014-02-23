@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 
-import re
 import Image
-import os
-import stat
-import urllib
+import datetime
 import errno
 import md5
-import datetime
+import os
+from random import choice
+import re
+import stat
+import urllib
+
 import tornado
 from tornado.escape import xhtml_escape
 from watermark import watermark
 
+
+chars = ('0123456789'
+             'abcdefghijklmnopqrstuvwxyz'
+             'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
 def find_mention(text):
     regex = r'@(\w+)\s'
@@ -28,7 +34,9 @@ def force_int(num, default=1):
 def linkto(url, id=None):
     return '/linkto?url=%s&id=%d' % (url, id)
 
-
+def create_token(length=16):
+    salt = ''.join([choice(chars) for i in range(length)])
+    return salt
 
 def join_list(string, array):
     new_array = []
@@ -45,7 +53,7 @@ def to_md5(url):
     
 def file_md5(name):
     m = md5.new()
-    a_file = open(name, 'rb')    #需要使用二进制格式读取文件内容
+    a_file = open(name, 'rb')    #?????????????????????????????????????????????
     m.update(a_file.read())
     a_file.close()
     return m.hexdigest()
@@ -115,9 +123,9 @@ def xmlday(value):
     now = datetime.datetime.utcnow()
     delta = now - value
     if delta.days <= 0:
-        return u"今天"
+        return u"??????"
     elif delta.days <= 1:
-        return u"昨天"
+        return u"??????"
     return value.strftime('%Y-%m-%d')
 
 
@@ -155,7 +163,7 @@ def make_thumb(path, filename, size):
     mode = im.mode
     if mode not in ('L', 'RGB'):
         if mode == 'RGBA':
-            # 透明图片需要加白色底
+            # ??????????????????????????????
             alpha = im.split()[3]
             bgmask = alpha.point(lambda x: 255-x)
             im = im.convert('RGB')
@@ -179,7 +187,7 @@ def make_thumb(path, filename, size):
     #for size in sizes:
         #filename = base + "_" + "%sx%s" % (str(size), str(size)) + ".jpg"
     thumb = region.resize((size,size), Image.ANTIALIAS)
-    thumb.save(filename, quality=100) # 默认 JPEG 保存质量是 75, 不太清楚。可选值(0~100)
+    thumb.save(filename, quality=100) # ?????? JPEG ??????????????? 75, ????????????????????????(0~100)
 
 
 def make_resize(from_file, to_file, max_width, max_height):

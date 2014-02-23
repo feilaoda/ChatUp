@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
 import argparse
-import urllib2
 import json
-
-from tornado.options import options 
 import os
+import urllib2
+
+from dojang.util import parse_config_file, create_token
+from tornado.options import options 
+
+
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:
@@ -18,7 +21,6 @@ except ImportError:
     
     print('Development of Chatup')
 
-from dojang.util import parse_config_file, create_token
 
 def create_db():
     from dojang.database import db
@@ -33,10 +35,11 @@ def create_db():
     # import movie.models
     # import tag.models
     # import search.models
-    import node.models
+    # import node.models
     # import topic.models
     # import group.models
-    import shot.models
+    # import shot.models
+    import push.models
     # import english.models
     # import sound.models
     # import blog.models

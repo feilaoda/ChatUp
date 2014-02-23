@@ -23,28 +23,28 @@
         <form action="" method="post" class="ui-box-container">
             {{ xsrf_form_html() }}
             <div class="horizontal">
-            <div class="control-group control-required">
+            <div class="form-group control-required">
                 <img src="{{current_user.get_avatar(48)}}" width="48" height="48" />
                 <h1 class="fn-text">{{current_user.username or ''}}</h1>
             </div>
 
-            <div class="control-group control-required">
+            <div class="form-group control-required">
                 <label class="control-label" for="email">{{ _("Email") }}</label>
                 <div class="controls">
-                <input type="email" class="input-xxlarge" name="email" value="{{current_user.email or ""}}" />
+                <input type="email" class="form-control input-xxlarge" name="email" value="{{current_user.email or ""}}" />
                 </div>
             </div>
 
-            <div class="control-group control-required">
+            <div class="form-group control-required">
                 <label class="control-label" for="description">{{ _("Description") }}</label>
                 <div class="controls">
-                <textarea class="input-xxlarge" name="description" rows="5">{{current_user.description or ''}}</textarea>
+                <textarea class="form-control input-xxlarge" name="description" rows="5">{{current_user.description or ''}}</textarea>
                 </div>
             </div>
 
             
 
-            <div class="control-group control-required">
+            <div class="form-group control-required">
                 <div class="controls">
                 <button class="btn btn-primary btn-small">{{_("Save")}}</button>
                 </div>
@@ -65,10 +65,10 @@
 
 <div class="box-container">
     <div class="box-content">
-        <a href="/account/password" class="btn btn-small">{{ _("Change Password") }}</a>
+        <a href="/account/password" >{{ _("Change Password") }}</a>
     </div>
     <div class="box-content">
-        <a href="/account/setting/avatar" class="btn btn-small">{{ _("Change Avatar") }}</a>
+        <a href="/account/setting/avatar">{{ _("Change Avatar") }}</a>
     </div>
 </div>
 {% if current_user.role == 1 %}

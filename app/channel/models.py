@@ -3,14 +3,14 @@ Page
 
 """
 
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, DateTime, Text
 from tornado.options import options
-from dojang.database import db
-
 
 
 class Channel(db.Model):
