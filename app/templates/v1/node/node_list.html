@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Nodes") }}{% end %}
+
+{% block content %}
+<div class="screen">
+    <div class="box-header">
+        <h3>{{ _("All Nodes")}}</h3>
+    </div>
+    {% for node in nodes %}
+    <div class="ui-cell">
+        <a class="node" href="/node/{{node.name}}" >{{escape(node.title)}}</a>
+        <span class="pull-right">{{node.topic_count}}</span>
+    </div>
+    {% end %}
+</div>
+{% end %}
+
+{% block sidebar %}
+
+{% end %}

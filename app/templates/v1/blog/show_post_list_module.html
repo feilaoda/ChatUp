@@ -1,0 +1,34 @@
+<ul class="post-container">
+{%for post in posts %}
+<li class="post-item clearfix">
+    <div class="post ">
+        <div class="post-title post-padding">
+            <a href="/blog/{{post.id}}">{{simple_escape(post.title)}}</a>
+        </div>
+        <div class="post-content post-padding">
+            <p>{{simple_escape(post.content)}}</p>
+        </div>
+        <div class="post-meta small">
+            <div class="pull-">
+                <div class="topic-avatar">
+                    <a href="/people/{{post.people_id}}" class="avatar"><img src="{{post.people.get_avatar(48)}}" width="48" height="48" /></a>
+                </div>
+
+            <a href="/people/{{post.people_id}}">{{post.people.username}}</a> •
+            {% if post.last_reply_time %}
+                <time datetime="{{xmldatetime(post.last_reply_time)}}" title="replied">{{timesince(post.last_reply_time, locale.code)}}</time>
+            {% else %}
+                <time datetime="{{xmldatetime(post.created)}}" title="created">{{timesince(post.created, locale.code)}}</time>
+            {% end %}
+
+            {% if post.reply_count > 0 %}
+                <span class="reply-count pull-right" title="{{post.reply_count}} {{_("Replies")}}">{{post.reply_count}}</span>
+            {% end %}
+            </div>
+        </div>    
+    
+        
+    </div>
+</li>
+{%end%}
+</ul>

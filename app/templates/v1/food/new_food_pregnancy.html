@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("pregnancy food") }}{% end %}
+
+{% block content %}
+
+<div class="box-container">
+    <legend>{{food_pregnancy.name}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        <div class="control-group">
+            <label class="control-label" for="food_id">{{ _("food id") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-maxlarge" rows="5" name="food_id" value="{{food_pregnancy.food_id or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="name">{{ _("food name") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-maxlarge" rows="5" name="name" value="{{food_pregnancy.name or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="category">{{ _("food category") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-maxlarge" rows="5" name="category" value="{{food_pregnancy.category or ''}}">
+            </div>
+        </div>
+
+        
+        <div class="control-group">
+            <label class="control-label" for="food_permission">{{ _("food permission") }}</label>
+            <div class="controls">
+            <select name="permission">
+                <option value="normal" {%if food_pregnancy.permission == "normal"%}selected="selected"{%end%}>{{_("normal eat foods")}}</option>
+                <option value="less" {%if food_pregnancy.permission == "less"%}selected="selected"{%end%}>{{_("less eat foods")}}</option>
+                <option value="avoid" {%if food_pregnancy.permission == "avoid"%}selected="selected"{%end%}>{{_("avoid eat foods")}}</option>
+            </select>
+            </div>
+        </div>
+
+
+
+        <div class="control-group">
+            <label class="control-label" for="food_tips">{{ _("food tips") }}</label>
+            <div class="controls">
+            <textarea class="control-text input-maxlarge" rows="15" name="tips" >{{food_pregnancy.tips or ''}}</textarea>
+            </div>
+        </div>
+
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/food/pregnancy/{{food_pregnancy.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+
+    </form>
+</div>
+{% end %}
+
+

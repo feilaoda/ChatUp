@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Group") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('javascripts/thread.js')}}"></script>
+{% end %}
+{% block content %}
+
+<div class="screen">
+    <div class="topic-header">
+        <a href="/group/{{group.id}}" class="node-cell">{{group.title}}</a>
+        <span class="pull-right">
+            <a class="btn btn-primary btn-small" href="/group/{{group.id}}/new">{{_("New Thread")}}</a>
+        </span>
+    </div>
+
+    <div class="well">
+        <p>{{markup(group.description)}}</p>
+    </div>
+
+    <div class="box-container">
+        <p>{{markup(group.description)}}</p>
+    </div>
+</div>
+
+<div class="screen">
+        <div>
+            <textarea class="control-text input-maxlarge" rows="5" name="content"  required></textarea>
+        </div>
+        <div>
+            <button type="submit" onclick="newthread('{{group.id}}')" class="btn btn-primary btn-small">{{ _("Send") }}</button>
+        </div>
+    </div>
+
+{% end %}
+
+
+{% block sidebar %}
+
+{% end %}

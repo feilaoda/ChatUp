@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+ 
+ <div class="jumbotron">
+  <h1>时光推 <small>TimePusher</small> </h1>
+  <p>创建自己的频道，获取个性化的信息</p>
+
+  <p><a class="btn btn-success btn-lg" role="button" href="/pusher/channel/new">Create Channel</a></p>
+</div>
+
+
+<div class="page-header">
+  <h1>Channel List</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        {%set rowid=1%}
+        {%for channel in channels%}
+           <tr><td>#{{rowid}}</td>
+            <td>{{markup(channel.title)}}</td>
+            <td>{{channel.token}}</td>
+          </tr>
+        {%set rowid=rowid+1%}
+        {%end%}
+        </table>
+    </div>
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

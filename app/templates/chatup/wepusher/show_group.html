@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+ 
+ <div class="jumbotron">
+  <h1>WePusher </h1>
+  <p>私人推送助手</p>
+  <p>创建自己的频道，获取个性化的信息</p>
+  <a href="http://api.wepusher.com/v1/push.json?user={{current_user.token}}">http://api.wepusher.com/v1/push.json?user={{current_user.token}}</a>
+  <p><a class="btn btn-success btn-lg" role="button" href="/wepusher/channel/new">Create Channel</a></p>
+</div>
+
+
+<div class="page-header">
+  <h1>Group</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        {%set rowid=1%}
+        {%for channel in channels%}
+           <tr><td><a href="/wepusher/channel/{{channel.id}}">#{{rowid}}</a></td>
+            <td><a href="/wepusher/channel/{{channel.id}}">{{markup(channel.title)}}</a></td>
+          </tr>
+        {%set rowid=rowid+1%}
+        {%end%}
+        </table>
+    </div>
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

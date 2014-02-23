@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Unit Item") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("Unit Item")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        {% module FoodUnitItemForm(unit_item) %}
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/food/unit" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+       
+        
+    </form>
+
+</div>
+{% end %}
+
+{%block sidebar %}
+<a href="/food/unit">Food Unit</a>
+{% end %}

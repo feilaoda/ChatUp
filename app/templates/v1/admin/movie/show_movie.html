@@ -1,0 +1,49 @@
+{% extends "admin/movie/movie.html" %}
+
+{% block subtitle %}{{ _("movie") }}{% end %}
+
+
+
+{% block content %}
+<div class="movie">
+
+    {% module ShowMovie(movie) %}
+        
+    
+
+</div>
+{% end %}
+
+
+{%block admin_sidebar%}
+
+
+<ul class="listable">
+
+<li><a href="/admin/movie/{{movie.id}}/edit">Edit</a></li>
+<li><a href="/admin/movie/{{movie.id}}/image/edit">Edit Image</a></li>
+<li><a href="/admin/movie/{{movie.id}}/links">Show links</a></li>
+<li><a href="/admin/movie/{{movie.id}}/link/new">New movie link</a></li>
+<li></li>
+<li><a href="/admin/movie/{{movie.id}}/upload/weibo">Upload Image to Weibo</a></li>
+<li>
+<a href="/movie/{{movie.id}}/weibo">Post movie to Weibo</a>
+</li>
+<li></li>
+<li>
+{%if search_movie.published==1%}Published{%else%}Not published{%end%}
+</li>
+<li>
+    <a href="/admin/movie/{{movie.id}}/publish?published=1">Publish It</a>
+</li>
+<li>
+    <a href="/admin/movie/{{movie.id}}/publish?published=0">Not publish it</a>
+</li>
+
+
+
+</ul>
+{% end %}
+
+
+

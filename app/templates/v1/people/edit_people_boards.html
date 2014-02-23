@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Board") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/jquery.ui.min.js')}}"></script>
+{% end %}
+
+{% block content %}
+
+<div class="screen">
+    <div >
+        <h1>{{ _("all boards") }}</h1>
+        <h3>{{ _("edit board") }}</h3>
+        <ul id="sortable" class="listable">
+        {%set count=0%}
+        {%for user_board in boards %}
+            <li data-id="{{user_board.id}}" {%if count==0%}class="first"{%set count+=1%}{%end%}>
+            <a href="/board/{{user_board.id}}" >{{user_board.title}}</a>
+
+            <a href="/board/{{user_board.id}}/edit" class="pull-right" rel="nofollow">{{_("edit")}}</a>
+           </li>
+        {%end%}
+    </ul>
+    </div>
+
+    {%if current_user%}
+    <div class="pinner">
+    <a href="/board/new" rel="nofollow">{{_("new board")}}</a>
+    </div>
+    {% end %}
+
+</div>
+
+
+
+{% end %}
+
+{% block sidebar %}
+
+{% module ProfileSidebar(people) %}
+
+{% end %}
+
+
+{% block afterjs %}
+ 
+ <script>
+$(function() {
+    $( "#sortable" ).sortable({
+        update: function( event, ui ) {
+            var lis = $("#sortable li");
+            var ids = [];
+            for(var i=0; i<lis.length; i++) {
+                 var id = lis[i].getAttribute('data-id');
+                 ids.push(id);
+            }
+            // alert(ids);
+            $.ajax({
+                url: '/board/sort',
+                type: 'POST',
+                data:{ids:ids},
+                dataType: 'json',
+                timeout: 1000,
+                error: function(){alert('Error sorting folders');},
+                success: function(result){
+                    // alert(result);
+                }
+                });
+
+        },
+        // placeholder: "ui-state-highlight"
+    });
+
+    $( "#sortable" ).disableSelection();
+});
+</script>
+ 
+{%end%}

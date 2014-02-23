@@ -1,0 +1,30 @@
+
+
+{%if people%}
+<div class="box-container pinner-x pinner-y profile">
+    <div class="profile-header">
+        <div class="avatar">
+            <a href="/people/{{people.id}}">
+            <img width="48" height="48" src="{{people.get_avatar(48)}}"></a>
+        </div>
+        <h3 id="name"><a href="/people/{{people.id}}">{{people.username}}</a></h3>
+        <div class="username small">@{{people.username}}</div>
+
+    </div>
+    <div class="profile-menu">
+            <ul >
+                <li><a href="/people/{{people.id}}">{{_("mine")}}</a></li>
+                
+                {%if people.is_master%}
+                <li><a href="/account/setting">{{_("Setting")}}</a></li>
+                {%end%}
+
+                {%if current_user and current_user.is_admin%}
+                <li><a href="/admin">{{_("Admin")}}</a></li>
+                {%end%}
+                
+            </ul>
+        </div>
+     
+</div>
+{%end%}

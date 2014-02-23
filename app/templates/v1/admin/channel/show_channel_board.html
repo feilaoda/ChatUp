@@ -1,0 +1,53 @@
+{% extends "admin/channel/channel.html" %}
+
+{% block subtitle %}{{ _("board") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/jquery.ui.min.js')}}"></script>
+{% end %}
+
+
+{% block content %}
+
+
+
+<div class="screen">
+    <div>
+    <a href="/admin/channel/{{channel.id}}">{{channel.id}}: {{channel.title}}</a>
+    </div>
+    
+    <form class="" action="/admin/channel/{{channel.id}}/add" method="post">
+        {{ xsrf_form_html() }}
+        {% module ChannelEntityForm(channel) %}
+    </form>
+
+    <div>
+    <a class="btn btn-primary" href="javascript:;" onclick="update()">Update</a>
+    </div>
+
+    <div class="board-list">
+            
+            <ul id="sortable" class="listable">
+            {%for entity in entities %}
+                <li data-id="{{entity.id}}" style="height: auto; margin-right: 60px;">
+                    <a href="/admin/channel/{{channel.id}}/{{entity.id}}/delete" onclick="return confirm('Sure delete it?');">{{_("delete")}}</a>
+                    <div class="box">
+                        {% module ShowBoard(entity.board) %}   
+                    </div>
+
+                </li>
+            {%end%}
+            </ul>
+    </div>
+
+
+
+
+   
+</div>
+{% end %}
+
+
+
+
+

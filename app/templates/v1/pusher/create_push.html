@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+ <form class="form-horizontal" role="form" action="/push/new" method="post">
+    {{ xsrf_form_html() }}
+  <div class="form-group">
+    <label for="pushname" class="col-sm-2 control-label">{{_("Push Name")}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="pushname" name="pushname" placeholder="{{_("Push Name")}}">
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="pushid" class="col-sm-2 control-label">{{_("Push ID")}}</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="pushid" name="pushid" placeholder="{{_("Push ID")}}">
+    </div>
+  </div>
+  
+
+  <div class="form-group">
+    <label for="pushtext" class="col-sm-2 control-label">{{_("Push Text")}}</label>
+    <div class="col-sm-10">
+      <textarea name="pushtext" class="form-control" rows="5" id="pushtext" placeholder="{{_("Type something...")}}">
+      </textarea>
+    </div>
+  </div>
+
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success">Push Text</button>
+    </div>
+  </div>
+</form>
+
+
+</div>
+</div>
+
+
+{%end%}

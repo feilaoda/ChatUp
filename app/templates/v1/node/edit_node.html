@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("node") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <legend>{{_("Node")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("Title") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="title" required value="{{node.title or ''}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="name">{{ _("Name") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="name" required value="{{node.name or ''}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="platform">{{ _("Platform") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="platform" required value="{{node.platform or ''}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="category">{{ _("Category") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="category" required value="{{node.category or ''}}"/>
+            </div>
+        </div>
+
+         <div class="control-group">
+            <label class="control-label" for="slug">{{ _("Description") }}</label>
+            <div class="controls">
+                 <textarea name="description" class="control-text input-xxxlarge" required>{{node.description or ""}}</textarea>
+            </div>
+        </div>
+
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-small">{{ _("Submit") }}</button>
+            <a href="/node" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+
+
+
+       
+        
+    </form>
+
+</div>
+{% end %}
+
+

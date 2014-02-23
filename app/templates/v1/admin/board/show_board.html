@@ -1,0 +1,55 @@
+{% extends "admin/admin.html" %}
+
+{% block subtitle %}{{ _("board") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/jquery.ui.min.js')}}"></script>
+{% end %}
+
+{% block content %}
+
+<div>
+    <a class="btn btn-primary" href="javascript:;" onclick="sorting('/admin/board/{{board.id}}/pins/sort')">Update</a>
+</div>
+<ul id="sortable" class="listable">
+    {%set count=0%}
+    {%for pin in pins%}
+    {%set count+=1%}
+    <li class="ui-state-default" data-id="{{pin.id}}"><span>{{count}}: </span><span><a href="/pin/{{pin.id}}">{{pin.title}}</a></span>
+        <span class="pull-right"><a href="/admin/pin/{{pin.id}}/delete">Delete</a></span>
+    </li>
+    {%end%}
+</ul>
+
+
+
+{% end %}
+
+{%block admin_sidebar%}
+
+<ul>
+    <li><a href="/admin/board/{{board.id}}/newpins/douban" >New pins from douban.com</a></li>
+
+<li><a href="/admin/board/{{board.id}}/clear" onClick="return  confirm('{{_('sure delete this link?')}}');" >Clear Board Pins</a></li>
+</ul>
+
+{% module ProfileSidebar(people) %}
+
+
+
+{% end %}
+
+
+{% block afterjs %}
+
+<script>
+$(function() {
+    $( "#sortable" ).sortable({
+        update: function( event, ui ) {
+        },
+    });
+    $( "#sortable" ).disableSelection();
+});
+</script>
+
+{%end%}

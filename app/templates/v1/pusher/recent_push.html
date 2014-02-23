@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <div class="jumbotron">
+  <h1>时光推 <small>TimePusher</small> </h1>
+  <p>可以方便、快捷地获得你关心的最新资讯、信息等</p>
+  <p>可以推送Text文字到你的手机上</p>
+  <p><a class="btn btn-success btn-lg" role="button" href="/pusher/new">Create Push Text</a></p>
+
+  <p><a class="btn btn-success btn-lg" role="button" href="/pusher/channel/new">Create Channel</a></p>
+</div>
+ 
+<div class="page-header">
+  <h2>Pushed Text</h2>
+
+    
+    <div class="table-responsive">
+        <table class="table table-hover">
+        {%set rowid=1%}
+        {%for text in texts%}
+           <tr><td>#{{rowid}}</td><td>{{markup(text.content)}}</td></tr>
+        {%set rowid=rowid+1%}
+        {%end%}
+
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

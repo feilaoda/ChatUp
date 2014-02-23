@@ -1,0 +1,10 @@
+<div class="box front-half-box">
+    <div class="half-box-title label label-title">{{channel.title}}</div>
+    <div class="">
+        <ul>
+        {%for entry in entries%}
+        <li><a href="{{entry.url}}">{{entry.title}}</a></li>
+        {%end%}
+        </ul>
+    </div>
+</div>

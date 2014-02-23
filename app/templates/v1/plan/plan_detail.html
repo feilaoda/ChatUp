@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Plan") }}{% end %}
+
+{% block content %}
+<div class="row">
+    {{plan.title}}
+    {{plan.description or ''}}
+
+    {% if plan_group %}
+        {{plan_group.title}}
+    {% end %}
+
+    <a href="/plan/{{plan.id}}/addtime">AddTime</a>
+
+    {% for time in plan_times %}
+        {{time.title or ''}}
+        {{time.cron_period}}
+        {{time.cron_week or '' }}
+        {{time.cron_time or '' }}
+
+        <a href="/plan/{{plan.id}}/edittime/{{time.id}}">EditTime</a>
+        <br/>
+    {% end %}
+
+
+    <a href="/plan/{{plan.id}}/edit">Edit</a>
+</div>
+{% end %}
+
+

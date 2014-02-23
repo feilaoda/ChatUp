@@ -1,0 +1,60 @@
+{% extends "admin/admin.html" %}
+
+{% block subtitle %}{{ resource.title }}{% end %}
+
+
+
+{% block content %}
+<div class="screen clearfix">
+<h1><a href="{{resource.resource_url}}" target="_blank">{{resource.title}}</a></h1>
+
+<a href="{{resource.original_media}}" target="_blank" class="listen">Downloaded Listen</a>
+<br/>
+
+{%if resource.slow_media is None%}
+<div>
+Slow speed  media is Empty
+</div>
+{%else%}
+<a href="{{resource.slow_media}}" target="_blank" class="listen">Slow Listen</a>
+<br/>
+{%end%}
+
+
+{%if resource.media is None%}
+<div>
+Normal speed  media is Empty
+</div>
+{%else%}
+<a href="{{resource.media}}" target="_blank" class="listen">Normal Listen</a>
+<br/>
+{%end%}
+
+<br/>
+<a class="btn btn-primary btn-small" href="/admin/english/resource/{{resource.id}}/upload" class="listen">Upload Media</a>
+
+
+
+<div class="learn-guide">
+<p>
+{{resource.description}}
+</p>
+</div>
+
+</div>
+
+
+{% end %}
+
+
+{%block sidebar%}
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+{% module ChannelListSidebar() %}
+
+{% end %}
+
+
+

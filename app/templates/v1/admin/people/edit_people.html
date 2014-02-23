@@ -1,0 +1,49 @@
+{% extends "admin/people/people.html" %}
+
+
+{% block subtitle %} Show all peoples{% end %}
+
+
+
+{% block content %}
+
+<div class="screen">
+    
+<div class="box-container">
+        <div class="box-header">
+            <h2>{{ _("Edit Profile") }}</h2>
+        </div>
+        <div class="box-content">
+        <form action="" method="post" class="ui-box-container">
+            {{ xsrf_form_html() }}
+            <div class="control-group control-required">
+                <img src="{{people.get_avatar(48)}}" width="48" height="48" />
+                <h1 class="fn-text">{{people.username or ''}}</h1>
+                Status: {%if people.status==1%}Deleted{%else%}Ok{%end%}
+            </div>
+
+          
+            <div class="control-group control-required">
+                <label class="control-label" for="description">{{ _("Description") }}</label>
+                <textarea class="input-maxlarge" name="description" rows="5">{{people.description or ''}}</textarea>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                    <input type="checkbox" class="control-text input-maxlarge" name="status" {%if people.status==1%}checked{%end%}>
+                    {{_("Delete user?")}}
+                    </label>
+                </div>
+        </div>
+
+
+            <div class="control-group control-required">
+                <button class="btn">{{_("Save")}}</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+</div>
+{% end %}

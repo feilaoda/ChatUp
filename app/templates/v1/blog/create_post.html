@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Post") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <legend>{{_("New Post")}}</legend> 
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("title") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="title" required value="{{post.title or ''}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="content">{{ _("content") }}</label>
+            <div class="controls">
+                <textarea class="control-text input-xxxlarge" rows="10" name="content">{{post.content or ''}}</textarea>
+                
+            </div>
+        </div>
+
+        
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/blog" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+       
+        
+    </form>
+
+</div>
+{% end %}
+
+

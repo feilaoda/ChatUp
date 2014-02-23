@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+ 
+<div class="page-header">
+  <h2>{{channel.title}}</h2>
+
+    {% module PushChannelTemplate(channel, data) %}
+    
+
+</div>
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

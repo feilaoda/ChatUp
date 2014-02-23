@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{_("Account")}}{% end %}
+
+{% block afterstyle %}
+<style type="text/css">
+    
+    @media screen and (max-width: 480px) {
+        textarea {
+            width: 90%;
+        }
+    }
+</style>
+{% end %}
+
+{% block content %}
+<div class="screen">
+    <div class="box-container">
+        <div class="box-header">
+            <h2>{{ _("Edit Profile") }}</h2>
+        </div>
+        <div class="box-content">
+        <form action="" method="post" class="ui-box-container">
+            {{ xsrf_form_html() }}
+            <div class="horizontal">
+            <div class="control-group control-required">
+                <img src="{{current_user.get_avatar(48)}}" width="48" height="48" />
+                <h1 class="fn-text">{{current_user.username or ''}}</h1>
+            </div>
+
+            <div class="control-group control-required">
+                <label class="control-label" for="email">{{ _("Email") }}</label>
+                <div class="controls">
+                <input type="email" class="input-xxlarge" name="email" value="{{current_user.email or ""}}" />
+                </div>
+            </div>
+
+            <div class="control-group control-required">
+                <label class="control-label" for="description">{{ _("Description") }}</label>
+                <div class="controls">
+                <textarea class="input-xxlarge" name="description" rows="5">{{current_user.description or ''}}</textarea>
+                </div>
+            </div>
+
+            
+
+            <div class="control-group control-required">
+                <div class="controls">
+                <button class="btn btn-primary btn-small">{{_("Save")}}</button>
+                </div>
+            </div>
+             </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+{% end %}
+
+{% block sidebar %}
+
+{% if current_user %}
+    {% module ProfileSidebar(current_user) %}
+{% end %}
+
+<div class="box-container">
+    <div class="box-content">
+        <a href="/account/password" class="btn btn-small">{{ _("Change Password") }}</a>
+    </div>
+    <div class="box-content">
+        <a href="/account/setting/avatar" class="btn btn-small">{{ _("Change Avatar") }}</a>
+    </div>
+</div>
+{% if current_user.role == 1 %}
+<div class="box-container">
+    <div class="ui-box-header warn">
+        <h4>{{_("Account")}}</h4>
+    </div>
+    <div class="ui-box-container">
+        <p>Your account is not active now, please verify your Email right now.</p>
+    </div>
+    <form action="/account/signup" class="ui-box-footer" method="post">
+        {{ xsrf_form_html() }}
+        <input type="hidden" name="action" value="email" />
+        <button class="ui-btn">{{_("Verify Account")}}</button>
+    </form>
+</div>
+{% end %}
+{% end %}
+
+{%block afterjs%}
+<script type="text/javascript">
+jQuery(document).ready(function(){
+
+    $('input:radio[name="stat_type"]').change(function(){
+        if($(this).val() == '2'){
+            $("#stat_date").show();
+        }else{
+            $("#stat_date").hide();
+        }
+    });
+
+    $('#datepicker').datepicker();
+
+});
+</script>
+
+{%end%}

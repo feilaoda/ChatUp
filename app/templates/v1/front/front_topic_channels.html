@@ -1,0 +1,15 @@
+{%set topic_channel_count=len(topic_channels)%}
+{%for i in range((topic_channel_count+1)/2)%}
+<div class="box-container front">
+    <ul>
+        <li>
+            {% module ShowFrontTopicChannel(topic_channels[i*2]) %}
+        </li>
+        {%if i*2+1 < topic_channel_count %}
+        <li>
+            {% module ShowFrontTopicChannel(topic_channels[i*2+1]) %}
+        </li>
+        {%end%}
+    </ul>
+</div>
+{%end%}

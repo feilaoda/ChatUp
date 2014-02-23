@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Signin") }}{% end %}
+
+{% block afterstyle %}
+<link rel="canonical" href="{{g.siteurl}}/account/signin" />
+{% end %}
+
+{% block content %}
+    
+<div class="screen clearfix">
+    <div>
+        <h3>Login in Error</h3>
+        <div>
+            Try Again <a href="/account/weibo/auth">Weibo</a>
+        </div>
+    </div>
+</div>
+
+{% end %}
+

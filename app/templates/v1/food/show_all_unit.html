@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("health note") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <h1></h1>
+    <table border=1 border-spacing=1>
+    
+    {%for unit in pagination.items%}
+    <tr style="border-top: 1px solid #000; padding: 10px;">
+        <td>(1{{unit.unit}}) </td>
+        <td><a href="/food/unit/{{unit.id}}">{{unit.name}}<a></td>
+        <td>
+            <ul>
+                {%for item in unit.items%}
+                {%if item.ingredient%}
+                    <li>{{item.weight}}(g) 
+                        <a href="/food/unit/item/{{item.id}}/edit">{{item.ingredient.name}}</a>  </li>
+                {%end%}
+                {%end%}
+            </ul>
+        </td>
+        <td><a href="/food/unit/{{unit.id}}">Edit<a></td>
+    </tr>
+        
+            
+            
+    {%end%}
+    
+    </table>
+</div>
+{% end %}
+
+
+{%block sidebar %}
+<a href="/food/unit/new">Add Food Unit</a>
+
+{% end %}
+
+

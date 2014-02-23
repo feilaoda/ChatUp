@@ -1,0 +1,21 @@
+{% extends "admin/admin.html" %}
+
+{% block header %}
+<div class="screen">
+<a href="/admin">Admin</a> / <a href="/admin/movie">Movie</a>
+</div>
+{% end %}  
+
+
+{%block admin_sidebar%}
+
+
+
+
+<div class="dragMarklet">
+<a href="javascript:function keepcdreadlistdotcom(){var d=document,z=d.createElement('scr'+'ipt'),b=d.body,l=d.location;try{if(!b)throw(0);d.title='(Saving...) '+d.title;z.setAttribute('src','http://www.keepcd.com/readlist/api/adding?u='+encodeURIComponent(l.href)+'&t='+(new Date().getTime()));b.appendChild(z);}catch(e){alert('请等待页面加载完毕.');}}keepcdreadlistdotcom();void(0)"
+class="hotlight" onclick="return show_bookmarklet();"  title="留着，以后读">Save To KeepCD</a>
+            
+<span>← <span>拖拽到浏览器标签拦上</span></span>                
+</div> 
+{%end%}

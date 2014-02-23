@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Group") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <ul>
+        {% for group in groups %}
+        <li><a href="/group/{{group.id}}">{{group.title}}</a></li>
+        {% end %}
+    </ul>
+
+</div>
+{% end %}
+
+{% block sidebar %}
+    <a href="/group/new" data-toggle="modal" class="">{{ _("New Group") }}</a>
+{% end %}
+
+

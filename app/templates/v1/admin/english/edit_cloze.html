@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("English Cloze") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("English Cloze")}}</legend>
+    
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("Title") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="title"  value="{{cloze.title or ''}}">
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <label class="control-label" for="cloze">{{ _("cloze") }}</label>
+            <div class="controls">
+         
+            <textarea class="control-text input-xxxlarge" rows="20" name="cloze" required >{{cloze.cloze or ''}}</textarea>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="answer">{{ _("answer") }}</label>
+            <div class="controls">
+            <textarea class="control-text input-xxxlarge" rows="20" name="answer" required >{{cloze.answer or ''}}</textarea>
+            </div>
+        </div>
+        
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-small">{{ _("Submit") }}</button>
+            <a href="/admin/english/{{channel.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+         
+    </form>
+
+</div>
+{% end %}
+
+

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("note") }}{% end %}
+
+{% block content %}
+<div class="row">
+    <legend>{{_("note")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+        {% module NoteForm(note,note_content) %}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/note/{{note.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+
+    </form>
+</div>
+{% end %}
+
+
