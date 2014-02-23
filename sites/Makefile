@@ -136,6 +136,16 @@ libjs:
 	uglifyjs -nc $(HOME)/vendor/waterfall/js/woo.js >> $(STATIC)/assets/js/waterfall.min.js
 	uglifyjs -nc $(HOME)/vendor/waterfall/js/masnunit.js >> $(STATIC)/assets/js/waterfall.min.js
 
+	uglifyjs -nc $(HOME)/static/javascripts/yepnope.js > $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/flotr2/flotr2.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/flotr2/js/plugins/handles.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/bonzo/bonzo.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/envision.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/soundmanager2.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/bitfinance.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/financechart.js >> $(STATIC)/assets/js/finance.min.js
+
+	uglifyjs -nc $(HOME)/static/javascripts/socket.io.js > $(STATIC)/assets/js/socket.io.min.js
 
 	uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 
