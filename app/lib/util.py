@@ -150,6 +150,18 @@ def timesince(value, locale='en_US'):
         return _('%s minutes ago') % (delta.seconds / 60)
     return _('just now')
 
+def seconds_since(seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    r = ""
+    if h > 0:
+        r += "%dh" % h
+    if m > 0:
+        r += "%2dm" % m
+    if s >= 0:
+        r += "%2ds" % s
+    return r
+    
 
 
 

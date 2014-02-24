@@ -96,7 +96,7 @@ def create_application():
 
 
 
-    from app.lib.util import xmldatetime,xmlday, localtime, timesince, linkto
+    from app.lib.util import xmldatetime,xmlday, localtime, timesince, linkto, seconds_since
     from app.lib.urls import topic_url, build_url, build_image_url
     from app.lib.filters import markup
     from dojang.escape import simple_escape, html_escape, br_escape
@@ -114,6 +114,8 @@ def create_application():
     application.register_filter('xmlday', xmlday)
     application.register_filter('localtime', localtime)
     application.register_filter('timesince', timesince)
+    
+    application.register_filter('seconds_since', seconds_since)
     application.register_filter('topic_url', topic_url)
     
     application.register_filter('url_encode', urlencode)

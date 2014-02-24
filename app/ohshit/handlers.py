@@ -26,15 +26,20 @@ class NewOhmyHandler(UserHandler):
     
     @require_user
     def get(self):
-        people_id = self.current_user.id
-        oh = Ohmy()
-        oh.start = datetime.utcnow()
-        oh.end = datetime.utcnow()
-        oh.people_id = people_id
-        oh.day = oh.start.strftime('%Y-%m-%d %H:%M:%S')
-        db.session.add(oh)
-        db.session.commit()
-        self.render('ohshit/create_oh.html', oh=oh)
+        oh_id = self.get_argument('id', None)
+        if oh_id is None:
+            people_id = self.current_user.id
+            oh = Ohmy()
+            oh.start = datetime.utcnow()
+            oh.end = datetime.utcnow()
+            oh.people_id = people_id
+            oh.day = oh.start.strftime('%Y-%m-%d %H:%M:%S')
+            db.session.add(oh)
+            db.session.commit()
+            return self.redirect('/ohshit/new?id=%d' % oh.id)
+        else:
+            oh = Ohmy.query.filter_by(id=oh_id).first_or_404()
+            self.render('ohshit/create_oh.html', oh=oh)
 
     @require_user
     def post(self):
@@ -48,11 +53,21 @@ class NewOhmyHandler(UserHandler):
         db.session.commit()
         return self.redirect('/ohshit')
 
+class DeleteOhmyHandler(UserHandler):
+    @require_user
+    def get(self, id):
+        oh = Ohmy.query.filter_by(id=id).first()
+        if oh:
+            db.session.delete(oh)
+            db.session.commit()
+        return self.redirect('/ohshit')
+
+
 
 class ShowOhmylListHandler(UserHandler):
     @require_user
     def get(self):
-        ohlist = Ohmy.query.filter_by(people_id=self.current_user.id).all()
+        ohlist = Ohmy.query.filter_by(people_id=self.current_user.id).order_by('-id').all()
 
         self.render('ohshit/show_oh_list.html', ohlist=ohlist)
 
@@ -60,6 +75,7 @@ class ShowOhmylListHandler(UserHandler):
 app_handlers = [
     url('', ShowOhmylListHandler, name='ohshit'),
     url('/new', NewOhmyHandler, name='new-ohshit'),
+    url('/delete/(\d+)', DeleteOhmyHandler, name='delete-ohshit'),
 ]
 
 

@@ -5,21 +5,22 @@
  
  <div class="jumbotron">
   <h1>Oh...</h1>
-  <p><a class="btn btn-success btn-lg" role="button" href="/ohshit/new">Start Oh ...</a></p>
+  <p><a class="btn btn-success btn-lg" role="button" href="/ohshit/new">开始 Oh...</a></p>
 </div>
 
 
 <div class="page-header">
     <div class="table-responsive">
-      <ul>
+         <table class="table table-hover">
       {%for oh in ohlist%}
-      <li>
-        {{oh.duration}}s
-        {{localtime(oh.start)}}
-        {{localtime(oh.end)}}
-        </li>
+      <tr>
+        <td>{{oh.duration}} / {{seconds_since(oh.duration)}}</td>
+        <td>{{localtime(oh.start)}}</td>
+        <td>{{localtime(oh.end)}}</td>
+        <td><a href="/ohshit/delete/{{oh.id}}" class="btn btn-danger btn-sm">{{_("delete")}}</a></td>
+        </tr>
       {%end%}
-      </ul>
+    </table>
     </div>
 </div>
 
