@@ -26,46 +26,8 @@ except ImportError:
     print('Development of chatup')
 
 
-# reset_option('debug', True, type=bool)
-# reset_option('autoescape', None)
-# reset_option('login_url', '/account/signin', type=str)
-reset_option('template_path', os.path.join(PROJDIR, "templates/chatup"))
+reset_option('template_path', os.path.join(PROJDIR, "templates/v2"))
 reset_option('locale_path', os.path.join(PROJDIR, 'locale'))
-#reset_option('default_locale', 'zh-CN', type=str)
-# # # site config
- 
-# # reset_option('sitefeed', '/feed')
-
-# reset_option('static_path', os.path.join(PROJDIR, 'static'))
-# reset_option('static_url_prefix', '/static/', type=str)
-
-
-# reset_option('mobile_ua_ignores', [], type=list)
-# reset_option('search_ua_strings', [], type=list)
-# # factor config
-# # reset_option('reply_factor_for_topic', 600, type=int)
-# # reset_option('reply_time_factor', 1000, type=int)
-# # reset_option('up_factor_for_topic', 1500, type=int)
-# # reset_option('up_factor_for_user', 1, type=int)
-# # reset_option('down_factor_for_topic', 800, type=int)
-# # reset_option('down_factor_for_user', 1, type=int)
-# # reset_option('accept_reply_factor_for_user', 1, type=int)
-# # reset_option('up_max_for_user', 10, type=int)
-# # reset_option('down_max_for_user', 4, type=int)
-# # reset_option('vote_max_for_user', 4, type=int)
-# # reset_option('promote_topic_cost', 100, type=int)
-
-# # third party support config
-# reset_option('gravatar_base_url', "http://www.gravatar.com/avatar/")
-# reset_option('gravatar_extra', '')
-# reset_option('recaptcha_key', '')
-# reset_option('recaptcha_secret', '')
-# reset_option('recaptcha_theme', 'clean')
-# reset_option('emoji_url', '')
-
-# # image backend
-# # reset_option('image_backend', 'app.front.backends.LocalBackend')
-# reset_option('redis_clients', {}, type=dict)
 
 
 def create_application():
@@ -109,7 +71,7 @@ def create_application():
     application.register_app('app.wepusher.handlers.app')
     application.register_api('app.wepusher.api.app', options.api_domain)
     
-
+    application.register_app('app.ohshit.handlers.app')
 
     #http://www.xxx.com/api/v1/account/xxx
     application.register_api('app.account.api.app', options.api_domain)

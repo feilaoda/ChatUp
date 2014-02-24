@@ -5,8 +5,6 @@ import json
 import os
 import urllib2
 
-from dojang.util import parse_config_file, create_token
-from tornado.options import options 
 
 
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
@@ -20,6 +18,9 @@ except ImportError:
     site.addsitedir(ROOTDIR + "/../app")
     
     print('Development of Chatup')
+
+from dojang.util import parse_config_file, create_token
+from tornado.options import options 
 
 
 def create_db():
@@ -39,7 +40,7 @@ def create_db():
     # import topic.models
     # import group.models
     # import shot.models
-    import push.models
+    import ohshit.models
     # import english.models
     # import sound.models
     # import blog.models
