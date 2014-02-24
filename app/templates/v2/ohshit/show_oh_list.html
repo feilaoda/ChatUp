@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+ 
+ <div class="jumbotron">
+  <h1>Oh...</h1>
+  <p><a class="btn btn-success btn-lg" role="button" href="/ohshit/new">Start Oh ...</a></p>
+</div>
+
+
+<div class="page-header">
+    <div class="table-responsive">
+      <ul>
+      {%for oh in ohlist%}
+      <li>
+        {{oh.duration}}s
+        {{localtime(oh.start)}}
+        {{localtime(oh.end)}}
+        </li>
+      {%end%}
+      </ul>
+    </div>
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

@@ -131,7 +131,7 @@ def xmlday(value):
 
 def localtime(value, timezone=8):
     value = value + datetime.timedelta(hours=timezone)
-    return value.strftime('%Y-%m-%d %H:%M')
+    return value.strftime('%Y-%m-%d %H:%M:%S')
 
 
 def timesince(value, locale='en_US'):
