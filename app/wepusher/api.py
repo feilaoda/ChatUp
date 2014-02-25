@@ -35,7 +35,7 @@ class GetGroupListHandler(SimpleApiHandler):
             group_list.append(group.to_dict())
         return self.render_json(data=group_list)
 
-class GetGroupHandler(SimpleApiHandler):
+class GetChannelListHandler(SimpleApiHandler):
     # @apiauth
     def get(self):
         group_id = self.get_argument('group_id')
@@ -48,8 +48,8 @@ class GetGroupHandler(SimpleApiHandler):
 
 
 
-class GetChannelListHandler(GetGroupHandler):
-    pass
+# class GetChannelListHandler(GetGroupHandler):
+#     pass
 
     # # @apiauth
     # def get(self):
@@ -83,7 +83,7 @@ class GetChannelHandler(SimpleApiHandler):
 api_handlers = [
     #/v1/topic/timeline?node_name=xx
     url('/group_list.json', GetGroupListHandler),
-    url('/group.json', GetGroupHandler),
+    url('/group.json', GetChannelListHandler),
     url('/channel_list.json', GetChannelListHandler),
     url('/channel.json', GetChannelHandler),
 ]

@@ -50,7 +50,7 @@ class PushChannel(db.Model):
         r['name'] = self.name
         r['title'] = self.title
         r['summary'] = self.summary
-        r['update_at'] = self.update_at
+        r['update_at'] = self.update_at.strftime('%Y-%m-%d %H:%M:%S')
         # if self.format is not None:
         #     r['format'] = self.format
         return r
@@ -69,7 +69,7 @@ class PushChannelText(db.Model):
         r['id'] = self.id
         r['format'] = self.format
         r['content'] = self.content
-        r['create_at'] = self.create_at
+        r['create_at'] = self.create_at.strftime('%Y-%m-%d %H:%M:%S')
 
 class PushText(db.Model):
     id = Column(Integer, primary_key=True)
