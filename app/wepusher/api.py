@@ -5,6 +5,7 @@ import logging
 import os
 import time
 import json
+import cPickle
 
 from app.account.decorators import require_user, apiauth
 from app.account.lib import SimpleApiHandler, CheckMixin
@@ -68,14 +69,12 @@ class GetChannelHandler(SimpleApiHandler):
         channel = PushChannel.query.filter_by(id=channel_id).first_or_404()
         channel.summary = ""
         channel_data = complex_cache.get("app_"+channel.name)
-        print channel_data
         if channel_data is not None:
-
-            channel_json_data = json.loads(channel_data)
+            channel_cache_data = cPickle.loads(channel_data)
             # if(channel_json_data['format'] == 'json'):
                 # data = channel_json_data['data']
-            channel.summary = channel_json_data
-            channel.format = 'json'
+            channel.summary = channel_cache_data
+            channel.format = 'text'
 
         channel_texts = []
         channel_texts.append(channel.to_dict())
