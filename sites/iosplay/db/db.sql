@@ -321,3 +321,112 @@ CREATE TABLE IF NOT EXISTS `weibo` (
   KEY `ix_weibo_people_id` (`people_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+
+
+
+
+
+DROP TABLE IF EXISTS `oh_my`;
+CREATE TABLE IF NOT EXISTS `oh_my` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `people_id` int(11) NOT NULL,
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `duration` int(11) DEFAULT '0',
+  `day` varchar(10) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_oh_shit_people_id` (`people_id`),
+  KEY `ix_oh_shit_day` (`day`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `push_channel`
+--
+
+DROP TABLE IF EXISTS `push_channel`;
+CREATE TABLE IF NOT EXISTS `push_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `description` text,
+  `group_id` int(11) DEFAULT NULL,
+  `people_id` int(11) NOT NULL,
+  `tag` varchar(200) DEFAULT NULL,
+  `permission` int(11) DEFAULT NULL,
+  `summary` text,
+  `token` varchar(64) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_push_channel_permission` (`permission`),
+  KEY `ix_push_channel_creator_id` (`people_id`),
+  KEY `ix_push_channel_title` (`title`),
+  KEY `ix_push_channel_group_id` (`group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `push_channel_text`
+--
+
+DROP TABLE IF EXISTS `push_channel_text`;
+CREATE TABLE IF NOT EXISTS `push_channel_text` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `channel_id` int(11) NOT NULL,
+  `content` text,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_push_channel_text_channel_id` (`channel_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `push_group`
+--
+
+DROP TABLE IF EXISTS `push_group`;
+CREATE TABLE IF NOT EXISTS `push_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `description` text,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_push_group_title` (`title`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `push_text`
+--
+
+DROP TABLE IF EXISTS `push_text`;
+CREATE TABLE IF NOT EXISTS `push_text` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `people_id` int(11) NOT NULL,
+  `content` text,
+  `sync` int(11) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_push_text_sync` (`sync`),
+  KEY `ix_push_text_people_id` (`people_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+
+
+
+
+
+
+
+
+
+

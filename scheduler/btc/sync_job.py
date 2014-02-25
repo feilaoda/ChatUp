@@ -28,16 +28,26 @@ def sync_channel_btc():
     coin_sets= redis_client.hgetall(BTC_CHANNEL)
     coin_prices = dict()
     summary = ""
+    app_res = []
     for name in coin_sets.keys():
         value = coin_sets[name]
         value = json.loads(value)
         coin_prices[name] = value
         summary += name + ": " +value['currency']+ str(value['last']) + "\n"
+        #for ios app
+        res = name + ":" + value['currency']+ str(value['last']) \
+            + ", low:"+value['currency'] + str(value['low']) \
+            + ", time:" + str(value['time'])
+        app_res.append(res)
+
     data = dict()
     data['format'] = 'json'
     data['data'] = coin_prices
 
-    redis_client.set("detail_"+BTC_CHANNEL, json.dumps(data))
+    #for web
+    redis_client.set("web_"+BTC_CHANNEL, json.dumps(data))
+    #for app
+    redis_client.set("app_"+BTC_CHANNEL, json.dumps(app_res))
 
     ch = redis_client.hget(LIST_CHANNELS, BTC_CHANNEL)
     if ch is not None:
@@ -54,16 +64,22 @@ def sync_channel_ltc():
     coin_sets= redis_client.hgetall(LTC_CHANNEL)
     coin_prices = dict()
     summary = ""
+    app_res = []
     for name in coin_sets.keys():
         value = coin_sets[name]
         value = json.loads(value)
         coin_prices[name] = value
         summary += name + ": " +value['currency']+ str(value['last']) + "\n"
+        res = name + ":" + value['currency']+ str(value['last'])  \
+            + ", low:"+value['currency'] + str(value['low']) \
+            + ", time:" + str(value['time'])
+        app_res.append(res)
     data = dict()
     data['format'] = 'json'
     data['data'] = coin_prices
 
-    redis_client.set("detail_"+LTC_CHANNEL, json.dumps(data))
+    redis_client.set("web_"+LTC_CHANNEL, json.dumps(data))
+    redis_client.set("app_"+LTC_CHANNEL, json.dumps(app_res))
 
     ch = redis_client.hget(LIST_CHANNELS, LTC_CHANNEL)
     if ch is not None:

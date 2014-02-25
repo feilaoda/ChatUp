@@ -74,13 +74,13 @@ class NewPushTextHandler(UserHandler):
 
 
 
-class NewPushChannelHandler(UserHandler):
+class NewChannelHandler(UserHandler):
     
     @require_user
     def get(self):
         people_id = self.current_user.id
-        
-        self.render('wepusher/create_channel.html')
+        groups = PushGroup.query.all()
+        self.render('wepusher/create_channel.html', groups=groups)
 
     @require_user
     def post(self):
@@ -88,14 +88,40 @@ class NewPushChannelHandler(UserHandler):
         name = self.get_argument('name')
         title = self.get_argument('title')
         description = self.get_argument('description')
+        group_id = self.get_argument('group_id', None)
         channel = PushChannel()
         channel.people_id = people_id
+        channel.group_id = group_id
         channel.name = name
         channel.title = title
         channel.description = description
         channel.permission = 0;
         channel.token = create_token(32)
         channel.create_at = datetime.utcnow()
+        db.session.add(channel)
+        db.session.commit()
+        return self.redirect('/wepusher/group/%s' % group_id)
+
+
+
+class EditChannelHandler(UserHandler):
+    
+    @require_user
+    def get(self, id):
+        people_id = self.current_user.id
+        channel = PushChannel.query.filter_by(id=id).first_or_404()
+        self.render('wepusher/edit_channel.html', channel=channel)
+
+    @require_user
+    def post(self, id):
+        people_id = self.current_user.id
+        name = self.get_argument('name')
+        title = self.get_argument('title')
+        description = self.get_argument('description')
+        channel = PushChannel.query.filter_by(id=id).first_or_404()
+        channel.name = name
+        channel.title = title
+        channel.description = description
         db.session.add(channel)
         db.session.commit()
         return self.redirect('/wepusher/channel')
@@ -108,7 +134,7 @@ class ShowChannelHandler(UserHandler):
         people_id = self.current_user.id
         channel = PushChannel.query.filter_by(id=channel_id).first_or_404()
 
-        channel_data = complex_cache.get("detail_"+channel.name)
+        channel_data = complex_cache.get("web_"+channel.name)
 
         if(channel_data is not None):
             channel_data = json.loads(channel_data)
@@ -187,7 +213,6 @@ class NewPushGroupHandler(UserHandler):
 class ShowGroupHandler(UserHandler):
     
     def get(self, group_id):
-        people_id = self.current_user.id
         group = PushGroup.query.filter_by(id=group_id).first_or_404()
         channels = PushChannel.query.filter_by(group_id=group_id).all()
 
@@ -212,9 +237,7 @@ class SyncPushTextHandler(SimpleApiHandler):
 class ShowChannelHandler(UserHandler):
     
     def get(self, channel_id):
-        people_id = self.current_user.id
         channel = PushChannel.query.filter_by(id=channel_id).first_or_404()
-
         channel_data = complex_cache.get("detail_"+channel.name)
 
         if(channel_data is not None):
@@ -248,8 +271,9 @@ app_handlers = [
     url('/group/new', NewPushGroupHandler, name='new-push-group'),
     url('/group/(\d+)', ShowGroupHandler, name='show-push-group'),
     url('/channel', ShowChannelListHandler, name='list-push-channel'),
-    url('/channel/new', NewPushChannelHandler, name='new-push-channel'),
+    url('/channel/new', NewChannelHandler, name='new-push-channel'),
     url('/channel/(\d+)', ShowChannelHandler, name='show-push-channel'),
+    url('/channel/(\d+)/edit', EditChannelHandler, name='edit-push-channel'),
 ]
 
 

@@ -50,7 +50,8 @@ class PushChannel(db.Model):
         r['name'] = self.name
         r['title'] = self.title
         r['summary'] = self.summary
-        r['update_at'] = self.update_at.strftime('%Y-%m-%d %H:%M:%S')
+        if self.update_at:
+            r['update_at'] = self.update_at.strftime('%Y-%m-%d %H:%M:%S')
         # if self.format is not None:
         #     r['format'] = self.format
         return r

@@ -67,13 +67,15 @@ class GetChannelHandler(SimpleApiHandler):
         channel_id = self.get_argument('channel_id')
         channel = PushChannel.query.filter_by(id=channel_id).first_or_404()
         channel.summary = ""
-        channel_data = complex_cache.get("detail_"+channel.name)
-        if(channel_data is not None):
+        channel_data = complex_cache.get("app_"+channel.name)
+        print channel_data
+        if channel_data is not None:
+
             channel_json_data = json.loads(channel_data)
-            if(channel_json_data['format'] == 'json'):
-                data = channel_json_data['data']
-                channel.summary = json.dumps(data)
-                channel.format = 'json'
+            # if(channel_json_data['format'] == 'json'):
+                # data = channel_json_data['data']
+            channel.summary = channel_json_data
+            channel.format = 'json'
 
         channel_texts = []
         channel_texts.append(channel.to_dict())
