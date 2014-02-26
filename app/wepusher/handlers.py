@@ -238,7 +238,7 @@ class ShowChannelHandler(UserHandler):
     
     def get(self, channel_id):
         channel = PushChannel.query.filter_by(id=channel_id).first_or_404()
-        channel_data = complex_cache.get("detail_"+channel.name)
+        channel_data = complex_cache.get("web_"+channel.name)
 
         if(channel_data is not None):
             channel_data = json.loads(channel_data)
