@@ -5,13 +5,14 @@
  
 
 <div class="page-header">
-  <h1>Group</h1>
+  <h1>{{group.title}}</h1>
     <div class="table-responsive">
         <table class="table table-hover">
         {%set rowid=1%}
         {%for channel in channels%}
            <tr><td><a href="/wepusher/channel/{{channel.id}}">#{{rowid}}</a></td>
             <td><a href="/wepusher/channel/{{channel.id}}">{{markup(channel.title)}}</a></td>
+            <td>{{channel.summary}}</td>
           </tr>
         {%set rowid=rowid+1%}
         {%end%}

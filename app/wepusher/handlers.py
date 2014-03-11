@@ -3,6 +3,7 @@
 from datetime import datetime
 import hashlib
 import json
+import cPickle
 
 from app.account.decorators import require_user, require_admin
 from app.account.lib import UserHandler, SimpleApiHandler
@@ -18,7 +19,7 @@ from tornado.web import UIModule, authenticated
 from tornado.web import URLSpec as url
 
 from .models import PushGroup, PushText, PushChannel
-
+from keynames import *
 
 class RecentPushTextHandler(UserHandler):
     
@@ -76,13 +77,13 @@ class NewPushTextHandler(UserHandler):
 
 class NewChannelHandler(UserHandler):
     
-    @require_user
+    @require_admin
     def get(self):
         people_id = self.current_user.id
         groups = PushGroup.query.all()
         self.render('wepusher/create_channel.html', groups=groups)
 
-    @require_user
+    @require_admin
     def post(self):
         people_id = self.current_user.id
         name = self.get_argument('name')
@@ -215,8 +216,15 @@ class ShowGroupHandler(UserHandler):
     def get(self, group_id):
         group = PushGroup.query.filter_by(id=group_id).first_or_404()
         channels = PushChannel.query.filter_by(group_id=group_id).all()
+        for ch in channels:
+            channel_data = complex_cache.hget(GROUP_CHANNELS, ch.name)
+            if channel_data is not None:
+                print channel_data
+                channel_cache_data = cPickle.loads(channel_data)
+                print channel_cache_data
+                ch.summary = channel_cache_data['summary']
 
-        self.render('wepusher/show_group.html', channels=channels)
+        self.render('wepusher/show_group.html', group=group, channels=channels)
 
 
 class ShowGroupListHandler(UserHandler):

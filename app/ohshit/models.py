@@ -24,6 +24,14 @@ class Ohmy(db.Model):
     day = Column(String(10), index=True)
     create_at = Column(DateTime, default=datetime.utcnow)
 
+    def to_dict(self):
+        r = dict()
+        r['id'] = self.id
+        r['people_id'] = self.people_id
+        r['duration'] = self.duration
+        r['start'] = self.start.strftime('%Y-%m-%d %H:%M:%S')
+        r['end'] = self.end.strftime('%Y-%m-%d %H:%M:%S')
+        return r
 
 class OhStat(db.Model):
     __tablename__="oh_stat"

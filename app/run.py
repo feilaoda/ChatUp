@@ -72,6 +72,7 @@ def create_application():
     application.register_api('app.wepusher.api.app', options.api_domain)
     
     application.register_app('app.ohshit.handlers.app')
+    application.register_api('app.ohshit.api.app', options.api_domain)
 
     #http://www.xxx.com/api/v1/account/xxx
     application.register_api('app.account.api.app', options.api_domain)

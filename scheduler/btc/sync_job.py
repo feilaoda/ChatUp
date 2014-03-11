@@ -14,18 +14,25 @@ import urllib2
 import cPickle
 import redis
 
+from keynames import BTC_CHANNEL, LTC_CHANNEL
+from keynames import BTC_ORIG_CHANNEL, LTC_ORIG_CHANNEL
+# from keynames import BTC_WEB_CHANNEL, LTC_WEB_CHANNEL
+# from keynames import BTC_APP_CHANNEL, LTC_APP_CHANNEL
+
+from keynames import GROUP_CHANNELS, GROUP_CHANNELS_WEB, GROUP_CHANNELS_APP
 
 redis_client =  redis.Redis()
 
-LTC_CHANNEL = "ltc_price"
-BTC_CHANNEL = "btc_price"
-LIST_CHANNELS = "lst:channels"
+
+
+ 
+
 
 def sync_channel_btc():
     now = time.localtime()
     nowstring  = time.strftime("%Y-%m-%d %H:%M:%S", now)
 
-    coin_sets= redis_client.hgetall(BTC_CHANNEL)
+    coin_sets= redis_client.hgetall(BTC_ORIG_CHANNEL)
     coin_prices = dict()
     summary = ""
     app_res = []
@@ -41,28 +48,35 @@ def sync_channel_btc():
             + ", time:" + str(value['time'])
         app_res.append(res)
 
-    data = dict()
-    data['format'] = 'json'
-    data['data'] = coin_prices
+    web_data = dict()
+    web_data['format'] = 'json'
+    web_data['data'] = coin_prices
 
     #for web
-    redis_client.set("web_"+BTC_CHANNEL, json.dumps(data))
+    # redis_client.set(BTC_WEB_CHANNEL, json.dumps(web_data))
     #for app
-    redis_client.set("app_"+BTC_CHANNEL, cPickle.dumps("\n".join(app_res)))
+    # redis_client.set(BTC_APP_CHANNEL, cPickle.dumps("\n".join(app_res)))
 
-    ch = redis_client.hget(LIST_CHANNELS, BTC_CHANNEL)
-    if ch is not None:
-        ch = json.loads(ch)
-        ch['summary'] = summary
-        ch['update_at'] = nowstring
-        print BTC_CHANNEL, "===>" , ch
-        redis_client.hset(LIST_CHANNELS, BTC_CHANNEL, json.dumps(ch))
+    # redis_client.hset(GROUP_CHANNELS_WEB, BTC_CHANNEL, json.dumps(data))
+    # redis_client.hset(GROUP_CHANNELS_APP, BTC_CHANNEL, cPickle.dumps("\n".join(app_res)))
+    ch = dict()
+    ch['name'] = 'ltc'
+    ch['update_at'] = nowstring
+    ch['summary'] = app_res
+    redis_client.hset(GROUP_CHANNELS_APP, BTC_CHANNEL, cPickle.dumps(ch))
+
+    ch['summary'] = web_data
+    redis_client.hset(GROUP_CHANNELS_WEB, BTC_CHANNEL, cPickle.dumps(ch))
+
+    ch['summary'] = summary
+    print BTC_CHANNEL, "===>" , ch
+    redis_client.hset(GROUP_CHANNELS, BTC_CHANNEL, cPickle.dumps(ch))
 
 def sync_channel_ltc():
     now = time.localtime()
     nowstring  = time.strftime("%Y-%m-%d %H:%M:%S", now)
 
-    coin_sets= redis_client.hgetall(LTC_CHANNEL)
+    coin_sets= redis_client.hgetall(LTC_ORIG_CHANNEL)
     coin_prices = dict()
     summary = ""
     app_res = []
@@ -76,20 +90,25 @@ def sync_channel_ltc():
             + ", high:"+value['currency'] + str(value['high']) \
             + ", time:" + str(value['time'])
         app_res.append(res)
-    data = dict()
-    data['format'] = 'json'
-    data['data'] = coin_prices
+    web_data = dict()
+    web_data['format'] = 'json'
+    web_data['data'] = coin_prices
 
-    redis_client.set("web_"+LTC_CHANNEL, json.dumps(data))
-    redis_client.set("app_"+LTC_CHANNEL, cPickle.dumps("\n".join(app_res)))
+    # redis_client.set(LTC_WEB_CHANNEL, json.dumps(web_data))
+    # redis_client.set(LTC_APP_CHANNEL, cPickle.dumps("\n".join(app_res)))
+    
+    ch = dict()
+    ch['name'] = 'ltc'
+    ch['update_at'] = nowstring
+    ch['summary'] = app_res
+    redis_client.hset(GROUP_CHANNELS_APP, LTC_CHANNEL, cPickle.dumps(ch))
+    
+    ch['summary'] = web_data
+    redis_client.hset(GROUP_CHANNELS_WEB, LTC_CHANNEL, cPickle.dumps(ch))
 
-    ch = redis_client.hget(LIST_CHANNELS, LTC_CHANNEL)
-    if ch is not None:
-        ch = json.loads(ch)
-        ch['summary'] = summary
-        ch['update_at'] = nowstring
-        print LTC_CHANNEL, "===>" , ch
-        redis_client.hset(LIST_CHANNELS, LTC_CHANNEL, json.dumps(ch))
+    ch['summary'] = summary
+    print LTC_CHANNEL, "===>" , ch
+    redis_client.hset(GROUP_CHANNELS, LTC_CHANNEL, cPickle.dumps(ch))
 
 
 

@@ -6,6 +6,7 @@ import time
 from lib import fetch_html
 import redis
 
+from keynames import BTC_ORIG_CHANNEL
 
 redis_client =  redis.Redis()
 
@@ -44,5 +45,5 @@ def fetch_ticker(key, url):
 def btc_worker():
     # print "fetch ltc from okcoin job"
     url = "https://www.bitstamp.net/api/ticker/"
-    fetch_ticker("btc_price", url)
+    fetch_ticker(BTC_ORIG_CHANNEL, url)
     

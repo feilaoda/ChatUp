@@ -18,6 +18,7 @@ import wave
 from lib import fetch_html
 import redis
 
+from keynames import BTC_ORIG_CHANNEL, LTC_ORIG_CHANNEL
 
 redis_client =  redis.Redis()
 
@@ -57,11 +58,11 @@ def fetch_ticker(key, url):
 def btc_worker():
     # print "fetch ltc from okcoin job"
     url = "https://www.okcoin.com/api/ticker.do"
-    fetch_ticker("btc_price", url)
+    fetch_ticker(BTC_ORIG_CHANNEL, url)
     
 def ltc_worker():
     # print "fetch ltc from okcoin job"
     url = "https://www.okcoin.com/api/ticker.do?symbol=ltc_cny"
-    fetch_ticker("ltc_price", url)
+    fetch_ticker(LTC_ORIG_CHANNEL, url)
     
 

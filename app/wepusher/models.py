@@ -75,7 +75,8 @@ class PushChannelText(db.Model):
 class PushText(db.Model):
     id = Column(Integer, primary_key=True)
     people_id = Column(Integer, nullable=False, default=0, index=True)
-    content = Column(Text)
+    title = Column(String(200))
+    message = Column(Text)
     sync = Column(Integer, default=0, index=True)
     create_at = Column(DateTime, default=datetime.utcnow)
 
