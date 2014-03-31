@@ -19,7 +19,7 @@ from dojang.cache import complex_cache
 
 from tornado import escape
 from tornado.options import options
-from tornado.web import UIModule 
+from tornado.web import UIModule
 from tornado.web import URLSpec as url
 
 from .models import Ohmy
@@ -77,14 +77,13 @@ class DeleteOhShitHandler(SimpleApiHandler):
         return self.render_json()
 
 api_handlers = [
-    url('/list.json', GetOhShitListHandler),
-    url('/create.json', NewOhShitHandler),
-    url('/update.json', EditOhShitHandler),
-    url('/delete.json', DeleteOhShitHandler),
+    url('/list', GetOhShitListHandler),
+    url('/create', NewOhShitHandler),
+    url('/update', EditOhShitHandler),
+    url('/delete', DeleteOhShitHandler),
 ]
 
 #api.iosplay.com/v1/wepusher/(\d+)
 app = DojangApp(
     'ohshit', __name__, version="v1", handlers=api_handlers
 )
-

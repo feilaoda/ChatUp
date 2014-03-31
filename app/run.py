@@ -12,11 +12,11 @@ from tornado.options import options
 
 
 # import jieba
-# jieba.load_userdict("userdict.txt") 
+# jieba.load_userdict("userdict.txt")
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:
-    # 
+    #
     import site
     site.addsitedir(ROOTDIR)
     import app
@@ -32,7 +32,7 @@ reset_option('locale_path', os.path.join(PROJDIR, 'locale'))
 
 def create_application():
     formencode.api.set_stdtranslation(languages=["en_US"])
-   
+
     settings = dict(
         debug=options['debug'],
         autoescape=options.autoescape,
@@ -45,20 +45,20 @@ def create_application():
         static_url_prefix=options.static_url_prefix,
     )
     #: init application
- 
+
     application = DojangApplication(**settings)
 
 
 
     application.register_app('app.account.handlers.app')
-    
+
     application.register_app('app.people.handlers.app')
     application.register_app('app.node.handlers.app')
     application.register_app('app.topic.handlers.app')
     application.register_app('app.shot.handlers.app')
     application.register_app('app.group.handlers.app')
     application.register_app('app.coins.handlers.app')
-    
+
     application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
     application.register_app('app.admin.topic.handlers.app')
@@ -70,7 +70,8 @@ def create_application():
 
     application.register_app('app.wepusher.handlers.app')
     application.register_api('app.wepusher.api.app', options.api_domain)
-    
+    application.register_api('app.wepusher.api.wepusher_app', options.wepusher_api_domain)
+
     application.register_app('app.ohshit.handlers.app')
     application.register_api('app.ohshit.api.app', options.api_domain)
 
@@ -83,6 +84,7 @@ def create_application():
     #http://api.xxx.com/v1/topic/xxx
     application.register_api('app.topic.api.app', options.api_domain)
 
+    application.register_api('app.thread.api.app', options.api_domain)
 
 
     application.register_app('app.front.handlers.app')
@@ -108,17 +110,17 @@ def create_application():
     application.register_filter('locale', default_locale)
     # application.register_filter('markdown', markdown)
     application.register_filter('markup', markup)
-    
+
     # application.register_filter('normal_markdown', normal_markdown)
     application.register_filter('xmldatetime', xmldatetime)
-    
+
     application.register_filter('xmlday', xmlday)
     application.register_filter('localtime', localtime)
     application.register_filter('timesince', timesince)
-    
+
     application.register_filter('seconds_since', seconds_since)
     application.register_filter('topic_url', topic_url)
-    
+
     application.register_filter('url_encode', urlencode)
     application.register_filter('url', build_url)
     application.register_filter('image_url', build_image_url)
@@ -127,17 +129,17 @@ def create_application():
     application.register_filter('simple_escape', simple_escape)
     application.register_filter('br_escape', br_escape)
     application.register_filter('html_escape', html_escape)
-    
-    
+
+
 
     return application
 
 
 def main():
- 
+
     reload(sys)
 
-    sys.setdefaultencoding('utf8') 
+    sys.setdefaultencoding('utf8')
     init_options()
     # init_caches()
     application = create_application()

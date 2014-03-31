@@ -20,7 +20,7 @@ from dojang.cache import complex_cache
 
 from tornado import escape
 from tornado.options import options
-from tornado.web import UIModule 
+from tornado.web import UIModule
 from tornado.web import URLSpec as url
 
 from .models import PushGroup, PushChannel, PushText
@@ -139,3 +139,7 @@ app = DojangApp(
     'wepusher', __name__, version="v1", handlers=api_handlers
 )
 
+#api.wepusher.com/v1/push.json
+wepusher_app = DojangApp(
+    '', __name__, version="v1", handlers=api_handlers
+)
