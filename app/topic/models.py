@@ -16,13 +16,15 @@ Topic:
 
 """
 
-import time
 from datetime import datetime
+import time
+
+from dojang.database import db
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from sqlalchemy.orm import relationship, backref
-from dojang.database import db
 from tornado.options import options
+
 
 def get_current_impact():
     return int(time.time())

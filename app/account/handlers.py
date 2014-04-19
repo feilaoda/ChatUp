@@ -1,36 +1,38 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
-import os
-import time
+import Image
+import base64
 import datetime
 import hashlib
-import base64
-import tempfile
-import Image
 import logging
+import os
+import tempfile
+import time
+
+from dojang.app import DojangApp
+from dojang.auth.douban import DoubanMixin
+from dojang.auth.github import GithubMixin
+from dojang.auth.recaptcha import RecaptchaMixin
+from dojang.auth.weibo import WeiboMixin
+from dojang.cache import autocache_hdel
+from dojang.database import db
+from dojang.ext import webservice
+from dojang.form import FormSchema
+from dojang.util import to_md5
 import formencode
-from tornado.web import authenticated, asynchronous
-from tornado.web import UIModule, HTTPError
 from tornado.auth import GoogleMixin
 from tornado.options import options
-from dojang.app import DojangApp
-from dojang.database import db
-from dojang.auth.recaptcha import RecaptchaMixin
-from dojang.auth.douban import DoubanMixin
-from dojang.auth.weibo import WeiboMixin
-from dojang.auth.github import GithubMixin
-from dojang.util import to_md5
-from dojang.ext import webservice
-from dojang.cache import autocache_hdel
-from dojang.form import FormSchema
+from tornado.web import UIModule, HTTPError
+from tornado.web import authenticated, asynchronous
 
+from . import validators
+from .decorators import require_user
 from .lib import UserHandler, get_full_notifies
 from .models import People, PeopleSetting, Notify, Weibo
-from .decorators import require_user
-from . import validators
+
 
 class AccountSignupForm(FormSchema):
-    username = formencode.All(validators.Utf8MaxLength(15, messages={"tooLong":u'请输入最多15个字的帐号'}),validators.Utf8MinLength(2, messages={"tooShort":u'请输入至少2个字符的帐号'}),formencode.validators.String(not_empty=True, strip=True, messages={"empty":u"请输入您的昵称"}))
+    username = formencode.All(validators.Utf8MaxLength(15, messages={"tooLong":u'???????????????15???????????????'}),validators.Utf8MinLength(2, messages={"tooShort":u'???????????????2??????????????????'}),formencode.validators.String(not_empty=True, strip=True, messages={"empty":u"?????????????????????"}))
     
 
 class EmailMixin(object):

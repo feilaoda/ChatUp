@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("health note") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <h1>(100g) <a href="/food/ingredient/{{ingredient.id}}">{{ingredient.name}}</a></h1>
+    <ul>
+    {%for nutrient in nutrients%}
+        <li>{{nutrient.name}} {{nutrient.value}} {{nutrient.unit}}
+        </li>
+    {%end%}
+    </ul>
+
+</div>
+{% end %}
+
+
+{%block sidebar %}
+<a href="/food/unit">Food Unit</a>
+{% end %}
+
+

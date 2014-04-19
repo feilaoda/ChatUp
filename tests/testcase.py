@@ -2,7 +2,10 @@
 #!/usr/bin/env python
 import os
 import sys
+
 import formencode
+from keepcd.account import validators
+from keepcd.lib.bbcode import _tests
 
 
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
@@ -18,11 +21,9 @@ except ImportError:
     print('Development of meiban')
 
 
-from keepcd.account import validators
-from keepcd.lib.bbcode import _tests
 
 # print "user"
-# print validators.username("你好3")
-# print validators.nickname(u'你好啊啊')
+# print validators.username("??????3")
+# print validators.nickname(u'????????????')
 
 _tests()

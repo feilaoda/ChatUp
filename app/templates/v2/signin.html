@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Signin") }}{% end %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/md5.min.js')}}"></script>
+<link rel="canonical" href="{{g.siteurl}}/account/signin" />
+
+<script type="text/javascript">
+function md5pwd(){
+    var pwd = $("#password").val();
+    var pwd_md5 = hex_md5(hex_md5(pwd));
+    $("#password_md5").val(pwd_md5);
+    $("#password").val("");
+}
+</script>
+
+
+{% end %}
+
+{% block content %}
+    
+<div class="box-container pinner-x">
+    
+    <legend>{{_("Signin")}}</legend>
+    <form class="form-horizontal" action="" method="post" onsubmit="md5pwd()">
+        {{ xsrf_form_html() }}
+        <div class="control-group control-required">
+            <label class="control-label" for="account">{{ _("Account") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text" name="account" required />
+            </div>
+        </div>
+
+        <div class="control-group control-required">
+            <label class="control-label" for="password">{{ _("Password") }}</label>
+            <div class="controls">
+            <input id="password" type="password" class="control-text" name="password"/>
+            <input id="password_md5" type="hidden" class="control-text" name="password_md5"/>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ _("Signin") }}</button>
+        </div>
+
+        
+    </form>
+
+</div>
+
+{% end %}
+
+{% block sidebar %}
+<div class="box-container pinner-x pinner-y">
+    <div class="box-content">
+        <h4>{{ _("Don't have an account?") }}</h4>
+    </div>
+    <div class="box-content">
+        <a href="/account/signup" class="highlight">{{ _("Free Signup") }}</a>
+    </div>
+    <!-- <a href="/account/weibo/auth" title="{{_('Login with weibo account')}}"><i class="third-auth weibo"></i></a> -->
+     <!-- <a href="/account/douban/auth" title="{{_('Login with douban account')}}"><i class="third-auth douban"></i></a> -->
+</div>
+{% end %}

@@ -1,16 +1,18 @@
-import re
 import datetime
+import re
 
-import tornado.locale
-from tornado import escape
-from tornado.options import options
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import HtmlFormatter
 from dojang.escape import simple_escape, html_escape
+from lib.bbcode import *
+from pygments import highlight
+from pygments.formatters import HtmlFormatter
+from pygments.lexers import get_lexer_by_name
+from tornado import escape
+import tornado.locale
+from tornado.options import options
+
+
 __all__ = ['markup', 'markdown', 'xmldatetime']
 
-from lib.bbcode import *
 
 _emoji_list = [
     "-1", "0", "1", "109", "2", "3", "4", "5", "6", "7", "8", "8ball", "9",

@@ -1,6 +1,7 @@
-import sys
 import os
 import shutil
+import sys
+
 
 me_filename = 'mediaelement'
 mep_filename = 'mediaelementplayer'

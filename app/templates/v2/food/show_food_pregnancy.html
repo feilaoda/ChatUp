@@ -1,0 +1,63 @@
+{% extends "food/base.html" %}
+
+{% block subtitle %}{{_("pregnancy food permission")}}{% end %}
+{%block extra_title%} - {{food_pregnancy.name}}{%end%}
+{%block keywords%}
+<meta name="keywords" content="孕妇饮食禁忌,孕妇不能吃哪些食物,孕妇不能吃什么,怀孕不能吃什么
+,孕妇可以吃{{food_pregnancy.name}}吗?" />
+<meta name="description" content="孕妇饮食禁忌，提供“孕妇不能吃哪些食物”的内容，包括孕妇禁忌食物、孕妇禁忌水果等孕妇不能吃什么的内容。孕妇可以吃{{food_pregnancy.name}}吗?
+" />
+{%end%}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <div class="box-container">
+        <div class="">
+        <h1>{{food_pregnancy.name}}</h1><span class="food-perm-{{food_pregnancy.permission}}">({{_("%s eat" % food_pregnancy.permission)}})</span>
+        <h2 class="hide">{{_("can pregnancy eat food %s?") % food_pregnancy.name}}</h2>
+        <p>{%if food_pregnancy.tips%} {{markup(food_pregnancy.tips)}} {%end%}
+        </p>
+        </div>
+         
+    </div>
+
+    {% module FoodCommentList(food_pregnancy.food_id, page) %}
+
+
+    <div class="box-container">
+    {% if current_user %}
+    <span>{{_("Comment")}}</span><span class="pull-right"><a href="#">Top</a></span>
+    <form action="/food/pregnancy/{{food_pregnancy.id}}/reply" class="ui-box-container" method="post">
+        {{ xsrf_form_html() }}
+        <div id="editor">
+            <div class="control-item" id="editor">
+                <textarea  name="content" class="control-text input-maxlarge" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-small">{{_("Post")}}</button>
+        </div>
+    </form>
+    {% else %}
+    <div class="box-header">
+        {{_("Want to comment ?")}}
+    </div>
+    <div class="box-footer">
+        <a href="/account/signin?next=/food/pregnancy/{{food_pregnancy.id}}" class="ui-btn js-overlay">{{_("Signin")}}</a>
+    </div>
+    {% end %}
+    </div>
+
+    
+
+</div>
+{% end %}
+
+{%block sidebar %}
+
+{% module FoodPregnancySidebar() %}
+
+
+{% end %}
+
+
+

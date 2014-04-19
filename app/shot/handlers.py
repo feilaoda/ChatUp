@@ -1,24 +1,25 @@
-import os
-import formencode
-import tornado.web
-import hashlib
-import time
-import tempfile
 import Image
-from tornado.escape import utf8
-from tornado.web import URLSpec as url
-from tornado.web import UIModule, authenticated
-from tornado.options import options
-from dojang.app import DojangApp
-from dojang.database import db
-from dojang.cache import autocache_get, autocache_set
-from app.account.lib import UserHandler
+import hashlib
+import os
+import tempfile
+import time
 
 from app.account.decorators import require_user
+from app.account.lib import UserHandler
+from app.account.models import People
+from dojang.app import DojangApp
+from dojang.cache import autocache_get, autocache_set
+from dojang.database import db
+import formencode
+from tornado.escape import utf8
+from tornado.options import options
+from tornado.web import UIModule, authenticated
+from tornado.web import URLSpec as url
+import tornado.web
 from weibo import APIClient
 
-from app.account.models import People
 from .models import Shot
+
 
 class CreateShotHandler(UserHandler):
     @require_user

@@ -1,0 +1,43 @@
+
+{%if pagination.total>0%}
+<div class="reply-container">
+    
+    <div class="reply-items">
+    <ul>
+    {% set index = 0 %}
+    {% for reply in pagination.items %}
+    <li id="reply{{reply.id}}" class="reply-item  clearfix">
+    <div class="reply hoverable">
+        <div class="reply-avatar" >
+            <a href="/people/{{reply.people_id}}"><img  src="{{reply.people.get_avatar(48)}}" width="48" height="48" /></a>
+        </div>
+
+        <div class="reply-content">
+            <div class="reply-meta">
+                    <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b></a>
+                    <span class="small pull-right">
+                        <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time>
+                        <a class="hoverable" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('@{{reply.people.username}}')">{{_("Reply")}}</a>
+                    </span>
+            </div>
+            <p>
+                {{markup(reply.content)}}
+            </p>
+        </div>
+    </div>
+    </li>
+    {% end %}
+
+    </ul>
+    </div>
+    {% if pagination.pages > 1%}
+    <div class="box-footer pagination">
+        {% for p in pagination.iter_pages() %}
+        <a href="?p={{p}}">{{p}}</a>
+        {% end %}
+    </div>
+    {%end%}
+</div>
+{%end%}
+
+

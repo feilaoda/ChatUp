@@ -1,0 +1,19 @@
+    {% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Plan") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("Plan")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        {% module PlanTimeForm(plan, plan_time) %}
+        
+    </form>
+
+</div>
+{% end %}
+
+

@@ -1,6 +1,8 @@
 import functools
 import urlparse
+
 from tornado.web import  HTTPError
+
 
 class require_role(object):
     def __init__(self, role):
@@ -54,7 +56,11 @@ def apiauth(method):
     def wrapper(self, *args, **kwargs):
         if not self.current_user:
             # raise HTTPError(403)
-            
+            token = self.get_argument('token', None)
+            if token is None:
+                raise HTTPError(403)
+            people = People.query.filter_by(token=token).first_or_404()
+            self.current_user = people
             return self.render_json(dict(result="403", message="Forbidden"))
         return method(self, *args, **kwargs)
     return wrapper

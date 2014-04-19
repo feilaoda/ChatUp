@@ -1,0 +1,19 @@
+{% extends "admin/people/people.html" %}
+
+
+{% block subtitle %} Show all peoples{% end %}
+
+
+
+{% block content %}
+
+<div class="screen">
+        <ul class="listable">
+            <li><a href="/people/{{people.id}}">{{people.id}} - {{people.username}}</a></li>
+            <li>{{people.email}}</li>
+            <li>{{markup(people.description)}}</li>
+            <li>Status: {%if people.status==1%}Deleted{%else%}Ok{%end%}</li>
+            <li><a href="/admin/people/{{people.id}}/edit" class="pull-right">{{_("edit")}}</a></li>
+        </li>
+</div>
+{% end %}

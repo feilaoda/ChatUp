@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+ <div class="">
+    <a class="btn btn-sm btn-primary" href="/wepusher/group/{{channel.group_id}}">{{_("Reback")}}</a>
+</div>
+<div class="page-header">
+  <h2>{{channel.title}}</h2>
+
+    {% module PushChannelTemplate(channel, data) %}
+    
+
+</div>
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

@@ -1,0 +1,28 @@
+.container,.navbar .container{width:auto;padding:0 10px;}
+.navbar .brand{padding:10px;width:100%;margin:0;text-align:center;}
+.navbar .navbar-inner{padding:0;}
+.navbar .nav{margin:0;}.navbar .nav>li>a{padding:5px 10px 10px;}
+.navbar-search{margin-top:5px;float:center;}.navbar-search input{width:100%;}
+.screen .list-item{margin:0 0 10px 0;}
+.list-item:hover .btn-repin{display:none;}
+.btn-repin{display:none;position:relative;left:0;top:0;}
+.btn-delpin{display:none;position:relative;left:0;top:0;}
+.modal{margin:0;width:90%;padding:10px;}.modal.fade{margin:0;}.modal.fade.in{margin:0;left:auto;top:20px;right:5px;}
+.modal-header a{margin-top:0;margin-right:5px;}
+.pin-image{margin-right:0;}.pin-image img{width:80px;margin:0;}
+.pin-input-width{width:95%;}
+.pin-textarea-width{width:90%;}
+.main{width:100%;}
+.sidebar{width:100%;}
+legend{margin-bottom:5px;}
+.copyright{padding:20px 10px;}
+.footer{padding:40px 10px;}
+.form-horizontal .control-label{text-align:left;}
+.form-horizontal .control-group{margin-bottom:5px;}
+.form-horizontal .controls{margin-left:0;}
+.board-list>ul>li{margin:0 15px 10px 0;}
+.pin-holder img{width:120px;}
+.movie-link{width:100%;}
+.movie-filter-label{display:none;}
+.screen .list-content{margin-left:-5px;}
+.screen .list-item{margin:0 5px 10px 5px;}

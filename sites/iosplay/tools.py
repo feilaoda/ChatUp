@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
 import argparse
-import urllib2
 import json
-
-from tornado.options import options 
 import os
+import urllib2
+
+
+
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 try:
@@ -15,28 +16,32 @@ except ImportError:
     import site
     print ROOTDIR
     site.addsitedir(ROOTDIR + "/../app")
-    
+    site.addsitedir(ROOTDIR + "/..")
     print('Development of Chatup')
 
 from dojang.util import parse_config_file, create_token
+from tornado.options import options
+
 
 def create_db():
     from dojang.database import db
-    # import account.models
+    import account.models
     # import channel.models
     # import note.models
     # import entity.models
-    
+
     # import board.models
     # import pin.models
     # import readlist.models
     # import movie.models
     # import tag.models
     # import search.models
-    import node.models
+    # import node.models
     # import topic.models
-    # import group.models
-    import shot.models
+    import app.group.models
+    # import shot.models
+    # import ohshit.models
+    import app.thread.models
     # import english.models
     # import sound.models
     # import blog.models
@@ -59,11 +64,11 @@ def fetch_rss_app(url, refetch='false'):
         response = urllib2.urlopen(request,  timeout=100)
         data = response.read()
         apps = json.loads(data, encoding='utf-8')
-        
+
         errors = dict()
-        
+
         count = 0
-        
+
         for app in apps['feed']['entry']:
             print app['im:name']['label'], "\t\t\t",app['id']['label']
             link = app['id']['label']
@@ -76,11 +81,11 @@ def fetch_rss_app(url, refetch='false'):
             if response != 'ok':
                 print link, response
 
-        
+
     except Exception, error:
         #raise error
         return dict(result=str(error), link=link)
-       
+
     return dict(result='ok')
 
 def create_superuser():
@@ -118,7 +123,7 @@ def test_upload_weibo_pic():
     f = open('d:/noname.jpg', 'rb')
     # r = client.statuses.update.post(status=u'test weibo python')
     r = client.statuses.upload.post(status=u'test weibo with picture', pic=f)
-    f.close() 
+    f.close()
     print r
 
 
@@ -141,7 +146,7 @@ def main():
         if cmd == 'createdb':
             return create_db()
         if cmd == 'createuser':
-            return create_superuser()        
+            return create_superuser()
         if cmd == 'fetchapp':
             #top paid games app
             print 'fetchapp'
@@ -156,7 +161,7 @@ def main():
             import cPickle
             # ps = People.query.all()
             user_list = dict()
-            
+
 
             data = get_cache_list(People, [], 'people')
 

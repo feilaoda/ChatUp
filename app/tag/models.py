@@ -1,11 +1,13 @@
 
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from tornado.options import options
-from dojang.database import db
+
 
 CAGETORY_TAG=1
 COUNTRY_TAG=2

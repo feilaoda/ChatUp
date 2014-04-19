@@ -1,0 +1,17 @@
+{% extends "admin/channel/channel.html" %}
+
+{% block subtitle %}{{ _("channel") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("channel")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+        {% module ChannelForm(channel) %}
+    </form>
+
+</div>
+{% end %}
+
+

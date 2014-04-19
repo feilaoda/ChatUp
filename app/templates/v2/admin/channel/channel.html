@@ -1,0 +1,55 @@
+{% extends "admin/admin.html" %}
+
+{% block header %}
+<div class="screen">
+<a href="/admin">Admin</a> / <a href="/admin/channel">Channel</a>
+</div>
+{% end %}  
+
+
+
+{% block afterjs %}
+ 
+ <script>
+
+function update(){
+    var lis = $("#sortable li");
+            var ids = [];
+            for(var i=0; i<lis.length; i++) {
+                 var id = lis[i].getAttribute('data-id');
+                 ids.push(id);
+            }
+            // alert(ids);
+            $.ajax({
+                url: '/admin/channel/{{channel.id}}/sort',
+                type: 'POST',
+                data:{ids:ids},
+                dataType: 'json',
+                timeout: 1000,
+                error: function(){
+                    //alert('Error sorting folders');
+                },
+                success: function(result){
+                    // alert(result);
+
+                }
+                });
+
+    return false;
+}
+
+$(function() {
+    $( "#sortable" ).sortable({
+        update: function( event, ui ) {
+           
+
+        },
+        // placeholder: "ui-state-highlight"
+    });
+
+    $( "#sortable" ).disableSelection();
+});
+</script>
+ 
+{%end%}
+

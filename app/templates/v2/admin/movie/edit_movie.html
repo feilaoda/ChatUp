@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("movie") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <legend>{{_("movie")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        {% module MovieForm(movie) %}
+         
+    </form>
+
+</div>
+{% end %}
+
+

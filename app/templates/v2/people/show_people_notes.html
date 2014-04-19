@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("note") }}{% end %}
+
+{% block content %}
+
+<div class="screen">
+    <ul>
+        {% for note in notes %}
+        <li><a href="/note/{{note.id}}">{{note.title}}</a><span class="offset-20 pull-right">{{note.created}}</span></li>
+        {% end %}
+    </ul>
+
+</div>
+{% end %}
+
+{%block sidebar %}
+
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+<div>
+<a href="/note/new">{{_("new note")}}</a>
+</div>
+{% end %}
+
+

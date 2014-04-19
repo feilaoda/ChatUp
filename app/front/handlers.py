@@ -1,19 +1,20 @@
-import os.path
 import hashlib
+import os.path
+
+from app.account.decorators import require_user
+from app.account.lib import UserHandler
+from app.account.models import People
+from app.channel.models import Channel, ChannelEntry
+from app.topic.lib import get_full_topics
+from app.topic.models import Topic
+from dojang.app import DojangApp
+from dojang.cache import autocached
+from dojang.util import import_object
+from dojang.web import DojangHandler
+from tornado.options import options
 from tornado.web import RequestHandler
 from tornado.web import UIModule
-from tornado.options import options
-from dojang.app import DojangApp
-from dojang.web import DojangHandler
-from dojang.util import import_object
-from dojang.cache import autocached
 
-from app.account.models import People
-from app.account.lib import UserHandler
-from app.account.decorators import require_user
-from app.channel.models import Channel, ChannelEntry
-from app.topic.models import Topic
-from app.topic.lib import get_full_topics
 
 class FrontHandler(UserHandler):
     def get(self):

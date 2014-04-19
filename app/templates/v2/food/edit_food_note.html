@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("note") }}{% end %}
+
+{% block content %}
+
+<div class="box-container">
+    <legend>{{_("note")}}</legend>
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+        {% module FoodNoteForm(food_time, note,note_content) %}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/food/note/{{note.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+
+    </form>
+</div>
+{% end %}
+
+

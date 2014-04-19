@@ -1,0 +1,30 @@
+
+
+{%if people%}
+<div >
+    <div class="media pinner-y">
+        <a class="pull-left" href="/people/{{people.id}}">
+            <img class="media-object" width="48" height="48" src="{{people.get_avatar(48)}}">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading"><a href="/people/{{people.id}}">{{people.username}}</a></h4>
+            <div class="username small">@{{people.username}}</div>
+        </div>
+    </div>
+    <div >
+            <ul class="list-style-inline  padding0">
+                <li><a href="/people/{{people.id}}">{{_("mine")}}</a></li>
+                
+                {%if people.is_master%}
+                <li><a href="/account/setting">{{_("Setting")}}</a></li>
+                {%end%}
+
+                {%if current_user and current_user.is_admin%}
+                <li><a href="/admin">{{_("Admin")}}</a></li>
+                {%end%}
+                
+            </ul>
+    </div>
+     
+</div>
+{%end%}

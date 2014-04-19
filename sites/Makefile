@@ -69,6 +69,21 @@ github:
 static: css  static_image js
 
 
+css2:
+	if [ ! -d $(STATIC)/assets/v2/css ]; then mkdir -p $(STATIC)/assets/v2/css; fi
+	#lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/v2/css/vendor.min.css
+	lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/v2/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/v2/css/application.min.css
+
+	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/v2/css/mobile.min.css
+	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/v2/css/admin.min.css
+	
+
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
 	lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/vendor.min.css
@@ -121,6 +136,16 @@ libjs:
 	uglifyjs -nc $(HOME)/vendor/waterfall/js/woo.js >> $(STATIC)/assets/js/waterfall.min.js
 	uglifyjs -nc $(HOME)/vendor/waterfall/js/masnunit.js >> $(STATIC)/assets/js/waterfall.min.js
 
+	uglifyjs -nc $(HOME)/static/javascripts/yepnope.js > $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/flotr2/flotr2.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/flotr2/js/plugins/handles.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/bonzo/bonzo.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/envision.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/soundmanager2.min.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/bitfinance.js >> $(STATIC)/assets/js/finance.min.js
+	uglifyjs -nc $(HOME)/static/javascripts/financechart.js >> $(STATIC)/assets/js/finance.min.js
+
+	uglifyjs -nc $(HOME)/static/javascripts/socket.io.js > $(STATIC)/assets/js/socket.io.min.js
 
 	uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 

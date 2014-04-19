@@ -3,15 +3,15 @@
 
 """
 
+from datetime import datetime
 import hashlib
 from random import choice
-from datetime import datetime
+
+from dojang.database import db
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from sqlalchemy.orm import relationship, backref
 from tornado.options import options
-from dojang.database import db
-
 
 
 class Group(db.Model):
@@ -29,7 +29,7 @@ class Group(db.Model):
     status = Column(Integer, default=1, index=True)
     avatar = Column(String(400), nullable=True)
     # color = Column(String(30))
-    
+
     people_count = Column(Integer, default=0)
 
     created = Column(DateTime, default=datetime.utcnow)
@@ -45,7 +45,7 @@ class GroupFollow(db.Model):
 
 
 
-class Thread(db.Model):
+class GroupThread(db.Model):
     id = Column(Integer, primary_key=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
     group_id =  Column(Integer, ForeignKey('group.id'), index=True)
@@ -64,15 +64,13 @@ class Thread(db.Model):
     last_reply_by = Column(Integer)
     last_reply_time = Column(DateTime, default=datetime.utcnow, index=True)
     created = Column(DateTime, default=datetime.utcnow)
-    replies = relationship("ThreadReply", backref="thread")
+    replies = relationship("GroupThreadReply", backref="thread")
 
 
-class ThreadReply(db.Model):
+class GroupThreadReply(db.Model):
     id = Column(Integer, primary_key=True)
-    thread_id =  Column(Integer, ForeignKey('thread.id'), index=True)
+    thread_id =  Column(Integer, ForeignKey('group_thread.id'), index=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
     content = Column(String(2000))
     orders =  Column(Integer, default=1, index=True)
     created = Column(DateTime, default=datetime.utcnow)
-
-

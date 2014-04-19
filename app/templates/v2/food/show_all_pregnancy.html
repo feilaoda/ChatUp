@@ -1,0 +1,56 @@
+{% extends "food/base.html" %}
+
+{% block subtitle %}{{_("pregnancy food permission")}}{% end %}
+
+{% block content %}
+<div class="screen clearfix">
+    <h1>孕妇饮食禁忌</h1>
+
+
+    <div class="box-container">
+        <div class="box">
+        <form class="" action="/food/pregnancy/search">
+            <input type="text" class="input-xlarge" class="search-query span3" placeholder="{{_('Search')}}" name="q" style="margin-bottom:0">
+            
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Search") }}</button>
+        </form>
+        </div>
+
+        <div class="box pinner-y ">
+            <table class="table table-striped" width="100%">
+            {%for pregnancy in pagination.items%}
+
+            <tr class="food-perm-{{pregnancy.permission}}">
+                <td width="300px"><a href="/food/pregnancy/{{pregnancy.id}}">{{pregnancy.name}}</a></td>
+                <td width="200px"><a href="/food/pregnancy?cat={{pregnancy.category}}">{{pregnancy.category}}</a></td>
+                <td>{{_("%s eat" % pregnancy.permission)}}</td>
+            </tr>
+                    
+            {%end%}
+            </table>
+        </div>
+
+    </div>
+
+    {%if pagination%}
+    <div class="pagination">
+        <ul>
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+    
+</div>
+{% end %}
+
+
+{%block sidebar %}
+
+{% module FoodPregnancySidebar() %}
+
+{% module ShowFrontFoodNotes() %}
+{% end %}
+
+

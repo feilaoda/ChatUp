@@ -1,0 +1,5 @@
+<ul class="list-style-inline padding0">
+{% for node in nodes %}
+<li><a class="label-node" href="/node/{{node.name}}">{{escape(node.title)}}</a></li>
+{% end %}
+</ul>

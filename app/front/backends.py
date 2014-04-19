@@ -1,9 +1,10 @@
-import os.path
-from datetime import datetime
-import tempfile
 import Image
-from tornado.options import options
+from datetime import datetime
+import os.path
+import tempfile
+
 from dojang.auth.upyun import BaseUpyun
+from tornado.options import options
 
 
 class LocalBackend(object):

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ channel.title }}{% end %}
+
+
+
+{% block content %}
+
+
+
+<div class="screen clearfix">
+<h1><a href="/admin/english/{{channel.id}}">{{channel.title}}</a></h1>
+<div class="btn-toolbar">
+</div>
+
+<ul>
+	{%for r in resources%}
+    <li><span class="gray">{{xmlday(r.publish_time)}}</span><span class="offset-10"><a href="/admin/english/resource/{{r.id}}">{{r.title}}</a></span></li>
+    {%end%}
+</ul>
+</div>
+
+{%if pagination%}
+<div class="pagination">
+    <ul>
+        {% for p in pagination.iter_pages() %}
+        <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+        {% end %}
+    </ul>
+</div>
+{%end%}
+
+<script type="text/javascript">
+$(document).ready(function(){
+$("#subscribe").on('click', subscribe_channel);
+});
+</script>
+
+{% end %}
+
+
+{%block sidebar%}
+
+
+{%if current_user%}
+{% module ProfileSidebar(current_user) %}
+{%end%}
+
+<a href="/admin/english">Admin English</a>
+
+{% module ChannelListSidebar() %}
+
+
+
+{% end %}
+
+
+

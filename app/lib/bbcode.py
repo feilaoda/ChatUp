@@ -31,10 +31,11 @@ __all__ = ["annotate_link",
            "PostMarkup",
            "render_bbcode"]
 
+from collections import defaultdict
 import re
 from urllib import quote_plus
 from urlparse import urlparse
-from collections import defaultdict
+
 
 pygments_available = True
 try:
@@ -1452,7 +1453,7 @@ New lines characters are converted to breaks."""\
 
     tests.append('Nested urls, i.e. [url][url]www.becontrary.com[/url][/url], are condensed in to a single tag.')
 
-    tests.append(u'[google]ɸβfvθðsz[/google]')
+    tests.append(u'[google]????fv????sz[/google]')
 
     tests.append(u'[size 30]Hello, World![/size]')
 

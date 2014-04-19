@@ -1,0 +1,27 @@
+<div class="box-container">
+    <div class="box-content">
+        <legend>{{_("Signin")}}</legend>
+        <form  action="" method="post" onsubmit="md5pwd()">
+            {{ xsrf_form_html() }}
+            <div class="control-group control-required">
+                <div class="controls">
+                    <input type="text" class="control-text" name="account" required />
+                </div>
+            </div>
+            <div class="control-group control-required">
+                <div class="controls">
+                <input id="password" type="password" class="control-text" name="password"/>
+                <input id="password_md5" type="hidden" class="control-text" name="password_md5"/>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">{{ _("Signin") }}</button>
+            </div>
+        </form>
+    </div>
+    <div class="box-content">
+        <a href="/account/signup" class="ui-btn">{{ _("Free Signup") }}</a>
+    </div>
+    <a href="/account/weibo/auth" title="{{_('Login with weibo account')}}"><i class="third-auth weibo"></i></a>
+     <!-- <a href="/account/douban/auth" title="{{_('Login with douban account')}}"><i class="third-auth douban"></i></a> -->
+</div>

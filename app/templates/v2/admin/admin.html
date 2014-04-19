@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block afterstyle %}
+<link rel="stylesheet" href="{{static_url('assets/css/admin.min.css')}}" />
+{% end %}
+
+
+{% block content %}
+
+<ul class="listable">
+        <li>
+        <a href="/admin/channel">Channel</a>
+        </li>
+        <li>
+        <a href="/admin">Admin</a>
+        </li>
+        <li>
+        <a href="/admin/people">People</a>
+        </li>
+        <li>
+        <a href="/admin/topic">Topic</a>
+        </li>
+        
+      
+    </ul>
+{% end %}
+
+
+
+{% block sidebar %}
+<div class="box">
+    <div>Menu</div>
+    <ul class="listable">
+        <li >
+        <a class="pinner-x" href="/admin">Admin</a>
+        </li>
+        <li>
+        <a  class="pinner-x" href="/admin/people">People</a>
+        </li>
+        <li>
+        <a  class="pinner-x" href="/admin/topic">Topic</a>
+        </li>
+      
+    </ul>
+</div>
+
+    {%block admin_sidebar%}
+
+    {%end%}
+{% end %}  

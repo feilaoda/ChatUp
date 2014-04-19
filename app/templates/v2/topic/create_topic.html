@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Topic") }}{% end %}
+
+{% block content %}
+
+    <div class="padding">
+
+    <legend>{{_("New Topic")}} <span><a href="/node/{{node.name}}">{{node.title}}</a></span></legend> 
+    <form role="form" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        
+        <div class="form-group">
+            <label class="control-label" for="title">{{ _("Title") }}</label>
+            <div class="controls">
+                <input type="text" class="form-control control-text input-maxlarge" name="title" required value="{{topic.title or ''}}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="content">{{ _("Content") }}</label>
+            <div class="controls">
+                <textarea class="form-control  control-text input-maxlarge" rows="10" name="content">{{topic.content or ''}}</textarea>
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="checkbox">
+                <input type="checkbox" class="control-text input-maxlarge" name="hidden">
+                {{_("Anonymous")}}
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Submit") }}</button>
+            <a href="/node/{{node.name}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+        
+    </form>
+    
+</div>
+{% end %}
+
+

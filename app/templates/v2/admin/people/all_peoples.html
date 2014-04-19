@@ -1,0 +1,39 @@
+{% extends "admin/people/people.html" %}
+
+
+{% block subtitle %} Show all peoples{% end %}
+
+
+
+{% block content %}
+
+<div class="screen">
+    <table>
+    {%for people in pagination.items%}
+        <tr>
+            <td><a href="/admin/people/{{people.id}}/delete">{{_("delete")}}</a></td>
+            <td><a href="/people/{{people.id}}">{{people.id}}</td>
+            <td><a href="/admin/people/{{people.id}}">{{people.username}}</a></td>
+            <td>{{people.email}}</td>
+            <td>{{people.role}}</td>
+            <td>{{people.description}}</td>
+            <td>{%if people.status==1%}Deleted{%else%}Ok{%end%}</td>
+            
+            <td><a href="/admin/people/{{people.id}}/edit" class="pull-right">{{_("edit")}}</a></td>
+        </tr>
+    {%end%}
+    </table>
+
+    {%if pagination%}
+    <div class="pagination">
+        <ul>
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+
+
+</div>
+{% end %}

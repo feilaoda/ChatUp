@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{_("pregnancy food permission")}}{% end %}
+{%block keywords%}
+<meta name="keywords" content="孕妇食谱,孕妇饮食禁忌,孕妇不能吃哪些食物,孕妇不能吃什么,怀孕不能吃什么,孕妇饮食须知
+" />
+<meta name="description" content="孕妇饮食禁忌，提供“孕妇不能吃哪些食物”的内容，包括孕妇禁忌食物、孕妇禁忌水果等孕妇不能吃什么的内容。
+" />
+{%end%}
+{% block content %}
+
+<div class="screen clearfix">
+    <h1>孕妇饮食大全</h1>
+
+
+    <div class="box-container">
+        <div class="box">
+        <form class="" action="/food/search">
+            <input type="text" class="input-xlarge" class="search-query span3" placeholder="{{_('Search')}}" name="q" style="margin-bottom:0">
+            
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Search") }}</button>
+        </form>
+        </div>
+
+        <div class="box">
+            <ul>
+            {%for food in pagination.items%}
+
+            <li><a href="/food/{{food.id}}">{{food.name}}</a>
+            </li>
+                    
+            {%end%}
+            </ul>
+        </div>
+
+    </div>
+
+    {%if pagination%}
+    <div class="pagination">
+        <ul>
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+    
+</div>
+{% end %}
+
+
+{%block sidebar %}
+
+{% end %}
+
+
