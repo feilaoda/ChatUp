@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+<div class="">
+    <a href="/wepusher/group/{{channel.group_id}}">{{_("Reback")}}</a>
+</div>
+ 
+<div class="page-header">
+  <h2>{{channel.title}}</h2>
+
+      <div class="table-responsive">
+        <table class="table table-hover">
+        {%set rowid=1%}
+        {%for price in btc_prices.keys()%}
+        {%set value=btc_prices[price]%}
+        {%if value.has_key('currency')%}
+        {%set currency = value['currency']%}
+        {%else%}
+        {%set currency = ''%}
+        {%end%}
+           <tr><td>{{price}}</td>
+            <td>最新: {{currency}}{{value['last']}}</td>
+            <td>低: {{currency}}{{value['low']}}</td>
+            <td>高: {{currency}}{{value['high']}}</td>
+            <td>量: {{value['vol']}}</td>
+            <td>{{value['time']}}</td>
+           </tr>
+        {%set rowid=rowid+1%}
+        {%end%}
+
+        </table>
+    </div>
+
+    
+
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

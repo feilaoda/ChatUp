@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Signin") }}{% end %}
+
+{% block afterstyle %}
+<link rel="canonical" href="/account/signin" />
+{% end %}
+
+{% block content %}
+<div class="screen clearfix">
+    <h3>Setting Account</h3>
+    <form class="form-horizontal" action="/account/rename/github/{{social_id}}" method="post">
+        {{ xsrf_form_html() }}
+        <div class="control-group control-required">
+            <label for="username" class="control-label">{{ _("Username") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text" name="username" maxlength="100" value="{{username}}" required/>
+            <div class="control-explain">{{ _("Only English 3-20 english characters or digits are accepted.") }}</div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ _("Setting") }}</button>
+        </div>
+    </form>
+</div>
+{% end %}
+

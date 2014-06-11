@@ -1,0 +1,69 @@
+{% extends "admin/movie/movie.html" %}
+
+{% block subtitle %}{{ _("movie") }}{% end %}
+
+{% block content %}
+
+<div class="row">
+    <h1><a href="/movie/{{movie.id}}">{{movie.title}}</a></h1>
+
+    <h2 style="word-break:break-all;">{{link.link}}</h2>
+
+    <form class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("Link Title") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="title"  value="{{link.title or ''}}">
+            </div>
+        </div>
+
+         <div class="control-group">
+            <label class="control-label" for="definition">{{ _("Link Definition") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="definition"  value="{{link.definition or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="size">{{ _("Link Size") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="size"  value="{{link.size or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="category">{{ _("Link Category") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="category"  value="{{link.category or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="website">{{ _("Link WebSite") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="website"  value="{{link.website or ''}}">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="featured">{{ _("Link Featured") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" rows="10" name="featured"  value="{{link.featured or ''}}">
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-small">{{ _("Submit Movie") }}</button>
+            <a href="/admin/movie/{{movie.id}}/links" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+         
+    </form>
+
+</div>
+{% end %}
+
+

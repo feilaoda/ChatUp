@@ -1,5 +1,5 @@
 """
-Topic:
+Space Topic:
     topic must be in a node
 
     impact:
@@ -16,49 +16,46 @@ Topic:
 
 """
 
-from datetime import datetime
 import time
-
-from dojang.database import db
+from datetime import datetime
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy import Integer, String, DateTime, Text, Float
 from sqlalchemy.orm import relationship, backref
+from dojang.database import db
 from tornado.options import options
-
 
 def get_current_impact():
     return int(time.time())
 
 
+
 class Topic(db.Model):
+    __tablename__="topic"
     id = Column(Integer, primary_key=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
     node_id =  Column(Integer, ForeignKey('topic_node.id'), index=True)
+    nickname = Column(String(100), default='Anonymous')
     title = Column(String(500))
-    content = Column(Text)
+    content = Column(Text)    
     format = Column(String(100), default='html')
     status = Column(String(50)) #open, blocked, close
     hits = Column(Integer, default=1)
-    impact = Column(Float, default=0)
-    hidden = Column(String(1))
+    anonymous = Column(Integer, default=1)
     up_count = Column(Integer, default=0)
     ups = Column(Text)  # e.g.  1,2,3,4
     down_count = Column(Integer, default=0)
     downs = Column(Text)  # e.g.  1,2,3,4
     reply_count = Column(Integer, default=0)
-    last_reply_by = Column(Integer)
     last_reply_time = Column(DateTime, default=datetime.utcnow, index=True)
-    
     created = Column(DateTime, default=datetime.utcnow)
-    
     replies = relationship("TopicReply", backref="topic")
 
     def to_dict(self):
         r = dict()
-        r["topic_id"] = self.id
+        r["id"] = self.id
+        r["nickname"] = self.nickname
         if self.people:
            r['people'] = self.people.to_dict()
-        
         # if self.node:
         #     r['node'] = self.node.to_dict()
         r["title"] = self.title
@@ -67,20 +64,20 @@ class Topic(db.Model):
         r['up_count'] = self.up_count
         r['down_count'] = self.down_count
         r['reply_count'] = self.reply_count
-        if self.last_replyer:
-           r['last_replyer'] = self.last_replyer.to_dict()
         r['last_reply_time'] = self.last_reply_time.strftime('%Y-%m-%d %H:%M:%S')
         r['created'] = self.created.strftime('%Y-%m-%d %H:%M:%S')
 
         return r
 
 class TopicReply(db.Model):
+    __tablename__="topic_reply"
     id = Column(Integer, primary_key=True)
     topic_id =  Column(Integer, ForeignKey('topic.id'), index=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
+    nickname = Column(String(100), default='Anonymous')
     content = Column(String(2000))
     order =  Column(Integer, default=1, index=True)
-    hidden = Column(String(1))
+    anonymous = Column(Integer, default=1)
     up_count = Column(Integer, default=0)
     ups = Column(Text)  # e.g.  1,2,3,4
     created = Column(DateTime, default=datetime.utcnow)
@@ -96,6 +93,13 @@ class TopicReply(db.Model):
         r["hidden"] = self.hidden
 
         return r
+
+class NodeFollower(db.Model):
+    __tablename__="topic_node_follower"
+    id = Column(Integer, primary_key=True)
+    people_id = Column(Integer, nullable=False, index=True)
+    node_id = Column(Integer, nullable=False, index=True)
+    created = Column(DateTime, default=datetime.utcnow)
 
 
 class TopicVote(db.Model):

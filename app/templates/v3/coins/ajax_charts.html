@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <script src="/static/assets/js/d3.min.js"></script>
+    
+    <script type="text/javascript" src="{{static_url('assets/js/vendor.min.js')}}"></script>
+    <script type="text/javascript" src="{{static_url('assets/js/application.min.js')}}"></script>
+        
+    <script>
+            
+        </script>
+
+    <script type="text/javascript">
+    var random = d3.random.normal(0,0);
+    var data = [];//d3.range(100).map(random);
+    function show(){
+      d3.select("body")
+        .append("svg")
+        .attr("width",680)
+        .attr("height",460);
+
+      var x_scale = d3.scale.linear()
+          .range([50,650])
+          .domain([0,100]);
+      
+      var y_scale = d3.scale.linear()
+          .range([400,0])
+          .domain([0,100]);
+       
+      var x_axis=d3.svg.axis().scale(x_scale);
+
+      d3.select("svg")
+        .append("g")
+        .attr("class","x__axis")
+        .attr("transform","translate(0,400)")
+        .call(x_axis);
+
+      var y_axis=d3.svg.axis().scale(y_scale).orient("left").ticks(5);
+      var svg = d3.select("svg");
+
+      d3.select("svg")
+        .append("g")
+        .attr("class","y__axis")
+        .attr("transform","translate(50,0)")
+        .call(y_axis);
+      //add title 
+      d3.select(".x__axis")
+        .append("text")
+        .text("age")
+        .attr("class","text")
+        .attr("x",100)
+        .attr("y",100);
+      
+      d3.select(".y__axis")
+        .append("text")
+        .text("height")
+        .attr("class","text")
+        .attr("x",0)
+        .attr("y",150)
+        .attr("transform","rotate(-90,-20,150)translate(-40,-20)");
+      //add path
+      var line = d3.svg.line()
+                   .x(function(d,i){return x_scale(i)})
+                   .y(function(d,i){return y_scale(d)});
+
+      var path =d3.select("svg")
+                  .append("path")
+                  .data([data])
+                  .attr("d",line);
+
+       var ws = new WebSocket("ws://127.0.0.1:8888/ws/coins");
+        ws.onopen = function() {
+            show_message('Connected.');
+        };
+        ws.onmessage = function(event) {
+            data.push(event.data);
+            var minv = Math.floor(d3.min(data));
+            var maxv = Math.floor(d3.max(data));
+            // alert("min:"+minv+", max:"+maxv);
+            console.log("min:"+minv+", max:"+maxv);
+            if(data.length>100){
+              data.shift();
+            }
+            
+            y_scale.domain([minv-1, maxv+2]);
+            var newy_axis=d3.svg.axis().scale(y_scale).orient("left").ticks(5);
+
+            path.transition().duration(200).attr("d", line);
+            svg.selectAll("g.y__axis")
+            .call(y_axis);
+
+        };
+        ws.onclose = function() {
+            show_message("Closed.");
+        };
+
+
+      // change(data,path,line);
+    }
+    function change(data,path,line){
+          data.push(random());
+          data.shift();
+          path.transition()
+              .duration(750)
+              .attr("d",line)
+              .each("end",function(){change(data,path,line);});
+      }
+      
+    function show_message(message){
+        var el = document.createElement('div');
+        el.innerHTML = message;
+        document.body.appendChild(el);
+    }
+
+    function open_websocket(){
+               
+      }
+
+
+
+    </script>
+    <style type="text/css">
+    circle{
+      stroke:black;
+      stroke-width:0.5px;
+      fill:blue;
+      opacity: 0.6;
+    }
+    .y__axis path{
+      fill:none;
+      stroke:#00BFFF;
+    }
+    .x__axis path{
+      fill:none;
+      stroke:#00BFFF;
+    }
+    .y__axis,.x__axis{
+      font-family: sans-serif;
+      fill:#00BFFF;
+      stroke:none;
+      font-size: 13px;
+
+    }
+    .tick{
+      fill:none;
+      stroke:#00BFFF;
+    }
+    svg{
+      position: relative;
+      left: 100px;
+    }
+    .text{
+      font-size: 20px;
+      font-weight: 700;
+      stroke:none;
+      fill:#0080FF;
+    }
+    path{
+      stroke:blue;
+      fill:none;
+    }
+
+
+    </style>
+  </head>
+  <body onload="show()">
+    
+  </body>
+</html>

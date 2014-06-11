@@ -1,10 +1,10 @@
-from datetime import datetime
 import math
-
-from app.account.models import People
-from app.node.models import Node
-from dojang.cache import get_cache_list
+from datetime import datetime
 from tornado.options import options
+from dojang.cache import get_cache_list
+from app.account.models import People
+
+#from .models import Node
 
 
 def get_user_id_list(topics):
@@ -25,27 +25,27 @@ def get_full_topics(topics):
     for topic in topics:
         if topic.people_id in user_ids:
             topic.people = users[topic.people_id]
-            if topic.last_reply_by:
-                topic.last_replyer = users[topic.last_reply_by]
-            else:
-                topic.last_replyer = None
+            # if topic.last_reply_by:
+            #     topic.last_replyer = users[topic.last_reply_by]
+            # else:
+            #     topic.last_replyer = None
             yield topic
 
-def get_all_topics(topics):
-    users = get_cache_list(People, get_user_id_list(topics), 'hs:people')
-    nodes = get_cache_list(Node, (t.node_id for t in topics), 'hs:node')
-    user_ids = users.keys()
-    node_ids = nodes.keys()
+# def get_all_topics(topics):
+#     users = get_cache_list(People, get_user_id_list(topics), 'hs:people')
+#     nodes = get_cache_list(Node, (t.node_id for t in topics), 'sp:node')
+#     user_ids = users.keys()
+#     node_ids = nodes.keys()
 
-    for topic in topics:
-        if topic.people_id in user_ids and topic.node_id in node_ids:
-            topic.people = users[topic.people_id]
-            if topic.last_reply_by:
-                topic.last_replyer = users[topic.last_reply_by]
-            else:
-                topic.last_replyer = None
-            topic.node = nodes[topic.node_id]
-            yield topic
+#     for topic in topics:
+#         if topic.people_id in user_ids and topic.node_id in node_ids:
+#             topic.people = users[topic.people_id]
+#             if topic.last_reply_by:
+#                 topic.last_replyer = users[topic.last_reply_by]
+#             else:
+#                 topic.last_replyer = None
+#             topic.node = nodes[topic.node_id]
+#             yield topic
 
 def get_replier_id_list(replies):
     if replies is None or len(replies) == 0:

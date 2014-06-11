@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+
+{% block container %}
+ 
+ <div class="jumbotron">
+  <h1>WePusher </h1>
+  <p>私人推送助手</p>
+  <p>创建自己的频道，获取个性化的信息</p>
+  {%if current_user %}
+  <p>User Key: {{current_user.token}}</p>
+  <a href="http://api.iosplay.com/v1/wepusher/push.json?user={{current_user.token}}">
+    http://api.iosplay.com/v1/wepusher/push.json?key={{current_user.token}}</a>
+  {%end%}
+
+ 
+</div>
+
+
+<div class="page-header">
+  <h1>Groups</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        {%set rowid=1%}
+        {%for group in groups%}
+          <tr>
+            <td><a href="/wepusher/group/{{group.id}}">{{group.title}}</a></td>
+          </tr>
+        {%set rowid=rowid+1%}
+        {%end%}
+        </table>
+    </div>
+</div>
+
+
+
+
+
+{%end%}
+
+
+{%block sidebar%}
+
+
+
+{%end%}
+

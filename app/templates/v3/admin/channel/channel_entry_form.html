@@ -1,0 +1,33 @@
+<div class="control-group">
+    <div class="controls">
+        <input type="text" class="control-text input-large" name="entry_id" maxlength="30" placeholder="Entry ID" required value="{{channel_entry.entry_id or ''}}"/>
+    </div>
+</div>
+<div class="control-group">
+    <div class="controls">
+        <input type="text" class="control-text input-maxlarge" name="url" maxlength="30" placeholder="url"  value="{{channel_entry.url or ''}}"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input type="text" class="control-text input-maxlarge" name="title" maxlength="30" placeholder="title"  value="{{markup(channel_entry.title) or ''}}"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input type="text" class="control-text input-maxlarge" name="content" maxlength="30" placeholder="content"  value="{{markup(channel_entry.content) or ''}}"/>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <input type="text" class="control-text input-maxlarge" name="pic" maxlength="30" placeholder="pic"  value="{{channel_entry.pic or ''}}"/>
+    </div>
+</div>
+
+<div class="form-actions">
+<button type="submit" class="btn btn-small">{{ _("Submit") }}</button>
+<a href="/admin/channel/{{channel.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+</div>

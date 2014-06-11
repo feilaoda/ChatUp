@@ -1,0 +1,21 @@
+{% extends "admin/admin.html" %}
+
+{% block subtitle %}{{ _("board") }}{% end %}
+
+{% block content %}
+
+<div class="screen">
+    <ul>
+    {%for board in boards%}
+        <li><a href="/admin/board/{{board.id}}">{{board.id}} - {{board.title}}</a>
+            <a href="/admin/board/{{board.id}}/edit" class="pull-right">{{board.id}}:{{_("edit")}}</a>
+        </li>
+    {%end%}
+    </ul>
+</div>
+{% end %}
+
+
+{%block admin_sidebar %}
+<a href="/board/new">New Board</a>
+{% end %}

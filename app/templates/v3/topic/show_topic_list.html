@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{%block title%}{{g.sitename}}{%end%} {%block extra_title %}{%end%}
+
+
+{% block content %}
+<div class="">
+    
+    {% module ShowTopicList(topics=pagination.items) %}
+
+    {%if pagination%}
+    <div >
+        <ul class="pagination">
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+  
+
+</div>
+{% end %}
+
+{% block sidebar %}
+
+{%if current_user%} 
+    {% module ProfileSidebar(current_user) %}
+    <hr class="box-panner"></hr>
+{%end%}
+
+{% module RecentNodes()%}
+
+{%if current_user and current_user.is_staff%}
+<hr class="box-panner"></hr>
+<div class="box-container">
+<a class="btn btn-primary btn-small" href="/admin/topic/new">{{_("Admin New Topic")}}</a>
+</div>
+{%end%}
+
+{% end %}
+
+
+
+

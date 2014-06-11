@@ -1,0 +1,42 @@
+{% extends "admin/admin.html" %}
+
+
+{% block content %}
+<div class="screen site">
+<a class="btn btn-primary" href="/admin/crawl/site/{{site.id}}/run"> Run Crawl </a>
+
+
+ <table class="table table-hover"> 
+    <thead>
+        <tr >
+          <th class=""></th>
+          <th class="">key</th>
+          <th class="">value</th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ss in site_settings %}
+        <tr>
+            <td>{{ss.id}}</td>
+            <td><a href="/admin/crawl/site/settings/{{ss.id}}/edit">{{ss.key}}</a></td>
+            <td>{{ss.value}}</td>
+            <td><a href="/admin/crawl/site/settings/{{ss.id}}/edit"> Edit </a></td>
+        </tr>
+        {%end%}
+     </tbody>
+</table>
+
+
+
+
+
+</div>
+{% end %}
+
+
+{%block admin_sidebar%}
+
+{%end%}
+
+

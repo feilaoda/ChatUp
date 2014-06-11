@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Topic") }}{% end %}
+
+{% block content %}
+
+<div class="screen clearfix">
+    <legend>{{_("Topic")}}</legend>
+    <form id="move-node-form" class="" action="" method="post">
+        {{ xsrf_form_html() }}
+
+        
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("title") }}</label>
+            <div class="controls">
+                {{simple_escape(topic.title)}}
+                <p>
+                    {{simple_escape(topic.content)}}
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-small">{{ _("Delete") }}</button>
+            <a href="/topic/{{topic.id}}" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
+        </div>
+
+       
+        
+    </form>
+
+</div>
+{% end %}
+

@@ -1,28 +1,27 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
 import hashlib
+from datetime import datetime
 
-from app.account.decorators import require_user, apiauth
-from app.account.lib import UserHandler
-from app.account.models import People
-from app.group.models import Group
-from app.lib.util import find_mention
-from app.node.models import Node
+from tornado.web import UIModule, authenticated
+from tornado.escape import utf8
+from tornado.options import options
+import tornado
 from dojang.app import DojangApp
 from dojang.cache import autocache_get, autocache_set, autocache_incr
 from dojang.database import db
-import tornado
-from tornado.escape import utf8
-from tornado.options import options
-from tornado.web import UIModule, authenticated
 
-from .lib import down_impact_for_topic, down_impact_for_user
-from .lib import get_full_replies, get_full_topic, get_full_topics
-from .lib import reply_impact_for_topic, accept_reply_impact_for_user
-from .lib import up_impact_for_topic, up_impact_for_user
+from app.account.lib import UserHandler
+from app.account.decorators import require_user, apiauth
+from app.account.models import People
+from app.group.models import Group
+from app.lib.util import find_mention
+
+from app.node.models import Node
 from .models import Topic, TopicReply, TopicVote, TopicLog
-
+from .lib import get_full_replies, get_full_topic, get_full_topics
+from .lib import up_impact_for_topic, up_impact_for_user
+from .lib import down_impact_for_topic, down_impact_for_user
 
 VOTE_UP = 1
 VOTE_DOWN = 0
@@ -33,7 +32,7 @@ class AllTopicsHandler(UserHandler):
     def get(self, category="health"):
         p = self.get_argument('p', 1)
         limit = 30
-        nodes = Node.query.filter_by(platform=0).all()
+        nodes = Node.query.filter_by().all()
         node_ids = []
         for node in nodes:
             node_ids.append(node.id)

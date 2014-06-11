@@ -15,7 +15,7 @@ from tornado.web import UIModule, authenticated
 from tornado.web import URLSpec as url
 import tornado.web
 
-from .models import FollowNode, Node
+from .models import Node
 
 
 class CreateNodeHandler(UserHandler):
@@ -48,8 +48,7 @@ class CreateNodeHandler(UserHandler):
             return
 
         
-        o.category = self.get_argument('category', None)
-        o.platform = self.get_argument('platform', 0)
+        o.category = self.get_argument('category', None)        
         db.session.add(o)
         db.session.commit()
 
@@ -74,8 +73,7 @@ class EditNodeHandler(UserHandler, ModelMixin):
         self.update_model(node, 'description', True)
         
         node.category = self.get_argument('category', None)
-        node.platform = self.get_argument('platform', 0)
-
+        
         try:
             node.limit_role = int(self.get_argument('role', 0))
         except:
@@ -128,8 +126,7 @@ class CreateNodeTopicHandler(UserHandler):
     @require_user
     def get(self, node_name):
         node = Node.query.get_first(name=node_name)
-        if node.platform != 0:
-            return self.send_error(403)
+        
         topic = Topic()
         if not node:
             self.send_error(404)
@@ -142,8 +139,7 @@ class CreateNodeTopicHandler(UserHandler):
         if not node:
             self.send_error(404)
             return
-        if node.platform != 0:
-            return self.send_error(403)
+        
         title = self.get_argument('title', None)
         content = self.get_argument('content', None)
         hidden =  self.get_argument('hidden', None)
@@ -195,7 +191,7 @@ class CreateNodeTopicHandler(UserHandler):
 class ShowAllNodesHandler(UserHandler):
 
     def get(self):
-        nodes = Node.query.filter_by(platform=0).order_by('-last_updated').all()
+        nodes = Node.query.filter_by().order_by('-last_updated').all()
         self.render('node/node_list.html', nodes=nodes)
 
   
@@ -235,12 +231,12 @@ class FollowingNodesModule(UIModule):
 
 class RecentAddNodesModule(UIModule):
     def render(self):
-        nodes = Node.query.filter_by(platform=0).order_by('-id')[:20]
+        nodes = Node.query.filter_by().order_by('-id')[:20]
         return self.render_string('module/show_node_list.html', nodes=nodes)
 
 class RecentNodesModule(UIModule):
     def render(self):
-        nodes = Node.query.filter_by(platform=0).order_by('-id')[:20]
+        nodes = Node.query.filter_by().order_by('-id')[:20]
         return self.render_string('node/recent_nodes.html', nodes=nodes)
 
 

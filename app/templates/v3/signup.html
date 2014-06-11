@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Signup") }}{% end %}
+
+{% block afterstyle %}
+<link rel="canonical" href="{{g.siteurl}}/account/signup" />
+<style type="text/css">
+    #recaptcha_div {
+        margin-left: 115px;
+    }
+    @media screen and (max-width: 480px) {
+        #recaptcha_div {
+            margin-left: 0;
+        }
+    }
+    #recaptcha_table {
+        background: #fff;
+    }
+    #recaptcha_response_field {
+        border-color: #dadada !important;
+    }
+</style>
+{% end %}
+
+{% block content %}
+<div class="box-container pinner-x pinner-y">
+    <legend>{{_("Signup")}}</legend>
+    <form action="" method="post" class="form-horizontal">
+        {{ xsrf_form_html() }}
+        <div class="control-group control-required">
+            <label for="username" class="control-label">{{ _("Username") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text" name="username" maxlength="100" value="{{username}}" required/>
+            <div class="control-explain">{{ _("Only English 3-20 english characters or digits are accepted.") }}</div>
+            </div>
+        </div>
+        
+        
+        <div class="control-group control-required">
+            <label for="email" class="control-label">{{ _("Email") }}</label>
+            <div class="controls">
+            <input type="email" class="control-text" name="email" maxlength="100" value="{{email}}" required/>
+            </div>
+        </div>
+        
+        <div class="control-group control-required">
+            <label for="password1" class="control-label">{{ _("Password") }}</label>
+            <div class="controls">
+            <input type="password" class="control-text" name="password1" required/>
+            </div>
+        </div>
+        <div class="control-group control-required">
+            <label for="password2" class="control-label">{{ _("Confirm Password") }}</label>
+            <div class="controls">
+            <input type="password" class="control-text" name="password2" required/>
+            </div>
+        </div>
+       <!--  <div class="control-group">
+            recaptcha
+        </div> -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ _("Signup") }}</button>
+            <!-- <a href="/account/signin/google" ><button type="button" class="btn">{{_("Sigin by Google")}}</button></a> -->
+        </div>
+        
+        
+    </form>
+</div>
+{% end %}
+
+{% block sidebar %}
+<div class="box-container">
+    <div class="box-content">
+        <h4>{{ _("Already have an account?") }}</h4>
+    </div>
+    <div class="box-content">
+        <a href="/account/signin" class="highlight">{{_("Signin") }}</a>
+    </div>
+</div>
+
+<!-- <div class="box-container"> -->
+    <!-- <a href="/account/weibo/auth" title="{{_('Login with weibo account')}}"><i class="third-auth weibo"></i></a> -->
+    
+    <!-- <a href="/account/douban/auth" title="{{_('Login with douban account')}}">
+        <i class="third-auth douban"></i></a>
+     -->
+<!-- </div> -->
+
+
+{% end %}

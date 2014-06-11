@@ -26,7 +26,7 @@ except ImportError:
     print('Development of chatup')
 
 
-reset_option('template_path', os.path.join(PROJDIR, "templates/v2"))
+reset_option('template_path', os.path.join(PROJDIR, "templates/v3"))
 reset_option('locale_path', os.path.join(PROJDIR, 'locale'))
 
 
@@ -55,11 +55,11 @@ def create_application():
     application.register_app('app.people.handlers.app')
     application.register_app('app.node.handlers.app')
     application.register_app('app.topic.handlers.app')
-    application.register_app('app.shot.handlers.app')
+    # application.register_app('app.shot.handlers.app')
     application.register_app('app.group.handlers.app')
-    application.register_app('app.coins.handlers.app')
+    # application.register_app('app.coins.handlers.app')
 
-    application.register_app('app.admin.channel.handlers.app')
+    # application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
     application.register_app('app.admin.topic.handlers.app')
     application.register_app('app.admin.handlers.app')
@@ -68,12 +68,12 @@ def create_application():
 
     application.register_app('app.about.handlers.app')
 
-    application.register_app('app.wepusher.handlers.app')
-    application.register_api('app.wepusher.api.app', options.api_domain)
-    application.register_api('app.wepusher.api.wepusher_app', options.wepusher_api_domain)
+    # application.register_app('app.wepusher.handlers.app')
+    # application.register_api('app.wepusher.api.app', options.api_domain)
+    # application.register_api('app.wepusher.api.wepusher_app', options.wepusher_api_domain)
 
-    application.register_app('app.ohshit.handlers.app')
-    application.register_api('app.ohshit.api.app', options.api_domain)
+    # application.register_app('app.ohshit.handlers.app')
+    # application.register_api('app.ohshit.api.app', options.api_domain)
 
     #http://www.xxx.com/api/v1/account/xxx
     application.register_api('app.account.api.app', options.api_domain)

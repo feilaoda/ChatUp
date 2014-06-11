@@ -1,0 +1,79 @@
+
+{% extends "layout.html" %}
+
+{% block subtitle %}{{ _("Signin") }}{% end %}
+
+{% block afterstyle %}
+<link rel="canonical" href="{{g.siteurl}}/account/signin" />
+<style type="text/css">
+td{border: 0;}
+.table>tbody>tr>td{
+    border: 0;
+}
+</style>
+{% end %}
+
+{% block content %}
+
+
+
+<div class="box-container">
+    <div class="box-header">
+        <h2>{{ _("Edit Avatar") }}</h2> 
+    </div>
+                <table class="table" cellpadding="5" cellspacing="0" border="0">
+                    <tbody>
+                    <tr style="border-top: 1px solid #ddd;">
+                        <td width="80" align="right">
+                            {{_("Current Avatar")}}
+                        </td>
+                        <td width="100" align="left">
+                           
+                                        <img src="{{current_user.get_avatar(48)}}" width="48" height="48" />
+                         </td>
+                        <td >
+                            <form enctype="multipart/form-data" action="/account/setting/avatar" method="post">
+                            {{ xsrf_form_html() }}
+                            <table class="table" cellpadding="5" cellspacing="0" border="0" >
+                                <tbody>
+                                    <tr style="border:0;">
+                                        <td >
+                                        <div>{{_("支持 2MB 以内的正方形 PNG / GIF / JPG 图片文件作为头像")}}
+                                        </div>
+                                    </td></tr>
+                                    <tr style="border:0;">
+                                    <td width="200" align="left">
+                                        <input type="file" name="avatar">
+                                    </td>
+                                </tr>
+                                    
+                                
+                                </tbody>
+                            </table>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr style="border-top: 1px solid #ddd;">
+                                    <td></td>
+                                     <td></td>
+                                    <td width="200" align="left">
+                                        <input type="submit" value="上传头像" class="btn btn-primary">
+                                    </td>
+                      </tr>
+                </tbody>
+                </table>
+
+    <div>
+    <a href="/account/setting" class="btn btn-primary btn-sm">{{_("Reback")}}</a>
+    </div>                
+    </div>
+
+
+{% end %}
+
+{% block sidebar %}
+{% if current_user %}
+    {% module ProfileSidebar(current_user) %}
+{% end %}
+{% end %}
+

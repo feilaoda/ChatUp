@@ -1,0 +1,54 @@
+
+        <div class="control-group">
+            <label class="control-label" for="title">{{ _("title") }}</label>
+            <div class="controls">
+                <input type="text" class="control-text input-xxxlarge" name="title" required value="{{note.title or ''}}"/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="content">{{ _("content") }}</label>
+            <div class="controls">
+            <textarea class="control-text input-xxxlarge" rows="10" name="content"  required>{{note_content.content or ''}}</textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="tag">{{ _("tag") }}</label>
+            <div class="controls">
+            <input type="text" class="control-text input-xxxlarge" name="tag" value="{{note.tag or ''}}"/>
+            </div>
+        </div>
+        <div class="horizontal">
+
+        <div class="control-group">
+            <label class="control-label" for="permission" {{ note.permission or 'e'}}>{{ _("note permission") }}</label>
+            <div class="controls">
+                <label class="radio">
+                <input name="permission" type="radio" value="0" {%if note.permission is None or note.permission == 0%}checked{%end%} >
+                {{_("all peoples can view")}}
+                </label>
+                <!-- <label class="radio">
+                <input name="permission" type="radio" value="1" {%if note.permission == 1%}checked{%end%}>
+                {{_("All friends can view")}}
+                </label> -->
+                <label class="radio">
+                <input name="permission" type="radio" value="9" {%if note.permission == 9%}checked{%end%}>
+                {{_("only me can view")}}
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="note allow reply">{{ _("note not allow reply") }}</label>
+            <div class="controls">
+                <label class="checkbox">
+                <input name="not_allow_reply" type="checkbox" value="yes" {% if note.donot_reply == 1 %}checked{% end %}>
+                {{_("don't allow reply")}}
+                </label>
+            </div>
+        </div>
+         </div>
+
+        
+
