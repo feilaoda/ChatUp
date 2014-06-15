@@ -18,8 +18,8 @@ from app.group.models import Group
 from app.lib.util import find_mention
 
 from app.node.models import Node
-from .models import Topic, TopicReply, TopicVote, TopicLog
-from .lib import get_full_replies, get_full_topic, get_full_topics
+from .models import Topic, TopicReply, TopicVote, TopicLog, TopicContent
+from .lib import get_full_replies, get_full_topic, get_full_topics, get_topic_content
 from .lib import up_impact_for_topic, up_impact_for_user
 from .lib import down_impact_for_topic, down_impact_for_user
 
@@ -29,7 +29,7 @@ VOTE_DOWN = 0
 
 class AllTopicsHandler(UserHandler):
 
-    def get(self, category="health"):
+    def get(self, category=""):
         p = self.get_argument('p', 1)
         limit = 30
         nodes = Node.query.filter_by().all()
@@ -37,7 +37,7 @@ class AllTopicsHandler(UserHandler):
         for node in nodes:
             node_ids.append(node.id)
         pagination = Topic.query.filter(Topic.node_id.in_(node_ids)).order_by('-last_reply_time').paginate(p, limit)
-                
+
         pagination.items = get_full_topics(pagination.items)
 
         self.render('topic/show_topic_list.html', pagination=pagination)
@@ -49,13 +49,14 @@ class TopicHandler(UserHandler):
         node = Node.query.get_or_404(topic.node_id)
         p = self.get_argument('p', 1)
         topic = get_full_topic(topic)
+        topic.content_html = get_topic_content(topic)
 
         pagination = TopicReply.query.filter_by(topic_id=topic.id).order_by('order')\
                 .paginate(p, 50, total=topic.reply_count)
         pagination.items = get_full_replies(pagination.items)
 
- 
-        
+
+
         self.render('topic/show_topic.html', topic=topic, node=node,
                     pagination=pagination)
 
@@ -161,7 +162,7 @@ class TopicHandler(UserHandler):
             return
         return topic
 
- 
+
 
 class EditTopicHandler(UserHandler):
     @require_user
@@ -171,10 +172,14 @@ class EditTopicHandler(UserHandler):
             self.send_error(404)
             return
         self.check_permission(topic)
-        if topic.hidden == 'y':
+        if topic.anonymous != 0:
             return self.send_error(403)
-            
-        self.render('topic/edit_topic.html', topic=topic)
+        if topic.content_id:
+            tc = TopicContent.query.filter_by(id=topic.content_id).first()
+            content = tc.content
+        else:
+            content = ""
+        self.render('topic/edit_topic.html', topic=topic, content=content)
 
     @require_user
     def post(self, id):
@@ -193,16 +198,25 @@ class EditTopicHandler(UserHandler):
             self.render('topic/edit_topic.html', topic=topic)
             return
 
-        if hidden == 'on':
-            hidden = "y"
+        node = Node.query.filter_by(id=topic.node_id).first_or_404()
+        if node.anonymous != 0:
+            if hidden == 'on':
+                topic.anonymous = 1
+            else:
+                topic.anonymous = 0
         else:
-            hidden = "n"
+            topic.anonymous = 0
+
         topic.title = title
-        topic.content = content
+        tc = TopicContent.query.filter_by(id=topic.content_id).first()
+        if tc:
+            tc.content = content
         topic.hidden = hidden
         db.session.add(topic)
+        db.session.add(tc)
 
         log = TopicLog(topic_id=topic.id, people_id=self.current_user.id)
+        log.event = "edit topic: [%s,%s]" % (title,content)
         db.session.add(log)
         db.session.commit()
 
@@ -238,7 +252,7 @@ class MoveTopicHandler(UserHandler):
         #: check permission
         if not self.check_permission(topic):
             return self.send_error(403)
-        
+
         #: increase node.topic_count
         old_node_id = topic.node_id
         old_node = Node.query.filter_by(id=topic.node_id).first_or_404()
@@ -271,11 +285,11 @@ class DeleteTopicHandler(UserHandler):
         if not topic:
             self.send_error(404)
             return
-        
+
         #: check permission
         if not self.check_permission(topic):
             return self.send_error(403)
-        
+
         #: increase node.topic_count
         node = Node.query.filter_by(id=topic.node_id).first_or_404()
         node.topic_count -= 1
@@ -310,7 +324,7 @@ class CreateReplyHandler(UserHandler):
         if topic.status == 'close':
             self.send_error(403)
             return
-    
+
         digest = hashlib.md5(utf8(content)).hexdigest()
         key = "rp:p%d:%s" % (self.current_user.id, digest)
         url = autocache_get(key)
@@ -335,15 +349,22 @@ class CreateReplyHandler(UserHandler):
             index_num = 1
             autocache_set(index_key, index_num, 0)
         #: create reply
+        node = Node.query.filter_by(id=topic.node_id).first_or_404()
         reply = TopicReply(topic_id=id, people_id=user.id, content=content)
-        # if hidden == 'on':
-        #     reply.hidden = 'y'
-        # else:
-        #     reply.hidden = 'n'
+        if node.anonymous != 0:
+            if hidden == 'on':
+                reply.anonymous = 1
+            else:
+                reply.anonymous = 0
+            if topic.anonymous != 0 and topic.people_id == user.id:
+                reply.anonymous = 1
+        else:
+            reply.anonymous = 0
 
-        # if topic.hidden == 'y' and topic.people_id == user.id:
-        #     reply.hidden = 'y'
-            
+
+
+
+
         #: impact on topic
         topic.reply_count = index_num
         reply.order = index_num
@@ -569,8 +590,8 @@ class ShowTopicModule(UIModule):
         return self.render_string('topic/show_topic_module.html', topic=topic, topiclink=topiclink, locale=tornado.locale)
 
 class ShowTopicListModule(UIModule):
-    def render(self, topics):
-        return self.render_string('topic/show_topic_list_module.html', topics=topics)
+    def render(self, pagination):
+        return self.render_string('topic/show_topic_list_module.html', pagination=pagination, topics=pagination.items)
 
 
 

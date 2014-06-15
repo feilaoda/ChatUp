@@ -8,21 +8,21 @@
     {% end %}
 
     <div class="media margin-top0">
-        {%if topic.hidden == "y"%}
+        {%if topic.anonymous != 0%}
             <img src="{{settings.static_avatar_default}}" class="pull-left media-object" width="48" height="48" title="Anonymous"/>
             {%else%}
             <a href="/people/{{topic.people_id}}" class="pull-left">
             <img src="{{topic.people.get_avatar(48)}}" class="media-object" width="48" height="48" />
             </a>
         {%end%}
-      
+
       <div class="media-body">
-        <a href="/topic/{{topic.id}}" class="media-heading">
+        <a href="/topic/{{topic.id}}" class="media-heading topic-list-title">
             {{simple_escape(topic.title)}}</a>
 
-        <div class="small">
-            <a href="/node/{{topic.node.name}}" class="node-cell">{{topic.node.title}}</a> •
-            {%if topic.hidden == "y" %}
+        <div class="small topic-list-meta">
+            <a href="/node/{{topic.node.name}}"><span class="badge">{{topic.node.title}}</span></a> •
+            {%if topic.anonymous != 0 %}
                 <span>{{_("Anonymous")}}</span> •
             {%else%}
                 <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a> •{%end%}
@@ -31,7 +31,7 @@
             {% else %}
             <time datetime="{{xmldatetime(topic.created)}}" title="created">{{timesince(topic.created, locale.code)}}</time>
             {% end %}
-        </div>   
+        </div>
 
       </div>
     </div>
@@ -39,14 +39,14 @@
 
     <!-- <div>
         <div class="topic-avatar">
-            {%if topic.hidden == "y"%}
+            {%if topic.anonymous != 0%}
             <img src="{{settings.static_avatar_default}}" width="48" height="48" title="Anonymous"/>
             {%else%}
             <a href="/people/{{topic.people_id}}" class="avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
             {%end%}
 
         </div>
-        
+
         {% if topic.reply_count > 0 %}
         <span class="reply-count pull-right" title="{{topic.reply_count}} {{_("Replies")}}">{{topic.reply_count}}</span>
         {% end %}
@@ -58,7 +58,7 @@
 
         <div class="topic-meta small">
             <a href="/node/{{topic.node.name}}" class="node-cell">{{topic.node.title}}</a> •
-            {%if topic.hidden == "y" %}
+            {%if topic.anonymous != 0 %}
                 <span>{{_("Anonymous")}}</span> •
             {%else%}
                 <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a> •{%end%}
@@ -67,10 +67,19 @@
             {% else %}
             <time datetime="{{xmldatetime(topic.created)}}" title="created">{{timesince(topic.created, locale.code)}}</time>
             {% end %}
-        </div>    
+        </div>
     </div>   -->
+</li>
+{%end%}
+
+{%if pagination%}
+<li class="topic-item list-group-item">
+    <ul class="pagination">
+        {% for p in pagination.iter_pages() %}
+        <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+        {% end %}
+    </ul>
 </li>
 {%end%}
 </ul>
 </div>
-

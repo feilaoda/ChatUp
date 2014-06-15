@@ -4,7 +4,7 @@
 
 {% block afterstyle %}
 <style type="text/css">
-    
+
     @media screen and (max-width: 480px) {
         textarea {
             width: 90%;
@@ -15,18 +15,22 @@
 
 {% block content %}
 <div class="screen">
-    <div class="box-container">
-        <div class="box-header">
-            <h2>{{ _("Edit Profile") }}</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{ _("Edit Profile") }}
         </div>
-        <div class="box-content">
+        <div class="panel-body">
+          <div class="media">
+              <img class="pull-left" src="{{current_user.get_avatar(48)}}" width="48" height="48" />
+              <div class="media-body">
+                <div class="media-heading"><h2>{{current_user.username or ''}}</h2></div>
+              </div>
+          </div>
+
         <form action="" method="post" class="ui-box-container">
             {{ xsrf_form_html() }}
             <div class="horizontal">
-            <div class="form-group control-required">
-                <img src="{{current_user.get_avatar(48)}}" width="48" height="48" />
-                <h1 class="fn-text">{{current_user.username or ''}}</h1>
-            </div>
+
 
             <div class="form-group control-required">
                 <label class="control-label" for="email">{{ _("Email") }}</label>
@@ -42,7 +46,7 @@
                 </div>
             </div>
 
-            
+
 
             <div class="form-group control-required">
                 <div class="controls">

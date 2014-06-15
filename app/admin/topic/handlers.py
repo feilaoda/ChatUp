@@ -30,7 +30,14 @@ SAMPLE_PEOPLE=3
 
 class AllTopicsHandler(UserHandler):
     def get(self):
-        self.render('admin/topic/all_topics.html')
+        p = self.get_argument('p', 1)
+        limit = 30
+        pagination = Topic.query.filter().order_by('-last_reply_time').paginate(p, limit)
+                
+        pagination.items = get_full_topics(pagination.items)
+
+
+        self.render('admin/topic/all_topics.html', pagination=pagination)
 
 class ShowTopicHandler(UserHandler):
     def get(self, id):
@@ -238,15 +245,14 @@ class EditTopicHandler(UserHandler):
             self.flash_message('Please fill the title field', 'error')
             self.render('topic/edit_topic.html', topic=topic)
             return
-        # if not self.check_permission(topic):
-        #     self.render('topic/edit_topic.html', topic=topic)
-        #     return
+
 
         topic.title = title
         topic.content = content
         db.session.add(topic)
 
         log = TopicLog(topic_id=topic.id, people_id=self.current_user.id)
+        log.event = "edit topic: [%s,%s]" % (title,content)
         db.session.add(log)
         db.session.commit()
 

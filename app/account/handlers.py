@@ -29,11 +29,11 @@ from . import validators
 from .decorators import require_user
 from .lib import UserHandler, get_full_notifies
 from .models import People, PeopleSetting, Notify, Weibo
-
+from .usednames import UsedUserNames
 
 class AccountSignupForm(FormSchema):
     username = formencode.All(validators.Utf8MaxLength(15, messages={"tooLong":u'???????????????15???????????????'}),validators.Utf8MinLength(2, messages={"tooShort":u'???????????????2??????????????????'}),formencode.validators.String(not_empty=True, strip=True, messages={"empty":u"?????????????????????"}))
-    
+
 
 class EmailMixin(object):
     def _create_token(self, user):
@@ -76,7 +76,7 @@ class EmailMixin(object):
 
 
 class SigninHandler(UserHandler):
-    
+
     def head(self):
         pass
 
@@ -199,14 +199,19 @@ class SignupHandler(UserHandler, RecaptchaMixin, EmailMixin):
         if self.current_user:
             self.redirect(self.next_url)
             return
-    
+
         username = self.get_argument('username', '')
         email = self.get_argument('email', '')
         email = email.lower()
         password1 = self.get_argument('password1', None)
         password2 = self.get_argument('password2', None)
-        
-        
+
+        if username in UsedUserNames:
+            self.flash_message('Username has been taken', 'error')
+            recaptcha = self.recaptcha_render()
+            self.render('signup.html', username=username, email=email, recaptcha=recaptcha)
+            return
+
         schema = AccountSignupForm(self)
         if not schema.validate():
             self.flash_message('Username is not allowed', 'error')
@@ -265,7 +270,7 @@ class SignupHandler(UserHandler, RecaptchaMixin, EmailMixin):
         user.password = user.create_password(password)
         db.session.add(user)
         db.session.commit()
-        
+
         self.flash_message('Signup successful', 'success')
         # self.send_signup_email(user)
         self.set_secure_cookie('user', '%s/%s' % (user.id, user.token), domain=options.cookie_domain)
@@ -322,7 +327,7 @@ class SettingHandler(UserHandler):
 
     @authenticated
     def post(self):
-        
+
 
         website = self.get_argument('website', '')
         if website and not validators.url(website):
@@ -539,7 +544,7 @@ class MessageHandler(UserHandler):
 class AvatarHandler(UserHandler):
     def check_xsrf_cookie(self):
         pass
-    
+
     @authenticated
     def get(self):
 
@@ -548,10 +553,10 @@ class AvatarHandler(UserHandler):
     @authenticated
     def post(self):
         if self.request.files:
-            
+
             file = self.request.files['avatar'][0]
             people = People.query.get(self.current_user.id)
-            
+
             if file:
                 rawname = file.get('filename')
                 dstname = str(int(time.time()))+'.'+rawname.split('.').pop()
@@ -561,27 +566,27 @@ class AvatarHandler(UserHandler):
                 # write a file
                 # src = "./static/upload/src/"+dstname
                 # file(src,'w+').write(f['body'])
-                
+
                 tf = tempfile.NamedTemporaryFile(delete=False)
                 tf.write(file['body'])
                 tf.seek(0)
-                 
+
                 # create normal file
                 # img = Image.open(src)
 
                 avatar_file_path = options.static_avatar_path + '/' + thbname
                 large_avatar_file_path = options.static_avatar_path + '/' + large_thbname
-                
+
                 img = Image.open(tf.name)
 
                 img.thumbnail((120,120),resample=1)
-                
+
                 img.save(avatar_file_path)
-                
+
                 #large_img = Image.open(tf.name)
                 #large_img.thumbnail((300,300), resample=1)
                 #large_img.save(large_avatar_file_path)
-                
+
                 tf.close()
                 os.remove(tf.name)
                 avatar_url = options.static_avatar_url + '/' + thbname
@@ -591,9 +596,9 @@ class AvatarHandler(UserHandler):
                 autocache_hdel('hs:people', people.id)
                 db.session.add(people)
                 db.session.commit()
-                
-                
-                
+
+
+
                 return self.redirect('/account/setting')
 
 def _on_saying(xml):
@@ -610,8 +615,8 @@ class DoubanAuthHandler(UserHandler, DoubanMixin):
             self.get_authenticated_user(self.async_callback(self._on_auth_callback))
             return
         self.authorize_redirect('http://www.meimashuo.com/account/douban/callback')
- 
-        
+
+
 
     def _on_auth_callback(self, content):
         if content:
@@ -624,10 +629,10 @@ class DoubanAuthHandler(UserHandler, DoubanMixin):
 class DoubanAuthCallbackHandler(UserHandler, DoubanMixin):
     @authenticated
     def get(self):
-        print self.request.arguments 
+        print self.request.arguments
         self.write("douban auth ok" + str(self.request.arguments))
 
- 
+
 
 class WeiboAuthHandler(UserHandler, WeiboMixin):
     #/account/weibo/auth
@@ -659,7 +664,7 @@ class WeiboAuthHandler(UserHandler, WeiboMixin):
             print "uid", uid
             if uid:
                 weibo = Weibo.query.filter_by(uid=uid).first()
-                
+
                 if weibo:
                     people = People.query.filter_by(id=weibo.people_id).first()
                     if weibo.token != token:
@@ -706,13 +711,13 @@ class WeiboAuthHandler(UserHandler, WeiboMixin):
 
         self.render("account/weibo_error.html")
 
-    
+
 
 class WeiboAuthCallbackHandler(UserHandler, DoubanMixin):
     #/account/weibo/callback
     @authenticated
     def get(self):
-        print self.request.arguments 
+        print self.request.arguments
         self.write("douban auth ok" + str(self.request.arguments))
 
 
@@ -748,7 +753,7 @@ class GithubSignupHandler(UserHandler, GithubMixin):
         login = user.get('login')
         if uid:
             github = GitHub.query.filter_by(uid=uid).first()
-            
+
             if github:
                 people = People.query.filter_by(id=github.people_id).first()
                 if github.token != token:
@@ -780,10 +785,10 @@ class GithubSignupHandler(UserHandler, GithubMixin):
 
 
 # class GithubSignupHandler(UserHandler):
-    
+
 #     def get(self):
 #         return self.render("account/signup_github.html")
-    
+
 
 
 
@@ -811,7 +816,7 @@ class SettingRenameGithubHandler(UserHandler):
             self.flash_message('Please fill the required fields', 'error')
             self.render("account/signup_github.html", social_id=id, username=username)
             return
-      
+
 
         if not validators.username(username):
             self.flash_message('Username is invalid', 'error')
@@ -833,7 +838,7 @@ class SettingRenameGithubHandler(UserHandler):
         people.email = github.email
         db.session.add(people)
         db.session.commit()
-        
+
         github.people_id = people.id
         db.session.add(github)
         db.session.commit()
@@ -846,7 +851,7 @@ class SettingRenameGithubHandler(UserHandler):
 
 
 class SettingSignupHandler(UserHandler):
-    
+
 
     def post(self, id):
         setting_user = self.get_secure_cookie("setting_user")
@@ -953,11 +958,11 @@ class UserModule(UIModule):
         return self.render_string('module/user.html', user=user)
 
 class ProfileHeaderModule(UIModule):
-    
+
     def render(self, people):
         if not people:
             return ''
-       
+
         return self.render_string('module/profile_header.html', people=people)
 
 class ProfileSidebarModule(UIModule):
@@ -984,11 +989,9 @@ app_modules = {
     'RecentPeoples': RecentPeoplesModule,
     'User': UserModule,
     'ProfileHeader': ProfileHeaderModule,
-    'ProfileSidebar': ProfileSidebarModule, 
+    'ProfileSidebar': ProfileSidebarModule,
     'Template': TemplateModule,
     'SigninSidebar': SigninSidebarModule
 }
 
 app = DojangApp('account', __name__, handlers=app_handlers, ui_modules=app_modules)
-
-

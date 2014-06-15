@@ -4,7 +4,7 @@ from tornado.options import options
 from dojang.cache import get_cache_list
 from app.account.models import People
 
-#from .models import Node
+from .models import TopicContent
 
 
 def get_user_id_list(topics):
@@ -30,6 +30,16 @@ def get_full_topics(topics):
             # else:
             #     topic.last_replyer = None
             yield topic
+
+def get_topic_content(topic):
+    if topic and topic.content_id:
+        tc = TopicContent.query.filter_by(id=topic.content_id).first()
+        if tc is not None and tc.content is not None:
+            content_html = tc.content
+        else:
+            content_html = ""
+        return content_html
+    return ""
 
 # def get_all_topics(topics):
 #     users = get_cache_list(People, get_user_id_list(topics), 'hs:people')

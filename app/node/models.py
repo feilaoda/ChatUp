@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 
 from dojang.database import db
@@ -12,7 +14,7 @@ class Node(db.Model):
     name = Column(String(200), nullable=False, index=True)
     title = Column(String(200), nullable=False)
     category = Column(String(200), nullable=True, index=True)
-    anonymous = Column(Integer, default=1, index=True) #0: all 1:app
+    anonymous = Column(Integer, default='0', index=True) #0: all 1:app
     avatar = Column(String(400))
     description = Column(String(1000))
     created = Column(DateTime, default=datetime.utcnow)
@@ -43,4 +45,3 @@ class Node(db.Model):
 #     people_id = Column(Integer, nullable=False, index=True)
 #     node_id = Column(Integer, nullable=False, index=True)
 #     created = Column(DateTime, default=datetime.utcnow)
-

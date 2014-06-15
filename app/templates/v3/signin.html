@@ -20,22 +20,23 @@ function md5pwd(){
 
 {% block content %}
     
-<div class="box-container pinner-x">
+<div class="panel">
+    <div class="panel-body">
     
-    <legend>{{_("Signin")}}</legend>
-    <form class="form-horizontal" action="" method="post" onsubmit="md5pwd()">
+    <form class="col-md-6" action="" method="post" onsubmit="md5pwd()">
+        <legend>{{_("Signin")}}</legend>
         {{ xsrf_form_html() }}
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label class="control-label" for="account">{{ _("Account") }}</label>
             <div class="controls">
-                <input type="text" class="control-text" name="account" required />
+                <input type="text" class="form-control" name="account" required />
             </div>
         </div>
 
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label class="control-label" for="password">{{ _("Password") }}</label>
             <div class="controls">
-            <input id="password" type="password" class="control-text" name="password"/>
+            <input id="password" type="password" class="form-control" name="password"/>
             <input id="password_md5" type="hidden" class="control-text" name="password_md5"/>
             </div>
         </div>
@@ -46,7 +47,7 @@ function md5pwd(){
 
         
     </form>
-
+    </div>
 </div>
 
 {% end %}

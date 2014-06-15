@@ -23,48 +23,51 @@
 {% end %}
 
 {% block content %}
-<div class="box-container pinner-x pinner-y">
-    <legend>{{_("Signup")}}</legend>
-    <form action="" method="post" class="form-horizontal">
+<div class="panel">
+    <div class="panel-body "> 
+    
+    <form class="col-md-6" role="form" action="" method="post">
+        <legend>{{_("Signup")}}</legend>
         {{ xsrf_form_html() }}
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label for="username" class="control-label">{{ _("Username") }}</label>
             <div class="controls">
-            <input type="text" class="control-text" name="username" maxlength="100" value="{{username}}" required/>
+            <input type="text" class="form-control input-xxlarge" name="username" maxlength="100" value="{{username}}" required/>
             <div class="control-explain">{{ _("Only English 3-20 english characters or digits are accepted.") }}</div>
             </div>
         </div>
         
         
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label for="email" class="control-label">{{ _("Email") }}</label>
             <div class="controls">
-            <input type="email" class="control-text" name="email" maxlength="100" value="{{email}}" required/>
+            <input type="email" class="form-control" name="email" maxlength="100" value="{{email}}" required/>
             </div>
         </div>
         
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label for="password1" class="control-label">{{ _("Password") }}</label>
             <div class="controls">
-            <input type="password" class="control-text" name="password1" required/>
+            <input type="password" class="form-control" name="password1" required/>
             </div>
         </div>
-        <div class="control-group control-required">
+        <div class="form-group control-required">
             <label for="password2" class="control-label">{{ _("Confirm Password") }}</label>
             <div class="controls">
-            <input type="password" class="control-text" name="password2" required/>
+            <input type="password" class="form-control" name="password2" required/>
             </div>
         </div>
        <!--  <div class="control-group">
             recaptcha
         </div> -->
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">{{ _("Signup") }}</button>
+            <button type="submit" class="btn btn-primary btn-sm">{{ _("Signup") }}</button>
             <!-- <a href="/account/signin/google" ><button type="button" class="btn">{{_("Sigin by Google")}}</button></a> -->
         </div>
         
         
     </form>
+    </div>
 </div>
 {% end %}
 

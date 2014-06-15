@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="screen">
-    
+
     <ol class="breadcrumb">
       <li><a href="/topic">{{_("Community")}}</a>  </li>
       <li><a href="/node/{{node.name}}">{{node.title}}</a></li>
@@ -17,7 +17,7 @@
 
 
 
-    {% module ShowTopicList(topics=pagination.items) %}
+    {% module ShowTopicList(pagination=pagination) %}
 
 
     {%if pagination%}
@@ -38,7 +38,44 @@
     </div>
     {%end%}
 
+<div class="panel">
+    <div class="panel-body">
+<form role="form" action="/node/{{node.name}}/new" method="post">
+        {{ xsrf_form_html() }}
 
+        
+        <div class="form-group">
+            <!-- <label class="control-label" for="title">{{ _("Title") }}</label> -->
+            <div class="controls">
+                <input type="text" class="form-control control-text input-maxlarge" name="title" required value="" placeholder="{{ _('Title') }}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- <label class="control-label" for="content">{{ _("Content") }}</label> -->
+            <div class="controls">
+                <textarea class="form-control  control-text input-maxlarge" rows="5" name="content"></textarea>
+            </div>
+        </div>
+
+{%if node.anonymous != 0%}
+        <div class="form-group">
+            <div class="controls">
+                <label class="checkbox">
+                <input type="checkbox" class="control-text input-maxlarge" name="hidden">
+                {{_("Anonymous")}}
+                </label>
+            </div>
+        </div>
+{%end%}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">{{ _("Create New Topic") }}</button>
+        </div>
+        
+    </form>
+</div>
+</div>
 </div>
 {% end %}
 
@@ -48,11 +85,8 @@
 {%end%}
 <hr class="box-panner"></hr>
 
-<div class="box-container">
-    <div class="box-header">
-        <b><a href="/node/{{node.id}}">{{node.title}}</a></b>
-    </div>
-    
+<div class="panel padding">
+
     <div class="box-content">
         <p>
             {{markup(node.description)}}
@@ -63,5 +97,5 @@
 
 
 {% module RecentNodes()%}
- 
+
 {% end %}

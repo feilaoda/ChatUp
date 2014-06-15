@@ -1,4 +1,5 @@
 {% extends "admin/topic/topic.html" %}
+{% extends "layout.html" %}
 
 {% block subtitle %}{{escape(topic.title)}}{% end %}
 
@@ -10,84 +11,92 @@
 
 {% block content %}
 <div class="screen">
+
+    <ol class="breadcrumb">
+      <li><a href="/topic">{{_("Community")}}</a>  </li>
+      <li><a href="/node/{{node.name}}">{{node.title}}</a></li>
+      
+    </ol>
+
     <div class="topic-header">
-        <a href="/node/{{node.name}}" class="node-cell">{{node.title}}</a>
+        <a class="btn btn-primary btn-small pull-right" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
     </div>
 
 <div class="topic-container" data-id="{{topic.id}}">
-    <div class="topic-title">
-          <h1>  {{markup(topic.title)}} </h1>
-    </div>
-    <div class="topic">
+   
+    <div class="topic media">
 
-        <div class="topic-avatar">
-            <a href="/people/{{topic.people_id}}" class="avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
-        </div>
-        
-        <div class="topic-content">
-            <p>{{markup(topic.content)}}</p>
-        </div>
-
-         <div class="topic-meta">
-            <a href="/people/{{topic.people_id}}"><b>{{topic.people.nickname}}</b></a>
-            {%if topic.hidden == "y"%}
-                    <span class="small">({{_("Anonymous")}})</span>
-            {%end%}
-
-            <a href="/topic/{{topic.id}}"><time class="small" title="Created" datetime="{{xmldatetime(topic.created)}}">{{localtime(topic.created)}}</time> </a>
-            {% if current_user.is_admin %}
-            <a href="/admin/topic/{{topic.id}}/edit">{{_("Edit")}}</a>
-            <a href="/admin/topic/{{topic.id}}/delete" onClick="return  confirm('{{_('sure delete this topic?')}}');">{{_("Delete")}}</a>
-            {% end %}
+       
+            <a href="/people/{{topic.people_id}}" class="pull-left avatar "><img src="{{topic.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
             
+   
+        
+        <div class="topic-content media-body">
+            <h2 class="media-heading">  {{markup(topic.title)}}</h2>
+
+            <p>{{markup(topic.content)}}</p>
+
+            <div class="topic-meta">
+            
+
+               
+                <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a>
+                {%if topic.anonymous != 0%}
+                <span class="small">({{_("Anonymous")}})</span>
+            {%else%}
+
+                <a href="/topic/{{topic.id}}"><time class="small" title="Created" datetime="{{xmldatetime(topic.created)}}">{{localtime(topic.created)}}</time> </a>
+                {% if current_user and current_user.id == topic.people_id %}
+                <a href="/topic/{{topic.id}}/edit">{{_("Edit")}}</a>
+                {% end %}
+            {%end%}
+            
+            </div>
+
         </div>
+
+         
 
     </div>
     
    
 </div>
 
-<div class="reply-container">
+
+
+
+<div class="reply-container page-header">
     <div class="reply-header">
         {% if topic.reply_count and topic.last_reply_time %}
         {{_("Last reply at")}} <time datetime="{{xmldatetime(topic.last_reply_time)}}">{{localtime(topic.last_reply_time)}}</time> |
         {% end %}
         {{topic.reply_count}} {{_("Replies")}} 
-        <!-- |
-        {{topic.hits}} {{_("Hits")}} -->
     </div>
     <div class="reply-items">
-    <ul>
+    <ul class="list-group">
     {% set index = 0 %}
     {% for reply in pagination.items %}
-    <li id="reply-{{reply.id}}" class="reply-item  clearfix">
-    <div class="reply hoverable">
-        
-        <div class="reply-avatar" >
-            <a href="/people/{{reply.people_id}}"><img  src="{{reply.people.get_avatar(48)}}" width="48" height="48" /></a>
+    <li id="reply{{reply.order}}" class="reply-item list-group-item">
+    <div class="reply  media">
+        <div class="reply-avatar pull-left" >
+            <a href="/people/{{reply.people_id}}" class="pull-leftx"><img  src="{{reply.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>            
         </div>
 
-        <div class="reply-content">
-
-            <div class="reply-meta">
+        <div class="reply-content media-body hoverable">
+            <div class="reply-meta media-header">
                 
-
-                <a href="/people/{{reply.people_id}}">{{reply.people.nickname}}</a>
-                {%if reply.hidden == "y"%}
+                    <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a> 
+                {%if reply.anonymous != 0%}
                     <span class="small">({{_("Anonymous")}})</span>
+                 {%else%}
+                     </span>
+                    <span class="small pull-right">
+                        <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}} 
+                        <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('#{{reply.order}}L @{{reply.people.username}}')">{{_("Reply")}}</a>
+                    </span>
                 {%end%}
-
-                <span class="small pull-right">
-
-                    <a class="hoverable" data-name="{{reply.people.username}}" href="/admin/topic/{{topic.id}}/reply/{{reply.id}}/delete" onClick="return  confirm('{{_('sure delete this reply?')}}');"  target="_blank">{{_("Delete")}}</a>
-                    
-                    <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}} 
-                    <a class="hoverable" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('{{reply.people.username}}')">{{_("Reply")}}</a>
-
-                    
-
-                </span>
             </div>
+
             <p>
                 {{markup(reply.content)}}
             </p>
@@ -116,27 +125,35 @@
     {{ _("Topic is closed") }}
 </div>
 {% elif current_user %}
-<span>回复</span><span class="pull-right"><a href="#">Top</a></span>
-<form action="/admin/topic/{{topic.id}}/reply" class="ui-box-container" method="post">
+<span>{{_("Reply")}}</span><span class="pull-right"><a href="#">Top</a></span>
+<form action="/topic/{{topic.id}}/reply" class="form" method="post">
     {{ xsrf_form_html() }}
-    <div id="editor">
-        
-        <div class="control-group">
-            <label class="control-label" for="people">{{ _("people") }}</label>
-            <div class="controls">
-                <select name="people_id">
-                    {%for user in peoples%}
-                    <option value="{{user.id}}">{{user.nickname}} (@{{user.username}}) {{markup(user.description)}}</option>
-                    {%end%}
-                </select>
-            </div>
+    <div id="editor" class="form-group">
+        <!--
+        <div id="editor-pannel">
+            <a href="#" class="js-write current" tabindex="-1">{{ _("Write") }}</a>
+            
+            <a href="#" class="js-preview" tabindex="-1">{{ _("Preview") }}</a>
+            
+            <a href="#" id="june-upload-button" class="js-upload" tabindex="-1">{{ _("Upload Image") }}</a>
         </div>
-
+        -->
         <div class="control-item" id="editor">
-            <textarea  name="content" class="control-text input-maxlarge" rows="5" required></textarea>
+            <textarea  name="content" class="form-control control-text input-maxlarge" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">{{_("Post")}}</button>
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                <input type="checkbox" class="control-text input-maxlarge" name="hidden">
+                {{_("Anonymous")}}
+                </label>
+            </div>
+        </div> 
     </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-small">{{_("Post")}}</button>
+        </div>
 </form>
 <!-- <input type="file" name="image" accept="image/*" /> -->
 {% else %}
@@ -154,18 +171,18 @@
 {% end %}
 
 {% block sidebar %}
+{%if current_user%} 
+{% module ProfileSidebar(current_user) %}
+<hr class="box-panner"></hr>
+{%end%}
 
 {% module RecentNodes()%}
 
+{%if current_user and current_user.is_staff %} 
+<hr class="box-panner"></hr>
+<div class="box-container">
+<a href="/admin/topic/{{topic.id}}" class="btn btn-primary btn-small">Admin Edit</a>
+</div>
+{%end%}
 {% end %}
 
-{% block afterjs %}
-
-
-{% end %}
-
-
-
-       
-
-{% block notification %}{% end %}

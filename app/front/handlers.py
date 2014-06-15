@@ -7,6 +7,8 @@ from app.account.models import People
 from app.channel.models import Channel, ChannelEntry
 from app.topic.lib import get_full_topics
 from app.topic.models import Topic
+from app.node.models import Node
+
 from dojang.app import DojangApp
 from dojang.cache import autocached
 from dojang.util import import_object
@@ -16,11 +18,20 @@ from tornado.web import RequestHandler
 from tornado.web import UIModule
 
 
+
 class FrontHandler(UserHandler):
     def get(self):
-        
+        p = self.get_argument('p', 1)
+        limit = 30
+        nodes = Node.query.filter_by().all()
+        node_ids = []
+        for node in nodes:
+            node_ids.append(node.id)
+        pagination = Topic.query.filter(Topic.node_id.in_(node_ids)).order_by('-last_reply_time').paginate(p, limit)
 
-        self.render('front/index.html')
+        pagination.items = get_full_topics(pagination.items)
+
+        self.render('front/index.html', pagination=pagination)
 
 
 
@@ -38,27 +49,28 @@ handlers = [
     ('/linkto', LinkToHandler),
 ]
 
-class ShowFrontTopicChannelsModule(UIModule):    
+class ShowFrontTopicChannelsModule(UIModule):
     def render(self):
         topic_channels = Channel.query.filter_by(isa='topic').order_by('sorting').all()
         return self.render_string('front/front_topic_channels.html', topic_channels=topic_channels)
 
- 
-class ShowFrontTopicChannelModule(UIModule):    
+
+class ShowFrontTopicChannelModule(UIModule):
     def render(self, channel):
         entries = channel.entries
         return self.render_string('front/front_topic_channel_module.html', channel=channel, entries=entries)
 
-class ShowFrontTopicsSidebarModule(UIModule):    
+class ShowFrontTopicsSidebarModule(UIModule):
     def render(self):
         topics = Topic.query.filter_by().order_by('-created').limit(10).all()
         return self.render_string('front/front_topics_sidebar.html', topics=topics)
 
-class ShowFrontRecentTopicsModule(UIModule):    
+class ShowFrontRecentTopicsModule(UIModule):
     def render(self):
-        topics = Topic.query.filter_by().order_by('-last_reply_time').limit(20).all()
-        topics = get_full_topics(topics)
-        return self.render_string('front/front_recent_topics.html', topics=topics)
+
+        # topics = Topic.query.filter_by().order_by('-last_reply_time').limit(20).all()
+        # topics = get_full_topics(topics)
+        return self.render_string('front/front_recent_topics.html', pagination=pagination)
 
 
 app_modules = {
@@ -281,5 +293,3 @@ app = DojangApp('', __name__, handlers=handlers, ui_modules=app_modules,)
 #         else:
 #             self.write('{"stat":"fail", "msg": "server error"}')
 #         self.finish()
-
-

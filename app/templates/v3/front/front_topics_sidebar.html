@@ -1,9 +1,9 @@
-<div class="box-container">
-    <h2>最新话题</h2>
-    <div>
-        <ul class="itemable">
+<div class="panel panel-default">
+    <div class="panel-heading">最新话题</div>
+    <div class="">
+        <ul class="list-group">
         {%for topic in topics%}
-        <li><a href="/topic/{{topic.id}}">{{markup(topic.title)}}</a></li>
+        <li class="list-group-item list-group-nolrborder"><a href="/topic/{{topic.id}}">{{markup(topic.title)}}</a></li>
         {%end%}
         </ul>
     </div>

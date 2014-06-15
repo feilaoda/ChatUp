@@ -34,19 +34,20 @@ class Topic(db.Model):
     id = Column(Integer, primary_key=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
     node_id =  Column(Integer, ForeignKey('topic_node.id'), index=True)
-    nickname = Column(String(100), default='Anonymous')
     title = Column(String(500))
-    content = Column(Text)    
+    content_id =  Column(Integer, ForeignKey('topic_content.id'))
+    #content = Column(Text)
     format = Column(String(100), default='html')
     status = Column(String(50)) #open, blocked, close
     hits = Column(Integer, default=1)
-    anonymous = Column(Integer, default=1)
+    anonymous = Column(Integer, default=0)
     up_count = Column(Integer, default=0)
     ups = Column(Text)  # e.g.  1,2,3,4
     down_count = Column(Integer, default=0)
     downs = Column(Text)  # e.g.  1,2,3,4
     reply_count = Column(Integer, default=0)
     last_reply_time = Column(DateTime, default=datetime.utcnow, index=True)
+    last_reply_by = Column(Integer, default=None)
     created = Column(DateTime, default=datetime.utcnow)
     replies = relationship("TopicReply", backref="topic")
 
@@ -69,15 +70,24 @@ class Topic(db.Model):
 
         return r
 
+class TopicContent(db.Model):
+    id = Column(Integer, primary_key=True)
+    content = Column(Text)
+    content_html = Column(Text)
+    created = Column(DateTime, default=datetime.utcnow)
+    topic = relationship("Topic", backref="content")
+
+
 class TopicReply(db.Model):
     __tablename__="topic_reply"
     id = Column(Integer, primary_key=True)
     topic_id =  Column(Integer, ForeignKey('topic.id'), index=True)
     people_id =  Column(Integer, ForeignKey('people.id'), index=True)
     nickname = Column(String(100), default='Anonymous')
-    content = Column(String(2000))
+    content = Column(Text)
+    content_html = Column(Text)
     order =  Column(Integer, default=1, index=True)
-    anonymous = Column(Integer, default=1)
+    anonymous = Column(Integer, default=0)
     up_count = Column(Integer, default=0)
     ups = Column(Text)  # e.g.  1,2,3,4
     created = Column(DateTime, default=datetime.utcnow)
@@ -114,4 +124,5 @@ class TopicLog(db.Model):
     id = Column(Integer, primary_key=True)
     topic_id = Column(Integer, nullable=False, index=True)
     people_id = Column(Integer, nullable=False)
+    event = Column(String(3000), nullable=True)
     created = Column(DateTime, default=datetime.utcnow)

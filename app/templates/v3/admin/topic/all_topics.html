@@ -7,9 +7,18 @@
 
 {% block content %}
 
-<div class="screen">
+{% module ShowTopicList(topics=pagination.items) %}
 
-</div>
+    {%if pagination%}
+    <div >
+        <ul class="pagination">
+            {% for p in pagination.iter_pages() %}
+            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+            {% end %}
+        </ul>
+    </div>
+    {%end%}
+    
 {% end %}
 
 

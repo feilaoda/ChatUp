@@ -1,19 +1,23 @@
+# -*- coding: utf-8 -*-
+
 import hashlib
+import formencode
+
+import tornado.web
+from tornado.escape import utf8
+from tornado.web import UIModule, authenticated
+from tornado.web import URLSpec as url
+
+from dojang.app import DojangApp
+from dojang.cache import autocache_get, autocache_set
+from dojang.database import db
+from dojang.mixin import ModelMixin
 
 from app.account.decorators import require_user, require_admin
 from app.account.lib import UserHandler
 from app.lib.util import find_mention
 from app.topic.lib import get_full_topics
-from app.topic.models import Topic
-from dojang.app import DojangApp
-from dojang.cache import autocache_get, autocache_set
-from dojang.database import db
-from dojang.mixin import ModelMixin
-import formencode
-from tornado.escape import utf8
-from tornado.web import UIModule, authenticated
-from tornado.web import URLSpec as url
-import tornado.web
+from app.topic.models import Topic, TopicContent
 
 from .models import Node
 
@@ -31,6 +35,7 @@ class CreateNodeHandler(UserHandler):
         o.name = self.get_argument('name', None)
         o.avatar = self.get_argument('avatar', None)
         o.description = self.get_argument('description', None)
+        o.anonymous = int(self.get_argument('anonymous', 0))
         # o.fgcolor = self.get_argument('fgcolor', None)
         # o.bgcolor = self.get_argument('bgcolor', None)
         # o.header = self.get_argument('header', None)
@@ -42,13 +47,13 @@ class CreateNodeHandler(UserHandler):
         except:
             o.limit_role = 0
 
-        if not (o.name and o.title and o.description):
+        if not (o.name and o.title):
             self.flash_message('Please fill the required field', 'error')
             self.render('node/create_node.html', node=o)
             return
 
-        
-        o.category = self.get_argument('category', None)        
+
+        o.category = self.get_argument('category', None)
         db.session.add(o)
         db.session.commit()
 
@@ -72,8 +77,10 @@ class EditNodeHandler(UserHandler, ModelMixin):
         self.update_model(node, 'avatar')
         self.update_model(node, 'description', True)
         
+        node.anonymous = int(self.get_argument('anonymous', 0))
+
         node.category = self.get_argument('category', None)
-        
+
         try:
             node.limit_role = int(self.get_argument('role', 0))
         except:
@@ -108,7 +115,7 @@ class FollowNodeHandler(UserHandler):
 
 
 class ShowNodeHandler(UserHandler):
- 
+
 
     def get(self, name):
         node = Node.query.filter_by(name=name).first_or_404()
@@ -126,7 +133,7 @@ class CreateNodeTopicHandler(UserHandler):
     @require_user
     def get(self, node_name):
         node = Node.query.get_first(name=node_name)
-        
+
         topic = Topic()
         if not node:
             self.send_error(404)
@@ -139,7 +146,7 @@ class CreateNodeTopicHandler(UserHandler):
         if not node:
             self.send_error(404)
             return
-        
+
         title = self.get_argument('title', None)
         content = self.get_argument('content', None)
         hidden =  self.get_argument('hidden', None)
@@ -148,9 +155,9 @@ class CreateNodeTopicHandler(UserHandler):
             self.flash_message('Please fill the title field', 'error')
             self.render('topic/create_topic.html', node=node, topic=topic)
             return
-        
+
         #: avoid double submit
-         
+
         digest = hashlib.md5(utf8(title)).hexdigest()
         key = "t:p%d:%s" % (self.current_user.id, digest)
         url = autocache_get(key)
@@ -158,17 +165,26 @@ class CreateNodeTopicHandler(UserHandler):
         if url:
             self.redirect(url)
             return
-        if hidden == 'on':
-            hidden = "y"
+        if node.anonymous != 0:
+            if hidden == 'on':
+                topic.anonymous = 1
+            else:
+                topic.anonymous = 0
         else:
-            hidden = "n"
+            topic.anonymous = 0
+
+            
         topic.title = title
-        topic.content = content
         topic.node_id = node.id
         topic.people_id = self.current_user.id
-        topic.hidden = hidden
+        
+        tc = TopicContent()
+        tc.content = content
+        topic.content = tc
+
         node.topic_count += 1
         db.session.add(topic)
+        db.session.add(tc)
         db.session.add(node)
         db.session.commit()
 
@@ -194,7 +210,7 @@ class ShowAllNodesHandler(UserHandler):
         nodes = Node.query.filter_by().order_by('-last_updated').all()
         self.render('node/node_list.html', nodes=nodes)
 
-  
+
 
 app_handlers = [
     url('', ShowAllNodesHandler, name='show-all-nodes'),

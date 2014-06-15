@@ -1,0 +1,836 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"first",
+				"first_or_404"
+			],
+			[
+				"dur",
+				"during"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/node/handlers.py",
+			"settings":
+			{
+				"buffer_size": 7933,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/node/models.py",
+			"settings":
+			{
+				"buffer_size": 1549,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "setup.py",
+			"settings":
+			{
+				"buffer_size": 534,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sites/wecoders/config.py",
+			"settings":
+			{
+				"buffer_size": 2044,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sites/wecoders/db/wecoders.sql",
+			"settings":
+			{
+				"buffer_size": 13224,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sites/wecoders/db/space2x.sql",
+			"settings":
+			{
+				"buffer_size": 25471,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "CREATE  EXTERNAL TABLE IF NOT EXISTS `history_role`(\n  `day` string, \n  `grp` int, \n  `mac` string,\n  `st` string,\n  `et` string,\n  `dur` bigint, \n  `role` int,\n  `fac` string)\nPARTITIONED BY ( \n  `d` string)\nROW FORMAT DELIMITED \n  FIELDS TERMINATED BY ',' \nSTORED AS TEXTFILE \nLOCATION 'hdfs://vm01:9000/hive/warehouse/history_role';\n",
+			"settings":
+			{
+				"buffer_size": 336,
+				"line_ending": "Unix",
+				"name": "CREATE  EXTERNAL TABLE IF NOT EXISTS `history_role"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/show_topic.html",
+			"settings":
+			{
+				"buffer_size": 7060,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/show_topic_list_module.html",
+			"settings":
+			{
+				"buffer_size": 3180,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/topic/models.py",
+			"settings":
+			{
+				"buffer_size": 4001,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/topic/handlers.py",
+			"settings":
+			{
+				"buffer_size": 18956,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/admin/topic/show_topic.html",
+			"settings":
+			{
+				"buffer_size": 5984,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/admin/topic/all_topics.html",
+			"settings":
+			{
+				"buffer_size": 673,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/admin/topic/handlers.py",
+			"settings":
+			{
+				"buffer_size": 14621,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/create_topic.html",
+			"settings":
+			{
+				"buffer_size": 1605,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/node/create_node.html",
+			"settings":
+			{
+				"buffer_size": 2070,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/node/edit_node.html",
+			"settings":
+			{
+				"buffer_size": 2096,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/feilaoda/Downloads/mysql-setup.sql",
+		"/Users/feilaoda/Work/Project/WeCoders/config/settings.py",
+		"/Users/feilaoda/Documents/jobs/HBase/ConnectHbase.py",
+		"/Users/feilaoda/Documents/mywork/Cassandra/testcass.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"        \n",
+			"    \n",
+			"topic_log",
+			"log",
+			"topic_log",
+			"            \n",
+			"hidden",
+			"reply",
+			"hidden",
+			"topic_reply",
+			"topic_node_follower",
+			"  \n",
+			"topic",
+			"                \n",
+			"')\n",
+			"no",
+			"id",
+			"STATIC_ROOT",
+			"endif",
+			"static",
+			"STATIC_ROOT",
+			"MEDIA_ROOT",
+			"\n",
+			"registration_profile",
+			"TEMPLATE_CONTEXT_PROCESSORS",
+			"DEFAULT_FROM_EMAIL",
+			"\",\n",
+			"TEMPLATE_DIR",
+			"wecoders",
+			"PROJECT_DIR",
+			"REGISTRATION_TEMPLATE_DIR",
+			"local_sett",
+			"time",
+			"mac",
+			"connection",
+			"ConnectHbase",
+			"hadoop-common",
+			"Space",
+			"BASE_DIR",
+			"platform",
+			"        \n",
+			"platform",
+			"TopicVote",
+			"FollowNode\nFollowNode",
+			"Node",
+			"        \n",
+			"up_impact_for_user",
+			"up_impact_for_topic",
+			"accept_reply_impact_for_user",
+			"reply_impact_for_topic",
+			"    \n",
+			"))\n",
+			"shot",
+			"= ",
+			"tornadoredis",
+			"handlers",
+			"shot",
+			"com",
+			"upaiyun",
+			"PostPushTextHandler",
+			"role analyse task, day",
+			"root group is null",
+			"role analyse task, day",
+			"role analyse task, day\n",
+			"role analyse task, day",
+			"role check task start run",
+			"role check run:",
+			"start time:",
+			"role analyse task, day",
+			"2014-04-09",
+			"role analyse task, day",
+			"[88:22:33:44:55:31]",
+			"role analyse task, day",
+			"[88:22:33:44:55:31]",
+			"88:22:33:44:55:31",
+			"role analyse task",
+			"[88:22:33:44:55:31]",
+			"HADOOP_DEV_HOME",
+			"hello",
+			" "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"HADOOP_HOME",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/node/handlers.py",
+					"settings":
+					{
+						"buffer_size": 7933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4954,
+								5144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2226.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/node/models.py",
+					"settings":
+					{
+						"buffer_size": 1549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								24
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 119.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "setup.py",
+					"settings":
+					{
+						"buffer_size": 534,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								235,
+								235
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sites/wecoders/config.py",
+					"settings":
+					{
+						"buffer_size": 2044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								122,
+								122
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sites/wecoders/db/wecoders.sql",
+					"settings":
+					{
+						"buffer_size": 13224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10309,
+								10317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SQL/SQL.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5434.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "sites/wecoders/db/space2x.sql",
+					"settings":
+					{
+						"buffer_size": 25471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16873,
+								16873
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SQL/SQL.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6285.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "CREATE  EXTERNAL TABLE IF NOT EXISTS `history_role",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/templates/v3/topic/show_topic.html",
+					"settings":
+					{
+						"buffer_size": 7060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6153,
+								6153
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2228.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/templates/v3/topic/show_topic_list_module.html",
+					"settings":
+					{
+						"buffer_size": 3180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 72.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/topic/models.py",
+					"settings":
+					{
+						"buffer_size": 4001,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3901,
+								3906
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1184.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/topic/handlers.py",
+					"settings":
+					{
+						"buffer_size": 18956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6135,
+								6135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2437.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/templates/v3/admin/topic/show_topic.html",
+					"settings":
+					{
+						"buffer_size": 5984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								954,
+								954
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/templates/v3/admin/topic/all_topics.html",
+					"settings":
+					{
+						"buffer_size": 673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								441,
+								441
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/admin/topic/handlers.py",
+					"settings":
+					{
+						"buffer_size": 14621,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5834,
+								5834
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2439.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/templates/v3/topic/create_topic.html",
+					"settings":
+					{
+						"buffer_size": 1605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								998,
+								972
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 179.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/templates/v3/node/create_node.html",
+					"settings":
+					{
+						"buffer_size": 2070,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1084,
+								1093
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 182.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/templates/v3/node/edit_node.html",
+					"settings":
+					{
+						"buffer_size": 2096,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1425,
+								1425
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 332.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 344.0,
+	"status_bar_visible": true
+}

@@ -2,7 +2,7 @@
 
 debug = True
 #address = '0.0.0.0'
-sqlalchemy_engine = "mysql://root:admin@localhost:3306/space2x?charset=utf8"
+sqlalchemy_engine = "mysql://root:admin@localhost:3306/wecoders?charset=utf8"
 port=80
 version="1.0"
 
@@ -27,7 +27,7 @@ api_secret = "testkey"
 sitename = "WeCoders"
 site_url = "http://www.wecoders.com"
 site_cache_prefix = "wcs:"
-static_path = "app/static"
+static_path = "static"
 sitefeed = ""
 
 #: google analytics

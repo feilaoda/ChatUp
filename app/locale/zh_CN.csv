@@ -63,6 +63,7 @@
 "Content","内容"
 "Cancel","取消"
 "Create Topic","新建话题"
+"Create New Topic","创建新话题"
 "This topic is in","这个话题位于"
 "Created at","新建于"
 "Move Topic","移动话题"
@@ -78,7 +79,7 @@
 "Can't vote your own topic","不能对你自己的主题进行评分"
 "Cancel your vote first","请先取消原来的评分"
 "Anonymous","匿名"
-
+"Back To Top","回到顶部"
 # node
 "View","查看"
 "Create","新建"
@@ -191,6 +192,3 @@
 "all friends can view","仅朋友可见"
 "only me can view","仅自己可见"
 "don't allow reply","不允许回复"
-
-
-

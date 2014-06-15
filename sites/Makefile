@@ -5,8 +5,8 @@
 # Variables for June
 CONFIG = settings.py
 PROJSERVER = iosplay.com:/home/feilaoda/www/static
-STATIC = ../app/static
-HOME = ../app
+STATIC = ../static
+HOME = ..
 
 # Development
 server:
@@ -82,31 +82,32 @@ css2:
 
 	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/v2/css/mobile.min.css
 	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/v2/css/admin.min.css
-	
+
 
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
-	lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/vendor.min.css
-	lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
-	
-	cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
-	cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
-	cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
-	cat $(HOME)/vendor/waterfall/css/gotop.css >> $(STATIC)/assets/css/waterfall.min.css
-	cat $(HOME)/vendor/waterfall/css/pagine.css >> $(STATIC)/assets/css/waterfall.min.css
-	cat $(HOME)/vendor/waterfall/css/resize.css >> $(STATIC)/assets/css/waterfall.min.css
-	
+	#lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/v3/vendor.min.css
+	#lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
+	#lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/application.less >> $(STATIC)/assets/css/v3/application.min.css
+
+	#cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
+	#cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
+	#cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
+	#cat $(HOME)/vendor/waterfall/css/gotop.css >> $(STATIC)/assets/css/waterfall.min.css
+	#cat $(HOME)/vendor/waterfall/css/pagine.css >> $(STATIC)/assets/css/waterfall.min.css
+	#cat $(HOME)/vendor/waterfall/css/resize.css >> $(STATIC)/assets/css/waterfall.min.css
+
 
 	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/css/mobile.min.css
 	lessc --compress $(HOME)/static/stylesheets/admin.less > $(STATIC)/assets/css/admin.min.css
-	
-	
+
+
 static_image:
 	if [ ! -d $(STATIC)/assets/img ]; then mkdir -p $(STATIC)/assets/img; fi
 	cp -r assets/img/* $(STATIC)/img/
@@ -124,7 +125,7 @@ libjs:
 	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-modal.js >> $(STATIC)/assets/js/vendor.min.js
 	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-tab.js >> $(STATIC)/assets/js/vendor.min.js
 	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-datepicker.js >> $(STATIC)/assets/js/vendor.min.js
-	
+
 	uglifyjs -nc $(HOME)/static/javascripts/base.js > $(STATIC)/assets/js/application.min.js
 	# uglifyjs -nc $(HOME)/static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
 	# uglifyjs -nc $(HOME)/static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
@@ -174,7 +175,5 @@ adminjs:
 	if [ ! -d $(STATIC)/js ]; then mkdir -p $(STATIC)/js; fi
 	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.core.js > $(STATIC)/js/admin.js
 	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.widget.js >> $(STATIC)/js/admin.js
-	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.mouse.js >> $(STATIC)/js/admin.js	
+	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.mouse.js >> $(STATIC)/js/admin.js
 	uglifyjs -nc $(STATIC)/assets/js/jquery.ui.sortable.js >> $(STATIC)/js/admin.js
-
-	

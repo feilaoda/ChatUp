@@ -5,28 +5,17 @@
 
 {% block content %}
 <div class="">
-    
-    {% module ShowTopicList(topics=pagination.items) %}
 
-    {%if pagination%}
-    <div >
-        <ul class="pagination">
-            {% for p in pagination.iter_pages() %}
-            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
-            {% end %}
-        </ul>
-    </div>
-    {%end%}
-  
+    {% module ShowTopicList(pagination=pagination) %}
 
 </div>
 {% end %}
 
 {% block sidebar %}
 
-{%if current_user%} 
+{%if current_user%}
     {% module ProfileSidebar(current_user) %}
-    <hr class="box-panner"></hr>
+    
 {%end%}
 
 {% module RecentNodes()%}
@@ -39,7 +28,3 @@
 {%end%}
 
 {% end %}
-
-
-
-

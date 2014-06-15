@@ -8,9 +8,12 @@
 
 {% block content %}
 <div class="screen clearfix">
-    
+
     {% module ShowFrontTopicChannels() %}
-    {% module ShowFrontRecentTopics() %}
+
+
+  {% module ShowTopicList(pagination=pagination) %}
+
 
 </div>
 {% end %}

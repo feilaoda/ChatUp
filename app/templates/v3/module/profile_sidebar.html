@@ -1,7 +1,8 @@
 
 
 {%if people%}
-<div >
+<div class="panel">
+    <div class="panel-body">
     <div class="media pinner-y">
         <a class="pull-left" href="/people/{{people.id}}">
             <img class="media-object" width="48" height="48" src="{{people.get_avatar(48)}}">
@@ -25,6 +26,6 @@
                 
             </ul>
     </div>
-     
+    </div>
 </div>
 {%end%}
