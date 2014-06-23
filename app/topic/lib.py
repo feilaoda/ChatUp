@@ -34,8 +34,8 @@ def get_full_topics(topics):
 def get_topic_content(topic):
     if topic and topic.content_id:
         tc = TopicContent.query.filter_by(id=topic.content_id).first()
-        if tc is not None and tc.content is not None:
-            content_html = tc.content
+        if tc is not None and tc.content_html is not None:
+            content_html = tc.content_html
         else:
             content_html = ""
         return content_html

@@ -9,7 +9,7 @@ from dojang.web import init_options, run_server
 import formencode
 from tornado.escape import xhtml_escape
 from tornado.options import options
-
+import logging
 
 # import jieba
 # jieba.load_userdict("userdict.txt")
@@ -54,6 +54,9 @@ def create_application():
     application.register_app('app.topic.handlers.app')
     application.register_app('app.group.handlers.app')
 
+    application.register_app('app.wist.handlers.app')
+
+
     # application.register_app('app.admin.channel.handlers.app')
     application.register_app('app.admin.people.handlers.app')
     application.register_app('app.admin.topic.handlers.app')
@@ -89,14 +92,14 @@ def create_application():
 
     from app.lib.util import xmldatetime,xmlday, localtime, timesince, linkto, seconds_since
     from app.lib.urls import topic_url, build_url, build_image_url
-    from app.lib.filters import markup
+    from app.lib.filters import markup, markdown
     from dojang.escape import simple_escape, html_escape, br_escape
     from urllib import urlencode
     from tornado import locale
 
     default_locale = locale.get('zh-CN')
     application.register_filter('locale', default_locale)
-    # application.register_filter('markdown', markdown)
+    application.register_filter('markdown', markdown)
     application.register_filter('markup', markup)
 
     # application.register_filter('normal_markdown', normal_markdown)
@@ -125,6 +128,7 @@ def create_application():
 
 def main():
     reload(sys)
+    # logger.setLevel(logging.DEBUG)
     sys.setdefaultencoding('utf8')
     init_options()
     application = create_application()

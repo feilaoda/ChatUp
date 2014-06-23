@@ -29,11 +29,19 @@
     <form class="col-md-6" role="form" action="" method="post">
         <legend>{{_("Signup")}}</legend>
         {{ xsrf_form_html() }}
+
+        <div class="form-group control-required">
+            <label for="revite" class="control-label">{{ _("Revite Code") }}</label>
+            <div class="controls">
+            <input type="text" class="form-control" name="revite" maxlength="100" value="" required/>
+            </div>
+        </div>
+
         <div class="form-group control-required">
             <label for="username" class="control-label">{{ _("Username") }}</label>
             <div class="controls">
             <input type="text" class="form-control input-xxlarge" name="username" maxlength="100" value="{{username}}" required/>
-            <div class="control-explain">{{ _("Only English 3-20 english characters or digits are accepted.") }}</div>
+            <div class="control-explain">{{ _("Only English 5-20 english characters or digits are accepted.") }}</div>
             </div>
         </div>
         
@@ -60,9 +68,16 @@
        <!--  <div class="control-group">
             recaptcha
         </div> -->
-        <div class="form-actions">
+        <div class="form-group">
             <button type="submit" class="btn btn-primary btn-sm">{{ _("Signup") }}</button>
             <!-- <a href="/account/signin/google" ><button type="button" class="btn">{{_("Sigin by Google")}}</button></a> -->
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <a href="/account/signup/github" title="{{_('Login with weibo account')}}"><i class="third-auth third-auth-github"></i>{{_("Login with GitHub account")}}</a> 
+                
+            </div>
         </div>
         
         
@@ -72,11 +87,11 @@
 {% end %}
 
 {% block sidebar %}
-<div class="box-container">
-    <div class="box-content">
+<div class="panel">
+    <div class="panel-heading">
         <h4>{{ _("Already have an account?") }}</h4>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
         <a href="/account/signin" class="highlight">{{_("Signin") }}</a>
     </div>
 </div>

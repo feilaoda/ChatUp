@@ -94,7 +94,7 @@ css:
 	#lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/css/application.min.css
 	#lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
 	#lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
-	lessc --compress $(HOME)/static/stylesheets/application.less >> $(STATIC)/assets/css/v3/application.min.css
+	lessc --compress $(HOME)/static/stylesheets/application.less > $(STATIC)/assets/css/v3/application.min.css
 
 	#cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
 	#cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css

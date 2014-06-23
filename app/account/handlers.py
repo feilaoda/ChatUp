@@ -14,7 +14,7 @@ from dojang.auth.douban import DoubanMixin
 from dojang.auth.github import GithubMixin
 from dojang.auth.recaptcha import RecaptchaMixin
 from dojang.auth.weibo import WeiboMixin
-from dojang.cache import autocache_hdel
+from dojang.cache import autocache_hdel, autocache_hget
 from dojang.database import db
 from dojang.ext import webservice
 from dojang.form import FormSchema
@@ -28,11 +28,11 @@ from tornado.web import authenticated, asynchronous
 from . import validators
 from .decorators import require_user
 from .lib import UserHandler, get_full_notifies
-from .models import People, PeopleSetting, Notify, Weibo
+from .models import People, PeopleSetting, Notify, Weibo, Social
 from .usednames import UsedUserNames
 
 class AccountSignupForm(FormSchema):
-    username = formencode.All(validators.Utf8MaxLength(15, messages={"tooLong":u'???????????????15???????????????'}),validators.Utf8MinLength(2, messages={"tooShort":u'???????????????2??????????????????'}),formencode.validators.String(not_empty=True, strip=True, messages={"empty":u"?????????????????????"}))
+    username = formencode.All(validators.Utf8MaxLength(20, messages={"tooLong":u'用户名太长，不能超过20个字符'}),validators.Utf8MinLength(5, messages={"tooShort":u'用户名太短，不能少于5个字符'}),formencode.validators.String(not_empty=True, strip=True, messages={"empty":u"用户名不能为空"}))
 
 
 class EmailMixin(object):
@@ -199,6 +199,8 @@ class SignupHandler(UserHandler, RecaptchaMixin, EmailMixin):
         if self.current_user:
             self.redirect(self.next_url)
             return
+        revite_code = self.get_argument('revite_code', None)
+
 
         username = self.get_argument('username', '')
         email = self.get_argument('email', '')
@@ -206,8 +208,8 @@ class SignupHandler(UserHandler, RecaptchaMixin, EmailMixin):
         password1 = self.get_argument('password1', None)
         password2 = self.get_argument('password2', None)
 
-        if username in UsedUserNames:
-            self.flash_message('Username has been taken', 'error')
+        if autocache_hget('revite', revite_code) != 'yes':
+            self.flash_message('Please input a right revite code', 'error')
             recaptcha = self.recaptcha_render()
             self.render('signup.html', username=username, email=email, recaptcha=recaptcha)
             return
@@ -218,6 +220,16 @@ class SignupHandler(UserHandler, RecaptchaMixin, EmailMixin):
             recaptcha = self.recaptcha_render()
             self.render('signup.html', username=username, email=email, recaptcha=recaptcha)
             return
+
+        single_username = username[:-1]
+
+        if username in UsedUserNames or signle_username in UsedUserNames:
+            self.flash_message('Username has been taken', 'error')
+            recaptcha = self.recaptcha_render()
+            self.render('signup.html', username=username, email=email, recaptcha=recaptcha)
+            return
+
+        
 
         # valid = validators.username(username, min=3, max=20)
         # if not validators.username(username, min=3, max=20):
@@ -728,9 +740,9 @@ class GithubSignupHandler(UserHandler, GithubMixin):
         logging.info(self.request)
         if self.get_argument("code", None):
             self.get_authenticated_user(
+                redirect_uri= options.github_redirect_uri,
                 client_id=options.github_key,
                 client_secret= options.github_secret,
-                redirect_uri= options.github_redirect_uri,
                 code=self.get_argument("code"),
                 callback=self.async_callback(self._on_auth)
             )
@@ -751,32 +763,68 @@ class GithubSignupHandler(UserHandler, GithubMixin):
             raise HTTPError(500, "GitHub auth failed")
         uid = user.get('id')
         login = user.get('login')
+        token = user.get('token')
         if uid:
-            github = GitHub.query.filter_by(uid=uid).first()
+            github = Social.query.filter_by(uid=uid, service='github').first()
 
             if github:
-                people = People.query.filter_by(id=github.people_id).first()
+                people = People.query.filter_by(id=github.user_id).first()
                 if github.token != token:
                     github.token = token
                     github.profile_image = profile_image
                     db.session.add(github)
                     db.session.commit()
-            else:
-                github = GitHub()
-                github.uid = uid
-                github.name = user.get('login')
-                github.screen_name = user.get('name')
-                github.avatar_small = user.get('avatar_url')
-                github.avatar_large = user.get('avatar_url')
-                github.location = user.get('location')
-                github.token = user.get('access_token')
-                #github.session_expires = user.get('session_expires')
                 if people is None:
-                    oldpeple = People.query.filter_by(username=login).first()
-                    if oldpeple:
-                        #set new username
-                        self.set_secure_cookie('setting_user', '%s/%s' % (github.id, "github"), domain=options.cookie_domain)
-                        return self.render("account/setting_signup.html", social_id=github.id, username=github.name)
+                    people = People(People.create_token(8))
+                    people.username = username
+                    people.nickname = username
+                    people.password = People.create_token(8)
+                    people.token = People.create_token(8)
+                    people.email = github.email
+                    github.people = people
+                    db.session.add(people)
+                    db.session.add(github)
+                    db.session.commit()
+                self.flash_message("Login account successful", 'success')
+                self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
+                self.redirect('/')
+            else:
+                github = Social()
+                github.uid = uid
+                username = user.get('login')
+                github.name = username
+                github.service = 'github'
+                github.email = user.get('email')
+                github.token = token
+
+                # github.screen_name = user.get('name')
+                # github.avatar_small = user.get('avatar_url')
+                # github.avatar_large = user.get('avatar_url')
+                # github.location = user.get('location')
+                # github.token = user.get('access_token')
+                #github.session_expires = user.get('session_expires')
+                people = People(People.create_token(8))
+                people.username = username
+                people.nickname = username
+                people.password = People.create_token(8)
+                people.token = People.create_token(8)
+                people.email = github.email
+
+                github.people = people
+                db.session.add(people)
+                db.session.add(github)
+                db.session.commit()
+
+                self.flash_message("Login account successful", 'success')
+                self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
+                self.redirect('/')
+
+                # if people is None:
+                #     oldpeple = People.query.filter_by(username=login).first()
+                #     if oldpeple:
+                #         #set new username
+                #         self.set_secure_cookie('setting_user', '%s/%s' % (github.id, "github"), domain=options.cookie_domain)
+                #         return self.render("account/setting_signup.html", social_id=github.id, username=github.name)
 
 
 

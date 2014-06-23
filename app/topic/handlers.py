@@ -10,18 +10,20 @@ import tornado
 from dojang.app import DojangApp
 from dojang.cache import autocache_get, autocache_set, autocache_incr
 from dojang.database import db
-
+from dojang.escape import html_escape
 from app.account.lib import UserHandler
 from app.account.decorators import require_user, apiauth
 from app.account.models import People
 from app.group.models import Group
 from app.lib.util import find_mention
+from app.lib.filters import markdown
 
 from app.node.models import Node
 from .models import Topic, TopicReply, TopicVote, TopicLog, TopicContent
 from .lib import get_full_replies, get_full_topic, get_full_topics, get_topic_content
 from .lib import up_impact_for_topic, up_impact_for_user
 from .lib import down_impact_for_topic, down_impact_for_user
+from .form import NewTopicForm
 
 VOTE_UP = 1
 VOTE_DOWN = 0
@@ -56,8 +58,13 @@ class TopicHandler(UserHandler):
         pagination.items = get_full_replies(pagination.items)
 
 
+        if self.current_user and self.current_user.id == topic.people_id:
+            is_editable = True
+        else:
+            is_editable = False
 
-        self.render('topic/show_topic.html', topic=topic, node=node,
+
+        self.render('topic/show_topic.html', topic=topic, node=node, is_editable=is_editable,
                     pagination=pagination)
 
     def post(self, id):
@@ -197,6 +204,11 @@ class EditTopicHandler(UserHandler):
         if not self.check_permission(topic):
             self.render('topic/edit_topic.html', topic=topic)
             return
+        schema = NewTopicForm(self)
+        if not schema.validate():
+            self.flash_message(schema.form_errors['title'], 'error')
+            self.render('topic/edit_topic.html', topic=topic, content=content)
+            return
 
         node = Node.query.filter_by(id=topic.node_id).first_or_404()
         if node.anonymous != 0:
@@ -211,6 +223,7 @@ class EditTopicHandler(UserHandler):
         tc = TopicContent.query.filter_by(id=topic.content_id).first()
         if tc:
             tc.content = content
+            tc.content_html = markdown(content)
         topic.hidden = hidden
         db.session.add(topic)
         db.session.add(tc)
@@ -350,7 +363,7 @@ class CreateReplyHandler(UserHandler):
             autocache_set(index_key, index_num, 0)
         #: create reply
         node = Node.query.filter_by(id=topic.node_id).first_or_404()
-        reply = TopicReply(topic_id=id, people_id=user.id, content=content)
+        reply = TopicReply(topic_id=id, people_id=user.id, content=(content))
         if node.anonymous != 0:
             if hidden == 'on':
                 reply.anonymous = 1

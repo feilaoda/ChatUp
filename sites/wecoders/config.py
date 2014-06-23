@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 debug = True
-#address = '0.0.0.0'
+address = '0.0.0.0'
 sqlalchemy_engine = "mysql://root:admin@localhost:3306/wecoders?charset=utf8"
 port=80
 version="1.0"
@@ -47,8 +47,8 @@ emoji_url = 'http://python-china.b0.upaiyun.com/emojis/'
 #twitter_key = ''
 #twitter_secret = ''
 
-github_key = 'testkey'
-github_secret = 'testsecret'
+github_key = '9ae3c03f1708f6344b35'
+github_secret = '643c94f04172ac2504832e71089f402d67316e33'
 github_redirect_uri = 'http://www.wecoders.com/account/callback/github'
 
 douban_key = 'testkey'

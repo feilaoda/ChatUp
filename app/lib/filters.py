@@ -6,12 +6,33 @@ from lib.bbcode import *
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
+
+from BeautifulSoup import BeautifulSoup
+
+
 from tornado import escape
 import tornado.locale
 from tornado.options import options
-
+import misaka as mk
+import mistune
 
 __all__ = ['markup', 'markdown', 'xmldatetime']
+
+
+try:
+    # UCS-4
+    highpoints = re.compile(u'[\U00010000-\U0010ffff]')
+except re.error:
+    # UCS-2
+    highpoints = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
+
+
+def filter_unicode(unicode_string):
+    if unicode_string is None:
+        return None
+    return highpoints.sub(u'', unicode_string)
+
+
 
 
 _emoji_list = [
@@ -206,7 +227,115 @@ def automention(text):
 def markup(text):
     if text is None:
         return ""
-    return render_bbcode(automention(sinaimg((text))))
+    #return render_bbcode(automention(sinaimg((text))))
+    return html_escape(text)
 
 
 
+
+acceptable_elements = ['a', 'abbr', 'acronym', 'address', 'area', 'b', 'big',
+      'blockquote', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col',
+      'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em',
+      'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 
+      'ins', 'kbd', 'label', 'legend', 'li', 'map', 'menu', 'ol', 
+      'p', 'pre', 'q', 's', 'samp', 'small', 'span', 'strike',
+      'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th',
+      'thead', 'tr', 'tt', 'u', 'ul', 'var']
+
+acceptable_attributes = ['abbr', 'accept', 'accept-charset', 'accesskey',
+  'action', 'align', 'alt', 'axis', 'border', 'cellpadding', 'cellspacing',
+  'char', 'charoff', 'charset', 'checked', 'cite', 'clear', 'cols',
+  'colspan', 'color', 'compact', 'coords', 'datetime', 'dir', 
+  'enctype', 'for', 'headers', 'height', 'href', 'hreflang', 'hspace',
+  'id', 'ismap', 'label', 'lang', 'longdesc', 'maxlength', 'method',
+  'multiple', 'name', 'nohref', 'noshade', 'nowrap', 'prompt', 
+  'rel', 'rev', 'rows', 'rowspan', 'rules', 'scope', 'shape', 'size',
+  'span', 'src', 'start', 'summary', 'tabindex', 'target', 'title', 'type',
+  'usemap', 'valign', 'value', 'vspace', 'width']
+
+def clean_html( fragment ):
+    while True:
+        soup = BeautifulSoup( fragment )
+        removed = False        
+        for tag in soup.findAll(True): # find all tags
+            if tag.name not in acceptable_elements:
+                tag.extract() # remove the bad ones
+                removed = True
+            else: # it might have bad attributes
+                # a better way to get all attributes?
+                for attr in tag._getAttrMap().keys():
+                    if attr not in acceptable_attributes:
+                        del tag[attr]
+
+        # turn it back to html
+        fragment = unicode(soup)
+
+        if removed:
+            # we removed tags and tricky can could exploit that!
+            # we need to reparse the html until it stops changing
+            continue # next round
+
+        return fragment
+
+
+from lxml import etree
+from lxml.html import clean, fromstring, tostring
+
+remove_attrs = ['class']
+remove_tags = ['table', 'tr', 'td']
+nonempty_tags = ['a', 'p', 'span', 'div']
+
+cleaner = clean.Cleaner(remove_tags=remove_tags)
+
+def squeaky_clean(html):
+    clean_html = cleaner.clean_html(html)
+    # now remove the useless empty tags
+    root = fromstring(clean_html)
+    context = etree.iterwalk(root) # just the end tag event
+    for action, elem in context:
+        clean_text = elem.text and elem.text.strip(' \t\r\n')
+        if elem.tag in nonempty_tags and \
+        not (len(elem) or clean_text): # no children nor text
+            elem.getparent().remove(elem)
+            continue
+        elem.text = clean_text # if you want
+        # and if you also wanna remove some attrs:
+        for badattr in remove_attrs:
+            if elem.attrib.has_key(badattr):
+                del elem.attrib[badattr]
+    return tostring(root)
+
+
+# Create a custom renderer
+class BleepRenderer(mk.HtmlRenderer, mk.SmartyPants):
+    def block_code(self, text, lang):
+        if not lang:
+            return '\n<pre><code>%s</code></pre>\n' % \
+                html_escape(text.strip())
+        lexer = get_lexer_by_name(lang, stripall=True)
+        formatter = HtmlFormatter()
+        return highlight(text, lexer, formatter)
+
+# And use the renderer
+# renderer = BleepRenderer()
+# md = mk.Markdown(renderer,
+#     extensions=mk.EXT_FENCED_CODE | mk.EXT_NO_INTRA_EMPHASIS)
+
+
+class MissRenderer(mistune.Renderer):
+    def block_code(self, code, lang):
+        if not lang:
+            return '\n<pre><code>%s</code></pre>\n' % \
+                mistune.escape(code.strip())
+        lexer = get_lexer_by_name(lang, stripall=True)
+        formatter = HtmlFormatter()
+        return highlight(code, lexer, formatter)
+
+mirenderer = MissRenderer()
+md = mistune.Markdown(renderer=mirenderer)
+
+
+def markdown(text):
+    if text is None:
+        return None
+    return squeaky_clean(md.render(text))

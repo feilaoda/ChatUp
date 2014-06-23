@@ -87,7 +87,7 @@ class UserHandler(DojangHandler, CheckMixin):
             receiver = People.query.filter_by(username=receiver).value('id')
 
         if not receiver:
-            self.flash_message('There is no such people', 'error')
+            # self.flash_message('There is no such people', 'error')
             return
         if receiver == self.current_user.id:
             #: can't send notification to oneself

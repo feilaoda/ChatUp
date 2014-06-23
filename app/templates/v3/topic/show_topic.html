@@ -17,13 +17,13 @@
 
     </ol>
 
-    <div class="topic-header">
+<!--     <div class="topic-header">
         <a class="btn btn-primary btn-small pull-right" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
     </div>
-
+ -->
     <div class="topic-container  " data-id="{{topic.id}}">
 
-        <div class="media padding topic-body">
+        <div class="media padding topic">
 
             <!-- <div class="topic-avatar "> -->
                 {%if topic.anonymous != 0%}
@@ -33,8 +33,8 @@
                 {%end%}
            <!--  </div> -->
 
-            <div class="topic-content media-body">
-                <h3 class="media-heading">  {{markup(topic.title)}}</h3>
+            <div class="topic-body media-body">
+                <div class="topic-title media-heading">{{markup(topic.title)}}</div>
                 <p></p>
                 <p>{{topic.content_html}}</p>
 
@@ -46,7 +46,7 @@
                 {%else%}
                     <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a>
                     <a href="/topic/{{topic.id}}"><time class="small" title="Created" datetime="{{xmldatetime(topic.created)}}">{{localtime(topic.created)}}</time> </a>
-                    {% if current_user and current_user.id == topic.people_id %}
+                    {% if is_editable %}
                     <a href="/topic/{{topic.id}}/edit">{{_("Edit")}}</a>
                     {% end %}
                 {%end%}
@@ -100,7 +100,7 @@
             </div>
 
             <p>
-                {{markup(reply.content)}}
+                {{markdown(reply.content)}}
             </p>
         </div>
     </div>
@@ -179,18 +179,22 @@
 {% block sidebar %}
 {%if current_user%}
 {% module ProfileSidebar(current_user) %}
-<hr class="box-panner"></hr>
 {%end%}
 
 {% module RecentNodes()%}
 
+
+
+<div class="box">
+    <a class="btn btn-primary pull-left" href="/node/{{node.name}}/new">{{_("New Topic")}}</a>
+</div>
+
 {%if current_user and current_user.is_staff %}
-<hr class="box-panner"></hr>
-<div class="box-container">
+
+<div class="box">
 <a href="/admin/topic/{{topic.id}}" class="btn btn-primary btn-small">Admin Edit</a>
 </div>
 {%end%}
-
 
 {% end %}
 

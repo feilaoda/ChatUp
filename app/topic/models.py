@@ -49,6 +49,7 @@ class Topic(db.Model):
     last_reply_time = Column(DateTime, default=datetime.utcnow, index=True)
     last_reply_by = Column(Integer, default=None)
     created = Column(DateTime, default=datetime.utcnow)
+    # updated = Column(DateTime, default=datetime.utcnow)
     replies = relationship("TopicReply", backref="topic")
 
     def to_dict(self):

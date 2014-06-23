@@ -34,16 +34,21 @@
 
 </head>
 <body>
+  
       <div class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">{{g.sitename}}</a>
+            <a class="navbar-brand" href="/">{{g.sitename}} 
+              <small>Talk is cheap. Show me the code!</small>
+            </a>
+
           </div>
           <div class="navbar-collapse collapse">
+            
             <ul class="nav navbar-nav">
               <li class="active"><a href="/">{{_("Home")}}</a></li>
               <li><a href="/topic">{{_("Community")}}</a></li>
-              <li><a href="/wiku" >{{_("Wist")}}</a></li>
+              <li><a href="http://www.wecoders.com/wist" >{{_("Wist")}}</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -63,10 +68,16 @@
 
 
 
-      {% set msgs = messages() %}
+
+
+
+
+      <div class="container">
+        {% set msgs = messages() %}
       {% if len(msgs) > 0 %}
-        <div class="container">
+        <div class="container-content">
             {% for type, message in msgs %}
+              {%if type== 'error'%} {% set type='danger'%} {%end%}
               <div class="alert alert-{{type}}">
               <a class="close" href="" data-dismiss="alert">×</a>
               <span>
@@ -77,8 +88,7 @@
         </div>
       {% end %}
 
-
-      <div class="container">
+      
         {% block container%}
         <div class="col-xs-12 col-sm-6 col-md-8 pull-left">
           {% block content %}{% end %}
@@ -91,12 +101,13 @@
 
 
 
+
 <div class="footer">
   <div class="container">
   </div>
 
   <div class="copyright panel">
-    <div class="container ">
+    <div class="container panel-body">
         <div>
           &copy;2013  <a href="{{g.site_url}}"><b>{{g.sitename}}</b></a>&nbsp;&nbsp;Powered by <a href="https://github.com/feilaoda/ChatUp"><b>ChatUp</a>
           &nbsp;&nbsp;<a href="/about">{{_("about")}}</a>

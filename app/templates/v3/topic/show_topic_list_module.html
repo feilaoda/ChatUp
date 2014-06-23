@@ -1,4 +1,4 @@
-<div class="">
+<div class="panel">
 <ul class="topic-container list-group">
 {%for topic in topics %}
 
@@ -18,7 +18,7 @@
 
       <div class="media-body">
         <a href="/topic/{{topic.id}}" class="media-heading topic-list-title">
-            {{simple_escape(topic.title)}}</a>
+            {{markup(topic.title)}}</a>
 
         <div class="small topic-list-meta">
             <a href="/node/{{topic.node.name}}"><span class="badge">{{topic.node.title}}</span></a> •
@@ -72,14 +72,27 @@
 </li>
 {%end%}
 
+
 {%if pagination%}
 <li class="topic-item list-group-item">
+    <div class="">
     <ul class="pagination">
+        {%if pagination.pages> 9%}
+        <li class=""><a href="?"><span>|&lt;</span></a></li>
+        {%end%}
+        {%if pagination.pages> 1%}
         {% for p in pagination.iter_pages() %}
         <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
         {% end %}
+        {% end %}
+        {%if pagination.pages> 9%}
+        <li class=""><a href="?p={{pagination.pages}}"><span>&gt;|</span></a></li>
+        {%end%}
     </ul>
+    </div>
 </li>
 {%end%}
+
+
 </ul>
 </div>

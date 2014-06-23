@@ -55,6 +55,8 @@ class People(db.Model):
     followed_count = Column(Integer, default=0)
 
     setting = relationship("PeopleSetting", backref="people")
+    socials = relationship("Social", backref="people")
+    
     # duedate = Column(DateTime)
     created = Column(DateTime, default=datetime.utcnow)
 
@@ -167,9 +169,12 @@ class Notify(db.Model):
 
 class Social(db.Model):
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey('people.id'), index=True)
+    uid = Column(String(30), nullable=False, index=True)
     enabled = Column(String(1), default='y')
-    service = Column(String(100))  # service name: twitter, douban
+    name = Column(String(100))
+    email = Column(String(100))
+    service = Column(String(30), nullable=False, index=True)  # service name: twitter, douban
     token = Column(Text)
 
 

@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="control-label" for="title">{{ _("Title") }}</label>
             <div class="controls">
-                <input type="text" class="form-control control-text input-xxxlarge" name="title" required value="{{topic.title or ''}}"/>
+                <input type="text" class="form-control control-text input-xxxlarge" name="title" required value="{{markup(topic.title) or ''}}"/>
             </div>
         </div>
 

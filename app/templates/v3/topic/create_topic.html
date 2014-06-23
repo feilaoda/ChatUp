@@ -14,14 +14,14 @@
         <div class="form-group">
             <label class="control-label" for="title">{{ _("Title") }}</label>
             <div class="controls">
-                <input type="text" class="form-control control-text input-maxlarge" name="title" required value="{{topic.title or ''}}"/>
+                <input type="text" max-length="150" class="form-control control-text input-maxlarge" name="title" required value="{{title or ''}}"/>
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label" for="content">{{ _("Content") }}</label>
             <div class="controls">
-                <textarea class="form-control  control-text input-maxlarge" rows="10" name="content">{{topic.content or ''}}</textarea>
+                <textarea class="form-control  control-text input-maxlarge" rows="10" name="content">{{content or ''}}</textarea>
                 
             </div>
         </div>

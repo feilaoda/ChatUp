@@ -34,6 +34,26 @@ bootstrap 补充
   border-left:0;
   border-right:0;
 }
+.navbar {
+  min-height: 65px;
+}
+.navbar-inverse .navbar-brand {
+  color: #EEE;
+  font-size: 22px;
+  line-height: 22px;
+}
+
+.navbar-brand small {
+  display:block;
+  font-size:12px;
+  color: #888;
+}
+.navbar-nav>li>a {
+  padding-right: 20px;
+  padding-left: 20px;
+  line-height: 35px;
+}
+
 
 body {
   background-color: #EAEAEA;
@@ -98,11 +118,20 @@ background: #ffffff;
 .topic-container {
     background-color: #fff;
 }
-.topic-body {
+.topic-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.topic {
   margin-bottom: 20px;
+  
+}
+
+.topic-body {
+  line-height: 22px;
 }
 .topic-list-title {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .topic-list-meta {
@@ -115,3 +144,28 @@ background: #ffffff;
     color: gray;
   }
 }
+
+.topic {
+  h1, h2, h3, h4, h5, h6, blockquote {
+    font-size: 14px;
+  }
+
+}
+.reply {
+  h1, h2, h3, h4, h5, h6, blockquote {
+    font-size: 14px;
+  }
+}
+
+.third-auth {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: text-bottom;
+  background-repeat: no-repeat;
+  line-height: 24px;
+}
+.third-auth-github {
+  background-image: url("/static/assets/images/github-32.png");
+}
+

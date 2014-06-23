@@ -20,23 +20,6 @@
     {% module ShowTopicList(pagination=pagination) %}
 
 
-    {%if pagination%}
-    <div class="pagination">
-        <ul>
-            {%if pagination.pages> 5%}
-            <li class=""><a href="?"><span>|&lt;</span></a></li>
-            {%end%}
-            {%if pagination.pages> 1%}
-            {% for p in pagination.iter_pages() %}
-            <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
-            {% end %}
-            {% end %}
-            {%if pagination.pages> 5%}
-            <li class=""><a href="?p={{pagination.pages}}"><span>&gt;|</span></a></li>
-            {%end%}
-        </ul>
-    </div>
-    {%end%}
 
 <div class="panel">
     <div class="panel-body">
@@ -83,8 +66,7 @@
 {%if current_user%}
 {% module ProfileSidebar(current_user) %}
 {%end%}
-<hr class="box-panner"></hr>
-
+<!-- 
 <div class="panel padding">
 
     <div class="box-content">
@@ -94,7 +76,7 @@
     </div>
 
 </div>
-
+ -->
 
 {% module RecentNodes()%}
 

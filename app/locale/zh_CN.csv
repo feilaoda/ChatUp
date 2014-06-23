@@ -30,20 +30,22 @@
 "Confirm Password","确认密码"
 "Old Password","原密码"
 "New Password","新密码"
+"Revite Code","邀请码"
 "Username","用户名"
 "Nickname","昵称"
 "Website","个人网站"
 "Douban Website","豆瓣个人主页"
-"Only English 3-20 chinese or english characters or digits are accepted.","只允许填写3-20位中英文字符和数字"
-"Only English 3-20 english characters or digits are accepted.","只允许填写3-20位英文字符和数字"
+"Only English 5-20 chinese or english characters or digits are accepted.","只允许填写5-20位中英文字符和数字"
+"Only English 5-20 english characters or digits are accepted.","只允许填写5-20位英文字符和数字"
 "Save","保存"
 "Submit","提交"
 "Reback","返回"
 "Search","搜索"
 
 "Already have an account?","已经有帐号？"
-"Login with douban account","使用豆瓣帐号登录"
-"Login with weibo account","使用新浪微博帐号登录"
+"Login with DouBan account","使用豆瓣帐号登录"
+"Login with WeiBo account","使用新浪微博帐号登录"
+"Login with GitHub account","使用GitHub帐号登录"
 "Signup successful","注册成功"
 # topic
 "Topics","话题"
@@ -130,8 +132,11 @@
 "permission denied","没有权限"
 
 # ======= flash message ==========
+"Login account successful","登录成功"
 "Save successful","保存成功"
+"Please input a right revite code","请输入正确的邀请码"
 # topic
+
 "Please fill the required fields","请填写以下必填项"
 "You have no permission to create a topic in this node","你没有权限在这个节点里新建话题"
 "Password is required","需要填写密码"

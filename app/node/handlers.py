@@ -2,6 +2,7 @@
 
 import hashlib
 import formencode
+import re
 
 import tornado.web
 from tornado.escape import utf8
@@ -13,14 +14,17 @@ from dojang.cache import autocache_get, autocache_set
 from dojang.database import db
 from dojang.mixin import ModelMixin
 
+
+
 from app.account.decorators import require_user, require_admin
 from app.account.lib import UserHandler
+
 from app.lib.util import find_mention
 from app.topic.lib import get_full_topics
 from app.topic.models import Topic, TopicContent
-
+from app.lib.filters import  markdown, filter_unicode
 from .models import Node
-
+from app.topic.form import NewTopicForm
 
 class CreateNodeHandler(UserHandler):
     @require_admin
@@ -138,7 +142,7 @@ class CreateNodeTopicHandler(UserHandler):
         if not node:
             self.send_error(404)
             return
-        self.render('topic/create_topic.html', node=node, topic=topic)
+        self.render('topic/create_topic.html', node=node, title=None, content=None)
 
     @require_user
     def post(self, node_name):
@@ -147,15 +151,30 @@ class CreateNodeTopicHandler(UserHandler):
             self.send_error(404)
             return
 
+
         title = self.get_argument('title', None)
         content = self.get_argument('content', None)
         hidden =  self.get_argument('hidden', None)
+
+        schema = NewTopicForm(self)
         topic = Topic()
+
+
+        title = filter_unicode(title)
+        content = filter_unicode(content)
+        
         if not title:
             self.flash_message('Please fill the title field', 'error')
-            self.render('topic/create_topic.html', node=node, topic=topic)
+            self.render('topic/create_topic.html', node=node, title=title, content=content)
             return
 
+        if not schema.validate():
+            self.flash_message(schema.form_errors['title'], 'error')
+            self.render('topic/create_topic.html', node=node, title=title, content=content)
+            return
+
+        
+        
         #: avoid double submit
 
         digest = hashlib.md5(utf8(title)).hexdigest()
@@ -180,6 +199,7 @@ class CreateNodeTopicHandler(UserHandler):
         
         tc = TopicContent()
         tc.content = content
+        tc.content_html = markdown(content)
         topic.content = tc
 
         node.topic_count += 1

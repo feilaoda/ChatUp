@@ -41,8 +41,14 @@ function md5pwd(){
             </div>
         </div>
 
-        <div class="form-actions">
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">{{ _("Signin") }}</button>
+        </div>
+        <div class="form-group">
+            <div class="controls">
+                <a href="/account/signup/github" title="{{_('Login with weibo account')}}"><i class="third-auth third-auth-github"></i>{{_("Login with GitHub account")}}</a> 
+                
+            </div>
         </div>
 
         
@@ -53,14 +59,15 @@ function md5pwd(){
 {% end %}
 
 {% block sidebar %}
-<div class="box-container pinner-x pinner-y">
-    <div class="box-content">
+<div class="panel">
+    <div class="panel-heading">
         <h4>{{ _("Don't have an account?") }}</h4>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
         <a href="/account/signup" class="highlight">{{ _("Free Signup") }}</a>
+        
     </div>
-    <!-- <a href="/account/weibo/auth" title="{{_('Login with weibo account')}}"><i class="third-auth weibo"></i></a> -->
+   
      <!-- <a href="/account/douban/auth" title="{{_('Login with douban account')}}"><i class="third-auth douban"></i></a> -->
 </div>
 {% end %}
