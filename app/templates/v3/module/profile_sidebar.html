@@ -3,7 +3,7 @@
 {%if people%}
 <div class="panel">
     <div class="panel-body">
-    <div class="media pinner-y">
+    <div class="media">
         <a class="pull-left" href="/people/{{people.id}}">
             <img class="media-object" width="48" height="48" src="{{people.get_avatar(48)}}">
         </a>
@@ -12,7 +12,7 @@
             <div class="username small">@{{people.username}}</div>
         </div>
     </div>
-    <div >
+    <div class="media">
             <ul class="list-style-inline  padding0">
                 <li><a href="/people/{{people.id}}">{{_("mine")}}</a></li>
                 

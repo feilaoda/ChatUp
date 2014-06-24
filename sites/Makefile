@@ -86,7 +86,7 @@ css2:
 
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
-	#lessc --compress $(HOME)/vendor/stylesheets/bootstrap/bootstrap.less > $(STATIC)/assets/css/v3/vendor.min.css
+	lessc --compress $(HOME)/app/vendor/stylesheets/bootstrap-3.1.0/less/bootstrap.less > $(STATIC)/assets/css/v3/vendor.min.css
 	#lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
 	#lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
 	#lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css

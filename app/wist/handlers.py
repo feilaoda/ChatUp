@@ -12,10 +12,14 @@ class AllWistsHandler(UserHandler):
         limit = 30
         pagination = Wist.query.filter().order_by('-id').paginate(p, limit)
 
+        self.render('wist/show_wist.html', pagination=pagination)
 
-        self.render('wist/wist_home.html', pagination=pagination)
 
+class ShowWistHandler(UserHandler):
+	def get(self, id):
+		wist = Wist.query.filter(id=id).first_or_404()
 
+		self.render('wist/show_wist.html', wist=wist)
 
 
 app_handlers = [

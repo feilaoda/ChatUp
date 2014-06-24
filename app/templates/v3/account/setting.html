@@ -67,12 +67,14 @@
     {% module ProfileSidebar(current_user) %}
 {% end %}
 
-<div class="box-container">
-    <div class="box-content">
+<div class="panel">
+    <div class="panel-body">
+    <div class="media">
         <a href="/account/password" >{{ _("Change Password") }}</a>
     </div>
-    <div class="box-content">
-        <a href="/account/setting/avatar">{{ _("Change Avatar") }}</a>
+    <div class="media">
+        <a href="/account/setting/avatar" >{{ _("Change Avatar") }}</a>
+    </div>
     </div>
 </div>
 {% if current_user.role == 1 %}

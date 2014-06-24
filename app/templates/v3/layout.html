@@ -16,7 +16,7 @@
         {%end%}
 
         <script type="text/javascript" src="{{static_url('assets/js/vendor.min.js')}}"></script>
-        <link rel="stylesheet" href="{{static_url('assets/css/v3/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href="{{static_url('assets/css/v3/vendor.min.css')}}" />
         <link rel="stylesheet" href="{{static_url('assets/css/v3/application.min.css')}}" />
 
         {% block afterstyle %}{% end %}
@@ -46,9 +46,9 @@
           <div class="navbar-collapse collapse">
             
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">{{_("Home")}}</a></li>
-              <li><a href="/topic">{{_("Community")}}</a></li>
-              <li><a href="http://www.wecoders.com/wist" >{{_("Wist")}}</a></li>
+              <li id="nav-home"><a href="/">{{_("Home")}}</a></li>
+              <li id="nav-topic"><a href="/topic">{{_("Community")}}</a></li>
+              <!-- <li id="nav-wist"><a href="/wist" >{{_("Wist")}}</a></li> -->
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -109,7 +109,7 @@
   <div class="copyright panel">
     <div class="container panel-body">
         <div>
-          &copy;2013  <a href="{{g.site_url}}"><b>{{g.sitename}}</b></a>&nbsp;&nbsp;Powered by <a href="https://github.com/feilaoda/ChatUp"><b>ChatUp</a>
+          &copy;2013  <a href="{{g.site_url}}"><b>{{g.sitename}}</b></a>&nbsp;&nbsp;Powered by <a href="https://github.com/wecoders"><b>WeCoders</a>
           &nbsp;&nbsp;<a href="/about">{{_("about")}}</a>
         </div>
     </div>

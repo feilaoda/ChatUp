@@ -29,3 +29,12 @@
 {% module ShowFrontTopicsSidebar() %}
 
 {% end %}
+
+{% block afterjs %}
+<script type="text/javascript">
+$( document ).ready(function() {
+  $("#nav-home").addClass("active");
+});
+</script>
+{% end %}
+
