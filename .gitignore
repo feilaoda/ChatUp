@@ -67,7 +67,8 @@ Backup[ ]of[ ]*.numbers/
 tmp.*
 
 build/
-
+*.sublime-project
+*.sublime-workspace
  
 douban_movie.*
 
@@ -86,3 +87,4 @@ easy_crawl
 
 upload
 avatar
+sites/wecoders/config.py
