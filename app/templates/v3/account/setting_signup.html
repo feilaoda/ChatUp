@@ -8,40 +8,41 @@
 
 {% block content %}
     
-<div class="screen clearfix">
+<div class="panel clearfix">
 
-    <h3>Setting Account</h3>
-
-    <form class="form-horizontal" action="/account/setting/signup/{{weibo_id}}" method="post">
-        {{ xsrf_form_html() }}
-        <div class="control-group control-required">
-            <label for="username" class="control-label">{{ _("Username") }}</label>
-            <div class="controls">
-            <input type="text" class="control-text" name="username" maxlength="100" value="{{username}}" required/>
-            <div class="control-explain">{{ _("Only English 3-20 chinese or english characters or digits are accepted.") }}</div>
+    <div class="panel-heading">{{_("Last step, setting username")}}</div>
+    <div class="panel-body">
+        <form  action="/account/setting/signup/{{social_id}}" method="post">
+            {{ xsrf_form_html() }}
+            <div class="form-group control-required">
+                <label for="username" class="control-label">{{ _("Username") }}</label>
+                <div class="controls">
+                <input type="text" class="form-control control-text" name="username" maxlength="100" value="{{username}}" required/>
+                <div class="control-explain">{{ _("Only English 4-20 chinese or english characters or digits are accepted.") }}</div>
+                </div>
             </div>
-        </div>
-        
+            
 
-        <div class="control-group control-required">
-            <label for="password1" class="control-label">{{ _("Password") }}</label>
-            <div class="controls">
-            <input type="password" class="control-text" name="password1" required/>
+            <!-- <div class="form-group control-required">
+                <label for="password1" class="control-label">{{ _("Password") }}</label>
+                <div class="controls">
+                <input type="password" class="control-text" name="password1" required/>
+                </div>
             </div>
-        </div>
-        <div class="control-group control-required">
-            <label for="password2" class="control-label">{{ _("Confirm Password") }}</label>
-            <div class="controls">
-            <input type="password" class="control-text" name="password2" required/>
+            <div class="form-group control-required">
+                <label for="password2" class="control-label">{{ _("Confirm Password") }}</label>
+                <div class="controls">
+                <input type="password" class="control-text" name="password2" required/>
+                </div>
+            </div> -->
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">{{ _("Finish Setting") }}</button>
             </div>
-        </div>
 
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">{{ _("Setting") }}</button>
-        </div>
-
-        
-    </form>
+            
+        </form>
+    </div>
 
 </div>
 

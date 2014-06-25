@@ -1,8 +1,13 @@
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5222 -j ACCEPT
-iptables -A INPUT -p tcp --dport 433 -j ACCEPT
-iptables -A INPUT -p tcp --dport 53 -j ACCEPT
-iptables -A INPUT -p udp --dport 53 -j ACCEPT　
-iptables -A INPUT -p icmp -j ACCEPT
-iptables -A INPUT -m state --state INVALID -j DROP
-iptables -A INPUT -j DROP
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 25222 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 53 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 53 -j ACCEPT　
+sudo iptables -A INPUT -p icmp -j ACCEPT
+sudo iptables -A INPUT -m state --state INVALID -j DROP
+sudo iptables -A INPUT -j DROP
+
+sudo iptables -A INPUT -p tcp -s localhost --dport 6379 -j ACCEPT
+
+sudo iptables -A INPUT -p tcp --dport 6379 -j DROP

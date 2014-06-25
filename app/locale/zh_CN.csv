@@ -35,12 +35,14 @@
 "Nickname","昵称"
 "Website","个人网站"
 "Douban Website","豆瓣个人主页"
-"Only English 5-20 chinese or english characters or digits are accepted.","只允许填写5-20位中英文字符和数字"
-"Only English 5-20 english characters or digits are accepted.","只允许填写5-20位英文字符和数字"
+"Only English 4-20 chinese or english characters or digits are accepted.","只允许填写4-20位中英文字符和数字"
+"Only English 4-20 english characters or digits are accepted.","只允许填写4-20位英文字符和数字"
 "Save","保存"
 "Submit","提交"
 "Reback","返回"
 "Search","搜索"
+"Last step, setting username","最后一步，设置用户名"
+"Finish Setting","完成设置"
 
 "Already have an account?","已经有帐号？"
 "Login with DouBan account","使用豆瓣帐号登录"
@@ -162,7 +164,7 @@
 "User does not exists","用户不存在"
 "Please check your inbox","请查收邮件"
 "Password changed","密码已更改"
-
+"Error, unknow error, try again please?","出错了,系统无法理解你的操作，重试一遍？"
 
 #===== formencode =====
 "Missing value","不能为空,写点什么吧"

@@ -14,7 +14,7 @@ from dojang.auth.douban import DoubanMixin
 from dojang.auth.github import GithubMixin
 from dojang.auth.recaptcha import RecaptchaMixin
 from dojang.auth.weibo import WeiboMixin
-from dojang.cache import autocache_hdel, autocache_hget
+from dojang.cache import autocache_hdel, autocache_hget, autocache_set, autocache_del, autocache_get
 from dojang.database import db
 from dojang.ext import webservice
 from dojang.form import FormSchema
@@ -762,7 +762,7 @@ class GithubSignupHandler(UserHandler, GithubMixin):
         if not user:
             raise HTTPError(500, "GitHub auth failed")
         uid = user.get('id')
-        login = user.get('login')
+        username = user.get('login')
         token = user.get('token')
         if uid:
             github = Social.query.filter_by(uid=uid, service='github').first()
@@ -775,23 +775,28 @@ class GithubSignupHandler(UserHandler, GithubMixin):
                     db.session.add(github)
                     db.session.commit()
                 if people is None:
-                    people = People(People.create_token(8))
-                    people.username = username
-                    people.nickname = username
-                    people.password = People.create_token(8)
-                    people.token = People.create_token(8)
-                    people.email = github.email
-                    github.people = people
-                    db.session.add(people)
-                    db.session.add(github)
-                    db.session.commit()
+                    token = People.create_token(8)
+                    autocache_set('signup_setting_%s' % (token), 'yes', 5*60)
+                    self.set_secure_cookie('setting_user', '%s/%s/%s' % (github.id, "github", token), domain=options.cookie_domain)
+                    return self.render("account/setting_signup.html", social_id=github.id, username=github.name)
+
+                    # people = People(People.create_token(8))
+                    # people.username = username
+                    # people.nickname = username
+                    # people.password = People.create_token(8)
+                    # people.token = People.create_token(8)
+                    # people.email = github.email
+                    # github.people = people
+                    # db.session.add(people)
+                    # db.session.add(github)
+                    # db.session.commit()
                 self.flash_message("Login account successful", 'success')
                 self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
                 self.redirect('/')
+                return 
             else:
                 github = Social()
                 github.uid = uid
-                username = user.get('login')
                 github.name = username
                 github.service = 'github'
                 github.email = user.get('email')
@@ -803,22 +808,34 @@ class GithubSignupHandler(UserHandler, GithubMixin):
                 # github.location = user.get('location')
                 # github.token = user.get('access_token')
                 #github.session_expires = user.get('session_expires')
-                people = People(People.create_token(8))
-                people.username = username
-                people.nickname = username
-                people.password = People.create_token(8)
-                people.token = People.create_token(8)
-                people.email = github.email
-
-                github.people = people
-                db.session.add(people)
+                # people = People.query.filter_by(username=username).first()
+                # if people:
+                    #set new username
                 db.session.add(github)
                 db.session.commit()
+                token = People.create_token(8)
+                autocache_set('sign_setting_%s' % (token), 'yes', 5*60)
+                self.set_secure_cookie('setting_user', '%s/%s/%s' % (github.id, "github", token), domain=options.cookie_domain)
+                return self.render("account/setting_signup.html", social_id=github.id, username=github.name)
 
-                self.flash_message("Login account successful", 'success')
-                self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
-                self.redirect('/')
 
+                # if people is None or username is None:
+                #     people = People(People.create_token(8))
+                # people.username = username
+                # people.nickname = username
+                # people.password = People.create_token(8)
+                # people.token = People.create_token(8)
+                # people.email = github.email
+
+                # github.people = people
+                # db.session.add(people)
+                # db.session.add(github)
+                # db.session.commit()
+
+                # self.flash_message("Login account successful", 'success')
+                # self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
+                # self.redirect('/')
+                # return
                 # if people is None:
                 #     oldpeple = People.query.filter_by(username=login).first()
                 #     if oldpeple:
@@ -840,18 +857,93 @@ class GithubSignupHandler(UserHandler, GithubMixin):
 
 
 
-class SettingRenameGithubHandler(UserHandler):
+# class SettingRenameGithubHandler(UserHandler):
+#     def post(self, id):
+#         setting_user = self.get_secure_cookie("setting_user")
+#         if not setting_user:
+#             return self.render_error(403)
+#         token = None
+#         try:
+#             account_id, social_type, token = setting_user.split('/')
+#             account_id = int(account_id)
+#         except:
+#             self.clear_cookie("setting_user")
+#             # return self.render("account/social_error.html")
+#             return render_error(404)
+#         token_check = autocache_get('signup_setting_%s' % (token))
+#         if token_check != 'yes':
+#             self.flash_message('非法操作或系统无法理解你的操作，', 'error')
+#             return self.redirect('/')
+
+#         id = int(id)
+#         if account_id != id:
+#             return self.render_error(403)
+
+
+#         username = self.get_argument('username', None)
+#         password1 = self.get_argument('password1', None)
+#         password2 = self.get_argument('password2', None)
+#         if not username:
+#             self.flash_message('Please fill the required fields', 'error')
+#             self.render("account/signup_github.html", social_id=id, username=username)
+#             return
+
+
+#         if not validators.username(username):
+#             self.flash_message('Username is invalid', 'error')
+#             self.render("account/signup_github.html", social_id=id, username=username)
+#             return
+
+#         tmp_people = People.query.filter_by(username=username).first()
+#         if tmp_people:
+#             self.flash_message("The username is already registered", 'error')
+#             self.render("account/signup_github.html", social_id=id, username=username)
+#             return
+
+#         github = GitHub.query.filter_by(id=id).first_or_404()
+#         people = People(People.create_token(8))
+#         people.username = username
+#         people.nickname = username
+#         people.password = None
+#         people.token = People.create_token(8)
+#         people.email = github.email
+#         db.session.add(people)
+#         db.session.commit()
+
+#         github.people_id = people.id
+#         db.session.add(github)
+#         db.session.commit()
+
+#         autocache_del('signup_setting_%s'%token)
+#         self.flash_message("Setting account successful", 'success')
+#         self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
+#         self.clear_cookie("setting_user")
+#         self.redirect('/')
+
+
+class SettingSignupHandler(UserHandler):
+
+
     def post(self, id):
         setting_user = self.get_secure_cookie("setting_user")
         if not setting_user:
             return self.render_error(403)
+        token = None
         try:
-            account_id, token = setting_user.split('/')
+            account_id, social_type, token = setting_user.split('/')
             account_id = int(account_id)
         except:
+            self.flash_message('Error, unknow error, try again please?', 'error')
             self.clear_cookie("setting_user")
             # return self.render("account/social_error.html")
-            return render_error(404)
+            return self.redirect('/')
+            # return render_error(403)
+
+        token_check = autocache_get('signup_setting_%s' % (token))
+        if token_check != 'yes':
+            self.flash_message('Error, unknow error, try again please?', 'error')
+            self.clear_cookie("setting_user")
+            return self.redirect('/')
         id = int(id)
         if account_id != id:
             return self.render_error(403)
@@ -862,99 +954,39 @@ class SettingRenameGithubHandler(UserHandler):
         password2 = self.get_argument('password2', None)
         if not username:
             self.flash_message('Please fill the required fields', 'error')
-            self.render("account/signup_github.html", social_id=id, username=username)
+            self.render("account/setting_signup.html", social_id=id, username=username)
             return
-
+        # if password1 != password2 :
+        #     self.flash_message("Password doesn't match", 'error')
+        #     self.render("account/setting_signup.html", social_id=id, username=username)
+        #     return
 
         if not validators.username(username):
             self.flash_message('Username is invalid', 'error')
-            self.render("account/signup_github.html", social_id=id, username=username)
+            self.render("account/setting_signup.html", social_id=id, username=username)
             return
 
         tmp_people = People.query.filter_by(username=username).first()
         if tmp_people:
             self.flash_message("The username is already registered", 'error')
-            self.render("account/signup_github.html", social_id=id, username=username)
-            return
-
-        github = GitHub.query.filter_by(id=id).first_or_404()
-        people = People(People.create_token(8))
-        people.username = username
-        people.nickname = username
-        people.password = None
-        people.token = People.create_token(8)
-        people.email = github.email
-        db.session.add(people)
-        db.session.commit()
-
-        github.people_id = people.id
-        db.session.add(github)
-        db.session.commit()
-
-
-        self.flash_message("Setting account successful", 'success')
-        self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
-        self.clear_cookie("setting_user")
-        self.redirect('/')
-
-
-class SettingSignupHandler(UserHandler):
-
-
-    def post(self, id):
-        setting_user = self.get_secure_cookie("setting_user")
-        if not setting_user:
-            return self.render_error(403)
-        try:
-            account_id, token = setting_user.split('/')
-            account_id = int(account_id)
-        except:
-            self.clear_cookie("setting_user")
-            return self.render("account/weibo_error.html")
-            # return render_error(403)
-        id = int(id)
-        if account_id != id:
-            return self.render_error(403)
-
-
-        username = self.get_argument('username', None)
-        password1 = self.get_argument('password1', None)
-        password2 = self.get_argument('password2', None)
-        if not username or not (password1 and password2) :
-            self.flash_message('Please fill the required fields', 'error')
-            self.render("account/setting_signup.html", weibo_id=id, username=username)
-            return
-        if password1 != password2 :
-            self.flash_message("Password doesn't match", 'error')
-            self.render("account/setting_signup.html", weibo_id=id, username=username)
-            return
-
-        if not validators.username(username):
-            self.flash_message('Username is invalid', 'error')
-            self.render("account/setting_signup.html", weibo_id=id, username=username)
-            return
-
-        tmp_people = People.query.filter_by(username=username).first()
-        if tmp_people:
-            self.flash_message("The username is already registered", 'error')
-            self.render("account/setting_signup.html", weibo_id=id, username=username)
+            self.render("account/setting_signup.html", social_id=id, username=username)
             return
 
         people = People(People.create_token(8))
         people.username = username
         people.nickname = username
-        people.password = People.create_password(password1)
+        people.password = People.create_password(People.create_token(8))
         people.token = People.create_token(8)
 
+
+        social = Social.query.filter_by(id=id).first_or_404()
+        social.people = people
+
         db.session.add(people)
+        db.session.add(social)
         db.session.commit()
 
-        weibo = Weibo.query.filter_by(id=id).first_or_404()
-        weibo.people_id = people.id
-        db.session.add(weibo)
-        db.session.commit()
-
-
+        autocache_del('signup_setting_%s'%token)
         self.flash_message("Setting account successful", 'success')
         self.set_secure_cookie('user', '%s/%s' % (people.id, people.token), domain=options.cookie_domain)
         self.clear_cookie("setting_user")
@@ -965,7 +997,7 @@ app_handlers = [
     ('/signup', SignupHandler),
     ('/signup/github', GithubSignupHandler),
     ('/callback/github', GithubSignupHandler),
-    ('/rename/github/(\d+)', SettingRenameGithubHandler),
+    # ('/rename/github/(\d+)', SettingRenameGithubHandler),
 
     ('/signin', SigninHandler),
     ('/signin/google', GoogleSigninHandler),

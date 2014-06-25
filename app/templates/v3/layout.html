@@ -74,19 +74,19 @@
 
       <div class="container">
         {% set msgs = messages() %}
-      {% if len(msgs) > 0 %}
-        <div class="container-content">
-            {% for type, message in msgs %}
-              {%if type== 'error'%} {% set type='danger'%} {%end%}
-              <div class="alert alert-{{type}}">
-              <a class="close" href="" data-dismiss="alert">×</a>
-              <span>
-                 {{ _(message) }}
-                </span>
-            </div>
-            {% end %}
-        </div>
-      {% end %}
+        {% if len(msgs) > 0 %}
+          <div class="container-content">
+              {% for type, message in msgs %}
+                {%if type== 'error'%} {% set type='danger'%} {%end%}
+                <div class="alert alert-{{type}}">
+                <a class="close" href="" data-dismiss="alert">×</a>
+                <span>
+                   {{ _(message) }}
+                  </span>
+              </div>
+              {% end %}
+          </div>
+        {% end %}
 
       
         {% block container%}
@@ -109,7 +109,7 @@
   <div class="copyright panel">
     <div class="container panel-body">
         <div>
-          &copy;2013  <a href="{{g.site_url}}"><b>{{g.sitename}}</b></a>&nbsp;&nbsp;Powered by <a href="https://github.com/wecoders"><b>WeCoders</a>
+          &copy;2013  <a href="{{g.site_url}}"><b>{{g.sitename}}</b></a>&nbsp;&nbsp;Powered by Tornado
           &nbsp;&nbsp;<a href="/about">{{_("about")}}</a>
         </div>
     </div>

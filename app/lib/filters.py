@@ -338,4 +338,4 @@ md = mistune.Markdown(renderer=mirenderer)
 def markdown(text):
     if text is None:
         return None
-    return squeaky_clean(md.render(text))
+    return clean_html(md.render(text))
