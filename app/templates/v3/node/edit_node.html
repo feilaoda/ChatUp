@@ -4,50 +4,59 @@
 
 {% block content %}
 
-<div class="screen clearfix">
-    <legend>{{_("Node")}}</legend>
+<div class="panel">
+<div class="panel-body">
+    <legend>{{_("Edit Node")}}</legend>
     <form class="" action="" method="post">
         {{ xsrf_form_html() }}
 
         
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label" for="title">{{ _("Title") }}</label>
             <div class="controls">
-                <input type="text" class="control-text input-xxxlarge" name="title" required value="{{node.title or ''}}"/>
+                <input type="text" class="form-control input-xxxlarge" name="title" required value="{{node.title or ''}}"/>
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label" for="name">{{ _("Name") }}</label>
             <div class="controls">
-                <input type="text" class="control-text input-xxxlarge" name="name" required value="{{node.name or ''}}"/>
+                <input type="text" class="form-control input-xxxlarge" name="name" required value="{{node.name or ''}}"/>
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label" for="anonymous">{{ _("anonymous") }}</label>
             <div class="controls">
-                <input type="text" class="control-text input-xxxlarge" name="anonymous" required value="{{node.anonymous or '0'}}"/>
+                <input type="text" class="form-control input-xxxlarge" name="anonymous" required value="{{node.anonymous or '0'}}"/>
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="form-group">
+            <label class="control-label" for="platform">{{ _("platform") }}</label>
+            <div class="controls">
+                <input type="text" class="form-control input-xxxlarge" name="anonymous" required value="{{node.platform or '0'}}"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
             <label class="control-label" for="category">{{ _("Category") }}</label>
             <div class="controls">
-                <input type="text" class="control-text input-xxxlarge" name="category"  value="{{node.category or ''}}"/>
+                <input type="text" class="form-control input-xxxlarge" name="category"  value="{{node.category or ''}}"/>
             </div>
         </div>
 
-         <div class="control-group">
+         <div class="form-group">
             <label class="control-label" for="slug">{{ _("Description") }}</label>
             <div class="controls">
-                 <textarea name="description" class="control-text input-xxxlarge" >{{node.description or ""}}</textarea>
+                 <textarea name="description" class="form-control input-xxxlarge" >{{node.description or ""}}</textarea>
             </div>
         </div>
 
 
 
-        <div class="form-actions">
+        <div class="form-group">
             <button type="submit" class="btn btn-small">{{ _("Submit") }}</button>
             <a href="/node" ><button type="button" class="btn btn-small">{{_("Cancel")}}</button></a>
         </div>
@@ -59,6 +68,7 @@
         
     </form>
 
+</div>
 </div>
 {% end %}
 
