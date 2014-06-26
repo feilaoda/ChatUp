@@ -54,7 +54,7 @@ class TopicHandler(UserHandler):
         topic.content_html = get_topic_content(topic)
 
         pagination = TopicReply.query.filter_by(topic_id=topic.id).order_by('order')\
-                .paginate(p, 30, total=topic.reply_count)
+                .paginate(p, 5, total=topic.reply_count)
         pagination.items = get_full_replies(pagination.items)
 
 
@@ -394,9 +394,9 @@ class CreateReplyHandler(UserHandler):
         if num > 1:
             url += '?p=%s' % num
         autocache_set(key, url, 100)
-        self.redirect("%s#reply%s" % (url, topic.reply_count))
+        self.redirect("%s#r%s" % (url, topic.reply_count))
 
-        refer = '<a href="/topic/%s#reply-%s">%s</a>' % \
+        refer = '<a href="/topic/%s#r%s">%s</a>' % \
                 (topic.id, topic.reply_count, topic.title)
         #: reply notification
         self.create_notification(topic.people_id, content, refer, type='reply')

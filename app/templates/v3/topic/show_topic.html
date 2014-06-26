@@ -56,69 +56,87 @@
         </div> <!-- end topic-->
 
 
-<div class="reply-items">
-    <ul class="list-group">
-      <li class="list-group-item list-group-nolrborder">
-    <div class="reply-header">
-        {% if topic.reply_count and topic.last_reply_time %}
-        {{_("Last reply at")}} <time datetime="{{xmldatetime(topic.last_reply_time)}}">{{localtime(topic.last_reply_time)}}</time> |
-        {% end %}
-        {{topic.reply_count}} {{_("Replies")}}
-    </div>
-    </li>
-
-    {% set index = 0 %}
-    {% for reply in pagination.items %}
-    <li id="reply{{reply.order}}" class="reply-item list-group-item list-group-nolrborder">
-    <div class="reply  media">
-
-        <div class="reply-avatar pull-left" >
-            {%if reply.anonymous != 0%}
-            <img src="{{settings.static_avatar_default}}" class="media-object" width="48" height="48" title="Anonymous"/>
-            {%else%}
-            <a href="/people/{{reply.people_id}}" class="pull-leftx"><img  src="{{reply.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
-            {%end%}
-        </div>
-
-
-
-        <div class="reply-content media-body hoverable">
-            <div class="reply-meta media-header">
-                {%if reply.anonymous != 0%}
-                    <span class="small">{{_("Anonymous")}}</span>
-                    <span class="small pull-right">
-                        <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
-                        <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('0');" onclick="replyatwho('#{{reply.order}}L {{_('Anonymous')}}')">{{_("Reply")}}</a>
-                    </span>
-                {%else%}
-                    <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a>  </span>
-                    <span class="small pull-right">
-                        <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
-                        <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('#{{reply.order}}L @{{reply.people.username}}')">{{_("Reply")}}</a>
-                    </span>
-                {%end%}
+    <div class="reply-items">
+        <ul class="list-group">
+          <li class="list-group-item list-group-nolrborder">
+            <div class="reply-header">
+                {% if topic.reply_count and topic.last_reply_time %}
+                {{_("Last reply at")}} <time datetime="{{xmldatetime(topic.last_reply_time)}}">{{localtime(topic.last_reply_time)}}</time> |
+                {% end %}
+                {{topic.reply_count}} {{_("Replies")}}
             </div>
+            </li>
 
-            <p>
-                {{markdown(reply.content)}}
-            </p>
-        </div>
-    </div>
-    </li>
-    {% end %}
+            {% set index = 0 %}
+            {% for reply in pagination.items %}
+            <li id="reply{{reply.order}}" class="reply-item list-group-item list-group-nolrborder">
+            <div class="reply  media">
 
-    </ul>
-    </div>
-    {% if topic.reply_count %}
-        {% if pagination.pages > 1%}
-        <div class="box-footer pagination">
-            {% for p in pagination.iter_pages() %}
-            <a href="?p={{p}}">{{p}}</a>
+                <div class="reply-avatar pull-left" >
+                    {%if reply.anonymous != 0%}
+                    <img src="{{settings.static_avatar_default}}" class="media-object" width="48" height="48" title="Anonymous"/>
+                    {%else%}
+                    <a href="/people/{{reply.people_id}}" class="pull-leftx"><img  src="{{reply.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
+                    {%end%}
+                </div>
+
+
+
+                <div class="reply-content media-body hoverable">
+                    <div class="reply-meta media-header">
+                        {%if reply.anonymous != 0%}
+                            <span class="small">{{_("Anonymous")}}</span>
+                            <span class="small pull-right">
+                                <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
+                                <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('0');" onclick="replyatwho('#{{reply.order}}L {{_('Anonymous')}}')">{{_("Reply")}}</a>
+                            </span>
+                        {%else%}
+                            <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a>  </span>
+                            <span class="small pull-right">
+                                <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
+                                <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('#{{reply.order}}L @{{reply.people.username}}')">{{_("Reply")}}</a>
+                            </span>
+                        {%end%}
+                    </div>
+
+                    <p>
+                        {{markdown(reply.content)}}
+                    </p>
+                </div>
+            </div>
+            </li>
             {% end %}
-        </div>
-        {%end%}
-    {% end %}
 
+
+
+            {%if pagination%}
+            {% if topic.reply_count %}
+            {% if pagination.pages > 1%}
+            <li class="topic-item list-group-item list-group-nolrborder">
+                <div class="">
+                <ul class="pagination">
+                    {%if pagination.pages> 9%}
+                    <li class=""><a href="?"><span>|&lt;</span></a></li>
+                    {%end%}
+                    {%if pagination.pages> 1%}
+                    {% for p in pagination.iter_pages() %}
+                    <li {%if p==pagination.page%}class="active"{%end%}><a href="?p={{p}}" >{{p}}</a></li>
+                    {% end %}
+                    {% end %}
+                    {%if pagination.pages> 9%}
+                    <li class=""><a href="?p={{pagination.pages}}"><span>&gt;|</span></a></li>
+                    {%end%}
+                </ul>
+                </div>
+            </li>
+            {%end%}
+            {%end%}
+
+            {%end%}
+
+
+        </ul>
+    </div>
 </div>
 
 <div class="panel padding">
