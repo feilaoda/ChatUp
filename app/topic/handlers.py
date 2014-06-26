@@ -54,7 +54,7 @@ class TopicHandler(UserHandler):
         topic.content_html = get_topic_content(topic)
 
         pagination = TopicReply.query.filter_by(topic_id=topic.id).order_by('order')\
-                .paginate(p, 5, total=topic.reply_count)
+                .paginate(p, 50, total=topic.reply_count)
         pagination.items = get_full_replies(pagination.items)
 
 
@@ -389,7 +389,7 @@ class CreateReplyHandler(UserHandler):
         db.session.add(topic)
         db.session.commit()
 
-        num = (index_num - 1) / 30 + 1
+        num = (index_num - 1) / 50 + 1
         url = '/topic/%s' % str(id)
         if num > 1:
             url += '?p=%s' % num
