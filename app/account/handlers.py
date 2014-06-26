@@ -956,6 +956,14 @@ class SettingSignupHandler(UserHandler):
             self.flash_message('Please fill the required fields', 'error')
             self.render("account/setting_signup.html", social_id=id, username=username)
             return
+        
+        single_username = username[:-1]
+
+        if username in UsedUserNames or signle_username in UsedUserNames:
+            self.flash_message('Username has been taken', 'error')
+            self.render("account/setting_signup.html", social_id=id, username=username)
+            return
+
         # if password1 != password2 :
         #     self.flash_message("Password doesn't match", 'error')
         #     self.render("account/setting_signup.html", social_id=id, username=username)

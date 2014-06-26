@@ -77,7 +77,6 @@
         {% if len(msgs) > 0 %}
           <div class="container-content">
               {% for type, message in msgs %}
-                {%if type== 'error'%} {% set type='danger'%} {%end%}
                 <div class="alert alert-{{type}}">
                 <a class="close" href="" data-dismiss="alert">×</a>
                 <span>

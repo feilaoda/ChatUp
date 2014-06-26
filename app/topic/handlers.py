@@ -54,7 +54,7 @@ class TopicHandler(UserHandler):
         topic.content_html = get_topic_content(topic)
 
         pagination = TopicReply.query.filter_by(topic_id=topic.id).order_by('order')\
-                .paginate(p, 50, total=topic.reply_count)
+                .paginate(p, 30, total=topic.reply_count)
         pagination.items = get_full_replies(pagination.items)
 
 

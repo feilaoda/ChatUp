@@ -213,6 +213,7 @@ CREATE TABLE `topic_node` (
   `title` varchar(200) NOT NULL,
   `category` varchar(200) DEFAULT NULL,
   `anonymous` int(11) DEFAULT NULL,
+  `platform` int(11) DEFAULT NULL,
   `avatar` varchar(400) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `created` datetime DEFAULT NULL,

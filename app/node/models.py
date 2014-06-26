@@ -15,6 +15,7 @@ class Node(db.Model):
     title = Column(String(200), nullable=False)
     category = Column(String(200), nullable=True, index=True)
     anonymous = Column(Integer, default='0', index=True) #0: all 1:app
+    platform = Column(Integer, default='0', index=True) #0: all 1:app
     avatar = Column(String(400))
     description = Column(String(1000))
     created = Column(DateTime, default=datetime.utcnow)

@@ -40,6 +40,8 @@ class CreateNodeHandler(UserHandler):
         o.avatar = self.get_argument('avatar', None)
         o.description = self.get_argument('description', None)
         o.anonymous = int(self.get_argument('anonymous', 0))
+        o.platform = int(self.get_argument('platform', 0))
+        
         # o.fgcolor = self.get_argument('fgcolor', None)
         # o.bgcolor = self.get_argument('bgcolor', None)
         # o.header = self.get_argument('header', None)
@@ -82,7 +84,7 @@ class EditNodeHandler(UserHandler, ModelMixin):
         self.update_model(node, 'description', True)
         
         node.anonymous = int(self.get_argument('anonymous', 0))
-
+        node.platform = int(self.get_argument('platform', 0))
         node.category = self.get_argument('category', None)
 
         try:
@@ -210,8 +212,7 @@ class CreateNodeTopicHandler(UserHandler):
 
         url = '/topic/%d' % topic.id
         autocache_set(key, url, 100)
-        self.redirect(url)
-
+        
         #: notification
         refer = '<a href="/topic/%s">%s</a>' % (topic.id, topic.title)
         for username in set(find_mention(title)):
@@ -220,8 +221,7 @@ class CreateNodeTopicHandler(UserHandler):
         for username in set(find_mention(content)):
             self.create_notification(username, content, refer,
                                      exception=topic.people_id)
-
-        #TODO social networks
+        self.redirect(url)
 
 
 class ShowAllNodesHandler(UserHandler):

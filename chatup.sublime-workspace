@@ -35,7 +35,7 @@
 			"file": "app/templates/v3/layout.html",
 			"settings":
 			{
-				"buffer_size": 4036,
+				"buffer_size": 4022,
 				"line_ending": "Windows"
 			}
 		},
@@ -59,7 +59,7 @@
 			"file": "static/stylesheets/application.less",
 			"settings":
 			{
-				"buffer_size": 2307,
+				"buffer_size": 2434,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +75,7 @@
 			"file": "sites/Makefile",
 			"settings":
 			{
-				"buffer_size": 7830,
+				"buffer_size": 7844,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +83,7 @@
 			"file": "app/locale/zh_CN.csv",
 			"settings":
 			{
-				"buffer_size": 4085,
+				"buffer_size": 4215,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,7 +91,7 @@
 			"file": "app/account/handlers.py",
 			"settings":
 			{
-				"buffer_size": 37103,
+				"buffer_size": 39036,
 				"line_ending": "Windows"
 			}
 		},
@@ -107,7 +107,7 @@
 			"file": "app/dojang/auth/github.py",
 			"settings":
 			{
-				"buffer_size": 8386,
+				"buffer_size": 8394,
 				"line_ending": "Unix"
 			}
 		},
@@ -136,13 +136,13 @@
 			}
 		},
 		{
-			"contents": "ALTER TABLE topic_content MODIFY COLUMN content text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic MODIFY COLUMN title varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic_reply MODIFY COLUMN content text CHARACTER set utf8 COLLATE utf8_unicode_ci DEFAULT NULL;\n\n\n另外需要注意的是，当数据库用了 utf8mb4 后，如果用 mysqldump 备份，那么需要在备份时加上 --default-character-set=utf8mb4 参数。\n在恢复备份前，需要确保已经输入了 SET CHARSET utf8mb4 这条指令。\n",
+			"contents": "ALTER TABLE topic_content MODIFY COLUMN content text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic MODIFY COLUMN title varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic_reply MODIFY COLUMN content text CHARACTER set utf8 COLLATE utf8_unicode_ci DEFAULT NULL;\n\n\n另外需要注意的是，当数据库用了 utf8mb4 后，如果用 mysqldump 备份，那么需要在备份时加上 --default-character-set=utf8mb4 参数。\n在恢复备份前，需要确保已经输入了 SET CHARSET utf8mb4 这条指令。\n\nALTER TABLE topic_node ADD COLUMN platform int(11) DEFAULT NULL;\n\n\n",
 			"file": "sites/wecoders/db/update.sql",
-			"file_size": 592,
-			"file_write_time": 1403320756000000,
+			"file_size": 692,
+			"file_write_time": 1403703164000000,
 			"settings":
 			{
-				"buffer_size": 477,
+				"buffer_size": 545,
 				"line_ending": "Unix"
 			}
 		},
@@ -158,7 +158,7 @@
 			"file": "app/node/handlers.py",
 			"settings":
 			{
-				"buffer_size": 8570,
+				"buffer_size": 8676,
 				"line_ending": "Windows"
 			}
 		},
@@ -174,18 +174,18 @@
 			"file": "app/lib/filter.py",
 			"settings":
 			{
-				"buffer_size": 326,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 25222 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 53 -j ACCEPT\nsudo iptables -A INPUT -p udp --dport 53 -j ACCEPT　\nsudo iptables -A INPUT -p icmp -j ACCEPT\nsudo iptables -A INPUT -m state --state INVALID -j DROP\nsudo iptables -A INPUT -j DROP\n\n\nsudo iptables -A INPUT -p tcp --dport 6379 -j DROP\n",
+			"contents": "sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 25222 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 53 -j ACCEPT\nsudo iptables -A INPUT -p udp --dport 53 -j ACCEPT　\nsudo iptables -A INPUT -p icmp -j ACCEPT\nsudo iptables -A INPUT -m state --state INVALID -j DROP\nsudo iptables -A INPUT -j DROP\n\nsudo iptables -A INPUT -p tcp -s localhost --dport 6379 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 6379 -j DROP\n",
 			"file": "sites/iptables.txt",
-			"file_size": 348,
-			"file_write_time": 1396576771000000,
+			"file_size": 561,
+			"file_write_time": 1403700787000000,
 			"settings":
 			{
-				"buffer_size": 493,
+				"buffer_size": 558,
 				"line_ending": "Unix"
 			}
 		},
@@ -211,7 +211,7 @@
 			"file": "app/lib/filters.py",
 			"settings":
 			{
-				"buffer_size": 14571,
+				"buffer_size": 14568,
 				"line_ending": "Windows"
 			}
 		},
@@ -235,7 +235,7 @@
 			"file": "app/templates/v3/topic/show_topic.html",
 			"settings":
 			{
-				"buffer_size": 7207,
+				"buffer_size": 7176,
 				"line_ending": "Unix"
 			}
 		},
@@ -275,7 +275,7 @@
 			"file": "app/dojang/cache.py",
 			"settings":
 			{
-				"buffer_size": 8789,
+				"buffer_size": 8884,
 				"line_ending": "Windows"
 			}
 		},
@@ -291,23 +291,26 @@
 			"file": "app/wist/handlers.py",
 			"settings":
 			{
-				"buffer_size": 550,
+				"buffer_size": 703,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/templates/v3/wist/wist_home.html",
+			"file": "app/templates/v3/wist/show_wist.html",
 			"settings":
 			{
-				"buffer_size": 82,
+				"buffer_size": 85,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"contents": "from datetime import datetime\nfrom sqlalchemy import Column, ForeignKey\nfrom sqlalchemy import Integer, String, DateTime, Text, Float\nfrom sqlalchemy.orm import relationship, backref\n\nfrom dojang.database import db\n\n\n\nclass Wist(db.Model):\n    __tablename__=\"wist\"\n    id = Column(Integer, primary_key=True)\n    people_id = Column(Integer, ForeignKey('people.id'), index=True)\n    fork_root_id = Column(Integer, default=None, index=True)\n    fork_from_id = Column(Integer, default=None, index=True)\n    fork_url = Column(String(500))\n    title = Column(String(500))\n    content_id =  Column(Integer, ForeignKey('wist_content.id'))\n    # content =  Column(Text)\n    # content_html = Column(Text)\n    created = Column(DateTime, default=datetime.utcnow)\n\n\nclass WistContent(db.Model):\n    __tablename__=\"wist_content\"\n    id = Column(Integer, primary_key=True)\n    content = Column(Text)\n    content_html = Column(Text)\n    created = Column(DateTime, default=datetime.utcnow)\n    wist = relationship(\"Wist\", backref=\"content\")\n\n\nclass WistCategory(db.Model):\n    __tablename__=\"wist\"\n    id = Column(Integer, primary_key=True)\n    people_id = Column(Integer, ForeignKey('people.id'), index=True)\n    title = Column(String(100), default=None, index=True)\n    wist_count = \n    created = Column(DateTime, default=datetime.utcnow)\n",
 			"file": "app/wist/models.py",
+			"file_size": 1024,
+			"file_write_time": 1403445959000000,
 			"settings":
 			{
-				"buffer_size": 1024,
+				"buffer_size": 1325,
 				"line_ending": "Unix"
 			}
 		},
@@ -348,6 +351,152 @@
 			"settings":
 			{
 				"buffer_size": 4393,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "34:e2:fd:71:c0:55\n00:f4:b9:66:10:91\n48:60:bc:c8:8b:fd",
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Unix",
+				"name": "34:e2:fd:71:c0:55"
+			}
+		},
+		{
+			"file": "sites/wecoders/debug_config.py",
+			"settings":
+			{
+				"buffer_size": 1989,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/topic.html",
+			"settings":
+			{
+				"buffer_size": 177,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/show_topic_module.html",
+			"settings":
+			{
+				"buffer_size": 1273,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/topic/show_topic_list.html",
+			"settings":
+			{
+				"buffer_size": 559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/front/index.html",
+			"settings":
+			{
+				"buffer_size": 651,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/wist/wist.html",
+			"settings":
+			{
+				"buffer_size": 176,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/account/setting_avatar.html",
+			"settings":
+			{
+				"buffer_size": 2783,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/account/setting.html",
+			"settings":
+			{
+				"buffer_size": 3150,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/module/profile_sidebar.html",
+			"settings":
+			{
+				"buffer_size": 1005,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "//\n// Variables\n// --------------------------------------------------\n\n\n//== Colors\n//\n//## Gray and brand colors for use across Bootstrap.\n\n@gray-darker:            lighten(#000, 13.5%); // #222\n@gray-dark:              lighten(#000, 20%);   // #333\n@gray:                   lighten(#000, 33.5%); // #555\n@gray-light:             lighten(#000, 60%);   // #999\n@gray-lighter:           lighten(#000, 93.5%); // #eee\n\n@brand-primary:         #428bca;\n@brand-success:         #5cb85c;\n@brand-info:            #5bc0de;\n@brand-warning:         #f0ad4e;\n@brand-danger:          #d9534f;\n\n\n//== Scaffolding\n//\n// ## Settings for some of the most global styles.\n\n//** Background color for `<body>`.\n@body-bg:               #fff;\n//** Global text color on `<body>`.\n@text-color:            @gray-dark;\n\n//** Global textual link color.\n@link-color:            @brand-primary;\n//** Link hover color set via `darken()` function.\n@link-hover-color:      darken(@link-color, 15%);\n\n\n//== Typography\n//\n//## Font, line-height, and color for body text, headings, and more.\n\n@font-family-sans-serif:  \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n@font-family-serif:       Georgia, \"Times New Roman\", Times, serif;\n//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.\n@font-family-monospace:   Menlo, Monaco, Consolas, \"Courier New\", monospace;\n@font-family-base:        @font-family-sans-serif;\n\n@font-size-base:          14px;\n@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px\n@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px\n\n@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px\n@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px\n@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px\n@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px\n@font-size-h5:            @font-size-base;\n@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px\n\n//** Unit-less `line-height` for use in components like buttons.\n@line-height-base:        1.428571429; // 20/14\n//** Computed \"line-height\" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.\n@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px\n\n//** By default, this inherits from the `<body>`.\n@headings-font-family:    inherit;\n@headings-font-weight:    500;\n@headings-line-height:    1.1;\n@headings-color:          inherit;\n\n\n//-- Iconography\n//\n//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.\n\n@icon-font-path:          \"../fonts/\";\n@icon-font-name:          \"glyphicons-halflings-regular\";\n@icon-font-svg-id:				\"glyphicons_halflingsregular\";\n\n//== Components\n//\n//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).\n\n@padding-base-vertical:     6px;\n@padding-base-horizontal:   12px;\n\n@padding-large-vertical:    10px;\n@padding-large-horizontal:  16px;\n\n@padding-small-vertical:    5px;\n@padding-small-horizontal:  10px;\n\n@padding-xs-vertical:       1px;\n@padding-xs-horizontal:     5px;\n\n@line-height-large:         1.33;\n@line-height-small:         1.5;\n\n@border-radius-base:        4px;\n@border-radius-large:       6px;\n@border-radius-small:       3px;\n\n//** Global color for active items (e.g., navs or dropdowns).\n@component-active-color:    #fff;\n//** Global background color for active items (e.g., navs or dropdowns).\n@component-active-bg:       @brand-primary;\n\n//** Width of the `border` for generating carets that indicator dropdowns.\n@caret-width-base:          4px;\n//** Carets increase slightly in size for larger components.\n@caret-width-large:         5px;\n\n\n//== Tables\n//\n//## Customizes the `.table` component with basic values, each used across all table variations.\n\n//** Padding for `<th>`s and `<td>`s.\n@table-cell-padding:            8px;\n//** Padding for cells in `.table-condensed`.\n@table-condensed-cell-padding:  5px;\n\n//** Default background color used for all tables.\n@table-bg:                      transparent;\n//** Background color used for `.table-striped`.\n@table-bg-accent:               #f9f9f9;\n//** Background color used for `.table-hover`.\n@table-bg-hover:                #f5f5f5;\n@table-bg-active:               @table-bg-hover;\n\n//** Border color for table and cell borders.\n@table-border-color:            #ddd;\n\n\n//== Buttons\n//\n//## For each of Bootstrap's buttons, define text, background and border color.\n\n@btn-font-weight:                normal;\n\n@btn-default-color:              #333;\n@btn-default-bg:                 #fff;\n@btn-default-border:             #ccc;\n\n@btn-primary-color:              #fff;\n@btn-primary-bg:                 @brand-primary;\n@btn-primary-border:             darken(@btn-primary-bg, 5%);\n\n@btn-success-color:              #fff;\n@btn-success-bg:                 @brand-success;\n@btn-success-border:             darken(@btn-success-bg, 5%);\n\n@btn-info-color:                 #fff;\n@btn-info-bg:                    @brand-info;\n@btn-info-border:                darken(@btn-info-bg, 5%);\n\n@btn-warning-color:              #fff;\n@btn-warning-bg:                 @brand-warning;\n@btn-warning-border:             darken(@btn-warning-bg, 5%);\n\n@btn-danger-color:               #fff;\n@btn-danger-bg:                  @brand-danger;\n@btn-danger-border:              darken(@btn-danger-bg, 5%);\n\n@btn-link-disabled-color:        @gray-light;\n\n\n//== Forms\n//\n//##\n\n//** `<input>` background color\n@input-bg:                       #fff;\n//** `<input disabled>` background color\n@input-bg-disabled:              @gray-lighter;\n\n//** Text color for `<input>`s\n@input-color:                    @gray;\n//** `<input>` border color\n@input-border:                   #ccc;\n//** `<input>` border radius\n@input-border-radius:            @border-radius-base;\n//** Border color for inputs on focus\n@input-border-focus:             #66afe9;\n\n//** Placeholder text color\n@input-color-placeholder:        @gray-light;\n\n//** Default `.form-control` height\n@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);\n//** Large `.form-control` height\n@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);\n//** Small `.form-control` height\n@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);\n\n@legend-color:                   @gray-dark;\n@legend-border-color:            #e5e5e5;\n\n//** Background color for textual input addons\n@input-group-addon-bg:           @gray-lighter;\n//** Border color for textual input addons\n@input-group-addon-border-color: @input-border;\n\n\n//== Dropdowns\n//\n//## Dropdown menu container and contents.\n\n//** Background for the dropdown menu.\n@dropdown-bg:                    #fff;\n//** Dropdown menu `border-color`.\n@dropdown-border:                rgba(0,0,0,.15);\n//** Dropdown menu `border-color` **for IE8**.\n@dropdown-fallback-border:       #ccc;\n//** Divider color for between dropdown items.\n@dropdown-divider-bg:            #e5e5e5;\n\n//** Dropdown link text color.\n@dropdown-link-color:            @gray-dark;\n//** Hover color for dropdown links.\n@dropdown-link-hover-color:      darken(@gray-dark, 5%);\n//** Hover background for dropdown links.\n@dropdown-link-hover-bg:         #f5f5f5;\n\n//** Active dropdown menu item text color.\n@dropdown-link-active-color:     @component-active-color;\n//** Active dropdown menu item background color.\n@dropdown-link-active-bg:        @component-active-bg;\n\n//** Disabled dropdown menu item background color.\n@dropdown-link-disabled-color:   @gray-light;\n\n//** Text color for headers within dropdown menus.\n@dropdown-header-color:          @gray-light;\n\n// Note: Deprecated @dropdown-caret-color as of v3.1.0\n@dropdown-caret-color:           #000;\n\n\n//-- Z-index master list\n//\n// Warning: Avoid customizing these values. They're used for a bird's eye view\n// of components dependent on the z-axis and are designed to all work together.\n//\n// Note: These variables are not generated into the Customizer.\n\n@zindex-navbar:            1000;\n@zindex-dropdown:          1000;\n@zindex-popover:           1010;\n@zindex-tooltip:           1030;\n@zindex-navbar-fixed:      1030;\n@zindex-modal-background:  1040;\n@zindex-modal:             1050;\n\n\n//== Media queries breakpoints\n//\n//## Define the breakpoints at which your layout will change, adapting to different screen sizes.\n\n// Extra small screen / phone\n// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1\n@screen-xs:                  480px;\n@screen-xs-min:              @screen-xs;\n@screen-phone:               @screen-xs-min;\n\n// Small screen / tablet\n// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1\n@screen-sm:                  768px;\n@screen-sm-min:              @screen-sm;\n@screen-tablet:              @screen-sm-min;\n\n// Medium screen / desktop\n// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1\n@screen-md:                  992px;\n@screen-md-min:              @screen-md;\n@screen-desktop:             @screen-md-min;\n\n// Large screen / wide desktop\n// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1\n@screen-lg:                  1200px;\n@screen-lg-min:              @screen-lg;\n@screen-lg-desktop:          @screen-lg-min;\n\n// So media queries don't overlap when required, provide a maximum\n@screen-xs-max:              (@screen-sm-min - 1);\n@screen-sm-max:              (@screen-md-min - 1);\n@screen-md-max:              (@screen-lg-min - 1);\n\n\n//== Grid system\n//\n//## Define your custom responsive grid.\n\n//** Number of columns in the grid.\n@grid-columns:              12;\n//** Padding between columns. Gets divided in half for the left and right.\n@grid-gutter-width:         30px;\n// Navbar collapse\n//** Point at which the navbar becomes uncollapsed.\n@grid-float-breakpoint:     @screen-sm-min;\n//** Point at which the navbar begins collapsing.\n@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);\n\n\n//== Navbar\n//\n//##\n\n// Basics of a navbar\n@navbar-height:                    50px;\n@navbar-margin-bottom:             @line-height-computed;\n@navbar-border-radius:             @border-radius-base;\n@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));\n@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);\n@navbar-collapse-max-height:       340px;\n\n@navbar-default-color:             #777;\n@navbar-default-bg:                #f8f8f8;\n@navbar-default-border:            darken(@navbar-default-bg, 6.5%);\n\n// Navbar links\n@navbar-default-link-color:                #000;\n@navbar-default-link-hover-color:          #333;\n@navbar-default-link-hover-bg:             transparent;\n@navbar-default-link-active-color:         #555;\n@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);\n@navbar-default-link-disabled-color:       #ccc;\n@navbar-default-link-disabled-bg:          transparent;\n\n// Navbar brand label\n@navbar-default-brand-color:               @navbar-default-link-color;\n@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);\n@navbar-default-brand-hover-bg:            transparent;\n\n// Navbar toggle\n@navbar-default-toggle-hover-bg:           #ddd;\n@navbar-default-toggle-icon-bar-bg:        #888;\n@navbar-default-toggle-border-color:       #ddd;\n\n\n// Inverted navbar\n// Reset inverted navbar basics\n@navbar-inverse-color:                      @gray-light;\n@navbar-inverse-bg:                         #fdfdfd;\n@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);\n\n// Inverted navbar links\n@navbar-inverse-link-color:                 #000;\n@navbar-inverse-link-hover-color:           @gray-light;\n@navbar-inverse-link-hover-bg:              darken(@navbar-inverse-bg, 3c%);\n@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;\n@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 5%);\n@navbar-inverse-link-disabled-color:        #444;\n@navbar-inverse-link-disabled-bg:           transparent;\n\n// Inverted navbar brand label\n@navbar-inverse-brand-color:                @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-color:          @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-bg:             transparent;\n\n// Inverted navbar toggle\n@navbar-inverse-toggle-hover-bg:            #333;\n@navbar-inverse-toggle-icon-bar-bg:         #fff;\n@navbar-inverse-toggle-border-color:        #333;\n\n\n//== Navs\n//\n//##\n\n//=== Shared nav styles\n@nav-link-padding:                          10px 15px;\n@nav-link-hover-bg:                         @gray-lighter;\n\n@nav-disabled-link-color:                   @gray-light;\n@nav-disabled-link-hover-color:             @gray-light;\n\n@nav-open-link-hover-color:                 #fff;\n\n//== Tabs\n@nav-tabs-border-color:                     #ddd;\n\n@nav-tabs-link-hover-border-color:          @gray-lighter;\n\n@nav-tabs-active-link-hover-bg:             @body-bg;\n@nav-tabs-active-link-hover-color:          @gray;\n@nav-tabs-active-link-hover-border-color:   #ddd;\n\n@nav-tabs-justified-link-border-color:            #ddd;\n@nav-tabs-justified-active-link-border-color:     @body-bg;\n\n//== Pills\n@nav-pills-border-radius:                   @border-radius-base;\n@nav-pills-active-link-hover-bg:            @component-active-bg;\n@nav-pills-active-link-hover-color:         @component-active-color;\n\n\n//== Pagination\n//\n//##\n\n@pagination-color:                     @link-color;\n@pagination-bg:                        #fff;\n@pagination-border:                    #ddd;\n\n@pagination-hover-color:               @link-hover-color;\n@pagination-hover-bg:                  @gray-lighter;\n@pagination-hover-border:              #ddd;\n\n@pagination-active-color:              #fff;\n@pagination-active-bg:                 @brand-primary;\n@pagination-active-border:             @brand-primary;\n\n@pagination-disabled-color:            @gray-light;\n@pagination-disabled-bg:               #fff;\n@pagination-disabled-border:           #ddd;\n\n\n//== Pager\n//\n//##\n\n@pager-bg:                             @pagination-bg;\n@pager-border:                         @pagination-border;\n@pager-border-radius:                  15px;\n\n@pager-hover-bg:                       @pagination-hover-bg;\n\n@pager-active-bg:                      @pagination-active-bg;\n@pager-active-color:                   @pagination-active-color;\n\n@pager-disabled-color:                 @pagination-disabled-color;\n\n\n//== Jumbotron\n//\n//##\n\n@jumbotron-padding:              30px;\n@jumbotron-color:                inherit;\n@jumbotron-bg:                   @gray-lighter;\n@jumbotron-heading-color:        inherit;\n@jumbotron-font-size:            ceil((@font-size-base * 1.5));\n\n\n//== Form states and alerts\n//\n//## Define colors for form feedback states and, by default, alerts.\n\n@state-success-text:             #3c763d;\n@state-success-bg:               #dff0d8;\n@state-success-border:           darken(spin(@state-success-bg, -10), 5%);\n\n@state-info-text:                #31708f;\n@state-info-bg:                  #d9edf7;\n@state-info-border:              darken(spin(@state-info-bg, -10), 7%);\n\n@state-warning-text:             #8a6d3b;\n@state-warning-bg:               #fcf8e3;\n@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);\n\n@state-danger-text:              #a94442;\n@state-danger-bg:                #f2dede;\n@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);\n\n\n//== Tooltips\n//\n//##\n\n//** Tooltip max width\n@tooltip-max-width:           200px;\n//** Tooltip text color\n@tooltip-color:               #fff;\n//** Tooltip background color\n@tooltip-bg:                  #000;\n@tooltip-opacity:             .9;\n\n//** Tooltip arrow width\n@tooltip-arrow-width:         5px;\n//** Tooltip arrow color\n@tooltip-arrow-color:         @tooltip-bg;\n\n\n//== Popovers\n//\n//##\n\n//** Popover body background color\n@popover-bg:                          #fff;\n//** Popover maximum width\n@popover-max-width:                   276px;\n//** Popover border color\n@popover-border-color:                rgba(0,0,0,.2);\n//** Popover fallback border color\n@popover-fallback-border-color:       #ccc;\n\n//** Popover title background color\n@popover-title-bg:                    darken(@popover-bg, 3%);\n\n//** Popover arrow width\n@popover-arrow-width:                 10px;\n//** Popover arrow color\n@popover-arrow-color:                 #fff;\n\n//** Popover outer arrow width\n@popover-arrow-outer-width:           (@popover-arrow-width + 1);\n//** Popover outer arrow color\n@popover-arrow-outer-color:           rgba(0,0,0,.25);\n//** Popover outer arrow fallback color\n@popover-arrow-outer-fallback-color:  #999;\n\n\n//== Labels\n//\n//##\n\n//** Default label background color\n@label-default-bg:            @gray-light;\n//** Primary label background color\n@label-primary-bg:            @brand-primary;\n//** Success label background color\n@label-success-bg:            @brand-success;\n//** Info label background color\n@label-info-bg:               @brand-info;\n//** Warning label background color\n@label-warning-bg:            @brand-warning;\n//** Danger label background color\n@label-danger-bg:             @brand-danger;\n\n//** Default label text color\n@label-color:                 #fff;\n//** Default text color of a linked label\n@label-link-hover-color:      #fff;\n\n\n//== Modals\n//\n//##\n\n//** Padding applied to the modal body\n@modal-inner-padding:         20px;\n\n//** Padding applied to the modal title\n@modal-title-padding:         15px;\n//** Modal title line-height\n@modal-title-line-height:     @line-height-base;\n\n//** Background color of modal content area\n@modal-content-bg:                             #fff;\n//** Modal content border color\n@modal-content-border-color:                   rgba(0,0,0,.2);\n//** Modal content border color **for IE8**\n@modal-content-fallback-border-color:          #999;\n\n//** Modal backdrop background color\n@modal-backdrop-bg:           #000;\n//** Modal backdrop opacity\n@modal-backdrop-opacity:      .5;\n//** Modal header border color\n@modal-header-border-color:   #e5e5e5;\n//** Modal footer border color\n@modal-footer-border-color:   @modal-header-border-color;\n\n@modal-lg:                    900px;\n@modal-md:                    600px;\n@modal-sm:                    300px;\n\n\n//== Alerts\n//\n//## Define alert colors, border radius, and padding.\n\n@alert-padding:               15px;\n@alert-border-radius:         @border-radius-base;\n@alert-link-font-weight:      bold;\n\n@alert-success-bg:            @state-success-bg;\n@alert-success-text:          @state-success-text;\n@alert-success-border:        @state-success-border;\n\n@alert-info-bg:               @state-info-bg;\n@alert-info-text:             @state-info-text;\n@alert-info-border:           @state-info-border;\n\n@alert-warning-bg:            @state-warning-bg;\n@alert-warning-text:          @state-warning-text;\n@alert-warning-border:        @state-warning-border;\n\n@alert-danger-bg:             @state-danger-bg;\n@alert-danger-text:           @state-danger-text;\n@alert-danger-border:         @state-danger-border;\n\n\n//== Progress bars\n//\n//##\n\n//** Background color of the whole progress component\n@progress-bg:                 #f5f5f5;\n//** Progress bar text color\n@progress-bar-color:          #fff;\n\n//** Default progress bar color\n@progress-bar-bg:             @brand-primary;\n//** Success progress bar color\n@progress-bar-success-bg:     @brand-success;\n//** Warning progress bar color\n@progress-bar-warning-bg:     @brand-warning;\n//** Danger progress bar color\n@progress-bar-danger-bg:      @brand-danger;\n//** Info progress bar color\n@progress-bar-info-bg:        @brand-info;\n\n\n//== List group\n//\n//##\n\n//** Background color on `.list-group-item`\n@list-group-bg:                 #fff;\n//** `.list-group-item` border color\n@list-group-border:             #ddd;\n//** List group border radius\n@list-group-border-radius:      @border-radius-base;\n\n//** Background color of single list elements on hover\n@list-group-hover-bg:           #f5f5f5;\n//** Text color of active list elements\n@list-group-active-color:       @component-active-color;\n//** Background color of active list elements\n@list-group-active-bg:          @component-active-bg;\n//** Border color of active list elements\n@list-group-active-border:      @list-group-active-bg;\n@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);\n\n@list-group-link-color:         #555;\n@list-group-link-heading-color: #333;\n\n\n//== Panels\n//\n//##\n\n@panel-bg:                    #fff;\n@panel-body-padding:          10px;\n@panel-border-radius:         @border-radius-base;\n\n//** Border color for elements within panels\n@panel-inner-border:          #ddd;\n@panel-footer-bg:             #f5f5f5;\n\n@panel-default-text:          @gray-dark;\n@panel-default-border:        #ddd;\n@panel-default-heading-bg:    #f5f5f5;\n\n@panel-primary-text:          #fff;\n@panel-primary-border:        @brand-primary;\n@panel-primary-heading-bg:    @brand-primary;\n\n@panel-success-text:          @state-success-text;\n@panel-success-border:        @state-success-border;\n@panel-success-heading-bg:    @state-success-bg;\n\n@panel-info-text:             @state-info-text;\n@panel-info-border:           @state-info-border;\n@panel-info-heading-bg:       @state-info-bg;\n\n@panel-warning-text:          @state-warning-text;\n@panel-warning-border:        @state-warning-border;\n@panel-warning-heading-bg:    @state-warning-bg;\n\n@panel-danger-text:           @state-danger-text;\n@panel-danger-border:         @state-danger-border;\n@panel-danger-heading-bg:     @state-danger-bg;\n\n\n//== Thumbnails\n//\n//##\n\n//** Padding around the thumbnail image\n@thumbnail-padding:           4px;\n//** Thumbnail background color\n@thumbnail-bg:                @body-bg;\n//** Thumbnail border color\n@thumbnail-border:            #ddd;\n//** Thumbnail border radius\n@thumbnail-border-radius:     @border-radius-base;\n\n//** Custom text color for thumbnail captions\n@thumbnail-caption-color:     @text-color;\n//** Padding around the thumbnail caption\n@thumbnail-caption-padding:   9px;\n\n\n//== Wells\n//\n//##\n\n@well-bg:                     #f5f5f5;\n@well-border:                 darken(@well-bg, 7%);\n\n\n//== Badges\n//\n//##\n\n@badge-color:                 #fff;\n//** Linked badge text color on hover\n@badge-link-hover-color:      #fff;\n@badge-bg:                    @gray-light;\n\n//** Badge text color in active nav link\n@badge-active-color:          @link-color;\n//** Badge background color in active nav link\n@badge-active-bg:             #fff;\n\n@badge-font-weight:           bold;\n@badge-line-height:           1;\n@badge-border-radius:         10px;\n\n\n//== Breadcrumbs\n//\n//##\n\n@breadcrumb-padding-vertical:   8px;\n@breadcrumb-padding-horizontal: 15px;\n//** Breadcrumb background color\n@breadcrumb-bg:                 #f5f5f5;\n//** Breadcrumb text color\n@breadcrumb-color:              #ccc;\n//** Text color of current page in the breadcrumb\n@breadcrumb-active-color:       @gray-light;\n//** Textual separator for between breadcrumb elements\n@breadcrumb-separator:          \"/\";\n\n\n//== Carousel\n//\n//##\n\n@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);\n\n@carousel-control-color:                      #fff;\n@carousel-control-width:                      15%;\n@carousel-control-opacity:                    .5;\n@carousel-control-font-size:                  20px;\n\n@carousel-indicator-active-bg:                #fff;\n@carousel-indicator-border-color:             #fff;\n\n@carousel-caption-color:                      #fff;\n\n\n//== Close\n//\n//##\n\n@close-font-weight:           bold;\n@close-color:                 #000;\n@close-text-shadow:           0 1px 0 #fff;\n\n\n//== Code\n//\n//##\n\n@code-color:                  #c7254e;\n@code-bg:                     #f9f2f4;\n\n@kbd-color:                   #fff;\n@kbd-bg:                      #333;\n\n@pre-bg:                      #f5f5f5;\n@pre-color:                   @gray-dark;\n@pre-border-color:            #ccc;\n@pre-scrollable-max-height:   340px;\n\n\n//== Type\n//\n//##\n\n//** Text muted color\n@text-muted:                  @gray-light;\n//** Abbreviations and acronyms border color\n@abbr-border-color:           @gray-light;\n//** Headings small color\n@headings-small-color:        @gray-light;\n//** Blockquote small color\n@blockquote-small-color:      @gray-light;\n//** Blockquote border color\n@blockquote-border-color:     @gray-lighter;\n//** Page header border color\n@page-header-border-color:    @gray-lighter;\n\n\n//== Miscellaneous\n//\n//##\n\n//** Horizontal line color.\n@hr-border:                   @gray-lighter;\n\n//** Horizontal offset for forms and lists.\n@component-offset-horizontal: 180px;\n\n\n//== Container sizes\n//\n//## Define the maximum width of `.container` for different screen sizes.\n\n// Small screen / tablet\n@container-tablet:             ((720px + @grid-gutter-width));\n//** For `@screen-sm-min` and up.\n@container-sm:                 @container-tablet;\n\n// Medium screen / desktop\n@container-desktop:            ((940px + @grid-gutter-width));\n//** For `@screen-md-min` and up.\n@container-md:                 @container-desktop;\n\n// Large screen / wide desktop\n@container-large-desktop:      ((1140px + @grid-gutter-width));\n//** For `@screen-lg-min` and up.\n@container-lg:                 @container-large-desktop;\n",
+			"file": "app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
+			"file_size": 25288,
+			"file_write_time": 1403518145000000,
+			"settings":
+			{
+				"buffer_size": 25289,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# Ignore docs files\n_gh_pages\n_site\n.ruby-version\n\n# Numerous always-ignore extensions\n*.diff\n*.err\n*.orig\n*.log\n*.rej\n*.swo\n*.swp\n*.zip\n*.vi\n*~\nchatup.sublime-project\nchatup.sublime-workspace\n\n\n\n# OS or Editor folders\n.DS_Store\n._*\nThumbs.db\n.cache\n.project\n.settings\n.tmproj\n*.esproj\nnbproject\n*.sublime-project\n*.sublime-workspace\n.idea\n\n# Komodo\n*.komodoproject\n.komodotools\n\n# grunt-html-validation\nvalidation-status.json\nvalidation-report.json\n\n# Folders to ignore\nnode_modules\nbower_components\n\n\n\n",
+			"file": "app/vendor/stylesheets/bootstrap-3.1.0/.gitignore",
+			"file_size": 451,
+			"file_write_time": 1398579919000000,
+			"settings":
+			{
+				"buffer_size": 504,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 992,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sites/wecoders/db/wecoders.sql",
+			"settings":
+			{
+				"buffer_size": 9329,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n#user  nobody;\nworker_processes  4;\n\n#error_log  logs/error.log;\n#error_log  logs/error.log  notice;\n#error_log  logs/error.log  info;\n\n#pid        logs/nginx.pid;\n\n\nevents {\n    worker_connections  1024;\n}\n\n\nhttp {\n    include       mime.types;\n    default_type  application/octet-stream;\n\n\n    upstream 54feng {\n     server 110.75.189.130;\n    }\n\n    upstream backend_keepcd_servers{\n	   ip_hash;\n        server 127.0.0.1:7201 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7202 max_fails=250 fail_timeout=10s;\n	   server 127.0.0.1:7203 max_fails=250 fail_timeout=10s;\n	   server 127.0.0.1:7200 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7209 ;\n    }\n\n    upstream backend_meimashuo_servers{\n        ip_hash;\n        server 127.0.0.1:7301 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7302 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7303 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7300 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7309 ;\n    }\n\n    upstream backend_iosplay_servers{\n        ip_hash;\n        server 127.0.0.1:7400 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7401 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7402 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7403 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7309 ;\n    }\n\n    upstream backend_wecoders_servers{\n        ip_hash;\n        server 127.0.0.1:7500 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7501 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7502 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7503 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7504 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7509 ;\n    }\n\n    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '\n    #                  '$status $body_bytes_sent \"$http_referer\" '\n    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';\n\n    #access_log  logs/access.log  main;\n\n    sendfile        on;\n    #tcp_nopush     on;\n\n    #keepalive_timeout  0;\n    keepalive_timeout  65;\n\n    #gzip  on;\n\n    server {\n        listen 80;\n        server_name xxx.keepcd.com;\n\n        location / {\n                rewrite  ^/(.*)$  http://www.keepcd.com/$1  permanent;\n        }\n    }\n\n\n   server {\n        listen 80;\n        server_name www.keepcd.com;\n	server_name keepcd.com;\n        server_name api.keepcd.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n	access_log /var/log/nginx/keepcd.access_log;\n        error_log /var/log/nginx/keepcd.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/keepcd/deploy/keepcd;\n        }\n\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_keepcd_servers;\n        }\n    }\n\n  server {\n        listen 80;\n        server_name beta.keepcd.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	   gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/keepcd/beta/keepcd;\n        }\n\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7000;\n        }\n    }\n\n\n\n	\n   server {\n	listen 80;\n	server_name img.keepcd.com;\n\n	expires 720h;\n	if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n    }\n\n	proxy_redirect off;\n    proxy_set_header        Host  $host;\n    proxy_set_header        X-Real-IP       $remote_addr;\n    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	\n    location /static {\n         gzip on;\n         root /home/feilaoda/www/img.keepcd.com;\n    }\n\n	location / {\n		return 403;\n	}\n\n   }\n	\n\n   server {\n        listen 80;\n    	server_name www.meimashuo.com;\n    	server_name www.imeiban.com;\n        server_name meimashuo.com;\n        server_name api.meimashuo.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/meimashuo.access_log;\n        error_log /var/log/nginx/meimashuo.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n    	location /favicon.ico {\n    	    gzip on;\n    	    root /home/feilaoda/www/meimashuo/deploy/app/static;\n    	}\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/meimashuo/deploy/app;\n        }\n\n	\n        location / {\n              expires epoch;\n              proxy_pass http://backend_meimashuo_servers;\n        }\n    }\n\n\n  server {\n        listen 80;\n        server_name www.iosplay.com;\n        server_name iosplay.com;\n        server_name api.iosplay.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/iosplay.access_log;\n        error_log /var/log/nginx/iosplay.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/iosplay/deploy/app/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/iosplay/deploy/app;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_iosplay_servers;\n        }\n    }\n\n\n   server {\n        listen 80;\n        server_name beta.iosplay.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/betaiosplay.access_log;\n        error_log /var/log/nginx/betaiosplay.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/iosplay/beta/app/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/iosplay/beta/app;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7409;\n        }\n    }\n\n   server {\n        listen 80;\n        server_name beta.wecoders.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/wecoders.beta.access_log;\n        error_log /var/log/nginx/wecoders.beta.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/wecoders/beta/static;\n        }\n\n      location /static {\n             gzip on;\n             root /home/feilaoda/www/wecoders/beta;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7509;\n        }\n    } \n\n   server {\n        listen 80;\n        server_name www.wecoders.com;\n        server_name wecoders.com;\n        server_name api.wecoders.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/wecoders.access_log;\n        error_log /var/log/nginx/wecoders.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/wecoders/deploy/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/wecoders/deploy;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_wecoders_servers;\n        }\n    }\n\n   \n\n\n    server {\n        listen       80;\n        server_name  localhost;\n\n        #charset koi8-r;\n\n        #access_log  logs/host.access.log  main;\n\n        location / {\n            root   html;\n            index  index.html index.htm;\n        }\n\n        #error_page  404              /404.html;\n\n        # redirect server error pages to the static page /50x.html\n        #\n        error_page   500 502 503 504  /50x.html;\n        location = /50x.html {\n            root   html;\n        }\n\n        # proxy the PHP scripts to Apache listening on 127.0.0.1:80\n        #\n        #location ~ \\.php$ {\n        #    proxy_pass   http://127.0.0.1;\n        #}\n\n        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000\n        #\n        #location ~ \\.php$ {\n        #    root           html;\n        #    fastcgi_pass   127.0.0.1:9000;\n        #    fastcgi_index  index.php;\n        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;\n        #    include        fastcgi_params;\n        #}\n\n        # deny access to .htaccess files, if Apache's document root\n        # concurs with nginx's one\n        #\n        #location ~ /\\.ht {\n        #    deny  all;\n        #}\n    }\n\n    server {\n        listen 80;\n        server_name www.zhui.tv www.zhuitv.com zhuitv.com;\n\n        location / {\n	#                rewrite  ^/(.*)$  http://zhui.tv/$1  permanent;\n	return 301;\n        }\n\n    }\n\n\n    # another virtual host using mix of IP-, name-, and port-based configuration\n    #\n    #server erver {\n    #    listen 80;\n    #    server_name www.zhui.tv www.zhuitv.com zhuitv.com;\n#\n#        location / {\n#                rewrite  ^/(.*)$  http://zhui.tv/$1  permanent;\n#        }\n\n#    }\n    #    listen       8000;\n    #    listen       somename:8080;\n    #    server_name  somename  alias  another.alias;\n\n    #    location / {\n    #        root   html;\n    #        index  index.html index.htm;\n    #    }\n    #}\n\n\n    # HTTPS server\n    #\n    #server {\n    #    listen       443;\n    #    server_name  localhost;\n\n    #    ssl                  on;\n    #    ssl_certificate      cert.pem;\n    #    ssl_certificate_key  cert.key;\n\n    #    ssl_session_timeout  5m;\n\n    #    ssl_protocols  SSLv2 SSLv3 TLSv1;\n    #    ssl_ciphers  HIGH:!aNULL:!MD5;\n    #    ssl_prefer_server_ciphers   on;\n\n    #    location / {\n    #        root   html;\n    #        index  index.html index.htm;\n    #    }\n    #}\n\n     server {\n        listen 80;\n        server_name zhui.tv;\n        root /home/feilaoda/www/zhui;\n        index index.php index.html;\n        access_log /var/log/nginx/zhui.access_log;\n        error_log /var/log/nginx/zhui.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6; \n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            fastcgi_pass   127.0.0.1:9000;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n     server {\n        listen 80;\n        server_name caiji.zhui.tv;\n        root /home/feilaoda/www/caiji_zhui_tv;\n        index index.php index.html;\n        access_log /var/log/nginx/zhui.access_log;\n        error_log /var/log/nginx/zhui.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n        \n        client_max_body_size 100M;\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            #fastcgi_pass   127.0.0.1:9000;\n	    fastcgi_pass unix:/var/run/php5-fpm.sock;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n\n\n\nserver {\n        listen 80;\n        server_name blog.iosplay.com;\n        root /home/feilaoda/www/iosplay/blog;\n        index index.php index.html;\n        access_log /var/log/nginx/iosplay.access_log;\n        error_log /var/log/nginx/iosplay.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            fastcgi_pass   127.0.0.1:9000;\n            #fastcgi_pass unix:/var/run/php5-fpm.sock;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n\n    \n\n}\n",
+			"file": "nginx.conf",
+			"file_size": 5036,
+			"file_write_time": 1403671259000000,
+			"settings":
+			{
+				"buffer_size": 17849,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/account/setting_signup.html",
+			"settings":
+			{
+				"buffer_size": 1802,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/node/models.py",
+			"settings":
+			{
+				"buffer_size": 1619,
 				"line_ending": "Windows"
 			}
 		}
@@ -433,6 +582,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"markdown",
+			"SettingRenameGithubHandler",
+			"    ('/rename/github/(\\d+)', SettingRenameGithubHandler),\nSettingRenameGithubHandler",
+			"SettingRenameGithubHandler",
+			"SettingSignupHandler",
+			"SettingRenameGithubHandler",
+			"login",
+			"_on_auth",
+			"g'i't'hu'b",
+			"_on_get_user_info",
+			"   \n",
+			"topic",
+			"/*!40101 SET character_set_client = @saved_cs_client */;\n",
+			"TopicReply",
+			"brand",
+			"black",
+			"navbar-",
+			"nav",
+			"ui-btn",
+			"submit",
+			".\n",
+			"wecoders.com",
 			"topic",
 			"create_notification",
 			"create_notification\ncreate_notification",
@@ -538,23 +709,7 @@
 			"role analyse task, day",
 			"root group is null",
 			"role analyse task, day",
-			"role analyse task, day\n",
-			"role analyse task, day",
-			"role check task start run",
-			"role check run:",
-			"start time:",
-			"role analyse task, day",
-			"2014-04-09",
-			"role analyse task, day",
-			"[88:22:33:44:55:31]",
-			"role analyse task, day",
-			"[88:22:33:44:55:31]",
-			"88:22:33:44:55:31",
-			"role analyse task",
-			"[88:22:33:44:55:31]",
-			"HADOOP_DEV_HOME",
-			"hello",
-			" "
+			"role analyse task, day\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -562,6 +717,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"wcs.com",
 			"HADOOP_HOME",
 			""
 		],
@@ -574,7 +730,7 @@
 	"groups":
 	[
 		{
-			"selected": 22,
+			"selected": 15,
 			"sheets":
 			[
 				{
@@ -582,15 +738,15 @@
 					"file": "app/templates/v3/layout.html",
 					"settings":
 					{
-						"buffer_size": 4036,
+						"buffer_size": 4022,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2076,
-								2076
+								3841,
+								3841
 							]
 						],
 						"settings":
@@ -600,7 +756,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 419.0,
+						"translation.y": 964.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -628,7 +784,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 524.0,
+						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -656,7 +812,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 377.0,
+						"translation.y": 172.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -666,15 +822,15 @@
 					"file": "static/stylesheets/application.less",
 					"settings":
 					{
-						"buffer_size": 2307,
+						"buffer_size": 2434,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								745,
-								745
+								530,
+								530
 							]
 						],
 						"settings":
@@ -684,7 +840,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 231.0,
+						"translation.y": 292.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -722,23 +878,23 @@
 					"file": "sites/Makefile",
 					"settings":
 					{
-						"buffer_size": 7830,
+						"buffer_size": 7844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3192,
-								3192
+								2433,
+								2433
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Makefile/Makefile.tmLanguage"
 						},
-						"translation.x": 0.0,
-						"translation.y": 1208.0,
+						"translation.x": 139.0,
+						"translation.y": 1017.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -748,15 +904,15 @@
 					"file": "app/locale/zh_CN.csv",
 					"settings":
 					{
-						"buffer_size": 4085,
+						"buffer_size": 4215,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								767,
-								767
+								3659,
+								3621
 							]
 						],
 						"settings":
@@ -764,7 +920,7 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 397.0,
+						"translation.y": 2036.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -774,15 +930,15 @@
 					"file": "app/account/handlers.py",
 					"settings":
 					{
-						"buffer_size": 37103,
+						"buffer_size": 39036,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1245,
-								1245
+								29826,
+								30594
 							]
 						],
 						"settings":
@@ -791,8 +947,8 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 3.0,
-						"translation.y": 322.0,
+						"translation.x": 0.0,
+						"translation.y": 12770.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -828,15 +984,15 @@
 					"file": "app/dojang/auth/github.py",
 					"settings":
 					{
-						"buffer_size": 8386,
+						"buffer_size": 8394,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2566,
-								2566
+								2593,
+								2593
 							]
 						],
 						"settings":
@@ -846,7 +1002,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 650.0,
+						"translation.y": 339.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -940,15 +1096,15 @@
 					"file": "sites/wecoders/db/update.sql",
 					"settings":
 					{
-						"buffer_size": 477,
+						"buffer_size": 545,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								342,
-								234
+								477,
+								543
 							]
 						],
 						"settings":
@@ -973,8 +1129,8 @@
 						"selection":
 						[
 							[
-								14547,
-								14558
+								7237,
+								7242
 							]
 						],
 						"settings":
@@ -983,8 +1139,8 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 5206.0,
+						"translation.x": 12.0,
+						"translation.y": 2782.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -994,15 +1150,15 @@
 					"file": "app/node/handlers.py",
 					"settings":
 					{
-						"buffer_size": 8570,
+						"buffer_size": 8676,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4278,
-								4278
+								6750,
+								6750
 							]
 						],
 						"settings":
@@ -1012,7 +1168,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1954.0,
+						"translation.y": 2828.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1048,15 +1204,15 @@
 					"file": "app/lib/filter.py",
 					"settings":
 					{
-						"buffer_size": 326,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								325,
-								35
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1074,15 +1230,15 @@
 					"file": "sites/iptables.txt",
 					"settings":
 					{
-						"buffer_size": 493,
+						"buffer_size": 558,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								493,
-								493
+								558,
+								440
 							]
 						],
 						"settings":
@@ -1153,15 +1309,15 @@
 					"file": "app/lib/filters.py",
 					"settings":
 					{
-						"buffer_size": 14571,
+						"buffer_size": 14568,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14487,
-								14487
+								14467,
+								14467
 							]
 						],
 						"settings":
@@ -1171,7 +1327,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4494.0,
+						"translation.y": 4529.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1188,8 +1344,8 @@
 						"selection":
 						[
 							[
-								2143,
-								2143
+								1154,
+								1154
 							]
 						],
 						"settings":
@@ -1199,7 +1355,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 490.0,
+						"translation.y": 404.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1216,8 +1372,8 @@
 						"selection":
 						[
 							[
-								1158,
-								1158
+								1074,
+								1083
 							]
 						],
 						"settings":
@@ -1227,7 +1383,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 132.0,
+						"translation.y": 188.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1237,15 +1393,15 @@
 					"file": "app/templates/v3/topic/show_topic.html",
 					"settings":
 					{
-						"buffer_size": 7207,
+						"buffer_size": 7176,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2072,
-								2072
+								7129,
+								7129
 							]
 						],
 						"settings":
@@ -1255,7 +1411,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 580.0,
+						"translation.y": 2604.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1375,15 +1531,15 @@
 					"file": "app/dojang/cache.py",
 					"settings":
 					{
-						"buffer_size": 8789,
+						"buffer_size": 8884,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6977,
-								6977
+								5921,
+								5921
 							]
 						],
 						"settings":
@@ -1393,7 +1549,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3174.0,
+						"translation.y": 2836.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1429,15 +1585,15 @@
 					"file": "app/wist/handlers.py",
 					"settings":
 					{
-						"buffer_size": 550,
+						"buffer_size": 703,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								239,
-								239
+								588,
+								588
 							]
 						],
 						"settings":
@@ -1452,18 +1608,18 @@
 				},
 				{
 					"buffer": 32,
-					"file": "app/templates/v3/wist/wist_home.html",
+					"file": "app/templates/v3/wist/show_wist.html",
 					"settings":
 					{
-						"buffer_size": 82,
+						"buffer_size": 85,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								66,
-								66
+								0,
+								31
 							]
 						],
 						"settings":
@@ -1481,20 +1637,22 @@
 					"file": "app/wist/models.py",
 					"settings":
 					{
-						"buffer_size": 1024,
+						"buffer_size": 1325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								687,
-								687
+								584,
+								598
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1607,7 +1765,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 209.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1624,8 +1782,8 @@
 						"selection":
 						[
 							[
-								1665,
-								1665
+								3019,
+								3019
 							]
 						],
 						"settings":
@@ -1635,7 +1793,465 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 300.0,
+						"translation.y": 1009.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 39,
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "34:e2:fd:71:c0:55",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 40,
+					"file": "sites/wecoders/debug_config.py",
+					"settings":
+					{
+						"buffer_size": 1989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1718,
+								1669
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 470.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 41,
+					"file": "app/templates/v3/topic/topic.html",
+					"settings":
+					{
+						"buffer_size": 177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								30
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 42,
+					"file": "app/templates/v3/topic/show_topic_module.html",
+					"settings":
+					{
+						"buffer_size": 1273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 43,
+					"file": "app/templates/v3/topic/show_topic_list.html",
+					"settings":
+					{
+						"buffer_size": 559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 44,
+					"file": "app/templates/v3/front/index.html",
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								504,
+								649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 45,
+					"file": "app/templates/v3/wist/wist.html",
+					"settings":
+					{
+						"buffer_size": 176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								130,
+								130
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 46,
+					"file": "app/templates/v3/account/setting_avatar.html",
+					"settings":
+					{
+						"buffer_size": 2783,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2496,
+								2496
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 449.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 47,
+					"file": "app/templates/v3/account/setting.html",
+					"settings":
+					{
+						"buffer_size": 3150,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								756,
+								756
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 147.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 48,
+					"file": "app/templates/v3/module/profile_sidebar.html",
+					"settings":
+					{
+						"buffer_size": 1005,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								86,
+								86
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 49,
+					"file": "app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
+					"settings":
+					{
+						"buffer_size": 25289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11825,
+								11825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5019.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 50,
+					"file": "app/vendor/stylesheets/bootstrap-3.1.0/.gitignore",
+					"settings":
+					{
+						"buffer_size": 504,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								333,
+								296
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 119.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 51,
+					"file": ".gitignore",
+					"settings":
+					{
+						"buffer_size": 992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								991,
+								991
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 764.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 52,
+					"file": "sites/wecoders/db/wecoders.sql",
+					"settings":
+					{
+						"buffer_size": 9329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6419,
+								6439
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SQL/SQL.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3004.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 53,
+					"file": "nginx.conf",
+					"settings":
+					{
+						"buffer_size": 17849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4318,
+								4318
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2123.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 54,
+					"file": "app/templates/v3/account/setting_signup.html",
+					"settings":
+					{
+						"buffer_size": 1802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								944,
+								944
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 194.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 55,
+					"file": "app/node/models.py",
+					"settings":
+					{
+						"buffer_size": 1619,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								557,
+								565
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1703,6 +2319,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 344.0,
+	"side_bar_width": 220.0,
 	"status_bar_visible": true
 }
