@@ -88,13 +88,13 @@
                             <span class="small">{{_("Anonymous")}}</span>
                             <span class="small pull-right">
                                 <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
-                                <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('0');" onclick="replyatwho('#{{reply.order}}L {{_('Anonymous')}}')">{{_("Reply")}}</a>
+                                <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('0');" onclick="replyatwho('{{_('Anonymous')}} #{{reply.order}}L')">{{_("Reply")}}</a>
                             </span>
                         {%else%}
                             <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a>  </span>
                             <span class="small pull-right">
                                 <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
-                                <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('#{{reply.order}}L @{{reply.people.username}}')">{{_("Reply")}}</a>
+                                <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('@{{reply.people.username}} #{{reply.order}}L')">{{_("Reply")}}</a>
                             </span>
                         {%end%}
                     </div>

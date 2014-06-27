@@ -87,15 +87,10 @@ css2:
 css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
 	lessc --compress $(HOME)/app/vendor/stylesheets/bootstrap-3.1.0/less/bootstrap.less > $(STATIC)/assets/css/v3/vendor.min.css
-	#lessc --compress $(HOME)/static/stylesheets/base.less > $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/box.less >> $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/topic.less >> $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/blog.less >> $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/shot.less >> $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/footer.less >> $(STATIC)/assets/css/application.min.css
-	#lessc --compress $(HOME)/static/stylesheets/front.less >> $(STATIC)/assets/css/application.min.css
 	lessc --compress $(HOME)/static/stylesheets/application.less > $(STATIC)/assets/css/v3/application.min.css
-
+	cssshrink $(STATIC)/assets/css/v3/vendor.min.css > $(STATIC)/assets/css/v3/application.css
+	cssshrink $(STATIC)/assets/css/v3/application.min.css >> $(STATIC)/assets/css/v3/application.css
+	cssshrink $(STATIC)/assets/css/v3/application.css > $(STATIC)/assets/css/v3/stylesheets.min.css
 	#cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
 	#cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
 	#cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
@@ -118,37 +113,38 @@ js: libjs
 
 libjs:
 	if [ ! -d $(STATIC)/assets/js ]; then mkdir -p $(STATIC)/assets/js; fi
-	uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.ui.min.js > $(STATIC)/assets/js/jquery.ui.min.js
 
-	uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.min.js > $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-dropdown.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-modal.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-tab.js >> $(STATIC)/assets/js/vendor.min.js
-	uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-datepicker.js >> $(STATIC)/assets/js/vendor.min.js
+	uglifyjs $(HOME)/app/vendor/javascripts/jquery/jquery.min.js > $(STATIC)/assets/js/vendor.min.js
+#uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.ui.min.js > $(STATIC)/assets/js/jquery.ui.min.js
 
-	uglifyjs -nc $(HOME)/static/javascripts/base.js > $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc $(HOME)/static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc $(HOME)/static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
-	# uglifyjs -nc $(HOME)/static/javascripts/english.js >> $(STATIC)/assets/js/application.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/browser.js > $(STATIC)/assets/js/waterfall.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/history.js >> $(STATIC)/assets/js/waterfall.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/template.min.js >> $(STATIC)/assets/js/waterfall.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/tabswitch.js >> $(STATIC)/assets/js/waterfall.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/woo.js >> $(STATIC)/assets/js/waterfall.min.js
-	uglifyjs -nc $(HOME)/vendor/waterfall/js/masnunit.js >> $(STATIC)/assets/js/waterfall.min.js
+#uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-dropdown.js >> $(STATIC)/assets/js/vendor.min.js
+#uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-modal.js >> $(STATIC)/assets/js/vendor.min.js
+#uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-tab.js >> $(STATIC)/assets/js/vendor.min.js
+#uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-datepicker.js >> $(STATIC)/assets/js/vendor.min.js
 
-	uglifyjs -nc $(HOME)/static/javascripts/yepnope.js > $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/flotr2/flotr2.min.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/flotr2/js/plugins/handles.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/bonzo/bonzo.min.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/envision.min.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/soundmanager2.min.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/bitfinance.js >> $(STATIC)/assets/js/finance.min.js
-	uglifyjs -nc $(HOME)/static/javascripts/financechart.js >> $(STATIC)/assets/js/finance.min.js
+#uglifyjs -nc $(HOME)/static/javascripts/base.js > $(STATIC)/assets/js/application.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/pin.js >> $(STATIC)/assets/js/application.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/movie.js >> $(STATIC)/assets/js/application.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/english.js >> $(STATIC)/assets/js/application.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/browser.js > $(STATIC)/assets/js/waterfall.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/history.js >> $(STATIC)/assets/js/waterfall.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/template.min.js >> $(STATIC)/assets/js/waterfall.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/tabswitch.js >> $(STATIC)/assets/js/waterfall.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/woo.js >> $(STATIC)/assets/js/waterfall.min.js
+# uglifyjs -nc $(HOME)/vendor/waterfall/js/masnunit.js >> $(STATIC)/assets/js/waterfall.min.js
 
-	uglifyjs -nc $(HOME)/static/javascripts/socket.io.js > $(STATIC)/assets/js/socket.io.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/yepnope.js > $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/flotr2/flotr2.min.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/flotr2/js/plugins/handles.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/bonzo/bonzo.min.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/envision.min.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/soundmanager2.min.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/bitfinance.js >> $(STATIC)/assets/js/finance.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/financechart.js >> $(STATIC)/assets/js/finance.min.js
 
-	uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
+# uglifyjs -nc $(HOME)/static/javascripts/socket.io.js > $(STATIC)/assets/js/socket.io.min.js
+
+# uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 
 
 
