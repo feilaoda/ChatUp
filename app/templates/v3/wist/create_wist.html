@@ -1,0 +1,59 @@
+{% extends "wist/wist.html" %}
+
+{% block subtitle %}{{ _("Wist") }}{% end %}
+
+{% block afterstyle %}
+<link rel="stylesheet" href="{{static_url('assets/css/v3/codemirror.min.css')}}" />
+
+<script type="text/javascript" src="{{static_url('assets/js/codemirror.min.js')}}"></script>
+{% end %}
+
+{% block container %}
+<div class="page-header">
+<div class="container">
+    <div class="panel">
+        <div class="panel-body">
+    <legend>{{_("New Wist")}}</legend> 
+    <form role="form" action="" method="post">
+        {{ xsrf_form_html() }}
+
+     
+        <!-- <div class="form-group">
+            <div class="controls">
+                <input type="text" max-length="150" class="form-control control-text input-maxlarge" name="tags"  placeholder="Tags" value=""/>
+            </div>
+        </div> -->
+
+        <div class="form-group">
+            <div class="controls">
+                <textarea id="code" class="form-control  control-text input-maxlarge" rows="15" name="content" placeholder="#第一行填写标题">
+                </textarea>
+                
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">{{ _("Create Public Wist") }}</button>
+            <a href="/wist" ><button type="button" class="btn btn-sm">{{_("Cancel")}}</button></a>
+        </div>
+        
+    </form>
+    </div>
+</div>
+
+</div>
+</div>
+
+<script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: 'markdown',
+        lineNumbers: true,
+        theme: "eclipse",
+        extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+      });
+    </script>
+
+{% end %}
+
+

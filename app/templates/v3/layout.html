@@ -9,15 +9,19 @@
         <title>{%block title%}{%block subtitle%}{%end%} {%block extra_title %}{%end%} | {{g.sitename}}{%end%} </title>
         {%block keywords%}{%end%}
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
         {% block beforestyle %}{% end %}
 
+        <link rel="stylesheet" href="{{static_url('assets/css/v3/stylesheets.min.css')}}" />
+        <script type="text/javascript" src="{{static_url('assets/js/vendor.min.js')}}"></script>
+        
+
+        
         {%if is_mobile%}
         <link rel="stylesheet" href="{{static_url('assets/v2/css/mobile.min.css')}}" />
         {%end%}
 
-        <script type="text/javascript" src="{{static_url('assets/js/vendor.min.js')}}"></script>
-        <link rel="stylesheet" href="{{static_url('assets/css/v3/stylesheets.min.css')}}" />
-
+        
         {% block afterstyle %}{% end %}
 
 <script type="text/javascript">
@@ -47,8 +51,8 @@
             <ul class="nav navbar-nav">
               <li id="nav-home"><a href="/">{{_("Home")}}</a></li>
               <li id="nav-topic"><a href="/topic">{{_("Community")}}</a></li>
-              <!-- <li id="nav-wist"><a href="/wist" >{{_("Wist")}}</a></li> -->
-
+              <li id="nav-wist"><a href="/wist" >{{_("Wist")}}</a></li>
+              
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if current_user  %}
@@ -69,11 +73,10 @@
 
 
 
-
-
-      <div class="container">
+      
         {% set msgs = messages() %}
         {% if len(msgs) > 0 %}
+        <div class="container">
           <div class="container-content">
               {% for type, message in msgs %}
                 <div class="alert alert-{{type}}">
@@ -84,20 +87,20 @@
               </div>
               {% end %}
           </div>
+          </div>
         {% end %}
-
       
-        {% block container%}
-        <div class="col-xs-12 col-sm-6 col-md-8 pull-left">
+
+      {% block container %}
+        <div class="container">
+        <div class="col-xs-12 col-md-9 padding-left-0 pull-left">
           {% block content %}{% end %}
         </div>
-        <div class="col-xs-6 col-md-4 pull-left">
+        <div class="col-xs-6 col-md-3 padding-right-0 pull-left">
           {% block sidebar %} {% end %}
         </div>
-        {%end%}
-      </div>
-
-
+       </div>
+      {%end%}
 
 
 <div class="footer">

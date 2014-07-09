@@ -23,13 +23,13 @@
  -->
     <div class="topic-container  " data-id="{{topic.id}}">
 
-        <div class="media padding topic">
+        <div class="media padding-12 topic">
 
             <!-- <div class="topic-avatar "> -->
                 {%if topic.anonymous != 0%}
                 <img src="{{settings.static_avatar_default}}" class="media-object pull-left" width="48" height="48" title="Anonymous"/>
                 {%else%}
-                <a href="/people/{{topic.people_id}}" class="pull-left avatar "><img src="{{topic.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
+                <a href="/{{topic.people.username}}" class="pull-left avatar "><img src="{{topic.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
                 {%end%}
            <!--  </div> -->
 
@@ -44,7 +44,7 @@
                     <span class="small">{{_("Anonymous")}}</span>
                     <a href="/topic/{{topic.id}}"><time class="small" title="Created" datetime="{{xmldatetime(topic.created)}}">{{localtime(topic.created)}}</time> </a>
                 {%else%}
-                    <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a>
+                    <a href="/{{topic.people.username}}"><b>{{topic.people.username}}</b></a>
                     <a href="/topic/{{topic.id}}"><time class="small" title="Created" datetime="{{xmldatetime(topic.created)}}">{{localtime(topic.created)}}</time> </a>
                     {% if is_editable %}
                     <a href="/topic/{{topic.id}}/edit">{{_("Edit")}}</a>
@@ -69,14 +69,14 @@
 
             {% set index = 0 %}
             {% for reply in pagination.items %}
-            <li id="r{{reply.order}}" class="reply-item list-group-item list-group-nolrborder">
+            <li id="reply{{reply.order}}" class="reply-item list-group-item list-group-nolrborder">
             <div class="reply  media">
 
                 <div class="reply-avatar pull-left" >
                     {%if reply.anonymous != 0%}
                     <img src="{{settings.static_avatar_default}}" class="media-object" width="48" height="48" title="Anonymous"/>
                     {%else%}
-                    <a href="/people/{{reply.people_id}}" class="pull-leftx"><img  src="{{reply.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
+                    <a href="/{{reply.people.username}}" class="pull-leftx"><img  src="{{reply.people.get_avatar(48)}}" class="media-object" width="48" height="48" /></a>
                     {%end%}
                 </div>
 
@@ -91,7 +91,7 @@
                                 <a class="hoverable" data-name="{{_('Anonymous')}}" href="javascript:reply('0');" onclick="replyatwho('{{_('Anonymous')}} #{{reply.order}}L')">{{_("Reply")}}</a>
                             </span>
                         {%else%}
-                            <span> <a href="/people/{{reply.people_id}}"><b>{{reply.people.username}}</b> </a>  </span>
+                            <span> <a href="/{{reply.people.username}}"><b>{{reply.people.username}}</b> </a>  </span>
                             <span class="small pull-right">
                                 <time datetime="{{xmldatetime(reply.created)}}">{{timesince(reply.created, locale.code)}}</time> #{{reply.order}}
                                 <a class="hoverable hidding" data-name="{{reply.people.username}}" href="javascript:reply('{{reply.people_id}}');" onclick="replyatwho('@{{reply.people.username}} #{{reply.order}}L')">{{_("Reply")}}</a>
@@ -139,7 +139,7 @@
     </div>
 </div>
 
-<div class="panel padding">
+<div class="panel padding-12">
 {% if topic.status == 'close' %}
 <div class="box">
     {{ _("Topic is closed") }}

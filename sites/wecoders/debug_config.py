@@ -14,7 +14,7 @@ cookie_secret = "wcs.com"
 password_secret = "3fd0348db6303181634291f252fb9172"
 static_url_prefix = '/static/'
 
-cookie_domain=".wcs.com"
+cookie_domain=""
 default_domain="www.wcs.com"
 image_domain = "http://www.wcs.io"
 api_domain = "api.wcs.com"

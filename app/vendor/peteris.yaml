@@ -1,0 +1,36 @@
+- job:
+    name: mikoto-pylint
+    description: 'mikoto TEST!'
+    scm:
+      - git:
+          branches:
+            - master
+          skip-tag: True
+          url: http://code.dapps.douban.com/qingfeng/mikoto.git
+    triggers:
+      - pollscm: '* * * * *'
+    builders:
+      - shell: |
+            rm -rf VENV
+            virtualenv VENV || true
+            source VENV/bin/activate
+            pip install -i http://pypim.dapps.douban.com/simple pylint
+            pip install -e git+http://code.dapps.douban.com/qingfeng/misaka.git@master#egg=misaka
+            python setup.py install
+            hash -r
+            rm -rf pylint.out
+            pylint -E pidl > pylint.out
+            deactivate
+      - shell: |
+            source VENV/bin/activate
+            pip install -i http://pypim.dapps.douban.com/simple pytest
+            py.test --junitxml=unittst.xml tests
+            deactivate
+    publishers:
+      - junit:
+          results: unittst.xml
+      - violations:
+          pylint:
+             pattern: pylint.cut
+      - email:
+          recipients: qingfeng@dcuban.com

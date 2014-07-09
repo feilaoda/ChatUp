@@ -120,12 +120,6 @@ def xmldatetime(value):
     return value.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 def xmlday(value):
-    now = datetime.datetime.utcnow()
-    delta = now - value
-    if delta.days <= 0:
-        return u"??????"
-    elif delta.days <= 1:
-        return u"??????"
     return value.strftime('%Y-%m-%d')
 
 

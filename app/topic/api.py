@@ -88,7 +88,7 @@ class ShowRepliesHandler(SimpleApiHandler):
      
 class NewTopicHandler(SimpleApiHandler):
     
-    # @apiauth
+    @apiauth
     def post(self):
         node_name = self.get_argument('node_name', None)
         people = People.query.filter_by(username="admin").first()

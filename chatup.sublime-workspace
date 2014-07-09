@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"cone",
+				"content_html"
+			],
+			[
+				"fi",
+				"filter_by"
+			],
+			[
 				"def",
 				"DEFAULT"
 			],
@@ -32,398 +40,145 @@
 	"buffers":
 	[
 		{
-			"file": "app/templates/v3/layout.html",
+			"file": "app/people/wist_handlers.py",
 			"settings":
 			{
-				"buffer_size": 4022,
+				"buffer_size": 1936,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/signin.html",
-			"settings":
-			{
-				"buffer_size": 2248,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/signup.html",
-			"settings":
-			{
-				"buffer_size": 3689,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "static/stylesheets/application.less",
-			"settings":
-			{
-				"buffer_size": 2434,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/vendor/stylesheets/bootstrap/sprites.less",
-			"settings":
-			{
-				"buffer_size": 10624,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sites/Makefile",
-			"settings":
-			{
-				"buffer_size": 7844,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/locale/zh_CN.csv",
-			"settings":
-			{
-				"buffer_size": 4215,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/account/handlers.py",
-			"settings":
-			{
-				"buffer_size": 39036,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "sites/wecoders/config.py",
-			"settings":
-			{
-				"buffer_size": 2082,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/dojang/auth/github.py",
-			"settings":
-			{
-				"buffer_size": 8394,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/run.py",
-			"settings":
-			{
-				"buffer_size": 4453,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tests/testcase.py",
-			"settings":
-			{
-				"buffer_size": 1579,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/account/models.py",
-			"settings":
-			{
-				"buffer_size": 6303,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "ALTER TABLE topic_content MODIFY COLUMN content text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic MODIFY COLUMN title varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL; \n\nALTER TABLE topic_reply MODIFY COLUMN content text CHARACTER set utf8 COLLATE utf8_unicode_ci DEFAULT NULL;\n\n\n另外需要注意的是，当数据库用了 utf8mb4 后，如果用 mysqldump 备份，那么需要在备份时加上 --default-character-set=utf8mb4 参数。\n在恢复备份前，需要确保已经输入了 SET CHARSET utf8mb4 这条指令。\n\nALTER TABLE topic_node ADD COLUMN platform int(11) DEFAULT NULL;\n\n\n",
-			"file": "sites/wecoders/db/update.sql",
-			"file_size": 692,
-			"file_write_time": 1403703164000000,
-			"settings":
-			{
-				"buffer_size": 545,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sites/wecoders/db/wecoders2.sql",
-			"settings":
-			{
-				"buffer_size": 18542,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/node/handlers.py",
-			"settings":
-			{
-				"buffer_size": 8676,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/topic/form.py",
-			"settings":
-			{
-				"buffer_size": 406,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/lib/filter.py",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 25222 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 433 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 53 -j ACCEPT\nsudo iptables -A INPUT -p udp --dport 53 -j ACCEPT　\nsudo iptables -A INPUT -p icmp -j ACCEPT\nsudo iptables -A INPUT -m state --state INVALID -j DROP\nsudo iptables -A INPUT -j DROP\n\nsudo iptables -A INPUT -p tcp -s localhost --dport 6379 -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 6379 -j DROP\n",
-			"file": "sites/iptables.txt",
-			"file_size": 561,
-			"file_write_time": 1403700787000000,
-			"settings":
-			{
-				"buffer_size": 558,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "107, 106, 105, 109, 108, 100001010, 100001000, 100001030, 100001021, 100001020, 32010006, 13018221, 13018222, 13018236, 13018223, 13018224, 13018220, 13018219, 13018218, 13018215, 13018214, 13018217, 13018216, 13018234, 13018235, 13018232, 13018233, 13018212, 13018230, 13018231, 13018213, 13018210, 13018211, 13018229, 13018228, 13018209, 13018227, 13018208, 13018226, 13018207, 13018225, 205, 206, 207, 200001001, 200001000]\n",
-			"settings":
-			{
-				"buffer_size": 427,
-				"line_ending": "Unix",
-				"name": "107, 106, 105, 109, 108, 100001010, 100001000, 100"
-			}
-		},
-		{
-			"contents": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config>\n	<system>\n		<params>\n			<!-- 合并源数据多久未被更新，须迁移 -->\n			<param name=\"quartz_source_migrate_period\" value=\"30\" />\n			<!-- 默认时间单位是：分钟 -->\n			<!-- 路人最大停留时长 -->\n			<param name=\"time_walkby_duration\" value=\"2\" />\n			<!-- 鉴定员工每天的停留时长 -->\n			<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n		</params>\n	</system>\n	<groups>\n		<!--group的类型5种：0表示总部，1是省，2是市，3是区域，4是店 -->\n		<!-- 公司总部 -->\n		<group id=\"100\" type=\"0\">\n			<!-- 省 -->\n			<group id=\"1020\" type=\"1\">\n				<!-- 市 -->\n				<group id=\"1030\" type=\"2\">\n					<!-- 店 -->\n					<group id=\"105\" type=\"4\">\n						<device id=\"100001\" />\n					</group>\n					<group id=\"106\" type=\"4\">\n						<device id=\"100002\" />\n					</group>\n					<group id=\"107\" type=\"4\">\n						<device id=\"100003\" />\n					</group>\n				</group>\n				<group id=\"1031\" type=\"2\">\n					<!-- 店 -->\n					<group id=\"108\" type=\"4\">\n						<device id=\"100004\" />\n					</group>\n					<group id=\"109\" type=\"4\">\n						<device id=\"100005\" />\n					</group>\n				</group>\n			</group>\n\n			<!-- 区域 -->\n			<group id=\"1040\" type=\"3\">\n				<!-- 店 -->\n				<group id=\"105\" type=\"4\" />\n				<group id=\"106\" type=\"4\" />\n			</group>\n			<group id=\"1041\" type=\"3\">\n				<!-- 店 -->\n				<group id=\"105\" type=\"4\" />\n			</group>\n\n			<params>\n				<param name=\"quartz_source_migrate_period\" value=\"30\" />\n				<!-- 默认时间单位是：分钟 -->\n				<!-- 路人最大停留时长 -->\n				<param name=\"time_walkby_duration\" value=\"2\" />\n				<!-- 鉴定员工每天的停留时长 -->\n				<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n			</params>\n		</group>\n\n\n		<group id=\"200\" type=\"0\">\n			<!-- 省 -->\n			<group id=\"2020\" type=\"1\">\n				<!-- 市 -->\n				<group id=\"2030\" type=\"2\">\n					<!-- 店 -->\n					<group id=\"205\" type=\"4\">\n						<device id=\"2000001\" />\n					</group>\n					<group id=\"206\" type=\"4\">\n						<device id=\"2000002\" />\n					</group>\n					<group id=\"207\" type=\"4\">\n						<device id=\"2000003\" />\n					</group>\n				</group>\n			</group>\n\n			<!-- 区域 -->\n			<group id=\"2040\" type=\"3\">\n				<!-- 店 -->\n				<group id=\"205\" typ\n				e=\"4\" />\n				<group id=\"206\" type=\"4\" />\n			</group>\n			<group id=\"2041\" type=\"3\">\n				<!-- 店 -->\n				<group id=\"205\" type=\"4\" />\n				<group id=\"207\" type=\"4\" />\n			</group>\n\n			<params>\n				<param name=\"quartz_source_migrate_period\" value=\"30\" />\n				<!-- 默认时间单位是：分钟 -->\n				<!-- 路人最大停留时长 -->\n				<param name=\"time_walkby_duration\" value=\"2\" />\n				<!-- 鉴定员工每天的停留时长 -->\n				<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n			</params>\n		</group>\n\n		<group id='10000' type='0'>\n			<group id='1000010' type='1'>\n				<group id='10000100' type='2'>\n					<group id='100001000' type='4'>\n						<device id='1111100000' />\n\n					</group>\n				</group>\n				<group id='10000101' type='2'>\n					<group id='100001010' type='4'>\n						<device id='1111100002' />\n						<device id='1111100001' />\n					</group>\n				</group>\n				<group id='10000102' type='2'>\n					<group id='100001020' type='4'>\n						<device id='1111100003' />\n					</group>\n					<group id='100001021' type='4'>\n						<device id='1111100004' />\n					</group>\n				</group>\n				<group id='10000103' type='2'>\n					<group id='100001030' type='4'>\n						<device id='1111100005' />\n					</group>\n\n				</group>\n			</group>\n\n\n\n			<params>\n				<param name=\"quartz_source_migrate_period\" value=\"30\" />\n				<!-- 默认时间单位是：分钟 -->\n				<!-- 路人最大停留时长 -->\n				<param name=\"time_walkby_duration\" value=\"2\" />\n				<!-- 鉴定员工每天的停留时长 -->\n				<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n			</params>\n		</group>\n		<group id='20000' type='0'>\n			<group id='2000010' type='1'>\n				<group id='20000100' type='2'>\n					<group id='200001000' type='4'>\n						<device id='0001003063' />\n\n					</group>\n					<group id='200001001' type='4'>\n						<device id='0001003024' />\n					</group>\n				</group>\n			</group>\n\n\n\n			<params>\n				<param name=\"quartz_source_migrate_period\" value=\"30\" />\n				<!-- 默认时间单位是：分钟 -->\n				<!-- 路人最大停留时长 -->\n				<param name=\"time_walkby_duration\" value=\"2\" />\n				<!-- 鉴定员工每天的停留时长 -->\n				<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n			</params>\n		</group>\n\n		<group id='11' type='0'>\n			<group id='110' type='1'>\n				<group id='110000' type='2'>\n					<group id='11000001' type='4'>\n						<device id='0001000100' />\n					</group>\n					<group id='11000002' type='4'>\n						<device id='0001000200' />\n					</group>\n					<group id='11000003' type='4'>\n						<device id='0001000300' />\n					</group>\n				</group>\n			</group>\n			<group id='310' type='1'>\n				<group id='310000' type='2'>\n					<group id='31000004' type='4'>\n						<device id='0001000400' />\n					</group>\n					<group id='31000005' type='4'>\n						<device id='0001000500' />\n					</group>\n				</group>\n			</group>\n			<group id='320000' type='1'>\n				<group id='320100' type='2'>\n					<group id='32010006' type='4'>\n						<device id='0001000600' />\n					</group>\n				</group>\n			</group>\n\n			<group id='130000' type='1'>\n				<group id='130182' type='2'>\n					<group id='13018207' type='4'>\n						<device id='0001000700' />\n					</group>\n					<group id='13018208' type='4'>\n						<device id='0001000800' />\n					</group>\n					<group id='13018209' type='4'>\n						<device id='0001000900' />\n					</group>\n					<group id='13018210' type='4'>\n						<device id='0001001000' />\n					</group>\n					<group id='13018211' type='4'>\n						<device id='0001001100' />\n					</group>\n					<group id='13018212' type='4'>\n						<device id='0001001200' />\n					</group>\n					<group id='13018213' type='4'>\n						<device id='0001001300' />\n					</group>\n					<group id='13018214' type='4'>\n						<device id='0001001400' />\n					</group>\n					<group id='13018215' type='4'>\n						<device id='0001001500' />\n					</group>\n					<group id='13018216' type='4'>\n						<device id='0001001600' />\n					</group>\n					<group id='13018217' type='4'>\n						<device id='0001001700' />\n					</group>\n					<group id='13018218' type='4'>\n						<device id='0001001800' />\n					</group>\n					<group id='13018219' type='4'>\n						<device id='0001001900' />\n					</group>\n					<group id='13018220' type='4'>\n						<device id='0001002000' />\n					</group>\n					<group id='13018221' type='4'>\n						<device id='0001002100' />\n					</group>\n					<group id='13018222' type='4'>\n						<device id='0001002200' />\n					</group>\n					<group id='13018223' type='4'>\n						<device id='0001002300' />\n					</group>\n					<group id='13018224' type='4'>\n						<device id='0001002400' />\n					</group>\n					<group id='13018225' type='4'>\n						<device id='0001002500' />\n					</group>\n					<group id='13018226' type='4'>\n						<device id='0001002600' />\n					</group>\n					<group id='13018227' type='4'>\n						<device id='0001002700' />\n					</group>\n					<group id='13018228' type='4'>\n						<device id='0001002800' />\n					</group>\n					<group id='13018229' type='4'>\n						<device id='0001002900' />\n					</group>\n					<group id='13018230' type='4'>\n						<device id='0001003000' />\n					</group>\n					<group id='13018231' type='4'>\n						<device id='0001003100' />\n					</group>\n					<group id='13018232' type='4'>\n						<device id='0001003200' />\n					</group>\n					<group id='13018233' type='4'>\n						<device id='0001003300' />\n					</group>\n					<group id='13018234' type='4'>\n						<device id='0001003400' />\n					</group>\n					<group id='13018235' type='4'>\n						<device id='0001003500' />\n					</group>\n					<group id='13018236' type='4'>\n						<device id='0001003600' />\n					</group>\n				</group>\n			</group>\n\n			<params>\n				<param name=\"quartz_source_migrate_period\" value=\"30\" />\n				<!-- 默认时间单位是：分钟 -->\n				<!-- 路人最大停留时长 -->\n				<param name=\"time_walkby_duration\" value=\"2\" />\n				<!-- 鉴定员工每天的停留时长 -->\n				<param name=\"time_employee_inspection_daily_hours\" value=\"3\" />\n			</params>\n		</group>\n	</groups>\n</config>\n",
-			"settings":
-			{
-				"buffer_size": 7756,
-				"line_ending": "Unix",
-				"name": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-			}
-		},
-		{
-			"file": "app/lib/filters.py",
-			"settings":
-			{
-				"buffer_size": 14568,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/topic/handlers.py",
-			"settings":
-			{
-				"buffer_size": 19851,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/topic/lib.py",
-			"settings":
-			{
-				"buffer_size": 3784,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/show_topic.html",
-			"settings":
-			{
-				"buffer_size": 7176,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/edit_topic.html",
-			"settings":
-			{
-				"buffer_size": 1571,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "\nday=`date +%Y-%m-%d``\nPREFIX1=her_$day_188_\n\n\nmacs=([1c:1a:c0:3a:ad:93]\n[5c:f8:a1:f8:80:81]\n[00:16:6d:bd:27:54]\n[18:dc:56:d0:53:57]\n[40:0e:85:00:f6:63]\n[18:9e:fc:18:0e:ef]\n[18:87:96:3a:54:f4]\n[40:0e:85:7d:5d:d0]\n[6c:c2:6b:cd:a1:6d]\n[20:02:af:b1:bc:99]\n[1c:b0:94:40:e3:de]\n[60:92:17:60:e3:f1]\n[4c:bc:a5:04:b8:eb]\n[54:ae:27:92:4a:cd]\n[f4:f5:a5:88:e8:12]\n[e8:8d:28:99:44:60]\n[80:ea:96:59:b8:c3]\n[60:fa:cd:39:a1:d0]\n[f0:dc:e2:8d:a1:43]\n[10:a5:d0:17:8f:1d]\n[04:db:56:2f:f5:d0]\n[c8:6f:1d:a4:58:ae]\n[88:32:9b:fd:5c:fc]\n[10:f9:6f:d8:4f:82]\n[e4:25:e7:3b:b1:86]\n[d0:22:be:e8:34:e5]\n[6c:c2:6b:d9:24:74]\n[54:ea:a8:2c:37:c6]\n[34:cd:be:91:06:f8]\n[38:aa:3c:bd:34:c3]\n[0c:30:21:c0:e3:1f]\n[50:ea:d6:20:b0:df]\n[78:a3:e4:aa:1f:82]\n[7c:fa:df:50:d3:bc]\n[f0:72:8c:0a:1f:34])\n",
-			"settings":
-			{
-				"buffer_size": 754,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/show_topic_list_module.html",
-			"settings":
-			{
-				"buffer_size": 3800,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/node/show_node.html",
-			"settings":
-			{
-				"buffer_size": 2107,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/dojang/cache.py",
-			"settings":
-			{
-				"buffer_size": 8884,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/wist/__init__.py",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "app/wist/handlers.py",
 			"settings":
 			{
-				"buffer_size": 703,
+				"buffer_size": 7586,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# -*- coding: utf-8 -*-\n\nfrom datetime import datetime\nimport hashlib\n\nfrom app.account.decorators import require_user\nfrom app.account.lib import UserHandler\nfrom app.account.models import People\nfrom app.group.models import Group\nfrom dojang.app import DojangApp\nfrom dojang.cache import autocached\nfrom dojang.database import db\nfrom dojang.mixin import ModelMixin\nfrom dojang.util import ObjectDict\nfrom tornado.escape import utf8\nfrom tornado.options import options\nfrom tornado.web import UIModule, authenticated\nfrom tornado.web import URLSpec as url\n\nfrom wist_handlers import app_handlers as wist_handlers\n\nclass PeopleHandler(UserHandler):\n\n\n    #@autocached(prefix=CacheMovieWatchListPrefix, time=60*60*24*7)\n    def filter_watch_movies(self, people_id, watch, page_num):\n        \n        limit = 20\n        pagination = MovieWatchList.query.filter_by(people_id=people_id, watch=watch).order_by('-id').paginate(page_num, limit)\n        ids = []\n        movies = []\n        if pagination:\n            for w in pagination.items:\n                movies.append(w.movie)\n        pagination.items = movies\n        return pagination\n\n\nclass ShowPeopleHandler(PeopleHandler):\n\n    def get(self, people_id):\n        people_id = int(people_id)\n        if self.current_user and self.current_user.id == people_id:\n            people=self.current_user\n        else:\n            people = People.query.filter_by(id=people_id).first_or_404()\n\n        self.render('people/show_people.html', people=people)\n\nclass ShowMineHandler(PeopleHandler):\n\n    @require_user\n    def get(self):\n        \n        \n        self.render('people/show_people.html', people=self.current_user)\n\n\n\n\nclass ShowPeopleUsernameHandler(PeopleHandler):\n    def get(self, username):\n        people = People.query.filter_by(username=username).first_or_404()\n        return self.redirect('/people/%d' % (people.id))\n\n\n\napp_handlers = [\n    url('/(\\d+)', ShowPeopleHandler, name='show-people'),\n    url('/(\\w+)', ShowPeopleUsernameHandler, name='show-people-username'),    \n]\n\nclass RecentPeoplesModule(UIModule):\n    def render(self):\n        users = People.query.order_by('-id').limit(12)\n        return self.render_string('module/people_cell.html', users=users)\n\n\napp_modules = {\n    'RecentPeoples': RecentPeoplesModule,\n}\n\nclass RecentPeoplesHandler(UserHandler):\n    def head(self):\n        pass\n\n    def get(self):\n        p = self.get_argument('p', 1)\n        pagination = People.query.order_by('-reputation').paginate(p, 80)\n        self.render('people_list.html', pagination=pagination)\n\nclass CityPeoplesHandler(UserHandler):\n    def head(self):\n        pass\n\n    def get(self, city):\n        p = self.get_argument('p', 1)\n        pagination = People.query.filter_by(city=city)\\\n                .order_by('-reputation').paginate(p, 80)\n        self.render('people_list.html', pagination=pagination)\n\n\napp = DojangApp(\n    'people', __name__, handlers=app_handlers, ui_modules=app_modules,\n)",
+			"file": "app/people/handlers.py",
+			"file_size": 2892,
+			"file_write_time": 1404112360000000,
+			"settings":
+			{
+				"buffer_size": 2964,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/dojang/web.py",
+			"settings":
+			{
+				"buffer_size": 9962,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/run.py",
+			"settings":
+			{
+				"buffer_size": 4655,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\nPIPE(SELECT AVG(dur) as adur FROM zm_user_role_1 WHERE dayTS = '2014-06-30' and devGroup=205 and uRole=3 group by dayTS(DAY) | select avg(adur) group by dayTS(DAY)",
+			"settings":
+			{
+				"buffer_size": 164,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/layout.html",
+			"settings":
+			{
+				"buffer_size": 3957,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/templates/v3/wist/create_wist.html",
+			"settings":
+			{
+				"buffer_size": 1662,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "http://60.191.205.84:8080/zm-ws-3.0/api/v3/",
+			"settings":
+			{
+				"buffer_size": 43,
+				"line_ending": "Unix",
+				"name": "http://60.191.205.84:8080/zm-ws-3.0/api/v3/"
 			}
 		},
 		{
 			"file": "app/templates/v3/wist/show_wist.html",
 			"settings":
 			{
-				"buffer_size": 85,
+				"buffer_size": 1843,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "from datetime import datetime\nfrom sqlalchemy import Column, ForeignKey\nfrom sqlalchemy import Integer, String, DateTime, Text, Float\nfrom sqlalchemy.orm import relationship, backref\n\nfrom dojang.database import db\n\n\n\nclass Wist(db.Model):\n    __tablename__=\"wist\"\n    id = Column(Integer, primary_key=True)\n    people_id = Column(Integer, ForeignKey('people.id'), index=True)\n    fork_root_id = Column(Integer, default=None, index=True)\n    fork_from_id = Column(Integer, default=None, index=True)\n    fork_url = Column(String(500))\n    title = Column(String(500))\n    content_id =  Column(Integer, ForeignKey('wist_content.id'))\n    # content =  Column(Text)\n    # content_html = Column(Text)\n    created = Column(DateTime, default=datetime.utcnow)\n\n\nclass WistContent(db.Model):\n    __tablename__=\"wist_content\"\n    id = Column(Integer, primary_key=True)\n    content = Column(Text)\n    content_html = Column(Text)\n    created = Column(DateTime, default=datetime.utcnow)\n    wist = relationship(\"Wist\", backref=\"content\")\n\n\nclass WistCategory(db.Model):\n    __tablename__=\"wist\"\n    id = Column(Integer, primary_key=True)\n    people_id = Column(Integer, ForeignKey('people.id'), index=True)\n    title = Column(String(100), default=None, index=True)\n    wist_count = \n    created = Column(DateTime, default=datetime.utcnow)\n",
+			"contents": "from datetime import datetime\nfrom sqlalchemy import Column, ForeignKey\nfrom sqlalchemy import Integer, String, DateTime, Text, Float, UnicodeText\nfrom sqlalchemy.orm import relationship, backref\n\nfrom dojang.database import db\n\n\n\nclass Wist(db.Model):\n    __tablename__=\"wist\"\n    id = Column(Integer, primary_key=True)\n    people_id = Column(Integer, ForeignKey('people.id'), index=True)\n    username = Column(String(100))\n    token = Column(String(16), default=0, index=True)\n    fork_root_id = Column(Integer, default=0, index=True)\n    fork_from_id = Column(Integer, default=0, index=True)\n    fork_from_username = Column(String(100))\n    star_count = Column(Integer, default=0)\n    fork_count = Column(Integer, default=0)\n    tags = Column(String(255))\n    title = Column(String(500))\n    content_id =  Column(Integer, ForeignKey('wist_content.id'))\n    created = Column(DateTime, default=datetime.utcnow)\n\n\nclass WistContent(db.Model):\n    __tablename__=\"wist_content\"\n    id = Column(Integer, primary_key=True)\n    content = Column(UnicodeText)\n    content_html = Column(UnicodeText)\n    created = Column(DateTime, default=datetime.utcnow)\n    wist = relationship(\"Wist\", backref=\"content\")\n\nclass WistForkGraph(db.Model):\n    __tablename__=\"wist_fork_graph\"\n    id = Column(Integer, primary_key=True)\n    fork_root_id = Column(Integer, default=None, index=True)\n    fork_count = Column(Integer, default=0)\n    \n\nclass WistStar(db.Model):\n    __tablename__=\"wist_fork_graph\"\n    id = Column(Integer, primary_key=True)\n    wist_id = Column(Integer, default=None, index=True)\n    people_id = Column(Integer, default=None, index=True)\n    created = Column(DateTime, default=datetime.utcnow)\n\n    \n\n",
 			"file": "app/wist/models.py",
-			"file_size": 1024,
-			"file_write_time": 1403445959000000,
+			"file_size": 1367,
+			"file_write_time": 1404437949000000,
 			"settings":
 			{
-				"buffer_size": 1325,
+				"buffer_size": 1703,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sites/wecoders/tools.py",
 			"settings":
 			{
-				"buffer_size": 5089,
-				"line_ending": "Windows"
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/templates/v3/wist/all_wist.html",
+			"settings":
+			{
+				"buffer_size": 718,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "	public static final String PREFIX_GROUP_EMPLOYEE_KEY = \"cfg_grp_employee\";\n\npublic void setEmployeeCacheList(List<String> keys, int role) {\n		ShardedJedis jedis = this.getTLResource();\n		ShardedJedisPipeline pipeline = jedis.pipelined();\n		for(String key: keys) {\n			pipeline.hset(PREFIX_GROUP_EMPLOYEE_KEY, key, String.valueOf(role));\n		}\n		pipeline.sync();\n	}",
+			"settings":
+			{
+				"buffer_size": 362,
+				"line_ending": "Unix",
+				"name": "public static final String PREFIX_GROUP_EMPLOYEE_"
+			}
+		},
+		{
+			"file": "static/stylesheets/application.less",
+			"settings":
+			{
+				"buffer_size": 3182,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "app/account/usednames.py",
 			"settings":
 			{
-				"buffer_size": 636,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/account/lib.py",
-			"settings":
-			{
-				"buffer_size": 4524,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/create_topic.html",
-			"settings":
-			{
-				"buffer_size": 1650,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/topic/models.py",
-			"settings":
-			{
-				"buffer_size": 4393,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "34:e2:fd:71:c0:55\n00:f4:b9:66:10:91\n48:60:bc:c8:8b:fd",
-			"settings":
-			{
-				"buffer_size": 53,
-				"line_ending": "Unix",
-				"name": "34:e2:fd:71:c0:55"
-			}
-		},
-		{
-			"file": "sites/wecoders/debug_config.py",
-			"settings":
-			{
-				"buffer_size": 1989,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/topic.html",
-			"settings":
-			{
-				"buffer_size": 177,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/show_topic_module.html",
-			"settings":
-			{
-				"buffer_size": 1273,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/topic/show_topic_list.html",
-			"settings":
-			{
-				"buffer_size": 559,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/templates/v3/front/index.html",
-			"settings":
-			{
 				"buffer_size": 651,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/wist/wist.html",
-			"settings":
-			{
-				"buffer_size": 176,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/templates/v3/account/setting_avatar.html",
+			"file": "app/templates/v3/wist/edit_wist.html",
 			"settings":
 			{
-				"buffer_size": 2783,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/templates/v3/account/setting.html",
-			"settings":
-			{
-				"buffer_size": 3150,
+				"buffer_size": 1808,
 				"line_ending": "Unix"
 			}
 		},
@@ -431,72 +186,164 @@
 			"file": "app/templates/v3/module/profile_sidebar.html",
 			"settings":
 			{
-				"buffer_size": 1005,
+				"buffer_size": 1084,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "//\n// Variables\n// --------------------------------------------------\n\n\n//== Colors\n//\n//## Gray and brand colors for use across Bootstrap.\n\n@gray-darker:            lighten(#000, 13.5%); // #222\n@gray-dark:              lighten(#000, 20%);   // #333\n@gray:                   lighten(#000, 33.5%); // #555\n@gray-light:             lighten(#000, 60%);   // #999\n@gray-lighter:           lighten(#000, 93.5%); // #eee\n\n@brand-primary:         #428bca;\n@brand-success:         #5cb85c;\n@brand-info:            #5bc0de;\n@brand-warning:         #f0ad4e;\n@brand-danger:          #d9534f;\n\n\n//== Scaffolding\n//\n// ## Settings for some of the most global styles.\n\n//** Background color for `<body>`.\n@body-bg:               #fff;\n//** Global text color on `<body>`.\n@text-color:            @gray-dark;\n\n//** Global textual link color.\n@link-color:            @brand-primary;\n//** Link hover color set via `darken()` function.\n@link-hover-color:      darken(@link-color, 15%);\n\n\n//== Typography\n//\n//## Font, line-height, and color for body text, headings, and more.\n\n@font-family-sans-serif:  \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n@font-family-serif:       Georgia, \"Times New Roman\", Times, serif;\n//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.\n@font-family-monospace:   Menlo, Monaco, Consolas, \"Courier New\", monospace;\n@font-family-base:        @font-family-sans-serif;\n\n@font-size-base:          14px;\n@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px\n@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px\n\n@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px\n@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px\n@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px\n@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px\n@font-size-h5:            @font-size-base;\n@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px\n\n//** Unit-less `line-height` for use in components like buttons.\n@line-height-base:        1.428571429; // 20/14\n//** Computed \"line-height\" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.\n@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px\n\n//** By default, this inherits from the `<body>`.\n@headings-font-family:    inherit;\n@headings-font-weight:    500;\n@headings-line-height:    1.1;\n@headings-color:          inherit;\n\n\n//-- Iconography\n//\n//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.\n\n@icon-font-path:          \"../fonts/\";\n@icon-font-name:          \"glyphicons-halflings-regular\";\n@icon-font-svg-id:				\"glyphicons_halflingsregular\";\n\n//== Components\n//\n//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).\n\n@padding-base-vertical:     6px;\n@padding-base-horizontal:   12px;\n\n@padding-large-vertical:    10px;\n@padding-large-horizontal:  16px;\n\n@padding-small-vertical:    5px;\n@padding-small-horizontal:  10px;\n\n@padding-xs-vertical:       1px;\n@padding-xs-horizontal:     5px;\n\n@line-height-large:         1.33;\n@line-height-small:         1.5;\n\n@border-radius-base:        4px;\n@border-radius-large:       6px;\n@border-radius-small:       3px;\n\n//** Global color for active items (e.g., navs or dropdowns).\n@component-active-color:    #fff;\n//** Global background color for active items (e.g., navs or dropdowns).\n@component-active-bg:       @brand-primary;\n\n//** Width of the `border` for generating carets that indicator dropdowns.\n@caret-width-base:          4px;\n//** Carets increase slightly in size for larger components.\n@caret-width-large:         5px;\n\n\n//== Tables\n//\n//## Customizes the `.table` component with basic values, each used across all table variations.\n\n//** Padding for `<th>`s and `<td>`s.\n@table-cell-padding:            8px;\n//** Padding for cells in `.table-condensed`.\n@table-condensed-cell-padding:  5px;\n\n//** Default background color used for all tables.\n@table-bg:                      transparent;\n//** Background color used for `.table-striped`.\n@table-bg-accent:               #f9f9f9;\n//** Background color used for `.table-hover`.\n@table-bg-hover:                #f5f5f5;\n@table-bg-active:               @table-bg-hover;\n\n//** Border color for table and cell borders.\n@table-border-color:            #ddd;\n\n\n//== Buttons\n//\n//## For each of Bootstrap's buttons, define text, background and border color.\n\n@btn-font-weight:                normal;\n\n@btn-default-color:              #333;\n@btn-default-bg:                 #fff;\n@btn-default-border:             #ccc;\n\n@btn-primary-color:              #fff;\n@btn-primary-bg:                 @brand-primary;\n@btn-primary-border:             darken(@btn-primary-bg, 5%);\n\n@btn-success-color:              #fff;\n@btn-success-bg:                 @brand-success;\n@btn-success-border:             darken(@btn-success-bg, 5%);\n\n@btn-info-color:                 #fff;\n@btn-info-bg:                    @brand-info;\n@btn-info-border:                darken(@btn-info-bg, 5%);\n\n@btn-warning-color:              #fff;\n@btn-warning-bg:                 @brand-warning;\n@btn-warning-border:             darken(@btn-warning-bg, 5%);\n\n@btn-danger-color:               #fff;\n@btn-danger-bg:                  @brand-danger;\n@btn-danger-border:              darken(@btn-danger-bg, 5%);\n\n@btn-link-disabled-color:        @gray-light;\n\n\n//== Forms\n//\n//##\n\n//** `<input>` background color\n@input-bg:                       #fff;\n//** `<input disabled>` background color\n@input-bg-disabled:              @gray-lighter;\n\n//** Text color for `<input>`s\n@input-color:                    @gray;\n//** `<input>` border color\n@input-border:                   #ccc;\n//** `<input>` border radius\n@input-border-radius:            @border-radius-base;\n//** Border color for inputs on focus\n@input-border-focus:             #66afe9;\n\n//** Placeholder text color\n@input-color-placeholder:        @gray-light;\n\n//** Default `.form-control` height\n@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);\n//** Large `.form-control` height\n@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);\n//** Small `.form-control` height\n@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);\n\n@legend-color:                   @gray-dark;\n@legend-border-color:            #e5e5e5;\n\n//** Background color for textual input addons\n@input-group-addon-bg:           @gray-lighter;\n//** Border color for textual input addons\n@input-group-addon-border-color: @input-border;\n\n\n//== Dropdowns\n//\n//## Dropdown menu container and contents.\n\n//** Background for the dropdown menu.\n@dropdown-bg:                    #fff;\n//** Dropdown menu `border-color`.\n@dropdown-border:                rgba(0,0,0,.15);\n//** Dropdown menu `border-color` **for IE8**.\n@dropdown-fallback-border:       #ccc;\n//** Divider color for between dropdown items.\n@dropdown-divider-bg:            #e5e5e5;\n\n//** Dropdown link text color.\n@dropdown-link-color:            @gray-dark;\n//** Hover color for dropdown links.\n@dropdown-link-hover-color:      darken(@gray-dark, 5%);\n//** Hover background for dropdown links.\n@dropdown-link-hover-bg:         #f5f5f5;\n\n//** Active dropdown menu item text color.\n@dropdown-link-active-color:     @component-active-color;\n//** Active dropdown menu item background color.\n@dropdown-link-active-bg:        @component-active-bg;\n\n//** Disabled dropdown menu item background color.\n@dropdown-link-disabled-color:   @gray-light;\n\n//** Text color for headers within dropdown menus.\n@dropdown-header-color:          @gray-light;\n\n// Note: Deprecated @dropdown-caret-color as of v3.1.0\n@dropdown-caret-color:           #000;\n\n\n//-- Z-index master list\n//\n// Warning: Avoid customizing these values. They're used for a bird's eye view\n// of components dependent on the z-axis and are designed to all work together.\n//\n// Note: These variables are not generated into the Customizer.\n\n@zindex-navbar:            1000;\n@zindex-dropdown:          1000;\n@zindex-popover:           1010;\n@zindex-tooltip:           1030;\n@zindex-navbar-fixed:      1030;\n@zindex-modal-background:  1040;\n@zindex-modal:             1050;\n\n\n//== Media queries breakpoints\n//\n//## Define the breakpoints at which your layout will change, adapting to different screen sizes.\n\n// Extra small screen / phone\n// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1\n@screen-xs:                  480px;\n@screen-xs-min:              @screen-xs;\n@screen-phone:               @screen-xs-min;\n\n// Small screen / tablet\n// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1\n@screen-sm:                  768px;\n@screen-sm-min:              @screen-sm;\n@screen-tablet:              @screen-sm-min;\n\n// Medium screen / desktop\n// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1\n@screen-md:                  992px;\n@screen-md-min:              @screen-md;\n@screen-desktop:             @screen-md-min;\n\n// Large screen / wide desktop\n// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1\n@screen-lg:                  1200px;\n@screen-lg-min:              @screen-lg;\n@screen-lg-desktop:          @screen-lg-min;\n\n// So media queries don't overlap when required, provide a maximum\n@screen-xs-max:              (@screen-sm-min - 1);\n@screen-sm-max:              (@screen-md-min - 1);\n@screen-md-max:              (@screen-lg-min - 1);\n\n\n//== Grid system\n//\n//## Define your custom responsive grid.\n\n//** Number of columns in the grid.\n@grid-columns:              12;\n//** Padding between columns. Gets divided in half for the left and right.\n@grid-gutter-width:         30px;\n// Navbar collapse\n//** Point at which the navbar becomes uncollapsed.\n@grid-float-breakpoint:     @screen-sm-min;\n//** Point at which the navbar begins collapsing.\n@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);\n\n\n//== Navbar\n//\n//##\n\n// Basics of a navbar\n@navbar-height:                    50px;\n@navbar-margin-bottom:             @line-height-computed;\n@navbar-border-radius:             @border-radius-base;\n@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));\n@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);\n@navbar-collapse-max-height:       340px;\n\n@navbar-default-color:             #777;\n@navbar-default-bg:                #f8f8f8;\n@navbar-default-border:            darken(@navbar-default-bg, 6.5%);\n\n// Navbar links\n@navbar-default-link-color:                #000;\n@navbar-default-link-hover-color:          #333;\n@navbar-default-link-hover-bg:             transparent;\n@navbar-default-link-active-color:         #555;\n@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);\n@navbar-default-link-disabled-color:       #ccc;\n@navbar-default-link-disabled-bg:          transparent;\n\n// Navbar brand label\n@navbar-default-brand-color:               @navbar-default-link-color;\n@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);\n@navbar-default-brand-hover-bg:            transparent;\n\n// Navbar toggle\n@navbar-default-toggle-hover-bg:           #ddd;\n@navbar-default-toggle-icon-bar-bg:        #888;\n@navbar-default-toggle-border-color:       #ddd;\n\n\n// Inverted navbar\n// Reset inverted navbar basics\n@navbar-inverse-color:                      @gray-light;\n@navbar-inverse-bg:                         #fdfdfd;\n@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);\n\n// Inverted navbar links\n@navbar-inverse-link-color:                 #000;\n@navbar-inverse-link-hover-color:           @gray-light;\n@navbar-inverse-link-hover-bg:              darken(@navbar-inverse-bg, 3c%);\n@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;\n@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 5%);\n@navbar-inverse-link-disabled-color:        #444;\n@navbar-inverse-link-disabled-bg:           transparent;\n\n// Inverted navbar brand label\n@navbar-inverse-brand-color:                @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-color:          @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-bg:             transparent;\n\n// Inverted navbar toggle\n@navbar-inverse-toggle-hover-bg:            #333;\n@navbar-inverse-toggle-icon-bar-bg:         #fff;\n@navbar-inverse-toggle-border-color:        #333;\n\n\n//== Navs\n//\n//##\n\n//=== Shared nav styles\n@nav-link-padding:                          10px 15px;\n@nav-link-hover-bg:                         @gray-lighter;\n\n@nav-disabled-link-color:                   @gray-light;\n@nav-disabled-link-hover-color:             @gray-light;\n\n@nav-open-link-hover-color:                 #fff;\n\n//== Tabs\n@nav-tabs-border-color:                     #ddd;\n\n@nav-tabs-link-hover-border-color:          @gray-lighter;\n\n@nav-tabs-active-link-hover-bg:             @body-bg;\n@nav-tabs-active-link-hover-color:          @gray;\n@nav-tabs-active-link-hover-border-color:   #ddd;\n\n@nav-tabs-justified-link-border-color:            #ddd;\n@nav-tabs-justified-active-link-border-color:     @body-bg;\n\n//== Pills\n@nav-pills-border-radius:                   @border-radius-base;\n@nav-pills-active-link-hover-bg:            @component-active-bg;\n@nav-pills-active-link-hover-color:         @component-active-color;\n\n\n//== Pagination\n//\n//##\n\n@pagination-color:                     @link-color;\n@pagination-bg:                        #fff;\n@pagination-border:                    #ddd;\n\n@pagination-hover-color:               @link-hover-color;\n@pagination-hover-bg:                  @gray-lighter;\n@pagination-hover-border:              #ddd;\n\n@pagination-active-color:              #fff;\n@pagination-active-bg:                 @brand-primary;\n@pagination-active-border:             @brand-primary;\n\n@pagination-disabled-color:            @gray-light;\n@pagination-disabled-bg:               #fff;\n@pagination-disabled-border:           #ddd;\n\n\n//== Pager\n//\n//##\n\n@pager-bg:                             @pagination-bg;\n@pager-border:                         @pagination-border;\n@pager-border-radius:                  15px;\n\n@pager-hover-bg:                       @pagination-hover-bg;\n\n@pager-active-bg:                      @pagination-active-bg;\n@pager-active-color:                   @pagination-active-color;\n\n@pager-disabled-color:                 @pagination-disabled-color;\n\n\n//== Jumbotron\n//\n//##\n\n@jumbotron-padding:              30px;\n@jumbotron-color:                inherit;\n@jumbotron-bg:                   @gray-lighter;\n@jumbotron-heading-color:        inherit;\n@jumbotron-font-size:            ceil((@font-size-base * 1.5));\n\n\n//== Form states and alerts\n//\n//## Define colors for form feedback states and, by default, alerts.\n\n@state-success-text:             #3c763d;\n@state-success-bg:               #dff0d8;\n@state-success-border:           darken(spin(@state-success-bg, -10), 5%);\n\n@state-info-text:                #31708f;\n@state-info-bg:                  #d9edf7;\n@state-info-border:              darken(spin(@state-info-bg, -10), 7%);\n\n@state-warning-text:             #8a6d3b;\n@state-warning-bg:               #fcf8e3;\n@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);\n\n@state-danger-text:              #a94442;\n@state-danger-bg:                #f2dede;\n@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);\n\n\n//== Tooltips\n//\n//##\n\n//** Tooltip max width\n@tooltip-max-width:           200px;\n//** Tooltip text color\n@tooltip-color:               #fff;\n//** Tooltip background color\n@tooltip-bg:                  #000;\n@tooltip-opacity:             .9;\n\n//** Tooltip arrow width\n@tooltip-arrow-width:         5px;\n//** Tooltip arrow color\n@tooltip-arrow-color:         @tooltip-bg;\n\n\n//== Popovers\n//\n//##\n\n//** Popover body background color\n@popover-bg:                          #fff;\n//** Popover maximum width\n@popover-max-width:                   276px;\n//** Popover border color\n@popover-border-color:                rgba(0,0,0,.2);\n//** Popover fallback border color\n@popover-fallback-border-color:       #ccc;\n\n//** Popover title background color\n@popover-title-bg:                    darken(@popover-bg, 3%);\n\n//** Popover arrow width\n@popover-arrow-width:                 10px;\n//** Popover arrow color\n@popover-arrow-color:                 #fff;\n\n//** Popover outer arrow width\n@popover-arrow-outer-width:           (@popover-arrow-width + 1);\n//** Popover outer arrow color\n@popover-arrow-outer-color:           rgba(0,0,0,.25);\n//** Popover outer arrow fallback color\n@popover-arrow-outer-fallback-color:  #999;\n\n\n//== Labels\n//\n//##\n\n//** Default label background color\n@label-default-bg:            @gray-light;\n//** Primary label background color\n@label-primary-bg:            @brand-primary;\n//** Success label background color\n@label-success-bg:            @brand-success;\n//** Info label background color\n@label-info-bg:               @brand-info;\n//** Warning label background color\n@label-warning-bg:            @brand-warning;\n//** Danger label background color\n@label-danger-bg:             @brand-danger;\n\n//** Default label text color\n@label-color:                 #fff;\n//** Default text color of a linked label\n@label-link-hover-color:      #fff;\n\n\n//== Modals\n//\n//##\n\n//** Padding applied to the modal body\n@modal-inner-padding:         20px;\n\n//** Padding applied to the modal title\n@modal-title-padding:         15px;\n//** Modal title line-height\n@modal-title-line-height:     @line-height-base;\n\n//** Background color of modal content area\n@modal-content-bg:                             #fff;\n//** Modal content border color\n@modal-content-border-color:                   rgba(0,0,0,.2);\n//** Modal content border color **for IE8**\n@modal-content-fallback-border-color:          #999;\n\n//** Modal backdrop background color\n@modal-backdrop-bg:           #000;\n//** Modal backdrop opacity\n@modal-backdrop-opacity:      .5;\n//** Modal header border color\n@modal-header-border-color:   #e5e5e5;\n//** Modal footer border color\n@modal-footer-border-color:   @modal-header-border-color;\n\n@modal-lg:                    900px;\n@modal-md:                    600px;\n@modal-sm:                    300px;\n\n\n//== Alerts\n//\n//## Define alert colors, border radius, and padding.\n\n@alert-padding:               15px;\n@alert-border-radius:         @border-radius-base;\n@alert-link-font-weight:      bold;\n\n@alert-success-bg:            @state-success-bg;\n@alert-success-text:          @state-success-text;\n@alert-success-border:        @state-success-border;\n\n@alert-info-bg:               @state-info-bg;\n@alert-info-text:             @state-info-text;\n@alert-info-border:           @state-info-border;\n\n@alert-warning-bg:            @state-warning-bg;\n@alert-warning-text:          @state-warning-text;\n@alert-warning-border:        @state-warning-border;\n\n@alert-danger-bg:             @state-danger-bg;\n@alert-danger-text:           @state-danger-text;\n@alert-danger-border:         @state-danger-border;\n\n\n//== Progress bars\n//\n//##\n\n//** Background color of the whole progress component\n@progress-bg:                 #f5f5f5;\n//** Progress bar text color\n@progress-bar-color:          #fff;\n\n//** Default progress bar color\n@progress-bar-bg:             @brand-primary;\n//** Success progress bar color\n@progress-bar-success-bg:     @brand-success;\n//** Warning progress bar color\n@progress-bar-warning-bg:     @brand-warning;\n//** Danger progress bar color\n@progress-bar-danger-bg:      @brand-danger;\n//** Info progress bar color\n@progress-bar-info-bg:        @brand-info;\n\n\n//== List group\n//\n//##\n\n//** Background color on `.list-group-item`\n@list-group-bg:                 #fff;\n//** `.list-group-item` border color\n@list-group-border:             #ddd;\n//** List group border radius\n@list-group-border-radius:      @border-radius-base;\n\n//** Background color of single list elements on hover\n@list-group-hover-bg:           #f5f5f5;\n//** Text color of active list elements\n@list-group-active-color:       @component-active-color;\n//** Background color of active list elements\n@list-group-active-bg:          @component-active-bg;\n//** Border color of active list elements\n@list-group-active-border:      @list-group-active-bg;\n@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);\n\n@list-group-link-color:         #555;\n@list-group-link-heading-color: #333;\n\n\n//== Panels\n//\n//##\n\n@panel-bg:                    #fff;\n@panel-body-padding:          10px;\n@panel-border-radius:         @border-radius-base;\n\n//** Border color for elements within panels\n@panel-inner-border:          #ddd;\n@panel-footer-bg:             #f5f5f5;\n\n@panel-default-text:          @gray-dark;\n@panel-default-border:        #ddd;\n@panel-default-heading-bg:    #f5f5f5;\n\n@panel-primary-text:          #fff;\n@panel-primary-border:        @brand-primary;\n@panel-primary-heading-bg:    @brand-primary;\n\n@panel-success-text:          @state-success-text;\n@panel-success-border:        @state-success-border;\n@panel-success-heading-bg:    @state-success-bg;\n\n@panel-info-text:             @state-info-text;\n@panel-info-border:           @state-info-border;\n@panel-info-heading-bg:       @state-info-bg;\n\n@panel-warning-text:          @state-warning-text;\n@panel-warning-border:        @state-warning-border;\n@panel-warning-heading-bg:    @state-warning-bg;\n\n@panel-danger-text:           @state-danger-text;\n@panel-danger-border:         @state-danger-border;\n@panel-danger-heading-bg:     @state-danger-bg;\n\n\n//== Thumbnails\n//\n//##\n\n//** Padding around the thumbnail image\n@thumbnail-padding:           4px;\n//** Thumbnail background color\n@thumbnail-bg:                @body-bg;\n//** Thumbnail border color\n@thumbnail-border:            #ddd;\n//** Thumbnail border radius\n@thumbnail-border-radius:     @border-radius-base;\n\n//** Custom text color for thumbnail captions\n@thumbnail-caption-color:     @text-color;\n//** Padding around the thumbnail caption\n@thumbnail-caption-padding:   9px;\n\n\n//== Wells\n//\n//##\n\n@well-bg:                     #f5f5f5;\n@well-border:                 darken(@well-bg, 7%);\n\n\n//== Badges\n//\n//##\n\n@badge-color:                 #fff;\n//** Linked badge text color on hover\n@badge-link-hover-color:      #fff;\n@badge-bg:                    @gray-light;\n\n//** Badge text color in active nav link\n@badge-active-color:          @link-color;\n//** Badge background color in active nav link\n@badge-active-bg:             #fff;\n\n@badge-font-weight:           bold;\n@badge-line-height:           1;\n@badge-border-radius:         10px;\n\n\n//== Breadcrumbs\n//\n//##\n\n@breadcrumb-padding-vertical:   8px;\n@breadcrumb-padding-horizontal: 15px;\n//** Breadcrumb background color\n@breadcrumb-bg:                 #f5f5f5;\n//** Breadcrumb text color\n@breadcrumb-color:              #ccc;\n//** Text color of current page in the breadcrumb\n@breadcrumb-active-color:       @gray-light;\n//** Textual separator for between breadcrumb elements\n@breadcrumb-separator:          \"/\";\n\n\n//== Carousel\n//\n//##\n\n@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);\n\n@carousel-control-color:                      #fff;\n@carousel-control-width:                      15%;\n@carousel-control-opacity:                    .5;\n@carousel-control-font-size:                  20px;\n\n@carousel-indicator-active-bg:                #fff;\n@carousel-indicator-border-color:             #fff;\n\n@carousel-caption-color:                      #fff;\n\n\n//== Close\n//\n//##\n\n@close-font-weight:           bold;\n@close-color:                 #000;\n@close-text-shadow:           0 1px 0 #fff;\n\n\n//== Code\n//\n//##\n\n@code-color:                  #c7254e;\n@code-bg:                     #f9f2f4;\n\n@kbd-color:                   #fff;\n@kbd-bg:                      #333;\n\n@pre-bg:                      #f5f5f5;\n@pre-color:                   @gray-dark;\n@pre-border-color:            #ccc;\n@pre-scrollable-max-height:   340px;\n\n\n//== Type\n//\n//##\n\n//** Text muted color\n@text-muted:                  @gray-light;\n//** Abbreviations and acronyms border color\n@abbr-border-color:           @gray-light;\n//** Headings small color\n@headings-small-color:        @gray-light;\n//** Blockquote small color\n@blockquote-small-color:      @gray-light;\n//** Blockquote border color\n@blockquote-border-color:     @gray-lighter;\n//** Page header border color\n@page-header-border-color:    @gray-lighter;\n\n\n//== Miscellaneous\n//\n//##\n\n//** Horizontal line color.\n@hr-border:                   @gray-lighter;\n\n//** Horizontal offset for forms and lists.\n@component-offset-horizontal: 180px;\n\n\n//== Container sizes\n//\n//## Define the maximum width of `.container` for different screen sizes.\n\n// Small screen / tablet\n@container-tablet:             ((720px + @grid-gutter-width));\n//** For `@screen-sm-min` and up.\n@container-sm:                 @container-tablet;\n\n// Medium screen / desktop\n@container-desktop:            ((940px + @grid-gutter-width));\n//** For `@screen-md-min` and up.\n@container-md:                 @container-desktop;\n\n// Large screen / wide desktop\n@container-large-desktop:      ((1140px + @grid-gutter-width));\n//** For `@screen-lg-min` and up.\n@container-lg:                 @container-large-desktop;\n",
+			"file": "app/lib/filters.py",
+			"settings":
+			{
+				"buffer_size": 14669,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/vendor/mikoto/__init__.py",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/vendor/__init__.py",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "setup.py",
+			"settings":
+			{
+				"buffer_size": 553,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sites/Makefile",
+			"settings":
+			{
+				"buffer_size": 8176,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "[\"03c778c2f862ba77d682b6ed37178ad6\", 1403798400000, 1404525444000, 1404477062000, 38018000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"068dc7f77dc420e94a9ec296f6045a1b\", 1403107200000, 1404439227000, 1404478740000, 39513000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"1303eb17e3d977a884db9d8a27519a10\", 1403625600000, 1404525556000, 1404478677000, 39521000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"1572eb0314d8d51d545e9bd452141760\", 1403107200000, 1404439227000, 1404478501000, 39274000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"18d519680066c93ce2da806c524a610b\", 1403539200000, 1404525352000, 1404478779000, 39827000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"1c8de2de058b8247c555f6a5b359e8a0\", 1403712000000, 1404439324000, 1404478588000, 39264000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"1d894a7b9f5c41b93b2fcda4af3d6b3d\", 1403712000000, 1404439324000, 1404478588000, 39264000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"20d1786fc2f1c19bb1ac6b0f8186ef9a\", 1404057600000, 1404544472000, 1404470915000, 12843000, \"[d0:22:be:86:51:3d]\", \"Samsung\", \"205\", \"2\"],\n   [\"563c39de9eb1c896a0129fdf93fc6e5e\", 1403971200000, 1404444058000, 1404548494000, 18036000, \"[d0:22:be:86:51:3d]\", \"Samsung\", \"205\", \"2\"],\n   [\"5961f9ae642efba75b774278786fce38\", 1403193600000, 1404525523000, 1404482254000, 43131000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"602bedc2baefdd472a46c2ebbbb098ff\", 1403625600000, 1404544144000, 1404544263000, 119000, \"[cc:3a:61:28:e5:f7]\", \"Samsung\", \"205\", \"2\"],\n   [\"6d2521700a54815b55d5de795d329e88\", 1403884800000, 1404539811000, 1404482295000, 28884000, \"[d0:22:be:86:51:3d]\", \"Samsung\", \"205\", \"2\"],\n   [\"7e7639480f3326f3bc781c380f3ffc62\", 1403798400000, 1404525445000, 1404477666000, 38621000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"893bcba6f7343177b2e481be41d04571\", 1403193600000, 1404525523000, 1404482285000, 43162000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"8aa138d4fc89715525c4058b8912ae3f\", 1404057600000, 1404539190000, 1404478518000, 25728000, \"[d8:96:95:12:85:10]\", \"Apple\", \"205\", \"2\"],\n   [\"9a6f0e32f236ab2652d304713a0306a1\", 1403539200000, 1404525354000, 1404478787000, 39833000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"9e8908f970e70fe728a280881e6a7ae7\", 1403107200000, 1404442761000, 1404478755000, 35994000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"a770e2a67999a7d6e9a8efecebec21a4\", 1404057600000, 1404473523000, 1404478046000, 4523000, \"[d0:22:be:86:51:3d]\", \"Samsung\", \"205\", \"2\"],\n   [\"b722457789278200527bcf91377ebdbd\", 1403625600000, 1404525560000, 1404478679000, 39519000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"b993dd65a51a4d7d3654a6dc3ca5efdd\", 1403625600000, 1404525560000, 1404478099000, 38939000, \"[00:14:a3:1c:01:df]\", \"Others\", \"205\", \"2\"],\n   [\"c0ce36f664787c0fe7a022421b7f7ed7\", 1403539200000, 1404525351000, 1404478785000, 39834000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"cb134ddb668a1590ff2a3b8cdf97b86b\", 1403798400000, 1404525444000, 1404477957000, 38913000, \"[00:14:a3:1c:01:f1]\", \"Others\", \"205\", \"2\"],\n   [\"cde752f120e6338bd028fe4869424268\", 1403625600000, 1404439730000, 1404439730000, 0, \"[cc:3a:61:28:e5:f7]\", \"Samsung\", \"205\", \"2\"],\n   [\"d5f6fa966d5072d5e8ab02c1656970fa\", 1403539200000, 1404467010000, 1404478764000, 11754000, \"[cc:3a:61:28:e5:f7]\", \"Samsung\", \"205\", \"2\"],\n   [\"d72cd87379b20d9d7440c29931fbe051\", 1403193600000, 1404525524000, 1404482260000, 43136000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"f68b0ba736ec868142628faf38e8520f\", 1403712000000, 1404439324000, 1404478586000, 39262000, \"[00:14:a3:1c:01:ef]\", \"Others\", \"205\", \"2\"],\n   [\"fc1efc420edf6805fe54024cdc0d4c3f\", 1403625600000, 1404447626000, 1404537415000, 3389000, \"[cc:3a:61:28:e5:f7]\", \"Samsung\", \"205\", \"2\"]\n",
+			"settings":
+			{
+				"buffer_size": 3799,
+				"line_ending": "Unix",
+				"name": "[\"03c778c2f862ba77d682b6ed37178ad6\", 1403798400000"
+			}
+		},
+		{
+			"contents": "07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:cc:71:fd]\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:cc:71:fd], timerange size:0\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d8:15:0d:ea:96:bc]\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d8:15:0d:ea:96:bc], timerange size:2\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:86:51:3d]\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:86:51:3d], timerange size:2\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:7c:26:65]\n07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:7c:26:65], timerange size:0\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:a8:4e:70]\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:a8:4e:70], timerange size:0\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:77:a8:9a]\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:77:a8:9a], timerange size:0\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:34:29:64:3a:fc]\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:34:29:64:3a:fc], timerange size:0\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:ee:bd:87:ad:25]\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:ee:bd:87:ad:25], timerange size:0\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:c6:1b:e2]\n07/04/14 19:30:43 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:c6:1b:e2], timerange size:0\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:e7:6c:0d]\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:e7:6c:0d], timerange size:0\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:3c:27:68:ef:28]\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:3c:27:68:ef:28], timerange size:0\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[68:df:dd:c5:83:37]\n07/04/14 19:30:44 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[68:df:dd:c5:83:37], timerange size:0\n07/04/14 19:30:45 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:00:34:bc]\n07/04/14 19:30:45 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:00:34:bc], timerange size:0\n07/04/14 19:30:46 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:02:af:b4:4c:92]\n07/04/14 19:30:46 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:02:af:b4:4c:92], timerange size:0\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:d2:5b:86]\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:d2:5b:86], timerange size:0\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:e0:4c:bc:14:bf]\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:e0:4c:bc:14:bf], timerange size:0\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d4:97:0b:b1:45:03]\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d4:97:0b:b1:45:03], timerange size:0\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[98:0c:82:ed:be:07]\n07/04/14 19:30:47 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[98:0c:82:ed:be:07], timerange size:0\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:31:8f:26]\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:31:8f:26], timerange size:0\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:7c:e2:3f]\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:7c:e2:3f], timerange size:0\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:14:a3:0d:7e:79]\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:14:a3:0d:7e:79], timerange size:0\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:f3:08:27:02:88]\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:f3:08:27:02:88], timerange size:0\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:c6:e0:4d]\n07/04/14 19:30:48 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:c6:e0:4d], timerange size:0\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:dc:e6:da:ed:6a]\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:dc:e6:da:ed:6a], timerange size:0\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[50:cc:f8:60:64:a8]\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[50:cc:f8:60:64:a8], timerange size:0\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[8c:be:be:fd:4c:77]\n07/04/14 19:30:49 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[8c:be:be:fd:4c:77], timerange size:0\n07/04/14 19:30:50 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:f0:2f:7a:dc:b2]\n07/04/14 19:30:50 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:f0:2f:7a:dc:b2], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[94:db:c9:04:dc:1d]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[94:db:c9:04:dc:1d], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:62:ea:fc:1a:be]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:62:ea:fc:1a:be], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:8d:4e:58:0b:28]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:8d:4e:58:0b:28], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:09:72:51]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:09:72:51], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c8:e1:a7:05:87:17]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c8:e1:a7:05:87:17], timerange size:0\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:14:a3:0d:7f:2e]\n07/04/14 19:30:51 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[00:14:a3:0d:7f:2e], timerange size:0\n07/04/14 19:30:53 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:9b:ca:16]\n07/04/14 19:30:53 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:9b:ca:16], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:6e:3d:6b]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:6e:3d:6b], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:d5:cd:87]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:d5:cd:87], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[84:38:38:06:66:a5]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[84:38:38:06:66:a5], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:3a:61:a8:f0:70]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:3a:61:a8:f0:70], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[28:2c:b2:2a:f3:6c]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[28:2c:b2:2a:f3:6c], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[74:e5:0b:ef:17:be]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[74:e5:0b:ef:17:be], timerange size:0\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:c8:cd:53]\n07/04/14 19:30:54 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:c8:cd:53], timerange size:0\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[b8:b4:2e:02:f7:c1]\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[b8:b4:2e:02:f7:c1], timerange size:0\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[e8:d4:e0:46:56:95]\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[e8:d4:e0:46:56:95], timerange size:0\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[98:0c:82:f9:d3:2d]\n07/04/14 19:30:55 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[98:0c:82:f9:d3:2d], timerange size:0\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:dd:05:4b]\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:dd:05:4b], timerange size:0\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:cd:2f:29]\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[5c:f8:a1:cd:2f:29], timerange size:0\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[60:21:c0:b8:b2:b7]\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[60:21:c0:b8:b2:b7], timerange size:0\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:46:16:be]\n07/04/14 19:30:56 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:dc:56:46:16:be], timerange size:0\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:73:fb:31]\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:73:fb:31], timerange size:0\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:30:8a:26:39:a0]\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:30:8a:26:39:a0], timerange size:0\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f8:a4:5f:52:07:b0]\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f8:a4:5f:52:07:b0], timerange size:0\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:e5:da:0e]\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:e5:da:0e], timerange size:0\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[3c:c2:43:20:50:44]\n07/04/14 19:30:57 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[3c:c2:43:20:50:44], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:5d:ec:7d]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:5d:ec:7d], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[48:5a:3f:14:a3:33]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[48:5a:3f:14:a3:33], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[38:aa:3c:5e:35:52]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[38:aa:3c:5e:35:52], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:fa:17:1d]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:fa:17:1d], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:54:76:86:c3:1a]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[20:54:76:86:c3:1a], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:3a:61:28:e7:0e]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[cc:3a:61:28:e7:0e], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[38:aa:3c:11:72:01]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[38:aa:3c:11:72:01], timerange size:0\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[68:df:dd:a6:f0:1f]\n07/04/14 19:30:58 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[68:df:dd:a6:f0:1f], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:1e:b0:82:34:f4]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[18:1e:b0:82:34:f4], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:49:88:95]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:49:88:95], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[50:cc:f8:a3:fc:32]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[50:cc:f8:a3:fc:32], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[70:0b:c0:14:0e:a1]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[70:0b:c0:14:0e:a1], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[08:63:61:f6:bf:5f]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[08:63:61:f6:bf:5f], timerange size:1\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:a5:c4:c4]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:25:b7:a5:c4:c4], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:13:f5:c1]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:13:f5:c1], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[3c:36:3d:4a:21:22]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[3c:36:3d:4a:21:22], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:ad:86:ce]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[d0:22:be:ad:86:ce], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:df:f2:9a]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:32:9b:df:f2:9a], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:e9:aa:53]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[ac:f7:f3:e9:aa:53], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:fd:e2:b1]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:fd:e2:b1], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:4c:e5:93:6b:c3]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:4c:e5:93:6b:c3], timerange size:0\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:4b:3d:27]\n07/04/14 19:30:59 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[c4:6a:b7:4b:3d:27], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:a7:3c:ae:8b:21]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[88:a7:3c:ae:8b:21], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:2b:ab:09]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[40:0e:85:2b:ab:09], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:72:8c:1d:8a:cc]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[f0:72:8c:1d:8a:cc], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:2a:3c:02]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[34:23:ba:2a:3c:02], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[e8:d4:e0:8c:88:f4]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[e8:d4:e0:8c:88:f4], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:38:87:02]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[90:18:7c:38:87:02], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[14:b9:68:3c:5b:a0]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[14:b9:68:3c:5b:a0], timerange size:0\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[b0:aa:36:b2:eb:a3]\n07/04/14 19:31:00 DEBUG com.zm.analyse.task.RoleCheckAnalyseTask - day:2014-06-30, shop188, group timerange map, group:205, mac:[b0:aa:36:b2:eb:a3], timerange size:0",
+			"settings":
+			{
+				"buffer_size": 26061,
+				"line_ending": "Unix",
+				"name": "07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCh"
+			}
+		},
+		{
+			"contents": "//\n// Variables\n// --------------------------------------------------\n\n\n//== Colors\n//\n//## Gray and brand colors for use across Bootstrap.\n\n@gray-darker:            lighten(#000, 13.5%); // #222\n@gray-dark:              lighten(#000, 20%);   // #333\n@gray:                   lighten(#000, 33.5%); // #555\n@gray-light:             lighten(#000, 60%);   // #999\n@gray-lighter:           lighten(#000, 93.5%); // #eee\n\n@brand-primary:         #428bca;\n@brand-success:         #5cb85c;\n@brand-info:            #5bc0de;\n@brand-warning:         #f0ad4e;\n@brand-danger:          #d9534f;\n\n\n//== Scaffolding\n//\n// ## Settings for some of the most global styles.\n\n//** Background color for `<body>`.\n@body-bg:               #fff;\n//** Global text color on `<body>`.\n@text-color:            @gray-dark;\n\n//** Global textual link color.\n@link-color:            @brand-primary;\n//** Link hover color set via `darken()` function.\n@link-hover-color:      darken(@link-color, 15%);\n\n\n//== Typography\n//\n//## Font, line-height, and color for body text, headings, and more.\n\n@font-family-sans-serif:  \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n@font-family-serif:       Georgia, \"Times New Roman\", Times, serif;\n//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.\n@font-family-monospace:   Menlo, Monaco, Consolas, \"Courier New\", monospace;\n@font-family-base:        @font-family-sans-serif;\n\n@font-size-base:          14px;\n@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px\n@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px\n\n@font-size-h1:            floor((@font-size-base * 2.5)); // ~36px\n@font-size-h2:            floor((@font-size-base * 2)); // ~30px\n@font-size-h3:            ceil((@font-size-base * 1.5)); // ~24px\n@font-size-h4:            ceil((@font-size-base * 1.2)); // ~18px\n@font-size-h5:            @font-size-base;\n@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px\n\n//** Unit-less `line-height` for use in components like buttons.\n@line-height-base:        1.42857143; // 20/14\n//** Computed \"line-height\" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.\n@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px\n\n//** By default, this inherits from the `<body>`.\n@headings-font-family:    inherit;\n@headings-font-weight:    500;\n@headings-line-height:    1.1;\n@headings-color:          inherit;\n\n\n//-- Iconography\n//\n//## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.\n\n@icon-font-path:          \"../fonts/\";\n@icon-font-name:          \"glyphicons-halflings-regular\";\n@icon-font-svg-id:				\"glyphicons_halflingsregular\";\n\n//== Components\n//\n//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).\n\n@padding-base-vertical:     6px;\n@padding-base-horizontal:   12px;\n\n@padding-large-vertical:    10px;\n@padding-large-horizontal:  16px;\n\n@padding-small-vertical:    5px;\n@padding-small-horizontal:  10px;\n\n@padding-xs-vertical:       1px;\n@padding-xs-horizontal:     5px;\n\n@line-height-large:         1.33;\n@line-height-small:         1.5;\n\n@border-radius-base:        4px;\n@border-radius-large:       6px;\n@border-radius-small:       3px;\n\n//** Global color for active items (e.g., navs or dropdowns).\n@component-active-color:    #fff;\n//** Global background color for active items (e.g., navs or dropdowns).\n@component-active-bg:       @brand-primary;\n\n//** Width of the `border` for generating carets that indicator dropdowns.\n@caret-width-base:          4px;\n//** Carets increase slightly in size for larger components.\n@caret-width-large:         5px;\n\n\n//== Tables\n//\n//## Customizes the `.table` component with basic values, each used across all table variations.\n\n//** Padding for `<th>`s and `<td>`s.\n@table-cell-padding:            8px;\n//** Padding for cells in `.table-condensed`.\n@table-condensed-cell-padding:  5px;\n\n//** Default background color used for all tables.\n@table-bg:                      transparent;\n//** Background color used for `.table-striped`.\n@table-bg-accent:               #f9f9f9;\n//** Background color used for `.table-hover`.\n@table-bg-hover:                #f5f5f5;\n@table-bg-active:               @table-bg-hover;\n\n//** Border color for table and cell borders.\n@table-border-color:            #ddd;\n\n\n//== Buttons\n//\n//## For each of Bootstrap's buttons, define text, background and border color.\n\n@btn-font-weight:                normal;\n\n@btn-default-color:              #333;\n@btn-default-bg:                 #fff;\n@btn-default-border:             #ccc;\n\n@btn-primary-color:              #fff;\n@btn-primary-bg:                 @brand-primary;\n@btn-primary-border:             darken(@btn-primary-bg, 5%);\n\n@btn-success-color:              #fff;\n@btn-success-bg:                 @brand-success;\n@btn-success-border:             darken(@btn-success-bg, 5%);\n\n@btn-info-color:                 #fff;\n@btn-info-bg:                    @brand-info;\n@btn-info-border:                darken(@btn-info-bg, 5%);\n\n@btn-warning-color:              #fff;\n@btn-warning-bg:                 @brand-warning;\n@btn-warning-border:             darken(@btn-warning-bg, 5%);\n\n@btn-danger-color:               #fff;\n@btn-danger-bg:                  @brand-danger;\n@btn-danger-border:              darken(@btn-danger-bg, 5%);\n\n@btn-link-disabled-color:        @gray-light;\n\n\n//== Forms\n//\n//##\n\n//** `<input>` background color\n@input-bg:                       #fff;\n//** `<input disabled>` background color\n@input-bg-disabled:              @gray-lighter;\n\n//** Text color for `<input>`s\n@input-color:                    @gray;\n//** `<input>` border color\n@input-border:                   #ccc;\n//** `<input>` border radius\n@input-border-radius:            @border-radius-base;\n//** Border color for inputs on focus\n@input-border-focus:             #66afe9;\n\n//** Placeholder text color\n@input-color-placeholder:        @gray-light;\n\n//** Default `.form-control` height\n@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);\n//** Large `.form-control` height\n@input-height-large:             (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);\n//** Small `.form-control` height\n@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);\n\n@legend-color:                   @gray-dark;\n@legend-border-color:            #e5e5e5;\n\n//** Background color for textual input addons\n@input-group-addon-bg:           @gray-lighter;\n//** Border color for textual input addons\n@input-group-addon-border-color: @input-border;\n\n\n//== Dropdowns\n//\n//## Dropdown menu container and contents.\n\n//** Background for the dropdown menu.\n@dropdown-bg:                    #fff;\n//** Dropdown menu `border-color`.\n@dropdown-border:                rgba(0,0,0,.15);\n//** Dropdown menu `border-color` **for IE8**.\n@dropdown-fallback-border:       #ccc;\n//** Divider color for between dropdown items.\n@dropdown-divider-bg:            #e5e5e5;\n\n//** Dropdown link text color.\n@dropdown-link-color:            @gray-dark;\n//** Hover color for dropdown links.\n@dropdown-link-hover-color:      darken(@gray-dark, 5%);\n//** Hover background for dropdown links.\n@dropdown-link-hover-bg:         #f5f5f5;\n\n//** Active dropdown menu item text color.\n@dropdown-link-active-color:     @component-active-color;\n//** Active dropdown menu item background color.\n@dropdown-link-active-bg:        @component-active-bg;\n\n//** Disabled dropdown menu item background color.\n@dropdown-link-disabled-color:   @gray-light;\n\n//** Text color for headers within dropdown menus.\n@dropdown-header-color:          @gray-light;\n\n// Note: Deprecated @dropdown-caret-color as of v3.1.0\n@dropdown-caret-color:           #000;\n\n\n//-- Z-index master list\n//\n// Warning: Avoid customizing these values. They're used for a bird's eye view\n// of components dependent on the z-axis and are designed to all work together.\n//\n// Note: These variables are not generated into the Customizer.\n\n@zindex-navbar:            1000;\n@zindex-dropdown:          1000;\n@zindex-popover:           1010;\n@zindex-tooltip:           1030;\n@zindex-navbar-fixed:      1030;\n@zindex-modal-background:  1040;\n@zindex-modal:             1050;\n\n\n//== Media queries breakpoints\n//\n//## Define the breakpoints at which your layout will change, adapting to different screen sizes.\n\n// Extra small screen / phone\n// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1\n@screen-xs:                  480px;\n@screen-xs-min:              @screen-xs;\n@screen-phone:               @screen-xs-min;\n\n// Small screen / tablet\n// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1\n@screen-sm:                  768px;\n@screen-sm-min:              @screen-sm;\n@screen-tablet:              @screen-sm-min;\n\n// Medium screen / desktop\n// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1\n@screen-md:                  992px;\n@screen-md-min:              @screen-md;\n@screen-desktop:             @screen-md-min;\n\n// Large screen / wide desktop\n// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1\n@screen-lg:                  1200px;\n@screen-lg-min:              @screen-lg;\n@screen-lg-desktop:          @screen-lg-min;\n\n// So media queries don't overlap when required, provide a maximum\n@screen-xs-max:              (@screen-sm-min - 1);\n@screen-sm-max:              (@screen-md-min - 1);\n@screen-md-max:              (@screen-lg-min - 1);\n\n\n//== Grid system\n//\n//## Define your custom responsive grid.\n\n//** Number of columns in the grid.\n@grid-columns:              12;\n//** Padding between columns. Gets divided in half for the left and right.\n@grid-gutter-width:         20px;\n// Navbar collapse\n//** Point at which the navbar becomes uncollapsed.\n@grid-float-breakpoint:     @screen-sm-min;\n//** Point at which the navbar begins collapsing.\n@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);\n\n\n//== Navbar\n//\n//##\n\n// Basics of a navbar\n@navbar-height:                    50px;\n@navbar-margin-bottom:             @line-height-computed;\n@navbar-border-radius:             @border-radius-base;\n@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));\n@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);\n@navbar-collapse-max-height:       340px;\n\n@navbar-default-color:             #777;\n@navbar-default-bg:                #f8f8f8;\n@navbar-default-border:            darken(@navbar-default-bg, 6.5%);\n\n// Navbar links\n@navbar-default-link-color:                #000;\n@navbar-default-link-hover-color:          #333;\n@navbar-default-link-hover-bg:             transparent;\n@navbar-default-link-active-color:         #555;\n@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);\n@navbar-default-link-disabled-color:       #ccc;\n@navbar-default-link-disabled-bg:          transparent;\n\n// Navbar brand label\n@navbar-default-brand-color:               @navbar-default-link-color;\n@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);\n@navbar-default-brand-hover-bg:            transparent;\n\n// Navbar toggle\n@navbar-default-toggle-hover-bg:           #ddd;\n@navbar-default-toggle-icon-bar-bg:        #888;\n@navbar-default-toggle-border-color:       #ddd;\n\n\n// Inverted navbar\n// Reset inverted navbar basics\n@navbar-inverse-color:                      @gray-light;\n@navbar-inverse-bg:                         #fdfdfd;\n@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);\n\n// Inverted navbar links\n@navbar-inverse-link-color:                 #000;\n@navbar-inverse-link-hover-color:           @gray-light;\n@navbar-inverse-link-hover-bg:              darken(@navbar-inverse-bg, 3%);\n@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;\n@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 5%);\n@navbar-inverse-link-disabled-color:        #444;\n@navbar-inverse-link-disabled-bg:           transparent;\n\n// Inverted navbar brand label\n@navbar-inverse-brand-color:                @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-color:          @navbar-inverse-link-color;\n@navbar-inverse-brand-hover-bg:             transparent;\n\n// Inverted navbar toggle\n@navbar-inverse-toggle-hover-bg:            #333;\n@navbar-inverse-toggle-icon-bar-bg:         #fff;\n@navbar-inverse-toggle-border-color:        #333;\n\n\n//== Navs\n//\n//##\n\n//=== Shared nav styles\n@nav-link-padding:                          10px 15px;\n@nav-link-hover-bg:                         @gray-lighter;\n\n@nav-disabled-link-color:                   @gray-light;\n@nav-disabled-link-hover-color:             @gray-light;\n\n@nav-open-link-hover-color:                 #fff;\n\n//== Tabs\n@nav-tabs-border-color:                     #ddd;\n\n@nav-tabs-link-hover-border-color:          @gray-lighter;\n\n@nav-tabs-active-link-hover-bg:             @body-bg;\n@nav-tabs-active-link-hover-color:          @gray;\n@nav-tabs-active-link-hover-border-color:   #ddd;\n\n@nav-tabs-justified-link-border-color:            #ddd;\n@nav-tabs-justified-active-link-border-color:     @body-bg;\n\n//== Pills\n@nav-pills-border-radius:                   @border-radius-base;\n@nav-pills-active-link-hover-bg:            @component-active-bg;\n@nav-pills-active-link-hover-color:         @component-active-color;\n\n\n//== Pagination\n//\n//##\n\n@pagination-color:                     @link-color;\n@pagination-bg:                        #fff;\n@pagination-border:                    #ddd;\n\n@pagination-hover-color:               @link-hover-color;\n@pagination-hover-bg:                  @gray-lighter;\n@pagination-hover-border:              #ddd;\n\n@pagination-active-color:              #fff;\n@pagination-active-bg:                 @brand-primary;\n@pagination-active-border:             @brand-primary;\n\n@pagination-disabled-color:            @gray-light;\n@pagination-disabled-bg:               #fff;\n@pagination-disabled-border:           #ddd;\n\n\n//== Pager\n//\n//##\n\n@pager-bg:                             @pagination-bg;\n@pager-border:                         @pagination-border;\n@pager-border-radius:                  15px;\n\n@pager-hover-bg:                       @pagination-hover-bg;\n\n@pager-active-bg:                      @pagination-active-bg;\n@pager-active-color:                   @pagination-active-color;\n\n@pager-disabled-color:                 @pagination-disabled-color;\n\n\n//== Jumbotron\n//\n//##\n\n@jumbotron-padding:              30px;\n@jumbotron-color:                inherit;\n@jumbotron-bg:                   @gray-lighter;\n@jumbotron-heading-color:        inherit;\n@jumbotron-font-size:            ceil((@font-size-base * 1.5));\n\n\n//== Form states and alerts\n//\n//## Define colors for form feedback states and, by default, alerts.\n\n@state-success-text:             #3c763d;\n@state-success-bg:               #dff0d8;\n@state-success-border:           darken(spin(@state-success-bg, -10), 5%);\n\n@state-info-text:                #31708f;\n@state-info-bg:                  #d9edf7;\n@state-info-border:              darken(spin(@state-info-bg, -10), 7%);\n\n@state-warning-text:             #8a6d3b;\n@state-warning-bg:               #fcf8e3;\n@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);\n\n@state-danger-text:              #a94442;\n@state-danger-bg:                #f2dede;\n@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);\n\n\n//== Tooltips\n//\n//##\n\n//** Tooltip max width\n@tooltip-max-width:           200px;\n//** Tooltip text color\n@tooltip-color:               #fff;\n//** Tooltip background color\n@tooltip-bg:                  #000;\n@tooltip-opacity:             .9;\n\n//** Tooltip arrow width\n@tooltip-arrow-width:         5px;\n//** Tooltip arrow color\n@tooltip-arrow-color:         @tooltip-bg;\n\n\n//== Popovers\n//\n//##\n\n//** Popover body background color\n@popover-bg:                          #fff;\n//** Popover maximum width\n@popover-max-width:                   276px;\n//** Popover border color\n@popover-border-color:                rgba(0,0,0,.2);\n//** Popover fallback border color\n@popover-fallback-border-color:       #ccc;\n\n//** Popover title background color\n@popover-title-bg:                    darken(@popover-bg, 3%);\n\n//** Popover arrow width\n@popover-arrow-width:                 10px;\n//** Popover arrow color\n@popover-arrow-color:                 #fff;\n\n//** Popover outer arrow width\n@popover-arrow-outer-width:           (@popover-arrow-width + 1);\n//** Popover outer arrow color\n@popover-arrow-outer-color:           rgba(0,0,0,.25);\n//** Popover outer arrow fallback color\n@popover-arrow-outer-fallback-color:  #999;\n\n\n//== Labels\n//\n//##\n\n//** Default label background color\n@label-default-bg:            @gray-light;\n//** Primary label background color\n@label-primary-bg:            @brand-primary;\n//** Success label background color\n@label-success-bg:            @brand-success;\n//** Info label background color\n@label-info-bg:               @brand-info;\n//** Warning label background color\n@label-warning-bg:            @brand-warning;\n//** Danger label background color\n@label-danger-bg:             @brand-danger;\n\n//** Default label text color\n@label-color:                 #fff;\n//** Default text color of a linked label\n@label-link-hover-color:      #fff;\n\n\n//== Modals\n//\n//##\n\n//** Padding applied to the modal body\n@modal-inner-padding:         20px;\n\n//** Padding applied to the modal title\n@modal-title-padding:         15px;\n//** Modal title line-height\n@modal-title-line-height:     @line-height-base;\n\n//** Background color of modal content area\n@modal-content-bg:                             #fff;\n//** Modal content border color\n@modal-content-border-color:                   rgba(0,0,0,.2);\n//** Modal content border color **for IE8**\n@modal-content-fallback-border-color:          #999;\n\n//** Modal backdrop background color\n@modal-backdrop-bg:           #000;\n//** Modal backdrop opacity\n@modal-backdrop-opacity:      .5;\n//** Modal header border color\n@modal-header-border-color:   #e5e5e5;\n//** Modal footer border color\n@modal-footer-border-color:   @modal-header-border-color;\n\n@modal-lg:                    900px;\n@modal-md:                    600px;\n@modal-sm:                    300px;\n\n\n//== Alerts\n//\n//## Define alert colors, border radius, and padding.\n\n@alert-padding:               15px;\n@alert-border-radius:         @border-radius-base;\n@alert-link-font-weight:      bold;\n\n@alert-success-bg:            @state-success-bg;\n@alert-success-text:          @state-success-text;\n@alert-success-border:        @state-success-border;\n\n@alert-info-bg:               @state-info-bg;\n@alert-info-text:             @state-info-text;\n@alert-info-border:           @state-info-border;\n\n@alert-warning-bg:            @state-warning-bg;\n@alert-warning-text:          @state-warning-text;\n@alert-warning-border:        @state-warning-border;\n\n@alert-danger-bg:             @state-danger-bg;\n@alert-danger-text:           @state-danger-text;\n@alert-danger-border:         @state-danger-border;\n\n\n//== Progress bars\n//\n//##\n\n//** Background color of the whole progress component\n@progress-bg:                 #f5f5f5;\n//** Progress bar text color\n@progress-bar-color:          #fff;\n\n//** Default progress bar color\n@progress-bar-bg:             @brand-primary;\n//** Success progress bar color\n@progress-bar-success-bg:     @brand-success;\n//** Warning progress bar color\n@progress-bar-warning-bg:     @brand-warning;\n//** Danger progress bar color\n@progress-bar-danger-bg:      @brand-danger;\n//** Info progress bar color\n@progress-bar-info-bg:        @brand-info;\n\n\n//== List group\n//\n//##\n\n//** Background color on `.list-group-item`\n@list-group-bg:                 #fff;\n//** `.list-group-item` border color\n@list-group-border:             #ddd;\n//** List group border radius\n@list-group-border-radius:      @border-radius-base;\n\n//** Background color of single list elements on hover\n@list-group-hover-bg:           #f5f5f5;\n//** Text color of active list elements\n@list-group-active-color:       @component-active-color;\n//** Background color of active list elements\n@list-group-active-bg:          @component-active-bg;\n//** Border color of active list elements\n@list-group-active-border:      @list-group-active-bg;\n@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);\n\n@list-group-link-color:         #555;\n@list-group-link-heading-color: #333;\n\n\n//== Panels\n//\n//##\n\n@panel-bg:                    #fff;\n@panel-body-padding:          10px;\n@panel-border-radius:         @border-radius-base;\n\n//** Border color for elements within panels\n@panel-inner-border:          #ddd;\n@panel-footer-bg:             #f5f5f5;\n\n@panel-default-text:          @gray-dark;\n@panel-default-border:        #ddd;\n@panel-default-heading-bg:    #f5f5f5;\n\n@panel-primary-text:          #fff;\n@panel-primary-border:        @brand-primary;\n@panel-primary-heading-bg:    @brand-primary;\n\n@panel-success-text:          @state-success-text;\n@panel-success-border:        @state-success-border;\n@panel-success-heading-bg:    @state-success-bg;\n\n@panel-info-text:             @state-info-text;\n@panel-info-border:           @state-info-border;\n@panel-info-heading-bg:       @state-info-bg;\n\n@panel-warning-text:          @state-warning-text;\n@panel-warning-border:        @state-warning-border;\n@panel-warning-heading-bg:    @state-warning-bg;\n\n@panel-danger-text:           @state-danger-text;\n@panel-danger-border:         @state-danger-border;\n@panel-danger-heading-bg:     @state-danger-bg;\n\n\n//== Thumbnails\n//\n//##\n\n//** Padding around the thumbnail image\n@thumbnail-padding:           4px;\n//** Thumbnail background color\n@thumbnail-bg:                @body-bg;\n//** Thumbnail border color\n@thumbnail-border:            #ddd;\n//** Thumbnail border radius\n@thumbnail-border-radius:     @border-radius-base;\n\n//** Custom text color for thumbnail captions\n@thumbnail-caption-color:     @text-color;\n//** Padding around the thumbnail caption\n@thumbnail-caption-padding:   9px;\n\n\n//== Wells\n//\n//##\n\n@well-bg:                     #f5f5f5;\n@well-border:                 darken(@well-bg, 7%);\n\n\n//== Badges\n//\n//##\n\n@badge-color:                 #fff;\n//** Linked badge text color on hover\n@badge-link-hover-color:      #fff;\n@badge-bg:                    @gray-light;\n\n//** Badge text color in active nav link\n@badge-active-color:          @link-color;\n//** Badge background color in active nav link\n@badge-active-bg:             #fff;\n\n@badge-font-weight:           bold;\n@badge-line-height:           1;\n@badge-border-radius:         10px;\n\n\n//== Breadcrumbs\n//\n//##\n\n@breadcrumb-padding-vertical:   8px;\n@breadcrumb-padding-horizontal: 15px;\n//** Breadcrumb background color\n@breadcrumb-bg:                 #f5f5f5;\n//** Breadcrumb text color\n@breadcrumb-color:              #ccc;\n//** Text color of current page in the breadcrumb\n@breadcrumb-active-color:       @gray-light;\n//** Textual separator for between breadcrumb elements\n@breadcrumb-separator:          \"/\";\n\n\n//== Carousel\n//\n//##\n\n@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);\n\n@carousel-control-color:                      #fff;\n@carousel-control-width:                      15%;\n@carousel-control-opacity:                    .5;\n@carousel-control-font-size:                  20px;\n\n@carousel-indicator-active-bg:                #fff;\n@carousel-indicator-border-color:             #fff;\n\n@carousel-caption-color:                      #fff;\n\n\n//== Close\n//\n//##\n\n@close-font-weight:           bold;\n@close-color:                 #000;\n@close-text-shadow:           0 1px 0 #fff;\n\n\n//== Code\n//\n//##\n\n@code-color:                  #c7254e;\n@code-bg:                     #f9f2f4;\n\n@kbd-color:                   #fff;\n@kbd-bg:                      #333;\n\n@pre-bg:                      #f5f5f5;\n@pre-color:                   @gray-dark;\n@pre-border-color:            #ccc;\n@pre-scrollable-max-height:   340px;\n\n\n//== Type\n//\n//##\n\n//** Text muted color\n@text-muted:                  @gray-light;\n//** Abbreviations and acronyms border color\n@abbr-border-color:           @gray-light;\n//** Headings small color\n@headings-small-color:        @gray-light;\n//** Blockquote small color\n@blockquote-small-color:      @gray-light;\n//** Blockquote border color\n@blockquote-border-color:     @gray-lighter;\n//** Page header border color\n@page-header-border-color:    @gray-lighter;\n\n\n//== Miscellaneous\n//\n//##\n\n//** Horizontal line color.\n@hr-border:                   @gray-lighter;\n\n//** Horizontal offset for forms and lists.\n@component-offset-horizontal: 180px;\n\n\n//== Container sizes\n//\n//## Define the maximum width of `.container` for different screen sizes.\n\n// Small screen / tablet\n@container-tablet:             ((720px + @grid-gutter-width));\n//** For `@screen-sm-min` and up.\n@container-sm:                 @container-tablet;\n\n// Medium screen / desktop\n@container-desktop:            ((940px + @grid-gutter-width));\n//** For `@screen-md-min` and up.\n@container-md:                 @container-desktop;\n\n// Large screen / wide desktop\n@container-large-desktop:      ((994px + @grid-gutter-width));\n//** For `@screen-lg-min` and up.\n@container-lg:                 @container-large-desktop;\n",
 			"file": "app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
-			"file_size": 25288,
-			"file_write_time": 1403518145000000,
+			"file_size": 25282,
+			"file_write_time": 1404395910000000,
 			"settings":
 			{
-				"buffer_size": 25289,
+				"buffer_size": 25282,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "# Ignore docs files\n_gh_pages\n_site\n.ruby-version\n\n# Numerous always-ignore extensions\n*.diff\n*.err\n*.orig\n*.log\n*.rej\n*.swo\n*.swp\n*.zip\n*.vi\n*~\nchatup.sublime-project\nchatup.sublime-workspace\n\n\n\n# OS or Editor folders\n.DS_Store\n._*\nThumbs.db\n.cache\n.project\n.settings\n.tmproj\n*.esproj\nnbproject\n*.sublime-project\n*.sublime-workspace\n.idea\n\n# Komodo\n*.komodoproject\n.komodotools\n\n# grunt-html-validation\nvalidation-status.json\nvalidation-report.json\n\n# Folders to ignore\nnode_modules\nbower_components\n\n\n\n",
-			"file": "app/vendor/stylesheets/bootstrap-3.1.0/.gitignore",
-			"file_size": 451,
-			"file_write_time": 1398579919000000,
+			"file": "app/templates/v3/topic/show_topic.html",
 			"settings":
 			{
-				"buffer_size": 504,
+				"buffer_size": 8223,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": ".gitignore",
+			"file": "app/templates/v3/topic/show_topic_list_module.html",
 			"settings":
 			{
-				"buffer_size": 992,
+				"buffer_size": 2324,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/people/mine_handlers.py",
+			"settings":
+			{
+				"buffer_size": 2808,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "sites/wecoders/db/wecoders.sql",
+			"file": "app/templates/v3/topic/show_topic_module.html",
 			"settings":
 			{
-				"buffer_size": 9329,
+				"buffer_size": 1270,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "\n#user  nobody;\nworker_processes  4;\n\n#error_log  logs/error.log;\n#error_log  logs/error.log  notice;\n#error_log  logs/error.log  info;\n\n#pid        logs/nginx.pid;\n\n\nevents {\n    worker_connections  1024;\n}\n\n\nhttp {\n    include       mime.types;\n    default_type  application/octet-stream;\n\n\n    upstream 54feng {\n     server 110.75.189.130;\n    }\n\n    upstream backend_keepcd_servers{\n	   ip_hash;\n        server 127.0.0.1:7201 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7202 max_fails=250 fail_timeout=10s;\n	   server 127.0.0.1:7203 max_fails=250 fail_timeout=10s;\n	   server 127.0.0.1:7200 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7209 ;\n    }\n\n    upstream backend_meimashuo_servers{\n        ip_hash;\n        server 127.0.0.1:7301 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7302 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7303 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7300 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7309 ;\n    }\n\n    upstream backend_iosplay_servers{\n        ip_hash;\n        server 127.0.0.1:7400 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7401 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7402 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7403 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7309 ;\n    }\n\n    upstream backend_wecoders_servers{\n        ip_hash;\n        server 127.0.0.1:7500 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7501 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7502 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7503 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7504 max_fails=250 fail_timeout=10s;\n        server 127.0.0.1:7509 ;\n    }\n\n    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '\n    #                  '$status $body_bytes_sent \"$http_referer\" '\n    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';\n\n    #access_log  logs/access.log  main;\n\n    sendfile        on;\n    #tcp_nopush     on;\n\n    #keepalive_timeout  0;\n    keepalive_timeout  65;\n\n    #gzip  on;\n\n    server {\n        listen 80;\n        server_name xxx.keepcd.com;\n\n        location / {\n                rewrite  ^/(.*)$  http://www.keepcd.com/$1  permanent;\n        }\n    }\n\n\n   server {\n        listen 80;\n        server_name www.keepcd.com;\n	server_name keepcd.com;\n        server_name api.keepcd.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n	access_log /var/log/nginx/keepcd.access_log;\n        error_log /var/log/nginx/keepcd.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/keepcd/deploy/keepcd;\n        }\n\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_keepcd_servers;\n        }\n    }\n\n  server {\n        listen 80;\n        server_name beta.keepcd.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	   gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/keepcd/beta/keepcd;\n        }\n\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7000;\n        }\n    }\n\n\n\n	\n   server {\n	listen 80;\n	server_name img.keepcd.com;\n\n	expires 720h;\n	if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n    }\n\n	proxy_redirect off;\n    proxy_set_header        Host  $host;\n    proxy_set_header        X-Real-IP       $remote_addr;\n    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n	\n    location /static {\n         gzip on;\n         root /home/feilaoda/www/img.keepcd.com;\n    }\n\n	location / {\n		return 403;\n	}\n\n   }\n	\n\n   server {\n        listen 80;\n    	server_name www.meimashuo.com;\n    	server_name www.imeiban.com;\n        server_name meimashuo.com;\n        server_name api.meimashuo.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/meimashuo.access_log;\n        error_log /var/log/nginx/meimashuo.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n    	location /favicon.ico {\n    	    gzip on;\n    	    root /home/feilaoda/www/meimashuo/deploy/app/static;\n    	}\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/meimashuo/deploy/app;\n        }\n\n	\n        location / {\n              expires epoch;\n              proxy_pass http://backend_meimashuo_servers;\n        }\n    }\n\n\n  server {\n        listen 80;\n        server_name www.iosplay.com;\n        server_name iosplay.com;\n        server_name api.iosplay.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/iosplay.access_log;\n        error_log /var/log/nginx/iosplay.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/iosplay/deploy/app/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/iosplay/deploy/app;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_iosplay_servers;\n        }\n    }\n\n\n   server {\n        listen 80;\n        server_name beta.iosplay.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/betaiosplay.access_log;\n        error_log /var/log/nginx/betaiosplay.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/iosplay/beta/app/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/iosplay/beta/app;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7409;\n        }\n    }\n\n   server {\n        listen 80;\n        server_name beta.wecoders.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/wecoders.beta.access_log;\n        error_log /var/log/nginx/wecoders.beta.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/wecoders/beta/static;\n        }\n\n      location /static {\n             gzip on;\n             root /home/feilaoda/www/wecoders/beta;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://127.0.0.1:7509;\n        }\n    } \n\n   server {\n        listen 80;\n        server_name www.wecoders.com;\n        server_name wecoders.com;\n        server_name api.wecoders.com;\n        expires 1h;\n\n        if ($request_method !~ ^(GET|HEAD|POST)$ ) {\n                return 403;\n        }\n\n\n        access_log /var/log/nginx/wecoders.access_log;\n        error_log /var/log/nginx/wecoders.error_log info;\n\n\n        proxy_redirect off;\n        proxy_set_header        Host  $host;\n        proxy_set_header        X-Real-IP       $remote_addr;\n        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n\n        location /favicon.ico {\n            gzip on;\n            root /home/feilaoda/www/wecoders/deploy/static;\n        }\n\n        location /static {\n             gzip on;\n             root /home/feilaoda/www/wecoders/deploy;\n        }\n\n        location / {\n              expires epoch;\n              proxy_pass http://backend_wecoders_servers;\n        }\n    }\n\n   \n\n\n    server {\n        listen       80;\n        server_name  localhost;\n\n        #charset koi8-r;\n\n        #access_log  logs/host.access.log  main;\n\n        location / {\n            root   html;\n            index  index.html index.htm;\n        }\n\n        #error_page  404              /404.html;\n\n        # redirect server error pages to the static page /50x.html\n        #\n        error_page   500 502 503 504  /50x.html;\n        location = /50x.html {\n            root   html;\n        }\n\n        # proxy the PHP scripts to Apache listening on 127.0.0.1:80\n        #\n        #location ~ \\.php$ {\n        #    proxy_pass   http://127.0.0.1;\n        #}\n\n        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000\n        #\n        #location ~ \\.php$ {\n        #    root           html;\n        #    fastcgi_pass   127.0.0.1:9000;\n        #    fastcgi_index  index.php;\n        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;\n        #    include        fastcgi_params;\n        #}\n\n        # deny access to .htaccess files, if Apache's document root\n        # concurs with nginx's one\n        #\n        #location ~ /\\.ht {\n        #    deny  all;\n        #}\n    }\n\n    server {\n        listen 80;\n        server_name www.zhui.tv www.zhuitv.com zhuitv.com;\n\n        location / {\n	#                rewrite  ^/(.*)$  http://zhui.tv/$1  permanent;\n	return 301;\n        }\n\n    }\n\n\n    # another virtual host using mix of IP-, name-, and port-based configuration\n    #\n    #server erver {\n    #    listen 80;\n    #    server_name www.zhui.tv www.zhuitv.com zhuitv.com;\n#\n#        location / {\n#                rewrite  ^/(.*)$  http://zhui.tv/$1  permanent;\n#        }\n\n#    }\n    #    listen       8000;\n    #    listen       somename:8080;\n    #    server_name  somename  alias  another.alias;\n\n    #    location / {\n    #        root   html;\n    #        index  index.html index.htm;\n    #    }\n    #}\n\n\n    # HTTPS server\n    #\n    #server {\n    #    listen       443;\n    #    server_name  localhost;\n\n    #    ssl                  on;\n    #    ssl_certificate      cert.pem;\n    #    ssl_certificate_key  cert.key;\n\n    #    ssl_session_timeout  5m;\n\n    #    ssl_protocols  SSLv2 SSLv3 TLSv1;\n    #    ssl_ciphers  HIGH:!aNULL:!MD5;\n    #    ssl_prefer_server_ciphers   on;\n\n    #    location / {\n    #        root   html;\n    #        index  index.html index.htm;\n    #    }\n    #}\n\n     server {\n        listen 80;\n        server_name zhui.tv;\n        root /home/feilaoda/www/zhui;\n        index index.php index.html;\n        access_log /var/log/nginx/zhui.access_log;\n        error_log /var/log/nginx/zhui.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6; \n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            fastcgi_pass   127.0.0.1:9000;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n     server {\n        listen 80;\n        server_name caiji.zhui.tv;\n        root /home/feilaoda/www/caiji_zhui_tv;\n        index index.php index.html;\n        access_log /var/log/nginx/zhui.access_log;\n        error_log /var/log/nginx/zhui.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n        \n        client_max_body_size 100M;\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            #fastcgi_pass   127.0.0.1:9000;\n	    fastcgi_pass unix:/var/run/php5-fpm.sock;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n\n\n\nserver {\n        listen 80;\n        server_name blog.iosplay.com;\n        root /home/feilaoda/www/iosplay/blog;\n        index index.php index.html;\n        access_log /var/log/nginx/iosplay.access_log;\n        error_log /var/log/nginx/iosplay.error_log info;\n\n\n        gzip  on;\n        gzip_min_length  1000;\n        gzip_buffers     4 8k;\n        gzip_comp_level 6;\n        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;\n\n        client_max_body_size 100M;\n        location = /favicon.ico {\n            log_not_found off;\n            access_log off;\n        }\n\n        location = /robots.txt {\n            allow all;\n            log_not_found off;\n            access_log off;\n        }\n\n        ################ Yii framework rule #################\n        location / {\n            try_files $uri $uri/ /index.php?$args;\n        }\n\n        location ~ /(protected|framework|nbproject|themes/\\w+/views|index-test\\.php) {\n            deny all;\n            # for production\n            internal;\n            log_not_found off;\n            access_log off;\n        }\n        ################ for Yii framework end #################\n\n\n        location ~* \\.(js|css|png|jpg|jpeg|gif|ico)$ {\n             expires max;\n             log_not_found off;\n        }\n\n        location ~ \\.php$ {\n            fastcgi_pass   127.0.0.1:9000;\n            #fastcgi_pass unix:/var/run/php5-fpm.sock;\n            fastcgi_index  index.php;\n            include fastcgi.conf;\n        }\n    }\n\n\n    \n\n}\n",
-			"file": "nginx.conf",
-			"file_size": 5036,
-			"file_write_time": 1403671259000000,
+			"file": "app/templates/v3/people/show_people_wists.html",
 			"settings":
 			{
-				"buffer_size": 17849,
+				"buffer_size": 560,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/templates/v3/account/setting_signup.html",
+			"file": "sites/wecoders/db/update.sql",
 			"settings":
 			{
-				"buffer_size": 1802,
+				"buffer_size": 777,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sites/wecoders/debug_config.py",
+			"settings":
+			{
+				"buffer_size": 1981,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/node/models.py",
+			"file": "app/templates/v3/module/show_node_list.html",
 			"settings":
 			{
-				"buffer_size": 1619,
+				"buffer_size": 165,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/lib/util.py",
+			"settings":
+			{
+				"buffer_size": 10248,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/vendor/CodeMirror/lib/codemirror.css",
+			"settings":
+			{
+				"buffer_size": 7069,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/account/lib.py",
+			"settings":
+			{
+				"buffer_size": 4609,
 				"line_ending": "Windows"
 			}
 		}
@@ -529,38 +376,71 @@
 	},
 	"file_history":
 	[
-		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/update.sql",
-		"/Users/feilaoda/Work/Project/ChatUp/static/assets/css/v3/application.min.css",
-		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/wecoders.sql",
-		"/Users/feilaoda/Work/Project/ChatUp/app/node/handlers.py",
-		"/Users/feilaoda/Work/Project/ChatUp/app/node/models.py",
-		"/Users/feilaoda/Work/Project/ChatUp/setup.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/wist/handlers.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/wist/models.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/wist/show_wist.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/layout.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/wist/create_wist.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/wist/edit_wist.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/lib/filters.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/wist/all_wist.html",
+		"/Users/feilaoda/Work/Project/ChatUp/static/stylesheets/application.less",
+		"/Users/feilaoda/Work/Project/ChatUp/app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
+		"/Users/feilaoda/Work/Project/ChatUp/app/people/handlers.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/signin.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/signup.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/vendor/stylesheets/bootstrap/sprites.less",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/Makefile",
+		"/Users/feilaoda/Work/Project/ChatUp/app/locale/zh_CN.csv",
+		"/Users/feilaoda/Work/Project/ChatUp/app/account/handlers.py",
 		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/config.py",
-		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/space2x.sql",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic_list_module.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/topic/models.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/dojang/auth/github.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/run.py",
+		"/Users/feilaoda/Work/Project/ChatUp/tests/testcase.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/account/models.py",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/update.sql",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/wecoders2.sql",
+		"/Users/feilaoda/Work/Project/ChatUp/app/node/handlers.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/topic/form.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/lib/filter.py",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/iptables.txt",
 		"/Users/feilaoda/Work/Project/ChatUp/app/topic/handlers.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/topic/lib.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/edit_topic.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic_list_module.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/show_node.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/dojang/cache.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/wist/__init__.py",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/tools.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/account/usednames.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/account/lib.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/create_topic.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/topic/models.py",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/debug_config.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/topic.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic_module.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic_list.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/front/index.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/wist/wist.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/account/setting_avatar.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/account/setting.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/module/profile_sidebar.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/vendor/stylesheets/bootstrap-3.1.0/.gitignore",
+		"/Users/feilaoda/Work/Project/ChatUp/.gitignore",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/wecoders.sql",
+		"/Users/feilaoda/Work/Project/ChatUp/nginx.conf",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/account/setting_signup.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/node/models.py",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/create_node.html",
+		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/edit_node.html",
+		"/Users/feilaoda/Work/Project/ChatUp/static/assets/css/v3/application.min.css",
+		"/Users/feilaoda/Work/Project/ChatUp/setup.py",
+		"/Users/feilaoda/Work/Project/ChatUp/sites/wecoders/db/space2x.sql",
 		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/admin/topic/show_topic.html",
 		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/admin/topic/all_topics.html",
 		"/Users/feilaoda/Work/Project/ChatUp/app/admin/topic/handlers.py",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/create_topic.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/create_node.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/edit_node.html",
-		"/Users/feilaoda/Work/Project/ChatUp/sites/Makefile",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/account/setting_avatar.html",
 		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/account/password.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/module/profile_sidebar.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/show_topic_list.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/front/index.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/layout.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/topic/lib.py",
-		"/Users/feilaoda/Work/Project/ChatUp/static/stylesheets/application.less",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/node/show_node.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/locale/zh_CN.csv",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/topic/edit_topic.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/signup.html",
-		"/Users/feilaoda/Work/Project/ChatUp/app/templates/v3/signin.html",
 		"/Users/feilaoda/Downloads/mysql-setup.sql",
 		"/Users/feilaoda/Work/Project/WeCoders/config/settings.py",
 		"/Users/feilaoda/Documents/jobs/HBase/ConnectHbase.py",
@@ -572,7 +452,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 		]
@@ -582,6 +462,50 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"UserHandler",
+			"SimpleApiHandler",
+			"content",
+			"Model",
+			"c",
+			"mei",
+			"xmlday",
+			"18:e7:f4:f6:8d:14",
+			"d8:96:95:12:85:10",
+			"timerange size:0",
+			"00000",
+			",",
+			"margin-top0",
+			"padding",
+			"padding-12",
+			"padding",
+			"header",
+			"page-header",
+			"people_id",
+			"people",
+			"grid",
+			"container",
+			"@grid-gutter-width",
+			"1170",
+			"container",
+			"body",
+			"line-hei",
+			"line-he",
+			"afterjs",
+			"inputbox",
+			" ",
+			"	",
+			"misaka.HTML_SKIP_SCRIPT",
+			"	\n",
+			"register_app",
+			"))\n",
+			"wc",
+			"	\n",
+			"50",
+			"30",
+			"control-group",
+			"control-text",
+			"recaptcha",
+			"Setting",
 			"markdown",
 			"SettingRenameGithubHandler",
 			"    ('/rename/github/(\\d+)', SettingRenameGithubHandler),\nSettingRenameGithubHandler",
@@ -665,51 +589,7 @@
 			"id",
 			"STATIC_ROOT",
 			"endif",
-			"static",
-			"STATIC_ROOT",
-			"MEDIA_ROOT",
-			"\n",
-			"registration_profile",
-			"TEMPLATE_CONTEXT_PROCESSORS",
-			"DEFAULT_FROM_EMAIL",
-			"\",\n",
-			"TEMPLATE_DIR",
-			"wecoders",
-			"PROJECT_DIR",
-			"REGISTRATION_TEMPLATE_DIR",
-			"local_sett",
-			"time",
-			"mac",
-			"connection",
-			"ConnectHbase",
-			"hadoop-common",
-			"Space",
-			"BASE_DIR",
-			"platform",
-			"        \n",
-			"platform",
-			"TopicVote",
-			"FollowNode\nFollowNode",
-			"Node",
-			"        \n",
-			"up_impact_for_user",
-			"up_impact_for_topic",
-			"accept_reply_impact_for_user",
-			"reply_impact_for_topic",
-			"    \n",
-			"))\n",
-			"shot",
-			"= ",
-			"tornadoredis",
-			"handlers",
-			"shot",
-			"com",
-			"upaiyun",
-			"PostPushTextHandler",
-			"role analyse task, day",
-			"root group is null",
-			"role analyse task, day",
-			"role analyse task, day\n"
+			"static"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -717,6 +597,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"00",
+			"",
+			"form-group",
+			"form-control",
 			"wcs.com",
 			"HADOOP_HOME",
 			""
@@ -730,79 +614,217 @@
 	"groups":
 	[
 		{
-			"selected": 15,
+			"selected": 36,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/templates/v3/layout.html",
+					"file": "app/people/wist_handlers.py",
 					"settings":
 					{
-						"buffer_size": 4022,
+						"buffer_size": 1936,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3841,
-								3841
+								1196,
+								1206
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 964.0,
+						"translation.y": 239.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/templates/v3/signin.html",
+					"file": "app/wist/handlers.py",
 					"settings":
 					{
-						"buffer_size": 2248,
+						"buffer_size": 7586,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1786,
-								1501
+								7284,
+								7284
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 240.0,
+						"translation.y": 2608.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/templates/v3/signup.html",
+					"file": "app/people/handlers.py",
 					"settings":
 					{
-						"buffer_size": 3689,
+						"buffer_size": 2964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1387,
-								1387
+								2897,
+								2903
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 974.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/dojang/web.py",
+					"settings":
+					{
+						"buffer_size": 9962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								588,
+								588
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/run.py",
+					"settings":
+					{
+						"buffer_size": 4655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3679,
+								3685
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1192.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								164
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/templates/v3/layout.html",
+					"settings":
+					{
+						"buffer_size": 3957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3237,
+								3237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1036.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/templates/v3/wist/create_wist.html",
+					"settings":
+					{
+						"buffer_size": 1662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								970,
+								970
 							]
 						],
 						"settings":
@@ -812,373 +834,16 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 172.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "static/stylesheets/application.less",
-					"settings":
-					{
-						"buffer_size": 2434,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								530,
-								530
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 292.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/vendor/stylesheets/bootstrap/sprites.less",
-					"settings":
-					{
-						"buffer_size": 10624,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								625,
-								628
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "sites/Makefile",
-					"settings":
-					{
-						"buffer_size": 7844,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2433,
-								2433
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Makefile/Makefile.tmLanguage"
-						},
-						"translation.x": 139.0,
-						"translation.y": 1017.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/locale/zh_CN.csv",
-					"settings":
-					{
-						"buffer_size": 4215,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3659,
-								3621
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2036.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/account/handlers.py",
-					"settings":
-					{
-						"buffer_size": 39036,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29826,
-								30594
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12770.0,
+						"translation.y": 218.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "sites/wecoders/config.py",
 					"settings":
 					{
-						"buffer_size": 2082,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								676,
-								676
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/dojang/auth/github.py",
-					"settings":
-					{
-						"buffer_size": 8394,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2593,
-								2593
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 339.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/run.py",
-					"settings":
-					{
-						"buffer_size": 4453,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1603,
-								1603
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 624.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "tests/testcase.py",
-					"settings":
-					{
-						"buffer_size": 1579,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1204,
-								1204
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 299.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "app/account/models.py",
-					"settings":
-					{
-						"buffer_size": 6303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5494,
-								5497
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2214.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "sites/wecoders/db/update.sql",
-					"settings":
-					{
-						"buffer_size": 545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								477,
-								543
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SQL/SQL.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "sites/wecoders/db/wecoders2.sql",
-					"settings":
-					{
-						"buffer_size": 18542,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7237,
-								7242
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SQL/SQL.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 12.0,
-						"translation.y": 2782.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/node/handlers.py",
-					"settings":
-					{
-						"buffer_size": 8676,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6750,
-								6750
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2828.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/topic/form.py",
-					"settings":
-					{
-						"buffer_size": 406,
+						"buffer_size": 43,
 						"regions":
 						{
 						},
@@ -1191,6 +856,194 @@
 						],
 						"settings":
 						{
+							"auto_name": "http://60.191.205.84:8080/zm-ws-3.0/api/v3/",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/templates/v3/wist/show_wist.html",
+					"settings":
+					{
+						"buffer_size": 1843,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1024,
+								1024
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/wist/models.py",
+					"settings":
+					{
+						"buffer_size": 1703,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1427,
+								1435
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 134.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/templates/v3/wist/all_wist.html",
+					"settings":
+					{
+						"buffer_size": 718,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								707,
+								254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"settings":
+					{
+						"buffer_size": 362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "public static final String PREFIX_GROUP_EMPLOYEE_",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "static/stylesheets/application.less",
+					"settings":
+					{
+						"buffer_size": 3182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1036,
+								1036
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 832.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/account/usednames.py",
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								167
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -1200,8 +1053,119 @@
 					"type": "text"
 				},
 				{
+					"buffer": 16,
+					"file": "app/templates/v3/wist/edit_wist.html",
+					"settings":
+					{
+						"buffer_size": 1808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								446,
+								446
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 17.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 17,
-					"file": "app/lib/filter.py",
+					"file": "app/templates/v3/module/profile_sidebar.html",
+					"settings":
+					{
+						"buffer_size": 1084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								553,
+								553
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/lib/filters.py",
+					"settings":
+					{
+						"buffer_size": 14669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13811,
+								13815
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1679.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/vendor/mikoto/__init__.py",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/vendor/__init__.py",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1226,98 +1190,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
-					"file": "sites/iptables.txt",
-					"settings":
-					{
-						"buffer_size": 558,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								558,
-								440
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"settings":
-					{
-						"buffer_size": 427,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3,
-								4
-							]
-						],
-						"settings":
-						{
-							"auto_name": "107, 106, 105, 109, 108, 100001010, 100001000, 100",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"settings":
-					{
-						"buffer_size": 7756,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2015,
-								2015
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1194.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 21,
-					"file": "app/lib/filters.py",
+					"file": "setup.py",
 					"settings":
 					{
-						"buffer_size": 14568,
+						"buffer_size": 553,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14467,
-								14467
+								512,
+								512
 							]
 						],
 						"settings":
@@ -1327,109 +1212,132 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4529.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 22,
-					"file": "app/topic/handlers.py",
+					"file": "sites/Makefile",
 					"settings":
 					{
-						"buffer_size": 19851,
+						"buffer_size": 8176,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1154,
-								1154
+								4551,
+								4551
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 404.0,
+						"translation.y": 1524.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 23,
-					"file": "app/topic/lib.py",
 					"settings":
 					{
-						"buffer_size": 3784,
+						"buffer_size": 3799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1074,
-								1083
+								3799,
+								3799
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
+							"auto_name": "[\"03c778c2f862ba77d682b6ed37178ad6\", 1403798400000",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 3,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 188.0,
+						"translation.y": 224.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 24,
-					"file": "app/templates/v3/topic/show_topic.html",
 					"settings":
 					{
-						"buffer_size": 7176,
+						"buffer_size": 26061,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7129,
-								7129
+								3549,
+								3549
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"auto_name": "07/04/14 19:30:42 DEBUG com.zm.analyse.task.RoleCh",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"word_wrap": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 2604.0,
+						"translation.x": 268.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 25,
-					"file": "app/templates/v3/topic/edit_topic.html",
+					"file": "app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
 					"settings":
 					{
-						"buffer_size": 1571,
+						"buffer_size": 25282,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								571,
-								577
+								2227,
+								2227
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 622.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "app/templates/v3/topic/show_topic.html",
+					"settings":
+					{
+						"buffer_size": 8223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6075,
+								6075
 							]
 						],
 						"settings":
@@ -1439,33 +1347,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"settings":
-					{
-						"buffer_size": 754,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								31,
-								44
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2002.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1475,15 +1357,15 @@
 					"file": "app/templates/v3/topic/show_topic_list_module.html",
 					"settings":
 					{
-						"buffer_size": 3800,
+						"buffer_size": 2324,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								705,
-								705
+								298,
+								310
 							]
 						],
 						"settings":
@@ -1500,46 +1382,18 @@
 				},
 				{
 					"buffer": 28,
-					"file": "app/templates/v3/node/show_node.html",
+					"file": "app/people/mine_handlers.py",
 					"settings":
 					{
-						"buffer_size": 2107,
+						"buffer_size": 2808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1914,
-								1914
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 689.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 29,
-					"file": "app/dojang/cache.py",
-					"settings":
-					{
-						"buffer_size": 8884,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5921,
-								5921
+								1723,
+								1723
 							]
 						],
 						"settings":
@@ -1549,30 +1403,59 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2836.0,
+						"translation.y": 806.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 30,
-					"file": "app/wist/__init__.py",
+					"buffer": 29,
+					"file": "app/templates/v3/topic/show_topic_module.html",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1270,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								659,
+								659
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "app/templates/v3/people/show_people_wists.html",
+					"settings":
+					{
+						"buffer_size": 560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								550,
+								550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1582,23 +1465,23 @@
 				},
 				{
 					"buffer": 31,
-					"file": "app/wist/handlers.py",
+					"file": "sites/wecoders/db/update.sql",
 					"settings":
 					{
-						"buffer_size": 703,
+						"buffer_size": 777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								588,
-								588
+								657,
+								775
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/SQL/SQL.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1608,23 +1491,23 @@
 				},
 				{
 					"buffer": 32,
-					"file": "app/templates/v3/wist/show_wist.html",
+					"file": "sites/wecoders/debug_config.py",
 					"settings":
 					{
-						"buffer_size": 85,
+						"buffer_size": 1981,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								31
+								363,
+								363
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1634,25 +1517,23 @@
 				},
 				{
 					"buffer": 33,
-					"file": "app/wist/models.py",
+					"file": "app/templates/v3/module/show_node_list.html",
 					"settings":
 					{
-						"buffer_size": 1325,
+						"buffer_size": 165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								584,
-								598
+								37,
+								37
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1662,18 +1543,18 @@
 				},
 				{
 					"buffer": 34,
-					"file": "sites/wecoders/tools.py",
+					"file": "app/lib/util.py",
 					"settings":
 					{
-						"buffer_size": 5089,
+						"buffer_size": 10248,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								858,
-								858
+								2892,
+								2898
 							]
 						],
 						"settings":
@@ -1683,33 +1564,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 147.0,
+						"translation.y": 1682.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 35,
-					"file": "app/account/usednames.py",
+					"file": "app/vendor/CodeMirror/lib/codemirror.css",
 					"settings":
 					{
-						"buffer_size": 636,
+						"buffer_size": 7069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								539,
-								539
+								7068,
+								7068
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 404.0,
+						"translation.y": 3959.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1719,15 +1602,15 @@
 					"file": "app/account/lib.py",
 					"settings":
 					{
-						"buffer_size": 4524,
+						"buffer_size": 4609,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2548,
-								2548
+								3728,
+								3724
 							]
 						],
 						"settings":
@@ -1737,521 +1620,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 972.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 37,
-					"file": "app/templates/v3/topic/create_topic.html",
-					"settings":
-					{
-						"buffer_size": 1650,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1451,
-								1456
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 38,
-					"file": "app/topic/models.py",
-					"settings":
-					{
-						"buffer_size": 4393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3019,
-								3019
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1009.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 39,
-					"settings":
-					{
-						"buffer_size": 53,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								53,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "34:e2:fd:71:c0:55",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 40,
-					"file": "sites/wecoders/debug_config.py",
-					"settings":
-					{
-						"buffer_size": 1989,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1718,
-								1669
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 470.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 41,
-					"file": "app/templates/v3/topic/topic.html",
-					"settings":
-					{
-						"buffer_size": 177,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								177,
-								30
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 42,
-					"file": "app/templates/v3/topic/show_topic_module.html",
-					"settings":
-					{
-						"buffer_size": 1273,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 43,
-					"file": "app/templates/v3/topic/show_topic_list.html",
-					"settings":
-					{
-						"buffer_size": 559,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23,
-								23
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 44,
-					"file": "app/templates/v3/front/index.html",
-					"settings":
-					{
-						"buffer_size": 651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								504,
-								649
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 45,
-					"file": "app/templates/v3/wist/wist.html",
-					"settings":
-					{
-						"buffer_size": 176,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								130,
-								130
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 46,
-					"file": "app/templates/v3/account/setting_avatar.html",
-					"settings":
-					{
-						"buffer_size": 2783,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2496,
-								2496
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 449.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 47,
-					"file": "app/templates/v3/account/setting.html",
-					"settings":
-					{
-						"buffer_size": 3150,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								756,
-								756
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 147.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 48,
-					"file": "app/templates/v3/module/profile_sidebar.html",
-					"settings":
-					{
-						"buffer_size": 1005,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								86,
-								86
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 49,
-					"file": "app/vendor/stylesheets/bootstrap-3.1.0/less/variables.less",
-					"settings":
-					{
-						"buffer_size": 25289,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11825,
-								11825
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5019.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 50,
-					"file": "app/vendor/stylesheets/bootstrap-3.1.0/.gitignore",
-					"settings":
-					{
-						"buffer_size": 504,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								333,
-								296
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 119.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 51,
-					"file": ".gitignore",
-					"settings":
-					{
-						"buffer_size": 992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								991,
-								991
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 764.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 52,
-					"file": "sites/wecoders/db/wecoders.sql",
-					"settings":
-					{
-						"buffer_size": 9329,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6419,
-								6439
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SQL/SQL.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3004.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 53,
-					"file": "nginx.conf",
-					"settings":
-					{
-						"buffer_size": 17849,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4318,
-								4318
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2123.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 54,
-					"file": "app/templates/v3/account/setting_signup.html",
-					"settings":
-					{
-						"buffer_size": 1802,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								944,
-								944
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 194.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 55,
-					"file": "app/node/models.py",
-					"settings":
-					{
-						"buffer_size": 1619,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								557,
-								565
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1639.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

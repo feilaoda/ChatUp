@@ -21,6 +21,7 @@ setup(
         'python-memcached',
         'PIL',
         'formencode',
+        'chardet',
     ],
     include_package_data=True,
 )

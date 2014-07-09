@@ -7,17 +7,17 @@
     <span class="badge" title="{{topic.reply_count}} {{_("Replies")}}">{{topic.reply_count}}</span>
     {% end %}
 
-    <div class="media margin-top0">
+    <div class="media margin-top-0">
         {%if topic.anonymous != 0%}
             <img src="{{settings.static_avatar_default}}" class="pull-left media-object" width="48" height="48" title="Anonymous"/>
             {%else%}
-            <a href="/people/{{topic.people_id}}" class="pull-left">
+            <a href="/{{topic.people.username}}" class="pull-left">
             <img src="{{topic.people.get_avatar(48)}}" class="media-object" width="48" height="48" />
             </a>
         {%end%}
 
       <div class="media-body">
-        <a href="/topic/{{topic.id}}#r{{topic.reply_count}}" class="media-heading topic-list-title">
+        <a href="/topic/{{topic.id}}{%if topic.reply_count>50 %}?p={{topic.reply_count/50+1}}{%end%}#r{{topic.reply_count}}" class="media-heading topic-list-title">
             {{markup(topic.title)}}</a>
 
         <div class="small topic-list-meta">
@@ -25,7 +25,7 @@
             {%if topic.anonymous != 0 %}
                 <span>{{_("Anonymous")}}</span> •
             {%else%}
-                <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a> •{%end%}
+                <a href="/{{topic.people.username}}"><b>{{topic.people.username}}</b></a> •{%end%}
             {% if topic.last_reply_time %}
             <time datetime="{{xmldatetime(topic.last_reply_time)}}" title="replied">{{timesince(topic.last_reply_time, locale.code)}}</time>
             {% else %}
@@ -36,39 +36,6 @@
       </div>
     </div>
 
-
-    <!-- <div>
-        <div class="topic-avatar">
-            {%if topic.anonymous != 0%}
-            <img src="{{settings.static_avatar_default}}" width="48" height="48" title="Anonymous"/>
-            {%else%}
-            <a href="/people/{{topic.people_id}}" class="avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
-            {%end%}
-
-        </div>
-
-        {% if topic.reply_count > 0 %}
-        <span class="reply-count pull-right" title="{{topic.reply_count}} {{_("Replies")}}">{{topic.reply_count}}</span>
-        {% end %}
-        <div class="content">
-            <a class="title" href="/topic/{{topic.id}}">{{simple_escape(topic.title)}}</a>
-        </div>
-        <a class="title" href="/topic/{{topic.id}}" class="list-group-item-text">
-            {{simple_escape(topic.title)}}</a>
-
-        <div class="topic-meta small">
-            <a href="/node/{{topic.node.name}}" class="node-cell">{{topic.node.title}}</a> •
-            {%if topic.anonymous != 0 %}
-                <span>{{_("Anonymous")}}</span> •
-            {%else%}
-                <a href="/people/{{topic.people_id}}"><b>{{topic.people.username}}</b></a> •{%end%}
-            {% if topic.last_reply_time %}
-            <time datetime="{{xmldatetime(topic.last_reply_time)}}" title="replied">{{timesince(topic.last_reply_time, locale.code)}}</time>
-            {% else %}
-            <time datetime="{{xmldatetime(topic.created)}}" title="created">{{timesince(topic.created, locale.code)}}</time>
-            {% end %}
-        </div>
-    </div>   -->
 </li>
 {%end%}
 

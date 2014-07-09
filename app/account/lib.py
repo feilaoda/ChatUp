@@ -130,6 +130,9 @@ class SimpleApiHandler(UserHandler):
         res = dict()
         if result == "ok":
             result = "200"
+            
+        if result != "200":
+            return self.raise_error(result)
         res['result'] = result
         if message:
             res['message'] = message

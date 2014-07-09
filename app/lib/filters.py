@@ -16,6 +16,9 @@ from tornado.options import options
 import misaka as mk
 import mistune
 
+# from mikoto.libs.text import render as mikoto_render
+
+
 __all__ = ['markup', 'markdown', 'xmldatetime']
 
 
@@ -317,9 +320,9 @@ class BleepRenderer(mk.HtmlRenderer, mk.SmartyPants):
         return highlight(text, lexer, formatter)
 
 # And use the renderer
-# renderer = BleepRenderer()
-# md = mk.Markdown(renderer,
-#     extensions=mk.EXT_FENCED_CODE | mk.EXT_NO_INTRA_EMPHASIS)
+renderer = BleepRenderer()
+md = mk.Markdown(renderer,
+    extensions=mk.EXT_FENCED_CODE | mk.EXT_NO_INTRA_EMPHASIS)
 
 
 class MissRenderer(mistune.Renderer):
@@ -332,10 +335,14 @@ class MissRenderer(mistune.Renderer):
         return highlight(code, lexer, formatter)
 
 mirenderer = MissRenderer()
-md = mistune.Markdown(renderer=mirenderer)
+# md = mistune.Markdown(renderer=mirenderer)
 
 
 def markdown(text):
     if text is None:
         return None
     return clean_html(md.render(text))
+    # return clean_html(mikoto_render(text))
+
+
+

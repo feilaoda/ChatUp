@@ -1,0 +1,32 @@
+{% extends "wist/wist.html" %}
+
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/topic.min.js')}}"></script>
+{% end %}
+
+
+{% block container %}
+<div class="page-header">
+	<div class="container">
+		<h1 class="wist-header">Wist <span class="pull-right"><a href="/wist/new" class="btn btn-primary">Create New Wist</a></span></h1>
+	</div>
+</div>
+
+<div class="container">
+<div class="panel">
+	<div class="panel-body">
+		<ul class="list-group">
+			{%for wist in pagination.items%}
+				<li class="list-group-item list-group-nolrborder" ><a href="/{{wist.username}}/wist/{{wist.id}}">{{wist.title}}</a> 
+				
+				<span class="small" {%if current_user is None or current_user.id != wist.people_id%}active{%end%}>({{xmlday(wist.created)}} {{wist.username}})</span><!--  <a href="/wist/{{wist.id}}/edit">Edit</a> -->
+				
+				<span class="pull-right"><a id="star_btn" href="javascript:;" onclick="unstar_wist('{{wist.id}}')" class="btn btn-primary btn-sm">Unstar</a></span>
+				</li>
+			{%end%}
+		</ul>
+	</div>
+</div>
+</div>
+
+{% end %}

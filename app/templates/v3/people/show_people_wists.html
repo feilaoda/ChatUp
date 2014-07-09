@@ -1,0 +1,28 @@
+{% extends "wist/wist.html" %}
+
+
+
+{% block container %}
+<div class="page-header">
+	<div class="container">
+<h1 class="wist-header">Wist <span class=" small">(@{{people.username}})</span> <span class="label pull-right"><a href="/wist/new" class="btn btn-primary">Create New Wist</a></span></h1>
+</div>
+</div>
+
+
+
+<div class="container">
+<div class="panel">
+	<div class="panel-body">
+		<ul>
+			{%for wist in pagination.items%}
+				<li><a href="/{{wist.username}}/wist/{{wist.id}}">{{wist.title}}</a> 
+				</li>
+			{%end%}
+		</ul>
+	</div>
+</div>
+</div>
+
+
+{% end %}

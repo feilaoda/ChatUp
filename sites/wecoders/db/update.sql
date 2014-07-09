@@ -10,4 +10,7 @@ ALTER TABLE topic_reply MODIFY COLUMN content text CHARACTER SET utf8 COLLATE ut
 
 ALTER TABLE topic_node ADD COLUMN platform int(11) DEFAULT NULL;
 
+ALTER TABLE wist_content MODIFY COLUMN content longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL;
+ALTER TABLE wist_content MODIFY COLUMN content_html longtext CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL;
+
 

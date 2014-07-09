@@ -1,0 +1,28 @@
+{% extends "wist/wist.html" %}
+
+
+
+{% block container %}
+<div class="page-header">
+	<div class="container">
+		<h1 class="wist-header">Wist <span class="pull-right"><a href="/wist/new" class="btn btn-primary">Create New Wist</a></span></h1>
+	</div>
+</div>
+
+<div class="container">
+<div class="panel">
+	<div class="panel-body">
+		<ul>
+			{%for wist in pagination.items%}
+				<li><a href="/{{wist.username}}/wist/{{wist.id}}">{{wist.title}}</a> 
+				
+				<span class="small" {%if current_user is None or current_user.id != wist.people_id%}active{%end%}>({{xmlday(wist.created)}} {{wist.username}})</span><!--  <a href="/wist/{{wist.id}}/edit">Edit</a> -->
+				
+				</li>
+			{%end%}
+		</ul>
+	</div>
+</div>
+</div>
+
+{% end %}

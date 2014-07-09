@@ -62,5 +62,6 @@ UsedUserNames = ['admin',
 'facebook',
 'twitter',
 'sina',
-
+'none',
+'null',
 ]

@@ -1,9 +1,9 @@
 <li class="ui-cell article">
     {% if not is_mobile %}
-        <a href="/people/{{topic.people_id}}" class="ui-small-avatar"><img src="{{topic.people.get_avatar(20)}}" width="20" height="20" /></a>
+        <a href="/{{topic.people.username}}" class="ui-small-avatar"><img src="{{topic.people.get_avatar(20)}}" width="20" height="20" /></a>
     
     {% else %}
-    <a href="/people/{{topic.people_id}}" class="ui-avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
+    <a href="/{{topic.people.username}}" class="ui-avatar"><img src="{{topic.people.get_avatar(48)}}" width="48" height="48" /></a>
     
     {% end %}
     
@@ -16,7 +16,7 @@
         <h3><a href="{{topiclink(topic)}}">{{topic.title}}</a></h3>
         <div class="article-meta">
             <a href="/node/{{topic.node_id}}" class="node-cell">{{topic.node.title}}</a> •
-            <a href="/people/{{topic.people_id}}">{{topic.people.username}}</a> •
+            <a href="/{{topic.people.username}}">{{topic.people.username}}</a> •
             {% if topic.last_reply_time %}
             <time datetime="{{xmldatetime(topic.last_reply_time)}}" title="replied">{{timesince(topic.last_reply_time, locale.code)}}</time>
             {% else %}

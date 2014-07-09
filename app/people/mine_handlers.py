@@ -48,17 +48,16 @@ class ShowPeopleHandler(PeopleHandler):
         self.render('people/show_people.html', people=people)
 
 
-
-
 class ShowPeopleUsernameHandler(PeopleHandler):
     def get(self, username):
         people = People.query.filter_by(username=username).first_or_404()
-        return self.redirect('/people/%d' % (people.id))
+        return self.render('people/show_people.html', people=people)
+
 
 
 
 app_handlers = [
-    url('/(\d+)', ShowPeopleHandler, name='show-people'),
+    url('/people/(\d+)', ShowPeopleHandler, name='show-people'),
     url('/(\w+)', ShowPeopleUsernameHandler, name='show-people-username'),    
 ]
 
@@ -93,5 +92,5 @@ class CityPeoplesHandler(UserHandler):
 
 
 app = DojangApp(
-    'people', __name__, handlers=app_handlers, ui_modules=app_modules,
+    '', __name__, handlers=app_handlers, ui_modules=app_modules,
 )

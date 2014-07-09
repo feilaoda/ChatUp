@@ -88,15 +88,22 @@ css:
 	if [ ! -d $(STATIC)/assets/css ]; then mkdir -p $(STATIC)/assets/css; fi
 	lessc --compress $(HOME)/app/vendor/stylesheets/bootstrap-3.1.0/less/bootstrap.less > $(STATIC)/assets/css/v3/vendor.min.css
 	lessc --compress $(HOME)/static/stylesheets/application.less > $(STATIC)/assets/css/v3/application.min.css
+
+	
 	cssshrink $(STATIC)/assets/css/v3/vendor.min.css > $(STATIC)/assets/css/v3/application.css
 	cssshrink $(STATIC)/assets/css/v3/application.min.css >> $(STATIC)/assets/css/v3/application.css
+	
 	cssshrink $(STATIC)/assets/css/v3/application.css > $(STATIC)/assets/css/v3/stylesheets.min.css
-	#cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
-	#cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
-	#cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
-	#cat $(HOME)/vendor/waterfall/css/gotop.css >> $(STATIC)/assets/css/waterfall.min.css
-	#cat $(HOME)/vendor/waterfall/css/pagine.css >> $(STATIC)/assets/css/waterfall.min.css
-	#cat $(HOME)/vendor/waterfall/css/resize.css >> $(STATIC)/assets/css/waterfall.min.css
+	cssshrink $(HOME)/app/vendor/CodeMirror/lib/codemirror.css > $(STATIC)/assets/css/v3/codemirror.min.css
+	cssshrink $(HOME)/app/vendor/CodeMirror/theme/eclipse.css >> $(STATIC)/assets/css/v3/codemirror.min.css
+
+	
+#cat $(HOME)/vendor/waterfall/css/reset.css > $(STATIC)/assets/css/waterfall.min.css
+#cat $(HOME)/vendor/waterfall/css/main.css >> $(STATIC)/assets/css/waterfall.min.css
+#cat $(HOME)/vendor/waterfall/css/woo.css >> $(STATIC)/assets/css/waterfall.min.css
+#cat $(HOME)/vendor/waterfall/css/gotop.css >> $(STATIC)/assets/css/waterfall.min.css
+#cat $(HOME)/vendor/waterfall/css/pagine.css >> $(STATIC)/assets/css/waterfall.min.css
+#cat $(HOME)/vendor/waterfall/css/resize.css >> $(STATIC)/assets/css/waterfall.min.css
 
 
 	lessc --compress $(HOME)/static/stylesheets/mobile.less > $(STATIC)/assets/css/mobile.min.css
@@ -115,6 +122,13 @@ libjs:
 	if [ ! -d $(STATIC)/assets/js ]; then mkdir -p $(STATIC)/assets/js; fi
 
 	uglifyjs $(HOME)/app/vendor/javascripts/jquery/jquery.min.js > $(STATIC)/assets/js/vendor.min.js
+	uglifyjs $(HOME)/app/vendor/CodeMirror/lib/codemirror.js > $(STATIC)/assets/js/codemirror.min.js
+	uglifyjs $(HOME)/app/vendor/CodeMirror/addon/edit/continuelist.js >> $(STATIC)/assets/js/codemirror.min.js
+	uglifyjs $(HOME)/app/vendor/CodeMirror/mode/xml/xml.js >> $(STATIC)/assets/js/codemirror.min.js
+	uglifyjs $(HOME)/app/vendor/CodeMirror/mode/markdown/markdown.js >> $(STATIC)/assets/js/codemirror.min.js
+	uglifyjs $(HOME)/app/vendor/CodeMirror/addon/display/placeholder.js >> $(STATIC)/assets/js/codemirror.min.js
+	uglifyjs $(HOME)/static/javascripts/topic.js > $(STATIC)/assets/js/topic.min.js
+
 #uglifyjs -nc $(HOME)/vendor/javascripts/jquery/jquery.ui.min.js > $(STATIC)/assets/js/jquery.ui.min.js
 
 #uglifyjs -nc $(HOME)/vendor/javascripts/bootstrap/bootstrap-dropdown.js >> $(STATIC)/assets/js/vendor.min.js
@@ -144,7 +158,6 @@ libjs:
 
 # uglifyjs -nc $(HOME)/static/javascripts/socket.io.js > $(STATIC)/assets/js/socket.io.min.js
 
-# uglifyjs -nc $(HOME)/static/javascripts/topic.js >> $(STATIC)/assets/js/topic.min.js
 
 
 

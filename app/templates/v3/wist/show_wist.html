@@ -1,8 +1,61 @@
 {% extends "wist/wist.html" %}
 
+{% block afterstyle %}
+<script type="text/javascript" src="{{static_url('assets/js/topic.min.js')}}"></script>
+{% end %}
 
 
 {% block container %}
-<h1>Wiki List</h1>
+
+<div class="page-header">
+	<div class="container">
+		<ul class="margin-bottom-0 list-inline pull-right">
+			{%if current_user is not None and current_user.id == wist.people_id %}
+			<li><a href="/wist/{{wist.id}}/edit" class="btn btn-default">Edit</a></li>
+			<li><div class="btn-group">
+				<a href="#" class="btn btn-default disabled">Star</a>
+				<a href="#" class="btn btn-default">{{wist.star_count}}</a>
+			</div></li>
+			<li><span class="btn-group">
+				<a href="#" class="btn btn-default disabled">Fork</a>
+				<a href="#" class="btn btn-default">{{fork_count}}</a>
+			</span></li>
+			{%else%}
+			<li><div class="btn-group">
+				<a id="star_btn" href="javascript:;" onclick="star_wist('{{wist.id}}')" class="btn btn-primary">Star</a>
+				<a id="star_count" href="/wist/{{wist.id}}/fork" class="btn btn-primary">{{wist.star_count}}</a>
+				</div>
+			</li>
+			<li><div class="btn-group"><a href="/wist/{{wist.id}}/fork" class="btn btn-primary">Fork</a>
+				<a href="/wist/{{wist.id}}/fork" class="btn btn-primary">{{fork_count}}</a>
+			</div></li>
+			{%end%}
+		</ul>
+
+		{%if wist.fork_from_id != 0%}
+		{%if current_user and current_user.id == wist.people_id%}
+		<span>
+		{%else%}
+		<span><a href="/{{wist.username}}">{{wist.username}}</a>
+		{%end%}
+		 forked from <a href="/{{wist.fork_from_username}}/wist/{{wist.fork_from_id}}">{{wist.fork_from_username}}/wist/{{wist.fork_from_id}}</a></span>
+		{%else%}
+		<span><a href="/{{wist.username}}">{{wist.username}}</a>/<a href="/{{wist.username}}/wist/{{wist.id}}">wist/{{wist.id}}</a></span>
+
+		{%end%}
+		<span class="">({{xmlday(wist.created)}})</span>
+
+	</div>
+	
+</div>
+
+<div class="container wist">
+<div class="panel">
+	<div class="panel-heading">{{wist.tags or ''}}</div>
+	<div class="panel-body content-body padding-x-20">
+		{{content.content_html}}
+	</div>
+</div>
+</div>
 
 {% end %}

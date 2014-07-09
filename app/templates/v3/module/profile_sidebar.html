@@ -8,18 +8,21 @@
             <img class="media-object" width="48" height="48" src="{{people.get_avatar(48)}}">
         </a>
         <div class="media-body">
-            <h4 class="media-heading"><a href="/people/{{people.id}}">{{people.username}}</a></h4>
+            <h4 class="media-heading"><a href="/{{people.username}}">{{people.username}}</a></h4>
             <div class="username small">@{{people.username}}</div>
         </div>
     </div>
     <div class="media">
-            <ul class="list-style-inline  padding0">
-                <li><a href="/people/{{people.id}}">{{_("mine")}}</a></li>
-                
+            <ul class="list-style-inline  padding-0">
+                <li><a href="/{{people.username}}">{{_("mine")}}</a></li>
                 {%if people.is_master%}
                 <li><a href="/account/setting">{{_("Setting")}}</a></li>
                 {%end%}
 
+
+                <li><a href="/{{people.username}}/wist">{{_("Wist")}}</a></li>
+
+               
                 {%if current_user and current_user.is_admin%}
                 <li><a href="/admin">{{_("Admin")}}</a></li>
                 {%end%}

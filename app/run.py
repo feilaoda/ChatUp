@@ -19,8 +19,10 @@ try:
     #
     import site
     site.addsitedir(ROOTDIR)
+    site.addsitedir(os.path.join(ROOTDIR,"app/vendor"))
     import app
-    print PROJDIR
+    import app.vendor
+    print ROOTDIR
     print('Start chatup version: %s' % app.__version__)
 except ImportError:
     print('Development of chatup')
@@ -80,6 +82,11 @@ def create_application():
 
     application.register_app('app.front.handlers.app')
 
+    application.register_app('app.people.wist_handlers.app')
+
+    application.register_app('app.people.mine_handlers.app')
+
+
     for key in ['sitename', 'site_url', 'sitefeed', 'version', 'ga', 'gcse']:
         application.register_context(key, options[key])
 
@@ -104,7 +111,6 @@ def create_application():
 
     # application.register_filter('normal_markdown', normal_markdown)
     application.register_filter('xmldatetime', xmldatetime)
-
     application.register_filter('xmlday', xmlday)
     application.register_filter('localtime', localtime)
     application.register_filter('timesince', timesince)
